@@ -274,10 +274,100 @@ class CartridgeItemsPrinterModels(models.Model):
 
 #Hasta aca la mitad de la base de datos -Syd
 
-    
+class CartridgeItemTypes(models.Model):
+    cartridgetype_id = models.IntegerField(max_length=10, null=False)
+    name = models.CharField(max_length=255, null=True, default=None)
+    comment = models.TextField(null=True, default=None)
+    date_mod = models.DateTimeField(default=None, null=True)
+    date_creation = models.DateTimeField(default=None, null=True)
 
+class Cartridges(models.Model):
+    cartridge_id = models.IntegerField(max_length=10, null=False)
+    entities_id = models.IntegerField(max_length=10, default=0, null=False)
+    cartridgeitems_id = models.IntegerField(max_length=10, default=0, null=False)
+    printers_id = models.IntegerField(max_length=10, default=0, null=False)
+    date_in = models.DateField(default=None, null=True) #Consultar tipo de dato "DATE" por "DateField" o "DateTimeField"
+    date_use = models.DateField(default=None, null=True)
+    date_out = models.DateField(default=None, null=True)
+    pages = models.IntegerField(max_length=11, null=False)
+    date_mod = models.DateTimeField(default=None, null=True) #hace falta el artibuto "default"
+    date_creation = models.DateTimeField(default=None, null=True) #hace falta el artibuto "default"
 
+class Certificates(models.Model):
+    certificates_id = models.IntegerField(max_length= 10, null=False)
+    name = models.CharField(max_length= 255, null=True, default=None)
+    serial = models.CharField(max_length= 255, null=True, default=None)
+    otherserial = models.CharField(max_length= 255, null=True, default=None)
+    entities_id = models.IntegerField(max_length= 10, null=False)
+    is_recursive = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    comment = models.TextField(default= None, null=True)
+    is_deleted = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    is_template = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    template_name = models.CharField(max_length= 255, null=True, default=None)
+    certificatetypes_id = models.IntegerField(max_length= 10, null=False)
+    dns_name = models.CharField(max_length= 255, null=True, default=None)
+    dns_suffix = models.CharField(max_length= 255, null=True, default=None)
+    users_id_tech = models.IntegerField(max_length= 10, null=False, default=0)
+    groups_id_tech = models.IntegerField(max_length= 10, null=False, default=0)
+    locations_id = models.IntegerField(max_length= 10, null=False, default=0)
+    manufacturers_id = models.IntegerField(max_length= 10, null=False, default=0)
+    contact = models.CharField(max_length= 255, null=True, default=None)
+    contact_num = models.CharField(max_length= 255, null=True, default=None)
+    users_id = models.IntegerField(max_length= 10, null=False)
+    groups_id = models.IntegerField(max_length= 10, null=False)
+    is_autosign = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    date_expiration = models.DateField(default=None, null=True)
+    states_id = models.IntegerField(max_length= 10, null=False, default=0)
+    command = models.TextField(default= None, null=True)
+    certificate_request = models.TextField(default= None, null=True)
+    certificate_item = models.TextField(default= None, null=True)
+    date_creation = models.DateTimeField(default=None, null=True)
+    date_mod = models.DateTimeField(default=None, null=True)
 
+class CertificatesItems(models.Model):
+    certificatesitems_id = models.IntegerField(max_length= 10, null=False)
+    certificates_id = models.IntegerField(max_length= 10, null=False, default=0)
+    items_id = models.IntegerField(max_length= 10, null=False, default=0) #RELATION to various tables, according to itemtype (id)
+    itemtype = models.CharField(max_length= 100, null=True, default=None) #see .class.php file
+    date_creation = models.DateTimeField(default=None, null=True)
+    date_mod = models.DateTimeField(default=None, null=True)
 
+class CertificatesTypes(models.Model):
+    certificatestypes_id = models.IntegerField(max_length= 10, null=False)
+    entities_id = models.IntegerField(max_length= 10, null=False, default=0)
+    is_recursive = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    name = models.CharField(max_length= 255, null=True, default=None)
+    comment = models.TextField(default= None, null=True)
+    date_creation = models.DateTimeField(default=None, null=True)
+    date_mod = models.DateTimeField(default=None, null=True)
 
+class ChangeCosts(models.Model):
+    changecosts_id = models.IntegerField(max_length= 10, null=False)
+    changes_id = models.IntegerField(max_length= 10, null=False, default=0)
+    name = models.CharField(max_length= 255, null=True, default=None)
+    comment = models.TextField(default= None, null=True)
+    begin_date = models.DateTimeField(default=None, null=True)
+    end_date = models.DateTimeField(default=None, null=True)
+    actiontime = models.IntegerField(max_length= 11, null=False, default=0)
+    cost_time = models.DecimalField(max_digits=24, decimal_places=4, null=False, default=0.0000) #Revisar con Syd
+    cost_fixed = models.DecimalField(max_digits=24, decimal_places=4, null=False, default=0.0000) #Revisar con Syd
+    cost_material = models.DecimalField(max_digits=24, decimal_places=4, null=False, default=0.0000) #Revisar con Syd
+    budgets_id = models.IntegerField(max_length= 10, null=False, default=0)
+    entities_id = models.IntegerField(max_length= 10, null=False, default=0)
+    is_recursive = models.SmallIntegerField(max_length=4, default= 0, null=False)
 
+class Changes(models.Model):
+    changes_id = models.IntegerField(max_length= 10, null=False)
+    name = models.CharField(max_length= 255, null=True, default=None)
+    entities_id = models.IntegerField(max_length= 10, null=False, default=0)
+    is_recursive = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    is_deleted = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    status = models.IntegerField(max_length= 11, null=False, default=1)
+    content = models.TextField(default= None, null=True) #tipo de campo "LONGTEXT"
+    date_mod = models.DateTimeField(default=None, null=True)
+    date = models.DateTimeField(default=None, null=True)
+    solvedate = models.DateTimeField(default=None, null=True)
+    closedate = models.DateTimeField(default=None, null=True)
+    time_to_resolve = models.DateTimeField(default=None, null=True)
+    users_id_recipient = models.IntegerField(max_length= 10, null=False, default=0)
+    users_id_lastupdater = models.IntegerField(max_length= 10, null=False, default=0)
