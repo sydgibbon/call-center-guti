@@ -371,3 +371,5 @@ class Changes(models.Model):
     time_to_resolve = models.DateTimeField(default=None, null=True)
     users_id_recipient = models.IntegerField(max_length= 10, null=False, default=0)
     users_id_lastupdater = models.IntegerField(max_length= 10, null=False, default=0)
+
+# Termino la parte de guti, empieza nata desde ChangesGroups
