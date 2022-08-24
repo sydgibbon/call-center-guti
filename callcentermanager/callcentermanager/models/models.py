@@ -423,7 +423,7 @@ class ChangesUsers(models.Model):
     use_notification = models.SmallIntegerField(max_length=4, null=False, default=0)
     alternative_email = models.CharField(max_length= 255, null=True, default=None)
 
-class Changetasks(models.Model):
+class ChangeTasks(models.Model):
     uuid = models.CharField(max_length= 255, null=True, default=None)
     changes_id = models.IntegerField(max_length=10, null=False, default=0)
     taskcategories_id = models.IntegerField(max_length=10, null=False, default=0)
@@ -443,26 +443,26 @@ class Changetasks(models.Model):
     timeline_position = models.SmallIntegerField(max_length=4, null=False, default=0)
     is_private = models.SmallIntegerField(max_length=4, null=False, default=0)
 
-class Changetemplatehiddenfields(models.Model):
+class ChangeTemplateHiddenFields(models.Model):
     changetemplates_id = models.IntegerField(max_length=10, null=False, default=0)
     num = models.IntegerField(max_length=11, null=False, default=0)
 
-class Changetemplatemandatoryfields(models.Model):
+class ChangeTemplaeMandatoryFields(models.Model):
     changetemplates_id = models.IntegerField(max_length=10, null=False, default=0)
     num = models.IntegerField(max_length=11, null=False, default=0)
 
-class Changetemplatepredefinedfields(models.Model):
+class ChangeTemplatePredefinedFields(models.Model):
     changetemplates_id = models.IntegerField(max_length=10, null=False, default=0)
     num = models.IntegerField(max_length=11, null=False, default=0)
     value = models.TextField(null=True, default= None)
 
-class Changetemplates(models.Model):
+class ChangeTemplates(models.Model):
     name = models.CharField(max_length= 255, null=True, default=None)
     entities_id = models.IntegerField(max_length=10, null=False, default=0)
     is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
     comment = models.TextField(null=True, default=None)
 
-class Changevalidations(models.Model):
+class ChangeValidations(models.Model):
     entities_id = models.IntegerField(max_length=10, null=False, default=0)
     is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
     users_id = models.IntegerField(max_length=10, null=False, default=0)
@@ -491,7 +491,7 @@ class Clusters(models.Model):
     date_mod = models.DateTimeField(default = None, null= True)
     date_creation = models.DateTimeField(default = None, null= True)
 
-class Clusterstype(models.Model):
+class ClustersTypes(models.Model):
     entities_id = models.IntegerField(max_length=10, null=False, default=0)
     is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
     name = models.CharField(max_length=255, null=True, default= None)
@@ -499,7 +499,7 @@ class Clusterstype(models.Model):
     date_creation = models.DateTimeField(default=None, null=True)
     date_mod = models.DateTimeField(default=None, null=True)
 
-class Computerantiviruses(models.Model):
+class ComputerAntiviruses(models.Model):
     computers_id = models.IntegerField(max_length=10, null=False, default=0)
     name = models.CharField(max_length=255, null=True, default= None)
     manufacturers_id = models.IntegerField(max_length=10, default=0, null=False)
@@ -513,7 +513,7 @@ class Computerantiviruses(models.Model):
     date_mod = models.DateTimeField(default = None, null= True)
     date_creation = models.DateTimeField(default = None, null= True)
 
-class Computermodels(models.Model):
+class ComputerModels(models.Model):
     name = models.CharField(max_length=255, null=True, default= None)
     comment = models.TextField(null=True, default= None)
     product_number = models.CharField(max_length=255, null=True, default=None)
