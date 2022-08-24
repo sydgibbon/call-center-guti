@@ -1,3 +1,4 @@
+from tkinter.messagebox import NO
 from django.db import models
 
 class Agents(models.Model):
@@ -371,5 +372,158 @@ class Changes(models.Model):
     time_to_resolve = models.DateTimeField(default=None, null=True)
     users_id_recipient = models.IntegerField(max_length= 10, null=False, default=0)
     users_id_lastupdater = models.IntegerField(max_length= 10, null=False, default=0)
-
+    urgency = models.IntegerField(max_length=11, null=False, default=1)
+    impact = models.IntegerField(max_length=11, null=False, default=1)
+    priority = models.IntegerField(max_length=11, null=False, default=1)
+    itilcategories_id = models.IntegerField(max_length=10, null=False, default=0)
+    impactcontent = models.TextField(null=True, default=None)
+    controlistcontent = models.TextField(null=True, default=None)
+    rolloutplancontent = models.TextField(null=True, default=None)
+    backoutplancontent = models.TextField(null=True, default=None)
+    checklistcontent = models.TextField(null=True, default=None)
+    global_validation = models.IntegerField(max_length=11, null=False, default=1)
+    validation_percent = models.IntegerField(max_length=11, null=False, default=0)
+    actiontime = models.IntegerField(max_length=11, null=False, default=0)
+    begin_waiting_date = models.DateTimeField(null=True, default=None)
+    waiting_duration = models.IntegerField(max_length=11, null=False, default=0)
+    close_delay_stat = models.IntegerField(max_length=11, null=False, default=0)
+    solve_delay_stat = models.IntegerField(max_length=11, null=False, default=0)
+    date_creation = models.DateTimeField(null=True, default=None)
 # Termino la parte de guti, empieza nata desde ChangesGroups
+
+class ChangesGroups(models.Model):
+    changes_id = models.IntegerField(max_length=10, null=0, default=0)
+    groups_id = models.IntegerField(max_length=10, null=0, default=0)
+    type = models.IntegerField(max_length=11, null=0, default=1)
+
+class ChangesItems(models.Model):
+    changes_id = models.IntegerField(max_length=10, null=False, default=0)
+    itemtype = models.CharField(max_length=100, null=True, default=None)
+    items_id = models.IntegerField(max_length=10, null=False, default=0)
+
+class ChangesProblems(models.Model):
+    changes_id = models.IntegerField(max_length=10, null=False, default=0)
+    problems_id = models.IntegerField(max_length=10, null=False, default=0)
+
+class ChangesSuppliers(models.Model):
+    changes_id = models.IntegerField(max_length=10, null=False, default=0)
+    suppliers_id = models.IntegerField(max_length=10, null=False, default=0)
+    type = models.IntegerField(max_length=11, null=False, default=1)
+    use_notification = models.SmallIntegerField(max_length=4, null=False, default=0)
+    alternative_email = models.CharField(max_length= 255, null=True, default=None)
+
+class ChangesTickets(models.Model):
+    changes_id = models.IntegerField(max_length=10, null=False)
+    tickets_id = models.IntegerField(max_length=10, null=False, default=0)
+
+class ChangesUsers(models.Model):
+    changes_id = models.IntegerField(max_length=10, null=False, default=0)
+    users_id = models.IntegerField(max_length=10, null=False, default=0)
+    type = models.IntegerField(max_length=11, null=False, default=1)
+    use_notification = models.SmallIntegerField(max_length=4, null=False, default=0)
+    alternative_email = models.CharField(max_length= 255, null=True, default=None)
+
+class Changetasks(models.Model):
+    uuid = models.CharField(max_length= 255, null=True, default=None)
+    changes_id = models.IntegerField(max_length=10, null=False, default=0)
+    taskcategories_id = models.IntegerField(max_length=10, null=False, default=0)
+    state = models.IntegerField(max_length=11, null=False, default=0)
+    date = models.DateTimeField(null=True, default=None)  
+    begin = models.DateTimeField(null=True, default=None)  
+    end = models.DateTimeField(null=True, default=None)
+    users_id = models.IntegerField(max_length=10, null=False, default=0)
+    users_id_editor = models.IntegerField(max_length=10, null=False, default=0)
+    users_id_tech = models.IntegerField(max_length=10, null=False, default=0)
+    groups_id_tech = models.IntegerField(max_length=10, null=False, default=0)
+    content = models.TextField(null=True, default=None)
+    actiontime = models.IntegerField(max_length=11, null=False, default=0)
+    date_mod = models.DateTimeField(null=True, default=None)
+    date_creation = models.DateTimeField(null=True, default=None)
+    tasktemplates_id = models.IntegerField(max_length=10, null=False, default=0)
+    timeline_position = models.SmallIntegerField(max_length=4, null=False, default=0)
+    is_private = models.SmallIntegerField(max_length=4, null=False, default=0)
+
+class Changetemplatehiddenfields(models.Model):
+    changetemplates_id = models.IntegerField(max_length=10, null=False, default=0)
+    num = models.IntegerField(max_length=11, null=False, default=0)
+
+class Changetemplatemandatoryfields(models.Model):
+    changetemplates_id = models.IntegerField(max_length=10, null=False, default=0)
+    num = models.IntegerField(max_length=11, null=False, default=0)
+
+class Changetemplatepredefinedfields(models.Model):
+    changetemplates_id = models.IntegerField(max_length=10, null=False, default=0)
+    num = models.IntegerField(max_length=11, null=False, default=0)
+    #value =  text?
+
+class Changetemplates(models.Model):
+    name = models.CharField(max_length= 255, null=True, default=None)
+    entities_id = models.IntegerField(max_length=10, null=False, default=0)
+    is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
+    # comment  text?
+
+class Changevalidations(models.Model):
+    entities_id = models.IntegerField(max_length=10, null=False, default=0)
+    is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
+    users_id = models.IntegerField(max_length=10, null=False, default=0)
+    changes_id = models.IntegerField(max_length=10, null=False, default=0)
+    users_id_validate = models.IntegerField(max_length=10, null=False, default=0)
+    #comment_validationx2 text
+    status = models.IntegerField(max_length=11, null=False, default=2)
+    submission_date = models.DateTimeField(null=True, default=None)
+    validation_date = models.DateTimeField(null=True, default=None)
+    timeline_position = models.SmallIntegerField(max_length=4, null=False, default=0)
+
+class Clusters(models.Model):
+    entities_id = models.IntegerField(max_length=10, null=False, default=0)
+    is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
+    name = models.CharField(max_length=255, null=True, default= None)
+    uuid = models.CharField(max_length= 255, null=True, default=None)
+    version = models.CharField(max_length=255, null=True, default= None)
+    users_id_tech = models.IntegerField(max_length=10, null=False, default=0)
+    groups_id_tech = models.IntegerField(max_length=10, null=False, default=0)
+    is_deleted = models.SmallIntegerField(max_length=4, null=False, default= 0)
+    states_id = models.IntegerField(max_length=10, null=False, default=0)
+    comment = models.TextField(null=True, default= None)
+    clustertypes_id = models.IntegerField(max_length=10, null=False, default=0)
+    autoupdatesystems_id = models.IntegerField(max_length=10, null=False, default=0)
+    date_mod = models.DateTimeField(default = None, null= True)
+    date_creation = models.DateTimeField(default = None, null= True)
+
+class Clusterstype(models.Model):
+    entities_id = models.IntegerField(max_length=10, null=False, default=0)
+    is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
+    name = models.CharField(max_length=255, null=True, default= None)
+    comment = models.TextField(null=True, default=None)
+    date_creation = models.DateTimeField(default=None, null=True)
+    date_mod = models.DateTimeField(default=None, null=True)
+
+class Computerantiviruses(models.Model):
+    computers_id = models.IntegerField(max_length=10, null=False, default=0)
+    name = models.CharField(max_length=255, null=True, default= None)
+    manufacturers_id = models.IntegerField(max_length=10, default=0, null=False)
+    antivirus_version = models.CharField(max_length=255, null=True, default= None)
+    signature_version = models.CharField(max_length=255, null=True, default= None)
+    is_active = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    is_deleted = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    is_uptodate = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    is_dynamic = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    date_expiration = models.DateField(default=None, null=True)
+    date_mod = models.DateTimeField(default = None, null= True)
+    date_creation = models.DateTimeField(default = None, null= True)
+
+class Computermodels(models.Model):
+    name = models.CharField(max_length=255, null=True, default= None)
+    comment = models.TextField(null=True, default= None)
+    product_number = models.CharField(max_length=255, null=True, default=None)
+    weight = models.IntegerField(max_length=11, default=0, null=False)
+    required_units = models.IntegerField(max_length=11, default=1, null=False)
+    # depth float
+    power_connections = models.IntegerField(max_length=11, default=0, null=False)
+    power_consumption = models.IntegerField(max_length=11, default=0, null=False)
+    is_half_rack = models.SmallIntegerField(max_length=4, default= 0, null=False)
+    # picture_front
+    #picture_rear
+    #pictures
+    date_mod = models.DateTimeField(default = None, null= True)
+    date_creation = models.DateTimeField(default = None, null= True)
