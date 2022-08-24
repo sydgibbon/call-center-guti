@@ -491,7 +491,7 @@ class Clusters(models.Model):
     date_mod = models.DateTimeField(default = None, null= True)
     date_creation = models.DateTimeField(default = None, null= True)
 
-class ClustersTypes(models.Model):
+class ClusterTypes(models.Model):
     entities_id = models.IntegerField(max_length=10, null=False, default=0)
     is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
     name = models.CharField(max_length=255, null=True, default= None)
