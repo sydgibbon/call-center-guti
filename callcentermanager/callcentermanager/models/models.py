@@ -1,4 +1,3 @@
-from tkinter.messagebox import NO
 from django.db import models
 
 class Agents(models.Model):
@@ -389,6 +388,7 @@ class Changes(models.Model):
     close_delay_stat = models.IntegerField(max_length=11, null=False, default=0)
     solve_delay_stat = models.IntegerField(max_length=11, null=False, default=0)
     date_creation = models.DateTimeField(null=True, default=None)
+    
 # Termino la parte de guti, empieza nata desde ChangesGroups
 
 class ChangesGroups(models.Model):
@@ -454,13 +454,13 @@ class Changetemplatemandatoryfields(models.Model):
 class Changetemplatepredefinedfields(models.Model):
     changetemplates_id = models.IntegerField(max_length=10, null=False, default=0)
     num = models.IntegerField(max_length=11, null=False, default=0)
-    #value =  text?
+    value = models.TextField(null=True, default= None)
 
 class Changetemplates(models.Model):
     name = models.CharField(max_length= 255, null=True, default=None)
     entities_id = models.IntegerField(max_length=10, null=False, default=0)
     is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
-    # comment  text?
+    comment = models.TextField(null=True, default=None)
 
 class Changevalidations(models.Model):
     entities_id = models.IntegerField(max_length=10, null=False, default=0)
@@ -468,7 +468,8 @@ class Changevalidations(models.Model):
     users_id = models.IntegerField(max_length=10, null=False, default=0)
     changes_id = models.IntegerField(max_length=10, null=False, default=0)
     users_id_validate = models.IntegerField(max_length=10, null=False, default=0)
-    #comment_validationx2 text
+    comment_submission = models.TextField(null=True, default=None)
+    comment_validation = models.TextField(null=True, default=None)
     status = models.IntegerField(max_length=11, null=False, default=2)
     submission_date = models.DateTimeField(null=True, default=None)
     validation_date = models.DateTimeField(null=True, default=None)
@@ -518,12 +519,12 @@ class Computermodels(models.Model):
     product_number = models.CharField(max_length=255, null=True, default=None)
     weight = models.IntegerField(max_length=11, default=0, null=False)
     required_units = models.IntegerField(max_length=11, default=1, null=False)
-    # depth float
+    depth = models.DecimalField(decimal_places=4, null=False, default=1)
     power_connections = models.IntegerField(max_length=11, default=0, null=False)
     power_consumption = models.IntegerField(max_length=11, default=0, null=False)
     is_half_rack = models.SmallIntegerField(max_length=4, default= 0, null=False)
-    # picture_front
-    #picture_rear
-    #pictures
-    date_mod = models.DateTimeField(default = None, null= True)
-    date_creation = models.DateTimeField(default = None, null= True)
+    picture_front = models.TextField(null=True, default= None)
+    picture_rear = models.TextField(null=True, default= None)
+    pictures = models.TextField(null=True, default= None)
+    date_mod = models.DateTimeField(default = None, null=True)
+    date_creation = models.DateTimeField(default = None, null=True)
