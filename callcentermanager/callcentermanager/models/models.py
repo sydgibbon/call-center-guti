@@ -530,3 +530,33 @@ class ComputerModels(models.Model):
     date_creation = models.DateTimeField(default = None, null=True)
 
     #termino nata empieza Fran
+
+class Computers (models.Model):
+    name = models.CharField(max_length=255, null=True, default= None)
+    entities_id = models.IntegerField(max_length=10, default=0, null=False) #para tablas tipo INT
+    serial = models.CharField(max_length=255, null=True, default= None)
+    otherserial = models.CharField(max_length=255, null=True, default= None)
+    contact = models.CharField(max_length=255, null=True, default= None)
+    contact_num = models.CharField(max_length=255, null=True, default= None)
+    users_id_tech = models.IntegerField(max_length=10, default=0, null=False)
+    groups_id_tech = models.IntegerField(max_length=10, default=0, null=False)
+    comment = models.TextField(default= None, null=True) #para tablas tipo TEXT
+    date_mod = models.DateTimeField(default = None, null= True) #para tablas tipo TIMESTAMP
+    autoupdatesystems_id = models.IntegerField(max_length=10, null=False, default=0)
+    locations_id = models.IntegerField(max_length=10, null=False, default=0)
+    networks_id = models.IntegerField(max_length=10, null=False, default=0)
+    computermodels_id = models.IntegerField(max_length=10, null=False, default=0)
+    computertypes_id = models.IntegerField(max_length=10, null=False, default=0)
+    is_template = models.SmallIntegerField(max_length=4, null=False, default=0)
+    template_name = models.CharField(max_length=255, null=True, default=None)
+    manufacturers_id = models.IntegerField(max_length=10, null=False, default=0)
+    is_deleted = models.SmallIntegerField(max_length=4, null=False, default=0)
+    is_dynamic = models.SmallIntegerField(max_length=4, null=False, default=0)
+    users_id  = models.IntegerField(max_length=10, null=False, default=0)
+    groups_id = models.IntegerField(max_length=10, null=False, default=0)
+    states_id = models.IntegerField(max_length=10, null=False, default=0)
+    ticket_tco = models.DecimalField(decimal_places=4, null=True, default=0.0000)
+    uuid = models.CharField(max_length=255, null=True, default=None)
+    date_creation = models.DateTimeField(default = None, null= True)
+    is_recursive = models.SmallIntegerField(max_length=4, null=False, default=0)
+    last_inventory_update = models.DateTimeField(default = None, null= True)
