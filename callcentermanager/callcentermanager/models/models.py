@@ -282,7 +282,6 @@ class CartridgeItemTypes(models.Model):
     date_creation = models.DateTimeField(default=None, null=True)
 
 class Cartridges(models.Model):
-    cartridge_id = models.IntegerField(max_length=10, null=False)
     entities_id = models.IntegerField(max_length=10, default=0, null=False)
     cartridgeitems_id = models.IntegerField(max_length=10, default=0, null=False)
     printers_id = models.IntegerField(max_length=10, default=0, null=False)
@@ -294,7 +293,6 @@ class Cartridges(models.Model):
     date_creation = models.DateTimeField(default=None, null=True) #hace falta el artibuto "default"
 
 class Certificates(models.Model):
-    certificates_id = models.IntegerField(max_length= 10, null=False)
     name = models.CharField(max_length= 255, null=True, default=None)
     serial = models.CharField(max_length= 255, null=True, default=None)
     otherserial = models.CharField(max_length= 255, null=True, default=None)
@@ -325,7 +323,6 @@ class Certificates(models.Model):
     date_mod = models.DateTimeField(default=None, null=True)
 
 class CertificatesItems(models.Model):
-    certificatesitems_id = models.IntegerField(max_length= 10, null=False)
     certificates_id = models.IntegerField(max_length= 10, null=False, default=0)
     items_id = models.IntegerField(max_length= 10, null=False, default=0) #RELATION to various tables, according to itemtype (id)
     itemtype = models.CharField(max_length= 100, null=True, default=None) #see .class.php file
@@ -333,7 +330,6 @@ class CertificatesItems(models.Model):
     date_mod = models.DateTimeField(default=None, null=True)
 
 class CertificatesTypes(models.Model):
-    certificatestypes_id = models.IntegerField(max_length= 10, null=False)
     entities_id = models.IntegerField(max_length= 10, null=False, default=0)
     is_recursive = models.SmallIntegerField(max_length=4, default= 0, null=False)
     name = models.CharField(max_length= 255, null=True, default=None)
@@ -342,7 +338,6 @@ class CertificatesTypes(models.Model):
     date_mod = models.DateTimeField(default=None, null=True)
 
 class ChangeCosts(models.Model):
-    changecosts_id = models.IntegerField(max_length= 10, null=False)
     changes_id = models.IntegerField(max_length= 10, null=False, default=0)
     name = models.CharField(max_length= 255, null=True, default=None)
     comment = models.TextField(default= None, null=True)
@@ -357,7 +352,6 @@ class ChangeCosts(models.Model):
     is_recursive = models.SmallIntegerField(max_length=4, default= 0, null=False)
 
 class Changes(models.Model):
-    changes_id = models.IntegerField(max_length= 10, null=False)
     name = models.CharField(max_length= 255, null=True, default=None)
     entities_id = models.IntegerField(max_length= 10, null=False, default=0)
     is_recursive = models.SmallIntegerField(max_length=4, default= 0, null=False)
