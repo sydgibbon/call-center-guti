@@ -528,3 +528,5 @@ class ComputerModels(models.Model):
     pictures = models.TextField(null=True, default= None)
     date_mod = models.DateTimeField(default = None, null=True)
     date_creation = models.DateTimeField(default = None, null=True)
+
+    #termino nata empieza Fran
