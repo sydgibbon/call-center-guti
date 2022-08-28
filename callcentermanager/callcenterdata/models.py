@@ -1,6 +1,6 @@
 from django.db import models
 
-class GlpiAgents(models.Model):
+class Agents(models.Model):
     deviceid = models.CharField(unique=True, max_length=255)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -20,31 +20,31 @@ class GlpiAgents(models.Model):
     timeout_networkinventory = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_agents'
+        managed = True
+        db_table = 'agents'
 
 
-class GlpiAgenttypes(models.Model):
+class Agenttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_agenttypes'
+        managed = True
+        db_table = 'agenttypes'
 
 
-class GlpiAlerts(models.Model):
+class Alerts(models.Model):
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
     type = models.IntegerField()
     date = models.DateTimeField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_alerts'
+        managed = True
+        db_table = 'alerts'
         unique_together = (('itemtype', 'items_id', 'type'),)
 
 
-class GlpiApiclients(models.Model):
+class Apiclients(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -60,20 +60,20 @@ class GlpiApiclients(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_apiclients'
+        managed = True
+        db_table = 'apiclients'
 
 
-class GlpiApplianceenvironments(models.Model):
+class Applianceenvironments(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_applianceenvironments'
+        managed = True
+        db_table = 'applianceenvironments'
 
 
-class GlpiAppliances(models.Model):
+class Appliances(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255)
@@ -97,32 +97,32 @@ class GlpiAppliances(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_appliances'
+        managed = True
+        db_table = 'appliances'
 
 
-class GlpiAppliancesItems(models.Model):
+class AppliancesItems(models.Model):
     appliances_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_appliances_items'
+        managed = True
+        db_table = 'appliances_items'
         unique_together = (('appliances_id', 'items_id', 'itemtype'),)
 
 
-class GlpiAppliancesItemsRelations(models.Model):
+class AppliancesItemsRelations(models.Model):
     appliances_items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_appliances_items_relations'
+        managed = True
+        db_table = 'appliances_items_relations'
 
 
-class GlpiAppliancetypes(models.Model):
+class Appliancetypes(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255)
@@ -130,11 +130,11 @@ class GlpiAppliancetypes(models.Model):
     externalidentifier = models.CharField(unique=True, max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_appliancetypes'
+        managed = True
+        db_table = 'appliancetypes'
 
 
-class GlpiAuthldapreplicates(models.Model):
+class Authldapreplicates(models.Model):
     authldaps_id = models.PositiveIntegerField()
     host = models.CharField(max_length=255, blank=True, null=True)
     port = models.IntegerField()
@@ -142,11 +142,11 @@ class GlpiAuthldapreplicates(models.Model):
     timeout = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_authldapreplicates'
+        managed = True
+        db_table = 'authldapreplicates'
 
 
-class GlpiAuthldaps(models.Model):
+class Authldaps(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     host = models.CharField(max_length=255, blank=True, null=True)
     basedn = models.CharField(max_length=255, blank=True, null=True)
@@ -198,11 +198,11 @@ class GlpiAuthldaps(models.Model):
     timeout = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_authldaps'
+        managed = True
+        db_table = 'authldaps'
 
 
-class GlpiAuthmails(models.Model):
+class Authmails(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     connect_string = models.CharField(max_length=255, blank=True, null=True)
     host = models.CharField(max_length=255, blank=True, null=True)
@@ -212,20 +212,20 @@ class GlpiAuthmails(models.Model):
     is_active = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_authmails'
+        managed = True
+        db_table = 'authmails'
 
 
-class GlpiAutoupdatesystems(models.Model):
+class Autoupdatesystems(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_autoupdatesystems'
+        managed = True
+        db_table = 'autoupdatesystems'
 
 
-class GlpiBlacklistedmailcontents(models.Model):
+class Blacklistedmailcontents(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -233,11 +233,11 @@ class GlpiBlacklistedmailcontents(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_blacklistedmailcontents'
+        managed = True
+        db_table = 'blacklistedmailcontents'
 
 
-class GlpiBlacklists(models.Model):
+class Blacklists(models.Model):
     type = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     value = models.CharField(max_length=255, blank=True, null=True)
@@ -246,11 +246,11 @@ class GlpiBlacklists(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_blacklists'
+        managed = True
+        db_table = 'blacklists'
 
 
-class GlpiBudgets(models.Model):
+class Budgets(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -267,22 +267,22 @@ class GlpiBudgets(models.Model):
     budgettypes_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_budgets'
+        managed = True
+        db_table = 'budgets'
 
 
-class GlpiBudgettypes(models.Model):
+class Budgettypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_budgettypes'
+        managed = True
+        db_table = 'budgettypes'
 
 
-class GlpiBusinesscriticities(models.Model):
+class Businesscriticities(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -296,12 +296,12 @@ class GlpiBusinesscriticities(models.Model):
     sons_cache = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_businesscriticities'
+        managed = True
+        db_table = 'businesscriticities'
         unique_together = (('businesscriticities_id', 'name'),)
 
 
-class GlpiCables(models.Model):
+class Cables(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -324,33 +324,33 @@ class GlpiCables(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_cables'
+        managed = True
+        db_table = 'cables'
 
 
-class GlpiCablestrands(models.Model):
+class Cablestrands(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_cablestrands'
+        managed = True
+        db_table = 'cablestrands'
 
 
-class GlpiCabletypes(models.Model):
+class Cabletypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_cabletypes'
+        managed = True
+        db_table = 'cabletypes'
 
 
-class GlpiCalendars(models.Model):
+class Calendars(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -360,21 +360,21 @@ class GlpiCalendars(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_calendars'
+        managed = True
+        db_table = 'calendars'
 
 
-class GlpiCalendarsHolidays(models.Model):
+class CalendarsHolidays(models.Model):
     calendars_id = models.PositiveIntegerField()
     holidays_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_calendars_holidays'
+        managed = True
+        db_table = 'calendars_holidays'
         unique_together = (('calendars_id', 'holidays_id'),)
 
 
-class GlpiCalendarsegments(models.Model):
+class Calendarsegments(models.Model):
     calendars_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -383,11 +383,11 @@ class GlpiCalendarsegments(models.Model):
     end = models.TimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_calendarsegments'
+        managed = True
+        db_table = 'calendarsegments'
 
 
-class GlpiCartridgeitems(models.Model):
+class Cartridgeitems(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -406,32 +406,32 @@ class GlpiCartridgeitems(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_cartridgeitems'
+        managed = True
+        db_table = 'cartridgeitems'
 
 
-class GlpiCartridgeitemsPrintermodels(models.Model):
+class CartridgeitemsPrintermodels(models.Model):
     cartridgeitems_id = models.PositiveIntegerField()
     printermodels_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_cartridgeitems_printermodels'
+        managed = True
+        db_table = 'cartridgeitems_printermodels'
         unique_together = (('printermodels_id', 'cartridgeitems_id'),)
 
 
-class GlpiCartridgeitemtypes(models.Model):
+class Cartridgeitemtypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_cartridgeitemtypes'
+        managed = True
+        db_table = 'cartridgeitemtypes'
 
 
-class GlpiCartridges(models.Model):
+class Cartridges(models.Model):
     entities_id = models.PositiveIntegerField()
     cartridgeitems_id = models.PositiveIntegerField()
     printers_id = models.PositiveIntegerField()
@@ -443,11 +443,11 @@ class GlpiCartridges(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_cartridges'
+        managed = True
+        db_table = 'cartridges'
 
 
-class GlpiCertificates(models.Model):
+class Certificates(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     serial = models.CharField(max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
@@ -478,11 +478,11 @@ class GlpiCertificates(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_certificates'
+        managed = True
+        db_table = 'certificates'
 
 
-class GlpiCertificatesItems(models.Model):
+class CertificatesItems(models.Model):
     certificates_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
@@ -490,12 +490,12 @@ class GlpiCertificatesItems(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_certificates_items'
+        managed = True
+        db_table = 'certificates_items'
         unique_together = (('certificates_id', 'itemtype', 'items_id'),)
 
 
-class GlpiCertificatetypes(models.Model):
+class Certificatetypes(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -504,11 +504,11 @@ class GlpiCertificatetypes(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_certificatetypes'
+        managed = True
+        db_table = 'certificatetypes'
 
 
-class GlpiChangecosts(models.Model):
+class Changecosts(models.Model):
     changes_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -523,11 +523,11 @@ class GlpiChangecosts(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changecosts'
+        managed = True
+        db_table = 'changecosts'
 
 
-class GlpiChanges(models.Model):
+class Changes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -560,43 +560,43 @@ class GlpiChanges(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changes'
+        managed = True
+        db_table = 'changes'
 
 
-class GlpiChangesGroups(models.Model):
+class ChangesGroups(models.Model):
     changes_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     type = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changes_groups'
+        managed = True
+        db_table = 'changes_groups'
         unique_together = (('changes_id', 'type', 'groups_id'),)
 
 
-class GlpiChangesItems(models.Model):
+class ChangesItems(models.Model):
     changes_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changes_items'
+        managed = True
+        db_table = 'changes_items'
         unique_together = (('changes_id', 'itemtype', 'items_id'),)
 
 
-class GlpiChangesProblems(models.Model):
+class ChangesProblems(models.Model):
     changes_id = models.PositiveIntegerField()
     problems_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changes_problems'
+        managed = True
+        db_table = 'changes_problems'
         unique_together = (('changes_id', 'problems_id'),)
 
 
-class GlpiChangesSuppliers(models.Model):
+class ChangesSuppliers(models.Model):
     changes_id = models.PositiveIntegerField()
     suppliers_id = models.PositiveIntegerField()
     type = models.IntegerField()
@@ -604,22 +604,22 @@ class GlpiChangesSuppliers(models.Model):
     alternative_email = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changes_suppliers'
+        managed = True
+        db_table = 'changes_suppliers'
         unique_together = (('changes_id', 'type', 'suppliers_id'),)
 
 
-class GlpiChangesTickets(models.Model):
+class ChangesTickets(models.Model):
     changes_id = models.PositiveIntegerField()
     tickets_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changes_tickets'
+        managed = True
+        db_table = 'changes_tickets'
         unique_together = (('changes_id', 'tickets_id'),)
 
 
-class GlpiChangesUsers(models.Model):
+class ChangesUsers(models.Model):
     changes_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
     type = models.IntegerField()
@@ -627,12 +627,12 @@ class GlpiChangesUsers(models.Model):
     alternative_email = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changes_users'
+        managed = True
+        db_table = 'changes_users'
         unique_together = (('changes_id', 'type', 'users_id', 'alternative_email'),)
 
 
-class GlpiChangetasks(models.Model):
+class Changetasks(models.Model):
     uuid = models.CharField(unique=True, max_length=255, blank=True, null=True)
     changes_id = models.PositiveIntegerField()
     taskcategories_id = models.PositiveIntegerField()
@@ -653,52 +653,52 @@ class GlpiChangetasks(models.Model):
     is_private = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changetasks'
+        managed = True
+        db_table = 'changetasks'
 
 
-class GlpiChangetemplatehiddenfields(models.Model):
+class Changetemplatehiddenfields(models.Model):
     changetemplates_id = models.PositiveIntegerField()
     num = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changetemplatehiddenfields'
+        managed = True
+        db_table = 'changetemplatehiddenfields'
         unique_together = (('changetemplates_id', 'num'),)
 
 
-class GlpiChangetemplatemandatoryfields(models.Model):
+class Changetemplatemandatoryfields(models.Model):
     changetemplates_id = models.PositiveIntegerField()
     num = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changetemplatemandatoryfields'
+        managed = True
+        db_table = 'changetemplatemandatoryfields'
         unique_together = (('changetemplates_id', 'num'),)
 
 
-class GlpiChangetemplatepredefinedfields(models.Model):
+class Changetemplatepredefinedfields(models.Model):
     changetemplates_id = models.PositiveIntegerField()
     num = models.IntegerField()
     value = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changetemplatepredefinedfields'
+        managed = True
+        db_table = 'changetemplatepredefinedfields'
 
 
-class GlpiChangetemplates(models.Model):
+class Changetemplates(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changetemplates'
+        managed = True
+        db_table = 'changetemplates'
 
 
-class GlpiChangevalidations(models.Model):
+class Changevalidations(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     users_id = models.PositiveIntegerField()
@@ -712,11 +712,11 @@ class GlpiChangevalidations(models.Model):
     timeline_position = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_changevalidations'
+        managed = True
+        db_table = 'changevalidations'
 
 
-class GlpiClusters(models.Model):
+class Clusters(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -733,11 +733,11 @@ class GlpiClusters(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_clusters'
+        managed = True
+        db_table = 'clusters'
 
 
-class GlpiClustertypes(models.Model):
+class Clustertypes(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -746,11 +746,11 @@ class GlpiClustertypes(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_clustertypes'
+        managed = True
+        db_table = 'clustertypes'
 
 
-class GlpiComputerantiviruses(models.Model):
+class Computerantiviruses(models.Model):
     computers_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     manufacturers_id = models.PositiveIntegerField()
@@ -765,11 +765,11 @@ class GlpiComputerantiviruses(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_computerantiviruses'
+        managed = True
+        db_table = 'computerantiviruses'
 
 
-class GlpiComputermodels(models.Model):
+class Computermodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -786,11 +786,11 @@ class GlpiComputermodels(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_computermodels'
+        managed = True
+        db_table = 'computermodels'
 
 
-class GlpiComputers(models.Model):
+class Computers(models.Model):
     entities_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     serial = models.CharField(max_length=255, blank=True, null=True)
@@ -821,11 +821,11 @@ class GlpiComputers(models.Model):
     last_inventory_update = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_computers'
+        managed = True
+        db_table = 'computers'
 
 
-class GlpiComputersItems(models.Model):
+class ComputersItems(models.Model):
     items_id = models.PositiveIntegerField()
     computers_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
@@ -833,22 +833,22 @@ class GlpiComputersItems(models.Model):
     is_dynamic = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_computers_items'
+        managed = True
+        db_table = 'computers_items'
 
 
-class GlpiComputertypes(models.Model):
+class Computertypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_computertypes'
+        managed = True
+        db_table = 'computertypes'
 
 
-class GlpiComputervirtualmachines(models.Model):
+class Computervirtualmachines(models.Model):
     entities_id = models.PositiveIntegerField()
     computers_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255)
@@ -865,22 +865,22 @@ class GlpiComputervirtualmachines(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_computervirtualmachines'
+        managed = True
+        db_table = 'computervirtualmachines'
 
 
-class GlpiConfigs(models.Model):
+class Configs(models.Model):
     context = models.CharField(max_length=150, blank=True, null=True)
     name = models.CharField(max_length=150, blank=True, null=True)
     value = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_configs'
+        managed = True
+        db_table = 'configs'
         unique_together = (('context', 'name'),)
 
 
-class GlpiConsumableitems(models.Model):
+class Consumableitems(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -900,22 +900,22 @@ class GlpiConsumableitems(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_consumableitems'
+        managed = True
+        db_table = 'consumableitems'
 
 
-class GlpiConsumableitemtypes(models.Model):
+class Consumableitemtypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_consumableitemtypes'
+        managed = True
+        db_table = 'consumableitemtypes'
 
 
-class GlpiConsumables(models.Model):
+class Consumables(models.Model):
     entities_id = models.PositiveIntegerField()
     consumableitems_id = models.PositiveIntegerField()
     date_in = models.DateField(blank=True, null=True)
@@ -926,11 +926,11 @@ class GlpiConsumables(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_consumables'
+        managed = True
+        db_table = 'consumables'
 
 
-class GlpiContacts(models.Model):
+class Contacts(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -955,32 +955,32 @@ class GlpiContacts(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_contacts'
+        managed = True
+        db_table = 'contacts'
 
 
-class GlpiContactsSuppliers(models.Model):
+class ContactsSuppliers(models.Model):
     suppliers_id = models.PositiveIntegerField()
     contacts_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_contacts_suppliers'
+        managed = True
+        db_table = 'contacts_suppliers'
         unique_together = (('suppliers_id', 'contacts_id'),)
 
 
-class GlpiContacttypes(models.Model):
+class Contacttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_contacttypes'
+        managed = True
+        db_table = 'contacttypes'
 
 
-class GlpiContractcosts(models.Model):
+class Contractcosts(models.Model):
     contracts_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -992,11 +992,11 @@ class GlpiContractcosts(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_contractcosts'
+        managed = True
+        db_table = 'contractcosts'
 
 
-class GlpiContracts(models.Model):
+class Contracts(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -1028,43 +1028,43 @@ class GlpiContracts(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_contracts'
+        managed = True
+        db_table = 'contracts'
 
 
-class GlpiContractsItems(models.Model):
+class ContractsItems(models.Model):
     contracts_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_contracts_items'
+        managed = True
+        db_table = 'contracts_items'
         unique_together = (('contracts_id', 'itemtype', 'items_id'),)
 
 
-class GlpiContractsSuppliers(models.Model):
+class ContractsSuppliers(models.Model):
     suppliers_id = models.PositiveIntegerField()
     contracts_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_contracts_suppliers'
+        managed = True
+        db_table = 'contracts_suppliers'
         unique_together = (('suppliers_id', 'contracts_id'),)
 
 
-class GlpiContracttypes(models.Model):
+class Contracttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_contracttypes'
+        managed = True
+        db_table = 'contracttypes'
 
 
-class GlpiCrontasklogs(models.Model):
+class Crontasklogs(models.Model):
     crontasks_id = models.PositiveIntegerField()
     crontasklogs_id = models.PositiveIntegerField()
     date = models.DateTimeField()
@@ -1074,11 +1074,11 @@ class GlpiCrontasklogs(models.Model):
     content = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_crontasklogs'
+        managed = True
+        db_table = 'crontasklogs'
 
 
-class GlpiCrontasks(models.Model):
+class Crontasks(models.Model):
     itemtype = models.CharField(max_length=100)
     name = models.CharField(max_length=150)
     frequency = models.IntegerField()
@@ -1096,33 +1096,33 @@ class GlpiCrontasks(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_crontasks'
+        managed = True
+        db_table = 'crontasks'
         unique_together = (('itemtype', 'name'),)
 
 
-class GlpiDashboardsDashboards(models.Model):
+class DashboardsDashboards(models.Model):
     key = models.CharField(unique=True, max_length=100)
     name = models.CharField(max_length=100)
     context = models.CharField(max_length=100)
     users_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_dashboards_dashboards'
+        managed = True
+        db_table = 'dashboards_dashboards'
 
 
-class GlpiDashboardsFilters(models.Model):
+class DashboardsFilters(models.Model):
     dashboards_dashboards_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
     filter = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_dashboards_filters'
+        managed = True
+        db_table = 'dashboards_filters'
 
 
-class GlpiDashboardsItems(models.Model):
+class DashboardsItems(models.Model):
     dashboards_dashboards_id = models.PositiveIntegerField()
     gridstack_id = models.CharField(max_length=100)
     card_id = models.CharField(max_length=100)
@@ -1133,33 +1133,33 @@ class GlpiDashboardsItems(models.Model):
     card_options = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_dashboards_items'
+        managed = True
+        db_table = 'dashboards_items'
 
 
-class GlpiDashboardsRights(models.Model):
+class DashboardsRights(models.Model):
     dashboards_dashboards_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_dashboards_rights'
+        managed = True
+        db_table = 'dashboards_rights'
         unique_together = (('dashboards_dashboards_id', 'itemtype', 'items_id'),)
 
 
-class GlpiDatabaseinstancecategories(models.Model):
+class Databaseinstancecategories(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_databaseinstancecategories'
+        managed = True
+        db_table = 'databaseinstancecategories'
 
 
-class GlpiDatabaseinstances(models.Model):
+class Databaseinstances(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255)
@@ -1189,22 +1189,22 @@ class GlpiDatabaseinstances(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_databaseinstances'
+        managed = True
+        db_table = 'databaseinstances'
 
 
-class GlpiDatabaseinstancetypes(models.Model):
+class Databaseinstancetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_databaseinstancetypes'
+        managed = True
+        db_table = 'databaseinstancetypes'
 
 
-class GlpiDatabases(models.Model):
+class Databases(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255)
@@ -1220,11 +1220,11 @@ class GlpiDatabases(models.Model):
     date_lastbackup = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_databases'
+        managed = True
+        db_table = 'databases'
 
 
-class GlpiDatacenters(models.Model):
+class Datacenters(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -1235,11 +1235,11 @@ class GlpiDatacenters(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_datacenters'
+        managed = True
+        db_table = 'datacenters'
 
 
-class GlpiDcrooms(models.Model):
+class Dcrooms(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -1253,11 +1253,11 @@ class GlpiDcrooms(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_dcrooms'
+        managed = True
+        db_table = 'dcrooms'
 
 
-class GlpiDevicebatteries(models.Model):
+class Devicebatteries(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     manufacturers_id = models.PositiveIntegerField()
@@ -1271,42 +1271,42 @@ class GlpiDevicebatteries(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicebatteries'
+        managed = True
+        db_table = 'devicebatteries'
 
 
-class GlpiDevicebatterymodels(models.Model):
+class Devicebatterymodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicebatterymodels'
+        managed = True
+        db_table = 'devicebatterymodels'
 
 
-class GlpiDevicebatterytypes(models.Model):
+class Devicebatterytypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicebatterytypes'
+        managed = True
+        db_table = 'devicebatterytypes'
 
 
-class GlpiDevicecameramodels(models.Model):
+class Devicecameramodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicecameramodels'
+        managed = True
+        db_table = 'devicecameramodels'
 
 
-class GlpiDevicecameras(models.Model):
+class Devicecameras(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     flashunit = models.IntegerField()
     lensfacing = models.CharField(max_length=255, blank=True, null=True)
@@ -1323,21 +1323,21 @@ class GlpiDevicecameras(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicecameras'
+        managed = True
+        db_table = 'devicecameras'
 
 
-class GlpiDevicecasemodels(models.Model):
+class Devicecasemodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicecasemodels'
+        managed = True
+        db_table = 'devicecasemodels'
 
 
-class GlpiDevicecases(models.Model):
+class Devicecases(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     devicecasetypes_id = models.PositiveIntegerField()
     comment = models.TextField(blank=True, null=True)
@@ -1349,32 +1349,32 @@ class GlpiDevicecases(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicecases'
+        managed = True
+        db_table = 'devicecases'
 
 
-class GlpiDevicecasetypes(models.Model):
+class Devicecasetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicecasetypes'
+        managed = True
+        db_table = 'devicecasetypes'
 
 
-class GlpiDevicecontrolmodels(models.Model):
+class Devicecontrolmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicecontrolmodels'
+        managed = True
+        db_table = 'devicecontrolmodels'
 
 
-class GlpiDevicecontrols(models.Model):
+class Devicecontrols(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     is_raid = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
@@ -1387,21 +1387,21 @@ class GlpiDevicecontrols(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicecontrols'
+        managed = True
+        db_table = 'devicecontrols'
 
 
-class GlpiDevicedrivemodels(models.Model):
+class Devicedrivemodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicedrivemodels'
+        managed = True
+        db_table = 'devicedrivemodels'
 
 
-class GlpiDevicedrives(models.Model):
+class Devicedrives(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     is_writer = models.IntegerField()
     speed = models.CharField(max_length=255, blank=True, null=True)
@@ -1415,21 +1415,21 @@ class GlpiDevicedrives(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicedrives'
+        managed = True
+        db_table = 'devicedrives'
 
 
-class GlpiDevicefirmwaremodels(models.Model):
+class Devicefirmwaremodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicefirmwaremodels'
+        managed = True
+        db_table = 'devicefirmwaremodels'
 
 
-class GlpiDevicefirmwares(models.Model):
+class Devicefirmwares(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     manufacturers_id = models.PositiveIntegerField()
@@ -1443,32 +1443,32 @@ class GlpiDevicefirmwares(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicefirmwares'
+        managed = True
+        db_table = 'devicefirmwares'
 
 
-class GlpiDevicefirmwaretypes(models.Model):
+class Devicefirmwaretypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicefirmwaretypes'
+        managed = True
+        db_table = 'devicefirmwaretypes'
 
 
-class GlpiDevicegenericmodels(models.Model):
+class Devicegenericmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicegenericmodels'
+        managed = True
+        db_table = 'devicegenericmodels'
 
 
-class GlpiDevicegenerics(models.Model):
+class Devicegenerics(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     devicegenerictypes_id = models.PositiveIntegerField()
     comment = models.TextField(blank=True, null=True)
@@ -1482,30 +1482,30 @@ class GlpiDevicegenerics(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicegenerics'
+        managed = True
+        db_table = 'devicegenerics'
 
 
-class GlpiDevicegenerictypes(models.Model):
+class Devicegenerictypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicegenerictypes'
+        managed = True
+        db_table = 'devicegenerictypes'
 
 
-class GlpiDevicegraphiccardmodels(models.Model):
+class Devicegraphiccardmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicegraphiccardmodels'
+        managed = True
+        db_table = 'devicegraphiccardmodels'
 
 
-class GlpiDevicegraphiccards(models.Model):
+class Devicegraphiccards(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     interfacetypes_id = models.PositiveIntegerField()
     comment = models.TextField(blank=True, null=True)
@@ -1519,21 +1519,21 @@ class GlpiDevicegraphiccards(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicegraphiccards'
+        managed = True
+        db_table = 'devicegraphiccards'
 
 
-class GlpiDeviceharddrivemodels(models.Model):
+class Deviceharddrivemodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_deviceharddrivemodels'
+        managed = True
+        db_table = 'deviceharddrivemodels'
 
 
-class GlpiDeviceharddrives(models.Model):
+class Deviceharddrives(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     rpm = models.CharField(max_length=255, blank=True, null=True)
     interfacetypes_id = models.PositiveIntegerField()
@@ -1548,11 +1548,11 @@ class GlpiDeviceharddrives(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_deviceharddrives'
+        managed = True
+        db_table = 'deviceharddrives'
 
 
-class GlpiDevicememories(models.Model):
+class Devicememories(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     frequence = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -1566,42 +1566,42 @@ class GlpiDevicememories(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicememories'
+        managed = True
+        db_table = 'devicememories'
 
 
-class GlpiDevicememorymodels(models.Model):
+class Devicememorymodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicememorymodels'
+        managed = True
+        db_table = 'devicememorymodels'
 
 
-class GlpiDevicememorytypes(models.Model):
+class Devicememorytypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicememorytypes'
+        managed = True
+        db_table = 'devicememorytypes'
 
 
-class GlpiDevicemotherboardmodels(models.Model):
+class Devicemotherboardmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicemotherboardmodels'
+        managed = True
+        db_table = 'devicemotherboardmodels'
 
 
-class GlpiDevicemotherboards(models.Model):
+class Devicemotherboards(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     chipset = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -1613,21 +1613,21 @@ class GlpiDevicemotherboards(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicemotherboards'
+        managed = True
+        db_table = 'devicemotherboards'
 
 
-class GlpiDevicenetworkcardmodels(models.Model):
+class Devicenetworkcardmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicenetworkcardmodels'
+        managed = True
+        db_table = 'devicenetworkcardmodels'
 
 
-class GlpiDevicenetworkcards(models.Model):
+class Devicenetworkcards(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     bandwidth = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -1640,21 +1640,21 @@ class GlpiDevicenetworkcards(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicenetworkcards'
+        managed = True
+        db_table = 'devicenetworkcards'
 
 
-class GlpiDevicepcimodels(models.Model):
+class Devicepcimodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicepcimodels'
+        managed = True
+        db_table = 'devicepcimodels'
 
 
-class GlpiDevicepcis(models.Model):
+class Devicepcis(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     manufacturers_id = models.PositiveIntegerField()
@@ -1666,11 +1666,11 @@ class GlpiDevicepcis(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicepcis'
+        managed = True
+        db_table = 'devicepcis'
 
 
-class GlpiDevicepowersupplies(models.Model):
+class Devicepowersupplies(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     power = models.CharField(max_length=255, blank=True, null=True)
     is_atx = models.IntegerField()
@@ -1683,31 +1683,31 @@ class GlpiDevicepowersupplies(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicepowersupplies'
+        managed = True
+        db_table = 'devicepowersupplies'
 
 
-class GlpiDevicepowersupplymodels(models.Model):
+class Devicepowersupplymodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicepowersupplymodels'
+        managed = True
+        db_table = 'devicepowersupplymodels'
 
 
-class GlpiDeviceprocessormodels(models.Model):
+class Deviceprocessormodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_deviceprocessormodels'
+        managed = True
+        db_table = 'deviceprocessormodels'
 
 
-class GlpiDeviceprocessors(models.Model):
+class Deviceprocessors(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     frequence = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
@@ -1722,21 +1722,21 @@ class GlpiDeviceprocessors(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_deviceprocessors'
+        managed = True
+        db_table = 'deviceprocessors'
 
 
-class GlpiDevicesensormodels(models.Model):
+class Devicesensormodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicesensormodels'
+        managed = True
+        db_table = 'devicesensormodels'
 
 
-class GlpiDevicesensors(models.Model):
+class Devicesensors(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     devicesensortypes_id = models.PositiveIntegerField()
     devicesensormodels_id = models.PositiveIntegerField()
@@ -1750,20 +1750,20 @@ class GlpiDevicesensors(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicesensors'
+        managed = True
+        db_table = 'devicesensors'
 
 
-class GlpiDevicesensortypes(models.Model):
+class Devicesensortypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicesensortypes'
+        managed = True
+        db_table = 'devicesensortypes'
 
 
-class GlpiDevicesimcards(models.Model):
+class Devicesimcards(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
@@ -1776,32 +1776,32 @@ class GlpiDevicesimcards(models.Model):
     allow_voip = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicesimcards'
+        managed = True
+        db_table = 'devicesimcards'
 
 
-class GlpiDevicesimcardtypes(models.Model):
+class Devicesimcardtypes(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicesimcardtypes'
+        managed = True
+        db_table = 'devicesimcardtypes'
 
 
-class GlpiDevicesoundcardmodels(models.Model):
+class Devicesoundcardmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicesoundcardmodels'
+        managed = True
+        db_table = 'devicesoundcardmodels'
 
 
-class GlpiDevicesoundcards(models.Model):
+class Devicesoundcards(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     type = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -1813,23 +1813,23 @@ class GlpiDevicesoundcards(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_devicesoundcards'
+        managed = True
+        db_table = 'devicesoundcards'
 
 
-class GlpiDisplaypreferences(models.Model):
+class Displaypreferences(models.Model):
     itemtype = models.CharField(max_length=100)
     num = models.IntegerField()
     rank = models.IntegerField()
     users_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_displaypreferences'
+        managed = True
+        db_table = 'displaypreferences'
         unique_together = (('users_id', 'itemtype', 'num'),)
 
 
-class GlpiDocumentcategories(models.Model):
+class Documentcategories(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     documentcategories_id = models.PositiveIntegerField()
@@ -1841,12 +1841,12 @@ class GlpiDocumentcategories(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_documentcategories'
+        managed = True
+        db_table = 'documentcategories'
         unique_together = (('documentcategories_id', 'name'),)
 
 
-class GlpiDocuments(models.Model):
+class Documents(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -1866,11 +1866,11 @@ class GlpiDocuments(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_documents'
+        managed = True
+        db_table = 'documents'
 
 
-class GlpiDocumentsItems(models.Model):
+class DocumentsItems(models.Model):
     documents_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
@@ -1883,12 +1883,12 @@ class GlpiDocumentsItems(models.Model):
     date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_documents_items'
+        managed = True
+        db_table = 'documents_items'
         unique_together = (('documents_id', 'itemtype', 'items_id', 'timeline_position'),)
 
 
-class GlpiDocumenttypes(models.Model):
+class Documenttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     ext = models.CharField(unique=True, max_length=255, blank=True, null=True)
     icon = models.CharField(max_length=255, blank=True, null=True)
@@ -1899,11 +1899,11 @@ class GlpiDocumenttypes(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_documenttypes'
+        managed = True
+        db_table = 'documenttypes'
 
 
-class GlpiDomainrecords(models.Model):
+class Domainrecords(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     data = models.TextField(blank=True, null=True)
     data_obj = models.TextField(blank=True, null=True)
@@ -1920,11 +1920,11 @@ class GlpiDomainrecords(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_domainrecords'
+        managed = True
+        db_table = 'domainrecords'
 
 
-class GlpiDomainrecordtypes(models.Model):
+class Domainrecordtypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     fields = models.TextField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
@@ -1932,22 +1932,22 @@ class GlpiDomainrecordtypes(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_domainrecordtypes'
+        managed = True
+        db_table = 'domainrecordtypes'
 
 
-class GlpiDomainrelations(models.Model):
+class Domainrelations(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_domainrelations'
+        managed = True
+        db_table = 'domainrelations'
 
 
-class GlpiDomains(models.Model):
+class Domains(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -1965,34 +1965,34 @@ class GlpiDomains(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_domains'
+        managed = True
+        db_table = 'domains'
 
 
-class GlpiDomainsItems(models.Model):
+class DomainsItems(models.Model):
     domains_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     domainrelations_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_domains_items'
+        managed = True
+        db_table = 'domains_items'
         unique_together = (('domains_id', 'itemtype', 'items_id'),)
 
 
-class GlpiDomaintypes(models.Model):
+class Domaintypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_domaintypes'
+        managed = True
+        db_table = 'domaintypes'
 
 
-class GlpiDropdowntranslations(models.Model):
+class Dropdowntranslations(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     language = models.CharField(max_length=10, blank=True, null=True)
@@ -2000,12 +2000,12 @@ class GlpiDropdowntranslations(models.Model):
     value = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_dropdowntranslations'
+        managed = True
+        db_table = 'dropdowntranslations'
         unique_together = (('itemtype', 'items_id', 'language', 'field'),)
 
 
-class GlpiEnclosuremodels(models.Model):
+class Enclosuremodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -2022,11 +2022,11 @@ class GlpiEnclosuremodels(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_enclosuremodels'
+        managed = True
+        db_table = 'enclosuremodels'
 
 
-class GlpiEnclosures(models.Model):
+class Enclosures(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -2048,11 +2048,11 @@ class GlpiEnclosures(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_enclosures'
+        managed = True
+        db_table = 'enclosures'
 
 
-class GlpiEntities(models.Model):
+class Entities(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField(blank=True, null=True)
@@ -2151,42 +2151,42 @@ class GlpiEntities(models.Model):
     agent_base_url = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_entities'
+        managed = True
+        db_table = 'entities'
         unique_together = (('entities_id', 'name'),)
 
 
-class GlpiEntitiesKnowbaseitems(models.Model):
+class EntitiesKnowbaseitems(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_entities_knowbaseitems'
+        managed = True
+        db_table = 'entities_knowbaseitems'
 
 
-class GlpiEntitiesReminders(models.Model):
+class EntitiesReminders(models.Model):
     reminders_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_entities_reminders'
+        managed = True
+        db_table = 'entities_reminders'
 
 
-class GlpiEntitiesRssfeeds(models.Model):
+class EntitiesRssfeeds(models.Model):
     rssfeeds_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_entities_rssfeeds'
+        managed = True
+        db_table = 'entities_rssfeeds'
 
 
-class GlpiEvents(models.Model):
+class Events(models.Model):
     items_id = models.PositiveIntegerField()
     type = models.CharField(max_length=255, blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
@@ -2195,11 +2195,11 @@ class GlpiEvents(models.Model):
     message = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_events'
+        managed = True
+        db_table = 'events'
 
 
-class GlpiFieldblacklists(models.Model):
+class Fieldblacklists(models.Model):
     name = models.CharField(max_length=255)
     field = models.CharField(max_length=255)
     value = models.CharField(max_length=255)
@@ -2211,11 +2211,11 @@ class GlpiFieldblacklists(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_fieldblacklists'
+        managed = True
+        db_table = 'fieldblacklists'
 
 
-class GlpiFieldunicities(models.Model):
+class Fieldunicities(models.Model):
     name = models.CharField(max_length=255)
     is_recursive = models.IntegerField()
     itemtype = models.CharField(max_length=255)
@@ -2229,22 +2229,22 @@ class GlpiFieldunicities(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_fieldunicities'
+        managed = True
+        db_table = 'fieldunicities'
 
 
-class GlpiFilesystems(models.Model):
+class Filesystems(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_filesystems'
+        managed = True
+        db_table = 'filesystems'
 
 
-class GlpiFqdns(models.Model):
+class Fqdns(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -2254,11 +2254,11 @@ class GlpiFqdns(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_fqdns'
+        managed = True
+        db_table = 'fqdns'
 
 
-class GlpiGroups(models.Model):
+class Groups(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -2283,11 +2283,11 @@ class GlpiGroups(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_groups'
+        managed = True
+        db_table = 'groups'
 
 
-class GlpiGroupsKnowbaseitems(models.Model):
+class GroupsKnowbaseitems(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField(blank=True, null=True)
@@ -2295,22 +2295,22 @@ class GlpiGroupsKnowbaseitems(models.Model):
     no_entity_restriction = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_groups_knowbaseitems'
+        managed = True
+        db_table = 'groups_knowbaseitems'
 
 
-class GlpiGroupsProblems(models.Model):
+class GroupsProblems(models.Model):
     problems_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     type = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_groups_problems'
+        managed = True
+        db_table = 'groups_problems'
         unique_together = (('problems_id', 'type', 'groups_id'),)
 
 
-class GlpiGroupsReminders(models.Model):
+class GroupsReminders(models.Model):
     reminders_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField(blank=True, null=True)
@@ -2318,11 +2318,11 @@ class GlpiGroupsReminders(models.Model):
     no_entity_restriction = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_groups_reminders'
+        managed = True
+        db_table = 'groups_reminders'
 
 
-class GlpiGroupsRssfeeds(models.Model):
+class GroupsRssfeeds(models.Model):
     rssfeeds_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField(blank=True, null=True)
@@ -2330,22 +2330,22 @@ class GlpiGroupsRssfeeds(models.Model):
     no_entity_restriction = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_groups_rssfeeds'
+        managed = True
+        db_table = 'groups_rssfeeds'
 
 
-class GlpiGroupsTickets(models.Model):
+class GroupsTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     type = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_groups_tickets'
+        managed = True
+        db_table = 'groups_tickets'
         unique_together = (('tickets_id', 'type', 'groups_id'),)
 
 
-class GlpiGroupsUsers(models.Model):
+class GroupsUsers(models.Model):
     users_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     is_dynamic = models.IntegerField()
@@ -2353,12 +2353,12 @@ class GlpiGroupsUsers(models.Model):
     is_userdelegate = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_groups_users'
+        managed = True
+        db_table = 'groups_users'
         unique_together = (('users_id', 'groups_id'),)
 
 
-class GlpiHolidays(models.Model):
+class Holidays(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -2370,11 +2370,11 @@ class GlpiHolidays(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_holidays'
+        managed = True
+        db_table = 'holidays'
 
 
-class GlpiImageformats(models.Model):
+class Imageformats(models.Model):
     name = models.CharField(unique=True, max_length=255, blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -2383,11 +2383,11 @@ class GlpiImageformats(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_imageformats'
+        managed = True
+        db_table = 'imageformats'
 
 
-class GlpiImageresolutions(models.Model):
+class Imageresolutions(models.Model):
     name = models.CharField(unique=True, max_length=255, blank=True, null=True)
     is_video = models.IntegerField()
     date_mod = models.DateTimeField(blank=True, null=True)
@@ -2397,20 +2397,20 @@ class GlpiImageresolutions(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_imageresolutions'
+        managed = True
+        db_table = 'imageresolutions'
 
 
-class GlpiImpactcompounds(models.Model):
+class Impactcompounds(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     color = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_impactcompounds'
+        managed = True
+        db_table = 'impactcompounds'
 
 
-class GlpiImpactcontexts(models.Model):
+class Impactcontexts(models.Model):
     positions = models.TextField()
     zoom = models.FloatField()
     pan_x = models.FloatField()
@@ -2423,11 +2423,11 @@ class GlpiImpactcontexts(models.Model):
     max_depth = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_impactcontexts'
+        managed = True
+        db_table = 'impactcontexts'
 
 
-class GlpiImpactitems(models.Model):
+class Impactitems(models.Model):
     itemtype = models.CharField(max_length=255)
     items_id = models.PositiveIntegerField()
     parent_id = models.PositiveIntegerField()
@@ -2435,24 +2435,24 @@ class GlpiImpactitems(models.Model):
     is_slave = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_impactitems'
+        managed = True
+        db_table = 'impactitems'
         unique_together = (('itemtype', 'items_id'),)
 
 
-class GlpiImpactrelations(models.Model):
+class Impactrelations(models.Model):
     itemtype_source = models.CharField(max_length=255)
     items_id_source = models.PositiveIntegerField()
     itemtype_impacted = models.CharField(max_length=255)
     items_id_impacted = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_impactrelations'
+        managed = True
+        db_table = 'impactrelations'
         unique_together = (('itemtype_source', 'items_id_source', 'itemtype_impacted', 'items_id_impacted'),)
 
 
-class GlpiInfocoms(models.Model):
+class Infocoms(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     entities_id = models.PositiveIntegerField()
@@ -2484,23 +2484,23 @@ class GlpiInfocoms(models.Model):
     businesscriticities_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_infocoms'
+        managed = True
+        db_table = 'infocoms'
         unique_together = (('itemtype', 'items_id'),)
 
 
-class GlpiInterfacetypes(models.Model):
+class Interfacetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_interfacetypes'
+        managed = True
+        db_table = 'interfacetypes'
 
 
-class GlpiIpaddresses(models.Model):
+class Ipaddresses(models.Model):
     entities_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
@@ -2516,21 +2516,21 @@ class GlpiIpaddresses(models.Model):
     mainitemtype = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ipaddresses'
+        managed = True
+        db_table = 'ipaddresses'
 
 
-class GlpiIpaddressesIpnetworks(models.Model):
+class IpaddressesIpnetworks(models.Model):
     ipaddresses_id = models.PositiveIntegerField()
     ipnetworks_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ipaddresses_ipnetworks'
+        managed = True
+        db_table = 'ipaddresses_ipnetworks'
         unique_together = (('ipaddresses_id', 'ipnetworks_id'),)
 
 
-class GlpiIpnetworks(models.Model):
+class Ipnetworks(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     ipnetworks_id = models.PositiveIntegerField()
@@ -2561,32 +2561,32 @@ class GlpiIpnetworks(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ipnetworks'
+        managed = True
+        db_table = 'ipnetworks'
 
 
-class GlpiIpnetworksVlans(models.Model):
+class IpnetworksVlans(models.Model):
     ipnetworks_id = models.PositiveIntegerField()
     vlans_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ipnetworks_vlans'
+        managed = True
+        db_table = 'ipnetworks_vlans'
         unique_together = (('ipnetworks_id', 'vlans_id'),)
 
 
-class GlpiItemsClusters(models.Model):
+class ItemsClusters(models.Model):
     clusters_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_clusters'
+        managed = True
+        db_table = 'items_clusters'
         unique_together = (('clusters_id', 'itemtype', 'items_id'),)
 
 
-class GlpiItemsDevicebatteries(models.Model):
+class ItemsDevicebatteries(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicebatteries_id = models.PositiveIntegerField()
@@ -2602,11 +2602,11 @@ class GlpiItemsDevicebatteries(models.Model):
     real_capacity = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicebatteries'
+        managed = True
+        db_table = 'items_devicebatteries'
 
 
-class GlpiItemsDevicecameras(models.Model):
+class ItemsDevicecameras(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicecameras_id = models.PositiveIntegerField()
@@ -2616,31 +2616,31 @@ class GlpiItemsDevicecameras(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicecameras'
+        managed = True
+        db_table = 'items_devicecameras'
 
 
-class GlpiItemsDevicecamerasImageformats(models.Model):
+class ItemsDevicecamerasImageformats(models.Model):
     item_devicecameras_id = models.PositiveIntegerField()
     imageformats_id = models.PositiveIntegerField()
     is_dynamic = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicecameras_imageformats'
+        managed = True
+        db_table = 'items_devicecameras_imageformats'
 
 
-class GlpiItemsDevicecamerasImageresolutions(models.Model):
+class ItemsDevicecamerasImageresolutions(models.Model):
     item_devicecameras_id = models.PositiveIntegerField()
     imageresolutions_id = models.PositiveIntegerField()
     is_dynamic = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicecameras_imageresolutions'
+        managed = True
+        db_table = 'items_devicecameras_imageresolutions'
 
 
-class GlpiItemsDevicecases(models.Model):
+class ItemsDevicecases(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicecases_id = models.PositiveIntegerField()
@@ -2654,11 +2654,11 @@ class GlpiItemsDevicecases(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicecases'
+        managed = True
+        db_table = 'items_devicecases'
 
 
-class GlpiItemsDevicecontrols(models.Model):
+class ItemsDevicecontrols(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicecontrols_id = models.PositiveIntegerField()
@@ -2673,11 +2673,11 @@ class GlpiItemsDevicecontrols(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicecontrols'
+        managed = True
+        db_table = 'items_devicecontrols'
 
 
-class GlpiItemsDevicedrives(models.Model):
+class ItemsDevicedrives(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicedrives_id = models.PositiveIntegerField()
@@ -2692,11 +2692,11 @@ class GlpiItemsDevicedrives(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicedrives'
+        managed = True
+        db_table = 'items_devicedrives'
 
 
-class GlpiItemsDevicefirmwares(models.Model):
+class ItemsDevicefirmwares(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicefirmwares_id = models.PositiveIntegerField()
@@ -2710,11 +2710,11 @@ class GlpiItemsDevicefirmwares(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicefirmwares'
+        managed = True
+        db_table = 'items_devicefirmwares'
 
 
-class GlpiItemsDevicegenerics(models.Model):
+class ItemsDevicegenerics(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicegenerics_id = models.PositiveIntegerField()
@@ -2728,11 +2728,11 @@ class GlpiItemsDevicegenerics(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicegenerics'
+        managed = True
+        db_table = 'items_devicegenerics'
 
 
-class GlpiItemsDevicegraphiccards(models.Model):
+class ItemsDevicegraphiccards(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicegraphiccards_id = models.PositiveIntegerField()
@@ -2748,11 +2748,11 @@ class GlpiItemsDevicegraphiccards(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicegraphiccards'
+        managed = True
+        db_table = 'items_devicegraphiccards'
 
 
-class GlpiItemsDeviceharddrives(models.Model):
+class ItemsDeviceharddrives(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     deviceharddrives_id = models.PositiveIntegerField()
@@ -2768,11 +2768,11 @@ class GlpiItemsDeviceharddrives(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_deviceharddrives'
+        managed = True
+        db_table = 'items_deviceharddrives'
 
 
-class GlpiItemsDevicememories(models.Model):
+class ItemsDevicememories(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicememories_id = models.PositiveIntegerField()
@@ -2788,11 +2788,11 @@ class GlpiItemsDevicememories(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicememories'
+        managed = True
+        db_table = 'items_devicememories'
 
 
-class GlpiItemsDevicemotherboards(models.Model):
+class ItemsDevicemotherboards(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicemotherboards_id = models.PositiveIntegerField()
@@ -2806,11 +2806,11 @@ class GlpiItemsDevicemotherboards(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicemotherboards'
+        managed = True
+        db_table = 'items_devicemotherboards'
 
 
-class GlpiItemsDevicenetworkcards(models.Model):
+class ItemsDevicenetworkcards(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicenetworkcards_id = models.PositiveIntegerField()
@@ -2826,11 +2826,11 @@ class GlpiItemsDevicenetworkcards(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicenetworkcards'
+        managed = True
+        db_table = 'items_devicenetworkcards'
 
 
-class GlpiItemsDevicepcis(models.Model):
+class ItemsDevicepcis(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicepcis_id = models.PositiveIntegerField()
@@ -2845,11 +2845,11 @@ class GlpiItemsDevicepcis(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicepcis'
+        managed = True
+        db_table = 'items_devicepcis'
 
 
-class GlpiItemsDevicepowersupplies(models.Model):
+class ItemsDevicepowersupplies(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicepowersupplies_id = models.PositiveIntegerField()
@@ -2863,11 +2863,11 @@ class GlpiItemsDevicepowersupplies(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicepowersupplies'
+        managed = True
+        db_table = 'items_devicepowersupplies'
 
 
-class GlpiItemsDeviceprocessors(models.Model):
+class ItemsDeviceprocessors(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     deviceprocessors_id = models.PositiveIntegerField()
@@ -2885,11 +2885,11 @@ class GlpiItemsDeviceprocessors(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_deviceprocessors'
+        managed = True
+        db_table = 'items_deviceprocessors'
 
 
-class GlpiItemsDevicesensors(models.Model):
+class ItemsDevicesensors(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicesensors_id = models.PositiveIntegerField()
@@ -2903,11 +2903,11 @@ class GlpiItemsDevicesensors(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicesensors'
+        managed = True
+        db_table = 'items_devicesensors'
 
 
-class GlpiItemsDevicesimcards(models.Model):
+class ItemsDevicesimcards(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     devicesimcards_id = models.PositiveIntegerField()
@@ -2929,11 +2929,11 @@ class GlpiItemsDevicesimcards(models.Model):
     msin = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicesimcards'
+        managed = True
+        db_table = 'items_devicesimcards'
 
 
-class GlpiItemsDevicesoundcards(models.Model):
+class ItemsDevicesoundcards(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     devicesoundcards_id = models.PositiveIntegerField()
@@ -2948,11 +2948,11 @@ class GlpiItemsDevicesoundcards(models.Model):
     states_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_devicesoundcards'
+        managed = True
+        db_table = 'items_devicesoundcards'
 
 
-class GlpiItemsDisks(models.Model):
+class ItemsDisks(models.Model):
     entities_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     items_id = models.PositiveIntegerField()
@@ -2972,23 +2972,23 @@ class GlpiItemsDisks(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_disks'
+        managed = True
+        db_table = 'items_disks'
 
 
-class GlpiItemsEnclosures(models.Model):
+class ItemsEnclosures(models.Model):
     enclosures_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255)
     items_id = models.PositiveIntegerField()
     position = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_enclosures'
+        managed = True
+        db_table = 'items_enclosures'
         unique_together = (('itemtype', 'items_id'),)
 
 
-class GlpiItemsKanbans(models.Model):
+class ItemsKanbans(models.Model):
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField(blank=True, null=True)
     users_id = models.PositiveIntegerField()
@@ -2997,12 +2997,12 @@ class GlpiItemsKanbans(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_kanbans'
+        managed = True
+        db_table = 'items_kanbans'
         unique_together = (('itemtype', 'items_id', 'users_id'),)
 
 
-class GlpiItemsOperatingsystems(models.Model):
+class ItemsOperatingsystems(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     operatingsystems_id = models.PositiveIntegerField()
@@ -3021,34 +3021,34 @@ class GlpiItemsOperatingsystems(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_operatingsystems'
+        managed = True
+        db_table = 'items_operatingsystems'
         unique_together = (('items_id', 'itemtype', 'operatingsystems_id', 'operatingsystemarchitectures_id'),)
 
 
-class GlpiItemsProblems(models.Model):
+class ItemsProblems(models.Model):
     problems_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_problems'
+        managed = True
+        db_table = 'items_problems'
         unique_together = (('problems_id', 'itemtype', 'items_id'),)
 
 
-class GlpiItemsProjects(models.Model):
+class ItemsProjects(models.Model):
     projects_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_projects'
+        managed = True
+        db_table = 'items_projects'
         unique_together = (('projects_id', 'itemtype', 'items_id'),)
 
 
-class GlpiItemsRacks(models.Model):
+class ItemsRacks(models.Model):
     racks_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255)
     items_id = models.PositiveIntegerField()
@@ -3059,12 +3059,12 @@ class GlpiItemsRacks(models.Model):
     is_reserved = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_racks'
+        managed = True
+        db_table = 'items_racks'
         unique_together = (('itemtype', 'items_id', 'is_reserved'),)
 
 
-class GlpiItemsRemotemanagements(models.Model):
+class ItemsRemotemanagements(models.Model):
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
     remoteid = models.CharField(max_length=255, blank=True, null=True)
@@ -3072,11 +3072,11 @@ class GlpiItemsRemotemanagements(models.Model):
     is_dynamic = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_remotemanagements'
+        managed = True
+        db_table = 'items_remotemanagements'
 
 
-class GlpiItemsSoftwarelicenses(models.Model):
+class ItemsSoftwarelicenses(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     softwarelicenses_id = models.PositiveIntegerField()
@@ -3084,11 +3084,11 @@ class GlpiItemsSoftwarelicenses(models.Model):
     is_dynamic = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_softwarelicenses'
+        managed = True
+        db_table = 'items_softwarelicenses'
 
 
-class GlpiItemsSoftwareversions(models.Model):
+class ItemsSoftwareversions(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     softwareversions_id = models.PositiveIntegerField()
@@ -3100,23 +3100,23 @@ class GlpiItemsSoftwareversions(models.Model):
     date_install = models.DateField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_softwareversions'
+        managed = True
+        db_table = 'items_softwareversions'
         unique_together = (('itemtype', 'items_id', 'softwareversions_id'),)
 
 
-class GlpiItemsTickets(models.Model):
+class ItemsTickets(models.Model):
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     items_id = models.PositiveIntegerField()
     tickets_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_items_tickets'
+        managed = True
+        db_table = 'items_tickets'
         unique_together = (('itemtype', 'items_id', 'tickets_id'),)
 
 
-class GlpiItilcategories(models.Model):
+class Itilcategories(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     itilcategories_id = models.PositiveIntegerField()
@@ -3143,11 +3143,11 @@ class GlpiItilcategories(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_itilcategories'
+        managed = True
+        db_table = 'itilcategories'
 
 
-class GlpiItilfollowups(models.Model):
+class Itilfollowups(models.Model):
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
     date = models.DateTimeField(blank=True, null=True)
@@ -3163,11 +3163,11 @@ class GlpiItilfollowups(models.Model):
     sourceof_items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_itilfollowups'
+        managed = True
+        db_table = 'itilfollowups'
 
 
-class GlpiItilfollowuptemplates(models.Model):
+class Itilfollowuptemplates(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
@@ -3179,22 +3179,22 @@ class GlpiItilfollowuptemplates(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_itilfollowuptemplates'
+        managed = True
+        db_table = 'itilfollowuptemplates'
 
 
-class GlpiItilsProjects(models.Model):
+class ItilsProjects(models.Model):
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
     projects_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_itils_projects'
+        managed = True
+        db_table = 'itils_projects'
         unique_together = (('itemtype', 'items_id', 'projects_id'),)
 
 
-class GlpiItilsolutions(models.Model):
+class Itilsolutions(models.Model):
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
     solutiontypes_id = models.PositiveIntegerField()
@@ -3212,11 +3212,11 @@ class GlpiItilsolutions(models.Model):
     itilfollowups_id = models.PositiveIntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_itilsolutions'
+        managed = True
+        db_table = 'itilsolutions'
 
 
-class GlpiKnowbaseitemcategories(models.Model):
+class Knowbaseitemcategories(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     knowbaseitemcategories_id = models.PositiveIntegerField()
@@ -3230,12 +3230,12 @@ class GlpiKnowbaseitemcategories(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_knowbaseitemcategories'
+        managed = True
+        db_table = 'knowbaseitemcategories'
         unique_together = (('entities_id', 'knowbaseitemcategories_id', 'name'),)
 
 
-class GlpiKnowbaseitems(models.Model):
+class Knowbaseitems(models.Model):
     name = models.TextField(blank=True, null=True)
     answer = models.TextField(blank=True, null=True)
     is_faq = models.IntegerField()
@@ -3247,11 +3247,11 @@ class GlpiKnowbaseitems(models.Model):
     end_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_knowbaseitems'
+        managed = True
+        db_table = 'knowbaseitems'
 
 
-class GlpiKnowbaseitemsComments(models.Model):
+class KnowbaseitemsComments(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
     language = models.CharField(max_length=10, blank=True, null=True)
@@ -3261,11 +3261,11 @@ class GlpiKnowbaseitemsComments(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_knowbaseitems_comments'
+        managed = True
+        db_table = 'knowbaseitems_comments'
 
 
-class GlpiKnowbaseitemsItems(models.Model):
+class KnowbaseitemsItems(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
@@ -3273,21 +3273,21 @@ class GlpiKnowbaseitemsItems(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_knowbaseitems_items'
+        managed = True
+        db_table = 'knowbaseitems_items'
         unique_together = (('itemtype', 'items_id', 'knowbaseitems_id'),)
 
 
-class GlpiKnowbaseitemsKnowbaseitemcategories(models.Model):
+class KnowbaseitemsKnowbaseitemcategories(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     knowbaseitemcategories_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_knowbaseitems_knowbaseitemcategories'
+        managed = True
+        db_table = 'knowbaseitems_knowbaseitemcategories'
 
 
-class GlpiKnowbaseitemsProfiles(models.Model):
+class KnowbaseitemsProfiles(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     profiles_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField(blank=True, null=True)
@@ -3295,11 +3295,11 @@ class GlpiKnowbaseitemsProfiles(models.Model):
     no_entity_restriction = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_knowbaseitems_profiles'
+        managed = True
+        db_table = 'knowbaseitems_profiles'
 
 
-class GlpiKnowbaseitemsRevisions(models.Model):
+class KnowbaseitemsRevisions(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     revision = models.IntegerField()
     name = models.TextField(blank=True, null=True)
@@ -3309,21 +3309,21 @@ class GlpiKnowbaseitemsRevisions(models.Model):
     date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_knowbaseitems_revisions'
+        managed = True
+        db_table = 'knowbaseitems_revisions'
         unique_together = (('knowbaseitems_id', 'revision', 'language'),)
 
 
-class GlpiKnowbaseitemsUsers(models.Model):
+class KnowbaseitemsUsers(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_knowbaseitems_users'
+        managed = True
+        db_table = 'knowbaseitems_users'
 
 
-class GlpiKnowbaseitemtranslations(models.Model):
+class Knowbaseitemtranslations(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     language = models.CharField(max_length=10, blank=True, null=True)
     name = models.TextField(blank=True, null=True)
@@ -3333,11 +3333,11 @@ class GlpiKnowbaseitemtranslations(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_knowbaseitemtranslations'
+        managed = True
+        db_table = 'knowbaseitemtranslations'
 
 
-class GlpiLineoperators(models.Model):
+class Lineoperators(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True, null=True)
     mcc = models.IntegerField(blank=True, null=True)
@@ -3348,12 +3348,12 @@ class GlpiLineoperators(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_lineoperators'
+        managed = True
+        db_table = 'lineoperators'
         unique_together = (('mcc', 'mnc'),)
 
 
-class GlpiLines(models.Model):
+class Lines(models.Model):
     name = models.CharField(max_length=255)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -3371,22 +3371,22 @@ class GlpiLines(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_lines'
+        managed = True
+        db_table = 'lines'
 
 
-class GlpiLinetypes(models.Model):
+class Linetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_linetypes'
+        managed = True
+        db_table = 'linetypes'
 
 
-class GlpiLinks(models.Model):
+class Links(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -3397,21 +3397,21 @@ class GlpiLinks(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_links'
+        managed = True
+        db_table = 'links'
 
 
-class GlpiLinksItemtypes(models.Model):
+class LinksItemtypes(models.Model):
     links_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_links_itemtypes'
+        managed = True
+        db_table = 'links_itemtypes'
         unique_together = (('itemtype', 'links_id'),)
 
 
-class GlpiLocations(models.Model):
+class Locations(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -3435,12 +3435,12 @@ class GlpiLocations(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_locations'
+        managed = True
+        db_table = 'locations'
         unique_together = (('entities_id', 'locations_id', 'name'),)
 
 
-class GlpiLockedfields(models.Model):
+class Lockedfields(models.Model):
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
     field = models.CharField(max_length=50)
@@ -3450,12 +3450,12 @@ class GlpiLockedfields(models.Model):
     is_global = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_lockedfields'
+        managed = True
+        db_table = 'lockedfields'
         unique_together = (('itemtype', 'items_id', 'field'),)
 
 
-class GlpiLogs(models.Model):
+class Logs(models.Model):
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
     itemtype_link = models.CharField(max_length=100)
@@ -3467,11 +3467,11 @@ class GlpiLogs(models.Model):
     new_value = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_logs'
+        managed = True
+        db_table = 'logs'
 
 
-class GlpiMailcollectors(models.Model):
+class Mailcollectors(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     host = models.CharField(max_length=255, blank=True, null=True)
     login = models.CharField(max_length=255, blank=True, null=True)
@@ -3490,11 +3490,11 @@ class GlpiMailcollectors(models.Model):
     collect_only_unread = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_mailcollectors'
+        managed = True
+        db_table = 'mailcollectors'
 
 
-class GlpiManuallinks(models.Model):
+class Manuallinks(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     url = models.CharField(max_length=8096)
     open_window = models.IntegerField()
@@ -3506,22 +3506,22 @@ class GlpiManuallinks(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_manuallinks'
+        managed = True
+        db_table = 'manuallinks'
 
 
-class GlpiManufacturers(models.Model):
+class Manufacturers(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_manufacturers'
+        managed = True
+        db_table = 'manufacturers'
 
 
-class GlpiMonitormodels(models.Model):
+class Monitormodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -3538,11 +3538,11 @@ class GlpiMonitormodels(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_monitormodels'
+        managed = True
+        db_table = 'monitormodels'
 
 
-class GlpiMonitors(models.Model):
+class Monitors(models.Model):
     entities_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
@@ -3581,22 +3581,22 @@ class GlpiMonitors(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_monitors'
+        managed = True
+        db_table = 'monitors'
 
 
-class GlpiMonitortypes(models.Model):
+class Monitortypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_monitortypes'
+        managed = True
+        db_table = 'monitortypes'
 
 
-class GlpiNetworkaliases(models.Model):
+class Networkaliases(models.Model):
     entities_id = models.PositiveIntegerField()
     networknames_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -3604,11 +3604,11 @@ class GlpiNetworkaliases(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkaliases'
+        managed = True
+        db_table = 'networkaliases'
 
 
-class GlpiNetworkequipmentmodels(models.Model):
+class Networkequipmentmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -3625,11 +3625,11 @@ class GlpiNetworkequipmentmodels(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkequipmentmodels'
+        managed = True
+        db_table = 'networkequipmentmodels'
 
 
-class GlpiNetworkequipments(models.Model):
+class Networkequipments(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -3665,31 +3665,31 @@ class GlpiNetworkequipments(models.Model):
     snmpcredentials_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkequipments'
+        managed = True
+        db_table = 'networkequipments'
 
 
-class GlpiNetworkequipmenttypes(models.Model):
+class Networkequipmenttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkequipmenttypes'
+        managed = True
+        db_table = 'networkequipmenttypes'
 
 
-class GlpiNetworkinterfaces(models.Model):
+class Networkinterfaces(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkinterfaces'
+        managed = True
+        db_table = 'networkinterfaces'
 
 
-class GlpiNetworknames(models.Model):
+class Networknames(models.Model):
     entities_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
@@ -3703,54 +3703,54 @@ class GlpiNetworknames(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networknames'
+        managed = True
+        db_table = 'networknames'
 
 
-class GlpiNetworkportaggregates(models.Model):
+class Networkportaggregates(models.Model):
     networkports_id = models.PositiveIntegerField(unique=True)
     networkports_id_list = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportaggregates'
+        managed = True
+        db_table = 'networkportaggregates'
 
 
-class GlpiNetworkportaliases(models.Model):
+class Networkportaliases(models.Model):
     networkports_id = models.PositiveIntegerField(unique=True)
     networkports_id_alias = models.PositiveIntegerField()
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportaliases'
+        managed = True
+        db_table = 'networkportaliases'
 
 
-class GlpiNetworkportconnectionlogs(models.Model):
+class Networkportconnectionlogs(models.Model):
     date = models.DateTimeField(blank=True, null=True)
     connected = models.IntegerField()
     networkports_id_source = models.PositiveIntegerField()
     networkports_id_destination = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportconnectionlogs'
+        managed = True
+        db_table = 'networkportconnectionlogs'
 
 
-class GlpiNetworkportdialups(models.Model):
+class Networkportdialups(models.Model):
     networkports_id = models.PositiveIntegerField(unique=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportdialups'
+        managed = True
+        db_table = 'networkportdialups'
 
 
-class GlpiNetworkportethernets(models.Model):
+class Networkportethernets(models.Model):
     networkports_id = models.PositiveIntegerField(unique=True)
     items_devicenetworkcards_id = models.PositiveIntegerField()
     type = models.CharField(max_length=10, blank=True, null=True)
@@ -3759,11 +3759,11 @@ class GlpiNetworkportethernets(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportethernets'
+        managed = True
+        db_table = 'networkportethernets'
 
 
-class GlpiNetworkportfiberchannels(models.Model):
+class Networkportfiberchannels(models.Model):
     networkports_id = models.PositiveIntegerField(unique=True)
     items_devicenetworkcards_id = models.PositiveIntegerField()
     networkportfiberchanneltypes_id = models.PositiveIntegerField()
@@ -3773,32 +3773,32 @@ class GlpiNetworkportfiberchannels(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportfiberchannels'
+        managed = True
+        db_table = 'networkportfiberchannels'
 
 
-class GlpiNetworkportfiberchanneltypes(models.Model):
+class Networkportfiberchanneltypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportfiberchanneltypes'
+        managed = True
+        db_table = 'networkportfiberchanneltypes'
 
 
-class GlpiNetworkportlocals(models.Model):
+class Networkportlocals(models.Model):
     networkports_id = models.PositiveIntegerField(unique=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportlocals'
+        managed = True
+        db_table = 'networkportlocals'
 
 
-class GlpiNetworkportmetrics(models.Model):
+class Networkportmetrics(models.Model):
     date = models.DateField(blank=True, null=True)
     ifinbytes = models.BigIntegerField()
     ifinerrors = models.BigIntegerField()
@@ -3809,12 +3809,12 @@ class GlpiNetworkportmetrics(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportmetrics'
+        managed = True
+        db_table = 'networkportmetrics'
         unique_together = (('networkports_id', 'date'),)
 
 
-class GlpiNetworkports(models.Model):
+class Networkports(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     entities_id = models.PositiveIntegerField()
@@ -3845,32 +3845,32 @@ class GlpiNetworkports(models.Model):
     lastup = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkports'
+        managed = True
+        db_table = 'networkports'
 
 
-class GlpiNetworkportsNetworkports(models.Model):
+class NetworkportsNetworkports(models.Model):
     networkports_id_1 = models.PositiveIntegerField()
     networkports_id_2 = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkports_networkports'
+        managed = True
+        db_table = 'networkports_networkports'
         unique_together = (('networkports_id_1', 'networkports_id_2'),)
 
 
-class GlpiNetworkportsVlans(models.Model):
+class NetworkportsVlans(models.Model):
     networkports_id = models.PositiveIntegerField()
     vlans_id = models.PositiveIntegerField()
     tagged = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkports_vlans'
+        managed = True
+        db_table = 'networkports_vlans'
         unique_together = (('networkports_id', 'vlans_id'),)
 
 
-class GlpiNetworkporttypes(models.Model):
+class Networkporttypes(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     value_decimal = models.IntegerField()
@@ -3882,11 +3882,11 @@ class GlpiNetworkporttypes(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkporttypes'
+        managed = True
+        db_table = 'networkporttypes'
 
 
-class GlpiNetworkportwifis(models.Model):
+class Networkportwifis(models.Model):
     networkports_id = models.PositiveIntegerField(unique=True)
     items_devicenetworkcards_id = models.PositiveIntegerField()
     wifinetworks_id = models.PositiveIntegerField()
@@ -3897,22 +3897,22 @@ class GlpiNetworkportwifis(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networkportwifis'
+        managed = True
+        db_table = 'networkportwifis'
 
 
-class GlpiNetworks(models.Model):
+class Networks(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_networks'
+        managed = True
+        db_table = 'networks'
 
 
-class GlpiNotepads(models.Model):
+class Notepads(models.Model):
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
     date_creation = models.DateTimeField(blank=True, null=True)
@@ -3922,11 +3922,11 @@ class GlpiNotepads(models.Model):
     content = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_notepads'
+        managed = True
+        db_table = 'notepads'
 
 
-class GlpiNotifications(models.Model):
+class Notifications(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
@@ -3939,32 +3939,32 @@ class GlpiNotifications(models.Model):
     allow_response = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_notifications'
+        managed = True
+        db_table = 'notifications'
 
 
-class GlpiNotificationsNotificationtemplates(models.Model):
+class NotificationsNotificationtemplates(models.Model):
     notifications_id = models.PositiveIntegerField()
     mode = models.CharField(max_length=20)
     notificationtemplates_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_notifications_notificationtemplates'
+        managed = True
+        db_table = 'notifications_notificationtemplates'
         unique_together = (('notifications_id', 'mode', 'notificationtemplates_id'),)
 
 
-class GlpiNotificationtargets(models.Model):
+class Notificationtargets(models.Model):
     items_id = models.PositiveIntegerField()
     type = models.IntegerField()
     notifications_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_notificationtargets'
+        managed = True
+        db_table = 'notificationtargets'
 
 
-class GlpiNotificationtemplates(models.Model):
+class Notificationtemplates(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     itemtype = models.CharField(max_length=100)
     date_mod = models.DateTimeField(blank=True, null=True)
@@ -3973,11 +3973,11 @@ class GlpiNotificationtemplates(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_notificationtemplates'
+        managed = True
+        db_table = 'notificationtemplates'
 
 
-class GlpiNotificationtemplatetranslations(models.Model):
+class Notificationtemplatetranslations(models.Model):
     notificationtemplates_id = models.PositiveIntegerField()
     language = models.CharField(max_length=10)
     subject = models.CharField(max_length=255)
@@ -3985,11 +3985,11 @@ class GlpiNotificationtemplatetranslations(models.Model):
     content_html = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_notificationtemplatetranslations'
+        managed = True
+        db_table = 'notificationtemplatetranslations'
 
 
-class GlpiNotimportedemails(models.Model):
+class Notimportedemails(models.Model):
     from_field = models.CharField(db_column='from', max_length=255)  # Field renamed because it was a Python reserved word.
     to = models.CharField(max_length=255)
     mailcollectors_id = models.PositiveIntegerField()
@@ -4000,45 +4000,45 @@ class GlpiNotimportedemails(models.Model):
     users_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_notimportedemails'
+        managed = True
+        db_table = 'notimportedemails'
 
 
-class GlpiObjectlocks(models.Model):
+class Objectlocks(models.Model):
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
     date = models.DateTimeField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_objectlocks'
+        managed = True
+        db_table = 'objectlocks'
         unique_together = (('itemtype', 'items_id'),)
 
 
-class GlpiOlalevelactions(models.Model):
+class Olalevelactions(models.Model):
     olalevels_id = models.PositiveIntegerField()
     action_type = models.CharField(max_length=255, blank=True, null=True)
     field = models.CharField(max_length=255, blank=True, null=True)
     value = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_olalevelactions'
+        managed = True
+        db_table = 'olalevelactions'
 
 
-class GlpiOlalevelcriterias(models.Model):
+class Olalevelcriterias(models.Model):
     olalevels_id = models.PositiveIntegerField()
     criteria = models.CharField(max_length=255, blank=True, null=True)
     condition = models.IntegerField()
     pattern = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_olalevelcriterias'
+        managed = True
+        db_table = 'olalevelcriterias'
 
 
-class GlpiOlalevels(models.Model):
+class Olalevels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     olas_id = models.PositiveIntegerField()
     execution_time = models.IntegerField()
@@ -4049,22 +4049,22 @@ class GlpiOlalevels(models.Model):
     uuid = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_olalevels'
+        managed = True
+        db_table = 'olalevels'
 
 
-class GlpiOlalevelsTickets(models.Model):
+class OlalevelsTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
     olalevels_id = models.PositiveIntegerField()
     date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_olalevels_tickets'
+        managed = True
+        db_table = 'olalevels_tickets'
         unique_together = (('tickets_id', 'olalevels_id'),)
 
 
-class GlpiOlas(models.Model):
+class Olas(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -4080,44 +4080,44 @@ class GlpiOlas(models.Model):
     slms_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_olas'
+        managed = True
+        db_table = 'olas'
 
 
-class GlpiOperatingsystemarchitectures(models.Model):
+class Operatingsystemarchitectures(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_operatingsystemarchitectures'
+        managed = True
+        db_table = 'operatingsystemarchitectures'
 
 
-class GlpiOperatingsystemeditions(models.Model):
+class Operatingsystemeditions(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_operatingsystemeditions'
+        managed = True
+        db_table = 'operatingsystemeditions'
 
 
-class GlpiOperatingsystemkernels(models.Model):
+class Operatingsystemkernels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_operatingsystemkernels'
+        managed = True
+        db_table = 'operatingsystemkernels'
 
 
-class GlpiOperatingsystemkernelversions(models.Model):
+class Operatingsystemkernelversions(models.Model):
     operatingsystemkernels_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -4125,44 +4125,44 @@ class GlpiOperatingsystemkernelversions(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_operatingsystemkernelversions'
+        managed = True
+        db_table = 'operatingsystemkernelversions'
 
 
-class GlpiOperatingsystems(models.Model):
+class Operatingsystems(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_operatingsystems'
+        managed = True
+        db_table = 'operatingsystems'
 
 
-class GlpiOperatingsystemservicepacks(models.Model):
+class Operatingsystemservicepacks(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_operatingsystemservicepacks'
+        managed = True
+        db_table = 'operatingsystemservicepacks'
 
 
-class GlpiOperatingsystemversions(models.Model):
+class Operatingsystemversions(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_operatingsystemversions'
+        managed = True
+        db_table = 'operatingsystemversions'
 
 
-class GlpiPassivedcequipmentmodels(models.Model):
+class Passivedcequipmentmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -4179,11 +4179,11 @@ class GlpiPassivedcequipmentmodels(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_passivedcequipmentmodels'
+        managed = True
+        db_table = 'passivedcequipmentmodels'
 
 
-class GlpiPassivedcequipments(models.Model):
+class Passivedcequipments(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -4204,22 +4204,22 @@ class GlpiPassivedcequipments(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_passivedcequipments'
+        managed = True
+        db_table = 'passivedcequipments'
 
 
-class GlpiPassivedcequipmenttypes(models.Model):
+class Passivedcequipmenttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_passivedcequipmenttypes'
+        managed = True
+        db_table = 'passivedcequipmenttypes'
 
 
-class GlpiPcivendors(models.Model):
+class Pcivendors(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     vendorid = models.CharField(max_length=4)
@@ -4230,12 +4230,12 @@ class GlpiPcivendors(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_pcivendors'
+        managed = True
+        db_table = 'pcivendors'
         unique_together = (('vendorid', 'deviceid'),)
 
 
-class GlpiPdumodels(models.Model):
+class Pdumodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -4253,11 +4253,11 @@ class GlpiPdumodels(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_pdumodels'
+        managed = True
+        db_table = 'pdumodels'
 
 
-class GlpiPdus(models.Model):
+class Pdus(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -4278,11 +4278,11 @@ class GlpiPdus(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_pdus'
+        managed = True
+        db_table = 'pdus'
 
 
-class GlpiPdusPlugs(models.Model):
+class PdusPlugs(models.Model):
     plugs_id = models.PositiveIntegerField()
     pdus_id = models.PositiveIntegerField()
     number_plugs = models.IntegerField(blank=True, null=True)
@@ -4290,11 +4290,11 @@ class GlpiPdusPlugs(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_pdus_plugs'
+        managed = True
+        db_table = 'pdus_plugs'
 
 
-class GlpiPdusRacks(models.Model):
+class PdusRacks(models.Model):
     racks_id = models.PositiveIntegerField()
     pdus_id = models.PositiveIntegerField()
     side = models.IntegerField(blank=True, null=True)
@@ -4304,11 +4304,11 @@ class GlpiPdusRacks(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_pdus_racks'
+        managed = True
+        db_table = 'pdus_racks'
 
 
-class GlpiPdutypes(models.Model):
+class Pdutypes(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -4317,11 +4317,11 @@ class GlpiPdutypes(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_pdutypes'
+        managed = True
+        db_table = 'pdutypes'
 
 
-class GlpiPendingreasons(models.Model):
+class Pendingreasons(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -4332,11 +4332,11 @@ class GlpiPendingreasons(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_pendingreasons'
+        managed = True
+        db_table = 'pendingreasons'
 
 
-class GlpiPendingreasonsItems(models.Model):
+class PendingreasonsItems(models.Model):
     pendingreasons_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
@@ -4346,12 +4346,12 @@ class GlpiPendingreasonsItems(models.Model):
     last_bump_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_pendingreasons_items'
+        managed = True
+        db_table = 'pendingreasons_items'
         unique_together = (('items_id', 'itemtype'),)
 
 
-class GlpiPeripheralmodels(models.Model):
+class Peripheralmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -4368,11 +4368,11 @@ class GlpiPeripheralmodels(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_peripheralmodels'
+        managed = True
+        db_table = 'peripheralmodels'
 
 
-class GlpiPeripherals(models.Model):
+class Peripherals(models.Model):
     entities_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
@@ -4403,22 +4403,22 @@ class GlpiPeripherals(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_peripherals'
+        managed = True
+        db_table = 'peripherals'
 
 
-class GlpiPeripheraltypes(models.Model):
+class Peripheraltypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_peripheraltypes'
+        managed = True
+        db_table = 'peripheraltypes'
 
 
-class GlpiPhonemodels(models.Model):
+class Phonemodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -4429,22 +4429,22 @@ class GlpiPhonemodels(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_phonemodels'
+        managed = True
+        db_table = 'phonemodels'
 
 
-class GlpiPhonepowersupplies(models.Model):
+class Phonepowersupplies(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_phonepowersupplies'
+        managed = True
+        db_table = 'phonepowersupplies'
 
 
-class GlpiPhones(models.Model):
+class Phones(models.Model):
     entities_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
@@ -4480,22 +4480,22 @@ class GlpiPhones(models.Model):
     last_inventory_update = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_phones'
+        managed = True
+        db_table = 'phones'
 
 
-class GlpiPhonetypes(models.Model):
+class Phonetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_phonetypes'
+        managed = True
+        db_table = 'phonetypes'
 
 
-class GlpiPlanningeventcategories(models.Model):
+class Planningeventcategories(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     color = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -4503,11 +4503,11 @@ class GlpiPlanningeventcategories(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_planningeventcategories'
+        managed = True
+        db_table = 'planningeventcategories'
 
 
-class GlpiPlanningexternalevents(models.Model):
+class Planningexternalevents(models.Model):
     uuid = models.CharField(unique=True, max_length=255, blank=True, null=True)
     planningexternaleventtemplates_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
@@ -4528,11 +4528,11 @@ class GlpiPlanningexternalevents(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_planningexternalevents'
+        managed = True
+        db_table = 'planningexternalevents'
 
 
-class GlpiPlanningexternaleventtemplates(models.Model):
+class Planningexternaleventtemplates(models.Model):
     entities_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     text = models.TextField(blank=True, null=True)
@@ -4547,11 +4547,11 @@ class GlpiPlanningexternaleventtemplates(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_planningexternaleventtemplates'
+        managed = True
+        db_table = 'planningexternaleventtemplates'
 
 
-class GlpiPlanningrecalls(models.Model):
+class Planningrecalls(models.Model):
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     users_id = models.PositiveIntegerField()
@@ -4559,12 +4559,12 @@ class GlpiPlanningrecalls(models.Model):
     when = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_planningrecalls'
+        managed = True
+        db_table = 'planningrecalls'
         unique_together = (('itemtype', 'items_id', 'users_id'),)
 
 
-class GlpiPlugins(models.Model):
+class Plugins(models.Model):
     directory = models.CharField(unique=True, max_length=255)
     name = models.CharField(max_length=255)
     version = models.CharField(max_length=255)
@@ -4574,22 +4574,22 @@ class GlpiPlugins(models.Model):
     license = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_plugins'
+        managed = True
+        db_table = 'plugins'
 
 
-class GlpiPlugs(models.Model):
+class Plugs(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_plugs'
+        managed = True
+        db_table = 'plugs'
 
 
-class GlpiPrinterlogs(models.Model):
+class Printerlogs(models.Model):
     printers_id = models.PositiveIntegerField()
     total_pages = models.IntegerField()
     bw_pages = models.IntegerField()
@@ -4608,12 +4608,12 @@ class GlpiPrinterlogs(models.Model):
     faxed = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_printerlogs'
+        managed = True
+        db_table = 'printerlogs'
         unique_together = (('printers_id', 'date'),)
 
 
-class GlpiPrintermodels(models.Model):
+class Printermodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -4624,11 +4624,11 @@ class GlpiPrintermodels(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_printermodels'
+        managed = True
+        db_table = 'printermodels'
 
 
-class GlpiPrinters(models.Model):
+class Printers(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -4670,11 +4670,11 @@ class GlpiPrinters(models.Model):
     autoupdatesystems_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_printers'
+        managed = True
+        db_table = 'printers'
 
 
-class GlpiPrintersCartridgeinfos(models.Model):
+class PrintersCartridgeinfos(models.Model):
     printers_id = models.PositiveIntegerField()
     property = models.CharField(max_length=255)
     value = models.CharField(max_length=255)
@@ -4682,22 +4682,22 @@ class GlpiPrintersCartridgeinfos(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_printers_cartridgeinfos'
+        managed = True
+        db_table = 'printers_cartridgeinfos'
 
 
-class GlpiPrintertypes(models.Model):
+class Printertypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_printertypes'
+        managed = True
+        db_table = 'printertypes'
 
 
-class GlpiProblemcosts(models.Model):
+class Problemcosts(models.Model):
     problems_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -4711,11 +4711,11 @@ class GlpiProblemcosts(models.Model):
     entities_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problemcosts'
+        managed = True
+        db_table = 'problemcosts'
 
 
-class GlpiProblems(models.Model):
+class Problems(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -4744,11 +4744,11 @@ class GlpiProblems(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problems'
+        managed = True
+        db_table = 'problems'
 
 
-class GlpiProblemsSuppliers(models.Model):
+class ProblemsSuppliers(models.Model):
     problems_id = models.PositiveIntegerField()
     suppliers_id = models.PositiveIntegerField()
     type = models.IntegerField()
@@ -4756,22 +4756,22 @@ class GlpiProblemsSuppliers(models.Model):
     alternative_email = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problems_suppliers'
+        managed = True
+        db_table = 'problems_suppliers'
         unique_together = (('problems_id', 'type', 'suppliers_id'),)
 
 
-class GlpiProblemsTickets(models.Model):
+class ProblemsTickets(models.Model):
     problems_id = models.PositiveIntegerField()
     tickets_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problems_tickets'
+        managed = True
+        db_table = 'problems_tickets'
         unique_together = (('problems_id', 'tickets_id'),)
 
 
-class GlpiProblemsUsers(models.Model):
+class ProblemsUsers(models.Model):
     problems_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
     type = models.IntegerField()
@@ -4779,12 +4779,12 @@ class GlpiProblemsUsers(models.Model):
     alternative_email = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problems_users'
+        managed = True
+        db_table = 'problems_users'
         unique_together = (('problems_id', 'type', 'users_id', 'alternative_email'),)
 
 
-class GlpiProblemtasks(models.Model):
+class Problemtasks(models.Model):
     uuid = models.CharField(unique=True, max_length=255, blank=True, null=True)
     problems_id = models.PositiveIntegerField()
     taskcategories_id = models.PositiveIntegerField()
@@ -4805,63 +4805,63 @@ class GlpiProblemtasks(models.Model):
     is_private = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problemtasks'
+        managed = True
+        db_table = 'problemtasks'
 
 
-class GlpiProblemtemplatehiddenfields(models.Model):
+class Problemtemplatehiddenfields(models.Model):
     problemtemplates_id = models.PositiveIntegerField()
     num = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problemtemplatehiddenfields'
+        managed = True
+        db_table = 'problemtemplatehiddenfields'
         unique_together = (('problemtemplates_id', 'num'),)
 
 
-class GlpiProblemtemplatemandatoryfields(models.Model):
+class Problemtemplatemandatoryfields(models.Model):
     problemtemplates_id = models.PositiveIntegerField()
     num = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problemtemplatemandatoryfields'
+        managed = True
+        db_table = 'problemtemplatemandatoryfields'
         unique_together = (('problemtemplates_id', 'num'),)
 
 
-class GlpiProblemtemplatepredefinedfields(models.Model):
+class Problemtemplatepredefinedfields(models.Model):
     problemtemplates_id = models.PositiveIntegerField()
     num = models.IntegerField()
     value = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problemtemplatepredefinedfields'
+        managed = True
+        db_table = 'problemtemplatepredefinedfields'
 
 
-class GlpiProblemtemplates(models.Model):
+class Problemtemplates(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_problemtemplates'
+        managed = True
+        db_table = 'problemtemplates'
 
 
-class GlpiProfilerights(models.Model):
+class Profilerights(models.Model):
     profiles_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     rights = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_profilerights'
+        managed = True
+        db_table = 'profilerights'
         unique_together = (('profiles_id', 'name'),)
 
 
-class GlpiProfiles(models.Model):
+class Profiles(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     interface = models.CharField(max_length=255, blank=True, null=True)
     is_default = models.IntegerField()
@@ -4880,11 +4880,11 @@ class GlpiProfiles(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_profiles'
+        managed = True
+        db_table = 'profiles'
 
 
-class GlpiProfilesReminders(models.Model):
+class ProfilesReminders(models.Model):
     reminders_id = models.PositiveIntegerField()
     profiles_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField(blank=True, null=True)
@@ -4892,11 +4892,11 @@ class GlpiProfilesReminders(models.Model):
     no_entity_restriction = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_profiles_reminders'
+        managed = True
+        db_table = 'profiles_reminders'
 
 
-class GlpiProfilesRssfeeds(models.Model):
+class ProfilesRssfeeds(models.Model):
     rssfeeds_id = models.PositiveIntegerField()
     profiles_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField(blank=True, null=True)
@@ -4904,11 +4904,11 @@ class GlpiProfilesRssfeeds(models.Model):
     no_entity_restriction = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_profiles_rssfeeds'
+        managed = True
+        db_table = 'profiles_rssfeeds'
 
 
-class GlpiProfilesUsers(models.Model):
+class ProfilesUsers(models.Model):
     users_id = models.PositiveIntegerField()
     profiles_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
@@ -4917,11 +4917,11 @@ class GlpiProfilesUsers(models.Model):
     is_default_profile = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_profiles_users'
+        managed = True
+        db_table = 'profiles_users'
 
 
-class GlpiProjectcosts(models.Model):
+class Projectcosts(models.Model):
     projects_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -4933,11 +4933,11 @@ class GlpiProjectcosts(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projectcosts'
+        managed = True
+        db_table = 'projectcosts'
 
 
-class GlpiProjects(models.Model):
+class Projects(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     code = models.CharField(max_length=255, blank=True, null=True)
     priority = models.IntegerField()
@@ -4966,11 +4966,11 @@ class GlpiProjects(models.Model):
     template_name = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projects'
+        managed = True
+        db_table = 'projects'
 
 
-class GlpiProjectstates(models.Model):
+class Projectstates(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     color = models.CharField(max_length=255, blank=True, null=True)
@@ -4979,11 +4979,11 @@ class GlpiProjectstates(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projectstates'
+        managed = True
+        db_table = 'projectstates'
 
 
-class GlpiProjecttasklinks(models.Model):
+class Projecttasklinks(models.Model):
     projecttasks_id_source = models.PositiveIntegerField()
     source_uuid = models.CharField(max_length=255)
     projecttasks_id_target = models.PositiveIntegerField()
@@ -4993,11 +4993,11 @@ class GlpiProjecttasklinks(models.Model):
     lead = models.SmallIntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projecttasklinks'
+        managed = True
+        db_table = 'projecttasklinks'
 
 
-class GlpiProjecttasks(models.Model):
+class Projecttasks(models.Model):
     uuid = models.CharField(unique=True, max_length=255, blank=True, null=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
@@ -5025,32 +5025,32 @@ class GlpiProjecttasks(models.Model):
     template_name = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projecttasks'
+        managed = True
+        db_table = 'projecttasks'
 
 
-class GlpiProjecttasksTickets(models.Model):
+class ProjecttasksTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
     projecttasks_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projecttasks_tickets'
+        managed = True
+        db_table = 'projecttasks_tickets'
         unique_together = (('tickets_id', 'projecttasks_id'),)
 
 
-class GlpiProjecttaskteams(models.Model):
+class Projecttaskteams(models.Model):
     projecttasks_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projecttaskteams'
+        managed = True
+        db_table = 'projecttaskteams'
         unique_together = (('projecttasks_id', 'itemtype', 'items_id'),)
 
 
-class GlpiProjecttasktemplates(models.Model):
+class Projecttasktemplates(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -5074,44 +5074,44 @@ class GlpiProjecttasktemplates(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projecttasktemplates'
+        managed = True
+        db_table = 'projecttasktemplates'
 
 
-class GlpiProjecttasktypes(models.Model):
+class Projecttasktypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projecttasktypes'
+        managed = True
+        db_table = 'projecttasktypes'
 
 
-class GlpiProjectteams(models.Model):
+class Projectteams(models.Model):
     projects_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projectteams'
+        managed = True
+        db_table = 'projectteams'
         unique_together = (('projects_id', 'itemtype', 'items_id'),)
 
 
-class GlpiProjecttypes(models.Model):
+class Projecttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_projecttypes'
+        managed = True
+        db_table = 'projecttypes'
 
 
-class GlpiQueuednotifications(models.Model):
+class Queuednotifications(models.Model):
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
     notificationtemplates_id = models.PositiveIntegerField()
@@ -5136,11 +5136,11 @@ class GlpiQueuednotifications(models.Model):
     mode = models.CharField(max_length=20)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_queuednotifications'
+        managed = True
+        db_table = 'queuednotifications'
 
 
-class GlpiRackmodels(models.Model):
+class Rackmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -5149,11 +5149,11 @@ class GlpiRackmodels(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_rackmodels'
+        managed = True
+        db_table = 'rackmodels'
 
 
-class GlpiRacks(models.Model):
+class Racks(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
@@ -5185,11 +5185,11 @@ class GlpiRacks(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_racks'
+        managed = True
+        db_table = 'racks'
 
 
-class GlpiRacktypes(models.Model):
+class Racktypes(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -5198,11 +5198,11 @@ class GlpiRacktypes(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_racktypes'
+        managed = True
+        db_table = 'racktypes'
 
 
-class GlpiRecurrentchanges(models.Model):
+class Recurrentchanges(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
@@ -5217,11 +5217,11 @@ class GlpiRecurrentchanges(models.Model):
     end_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_recurrentchanges'
+        managed = True
+        db_table = 'recurrentchanges'
 
 
-class GlpiRefusedequipments(models.Model):
+class Refusedequipments(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
@@ -5237,22 +5237,22 @@ class GlpiRefusedequipments(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_refusedequipments'
+        managed = True
+        db_table = 'refusedequipments'
 
 
-class GlpiRegisteredids(models.Model):
+class Registeredids(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     device_type = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_registeredids'
+        managed = True
+        db_table = 'registeredids'
 
 
-class GlpiReminders(models.Model):
+class Reminders(models.Model):
     uuid = models.CharField(unique=True, max_length=255, blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
     users_id = models.PositiveIntegerField()
@@ -5268,20 +5268,20 @@ class GlpiReminders(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_reminders'
+        managed = True
+        db_table = 'reminders'
 
 
-class GlpiRemindersUsers(models.Model):
+class RemindersUsers(models.Model):
     reminders_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_reminders_users'
+        managed = True
+        db_table = 'reminders_users'
 
 
-class GlpiRemindertranslations(models.Model):
+class Remindertranslations(models.Model):
     reminders_id = models.PositiveIntegerField()
     language = models.CharField(max_length=5, blank=True, null=True)
     name = models.TextField(blank=True, null=True)
@@ -5291,11 +5291,11 @@ class GlpiRemindertranslations(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_remindertranslations'
+        managed = True
+        db_table = 'remindertranslations'
 
 
-class GlpiRequesttypes(models.Model):
+class Requesttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     is_helpdesk_default = models.IntegerField()
     is_followup_default = models.IntegerField()
@@ -5309,11 +5309,11 @@ class GlpiRequesttypes(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_requesttypes'
+        managed = True
+        db_table = 'requesttypes'
 
 
-class GlpiReservationitems(models.Model):
+class Reservationitems(models.Model):
     itemtype = models.CharField(max_length=100)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -5322,12 +5322,12 @@ class GlpiReservationitems(models.Model):
     is_active = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_reservationitems'
+        managed = True
+        db_table = 'reservationitems'
         unique_together = (('itemtype', 'items_id'),)
 
 
-class GlpiReservations(models.Model):
+class Reservations(models.Model):
     reservationitems_id = models.PositiveIntegerField()
     begin = models.DateTimeField(blank=True, null=True)
     end = models.DateTimeField(blank=True, null=True)
@@ -5336,11 +5336,11 @@ class GlpiReservations(models.Model):
     group = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_reservations'
+        managed = True
+        db_table = 'reservations'
 
 
-class GlpiRssfeeds(models.Model):
+class Rssfeeds(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     users_id = models.PositiveIntegerField()
     comment = models.TextField(blank=True, null=True)
@@ -5353,42 +5353,42 @@ class GlpiRssfeeds(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_rssfeeds'
+        managed = True
+        db_table = 'rssfeeds'
 
 
-class GlpiRssfeedsUsers(models.Model):
+class RssfeedsUsers(models.Model):
     rssfeeds_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_rssfeeds_users'
+        managed = True
+        db_table = 'rssfeeds_users'
 
 
-class GlpiRuleactions(models.Model):
+class Ruleactions(models.Model):
     rules_id = models.PositiveIntegerField()
     action_type = models.CharField(max_length=255, blank=True, null=True)
     field = models.CharField(max_length=255, blank=True, null=True)
     value = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ruleactions'
+        managed = True
+        db_table = 'ruleactions'
 
 
-class GlpiRulecriterias(models.Model):
+class Rulecriterias(models.Model):
     rules_id = models.PositiveIntegerField()
     criteria = models.CharField(max_length=255, blank=True, null=True)
     condition = models.IntegerField()
     pattern = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_rulecriterias'
+        managed = True
+        db_table = 'rulecriterias'
 
 
-class GlpiRulematchedlogs(models.Model):
+class Rulematchedlogs(models.Model):
     date = models.DateTimeField(blank=True, null=True)
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100, blank=True, null=True)
@@ -5397,11 +5397,11 @@ class GlpiRulematchedlogs(models.Model):
     method = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_rulematchedlogs'
+        managed = True
+        db_table = 'rulematchedlogs'
 
 
-class GlpiRulerightparameters(models.Model):
+class Rulerightparameters(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     value = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -5409,11 +5409,11 @@ class GlpiRulerightparameters(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_rulerightparameters'
+        managed = True
+        db_table = 'rulerightparameters'
 
 
-class GlpiRules(models.Model):
+class Rules(models.Model):
     entities_id = models.PositiveIntegerField()
     sub_type = models.CharField(max_length=255)
     ranking = models.IntegerField()
@@ -5429,11 +5429,11 @@ class GlpiRules(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_rules'
+        managed = True
+        db_table = 'rules'
 
 
-class GlpiSavedsearches(models.Model):
+class Savedsearches(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     type = models.IntegerField()
     itemtype = models.CharField(max_length=100)
@@ -5448,11 +5448,11 @@ class GlpiSavedsearches(models.Model):
     counter = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_savedsearches'
+        managed = True
+        db_table = 'savedsearches'
 
 
-class GlpiSavedsearchesAlerts(models.Model):
+class SavedsearchesAlerts(models.Model):
     savedsearches_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     is_active = models.IntegerField()
@@ -5463,45 +5463,45 @@ class GlpiSavedsearchesAlerts(models.Model):
     frequency = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_savedsearches_alerts'
+        managed = True
+        db_table = 'savedsearches_alerts'
         unique_together = (('savedsearches_id', 'operator', 'value'),)
 
 
-class GlpiSavedsearchesUsers(models.Model):
+class SavedsearchesUsers(models.Model):
     users_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     savedsearches_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_savedsearches_users'
+        managed = True
+        db_table = 'savedsearches_users'
         unique_together = (('users_id', 'itemtype'),)
 
 
-class GlpiSlalevelactions(models.Model):
+class Slalevelactions(models.Model):
     slalevels_id = models.PositiveIntegerField()
     action_type = models.CharField(max_length=255, blank=True, null=True)
     field = models.CharField(max_length=255, blank=True, null=True)
     value = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_slalevelactions'
+        managed = True
+        db_table = 'slalevelactions'
 
 
-class GlpiSlalevelcriterias(models.Model):
+class Slalevelcriterias(models.Model):
     slalevels_id = models.PositiveIntegerField()
     criteria = models.CharField(max_length=255, blank=True, null=True)
     condition = models.IntegerField()
     pattern = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_slalevelcriterias'
+        managed = True
+        db_table = 'slalevelcriterias'
 
 
-class GlpiSlalevels(models.Model):
+class Slalevels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     slas_id = models.PositiveIntegerField()
     execution_time = models.IntegerField()
@@ -5512,22 +5512,22 @@ class GlpiSlalevels(models.Model):
     uuid = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_slalevels'
+        managed = True
+        db_table = 'slalevels'
 
 
-class GlpiSlalevelsTickets(models.Model):
+class SlalevelsTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
     slalevels_id = models.PositiveIntegerField()
     date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_slalevels_tickets'
+        managed = True
+        db_table = 'slalevels_tickets'
         unique_together = (('tickets_id', 'slalevels_id'),)
 
 
-class GlpiSlas(models.Model):
+class Slas(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -5543,11 +5543,11 @@ class GlpiSlas(models.Model):
     slms_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_slas'
+        managed = True
+        db_table = 'slas'
 
 
-class GlpiSlms(models.Model):
+class Slms(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -5558,11 +5558,11 @@ class GlpiSlms(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_slms'
+        managed = True
+        db_table = 'slms'
 
 
-class GlpiSnmpcredentials(models.Model):
+class Snmpcredentials(models.Model):
     name = models.CharField(max_length=64, blank=True, null=True)
     snmpversion = models.CharField(max_length=8)
     community = models.CharField(max_length=255, blank=True, null=True)
@@ -5574,22 +5574,22 @@ class GlpiSnmpcredentials(models.Model):
     is_deleted = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_snmpcredentials'
+        managed = True
+        db_table = 'snmpcredentials'
 
 
-class GlpiSocketmodels(models.Model):
+class Socketmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_socketmodels'
+        managed = True
+        db_table = 'socketmodels'
 
 
-class GlpiSockets(models.Model):
+class Sockets(models.Model):
     position = models.IntegerField()
     locations_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -5603,11 +5603,11 @@ class GlpiSockets(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_sockets'
+        managed = True
+        db_table = 'sockets'
 
 
-class GlpiSoftwarecategories(models.Model):
+class Softwarecategories(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     softwarecategories_id = models.PositiveIntegerField()
@@ -5617,11 +5617,11 @@ class GlpiSoftwarecategories(models.Model):
     sons_cache = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_softwarecategories'
+        managed = True
+        db_table = 'softwarecategories'
 
 
-class GlpiSoftwarelicenses(models.Model):
+class Softwarelicenses(models.Model):
     softwares_id = models.PositiveIntegerField()
     softwarelicenses_id = models.PositiveIntegerField()
     completename = models.TextField(blank=True, null=True)
@@ -5657,11 +5657,11 @@ class GlpiSoftwarelicenses(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_softwarelicenses'
+        managed = True
+        db_table = 'softwarelicenses'
 
 
-class GlpiSoftwarelicensetypes(models.Model):
+class Softwarelicensetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
@@ -5675,11 +5675,11 @@ class GlpiSoftwarelicensetypes(models.Model):
     completename = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_softwarelicensetypes'
+        managed = True
+        db_table = 'softwarelicensetypes'
 
 
-class GlpiSoftwares(models.Model):
+class Softwares(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -5704,11 +5704,11 @@ class GlpiSoftwares(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_softwares'
+        managed = True
+        db_table = 'softwares'
 
 
-class GlpiSoftwareversions(models.Model):
+class Softwareversions(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     softwares_id = models.PositiveIntegerField()
@@ -5721,11 +5721,11 @@ class GlpiSoftwareversions(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_softwareversions'
+        managed = True
+        db_table = 'softwareversions'
 
 
-class GlpiSolutiontemplates(models.Model):
+class Solutiontemplates(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -5736,11 +5736,11 @@ class GlpiSolutiontemplates(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_solutiontemplates'
+        managed = True
+        db_table = 'solutiontemplates'
 
 
-class GlpiSolutiontypes(models.Model):
+class Solutiontypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
@@ -5749,22 +5749,22 @@ class GlpiSolutiontypes(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_solutiontypes'
+        managed = True
+        db_table = 'solutiontypes'
 
 
-class GlpiSsovariables(models.Model):
+class Ssovariables(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ssovariables'
+        managed = True
+        db_table = 'ssovariables'
 
 
-class GlpiStates(models.Model):
+class States(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -5797,12 +5797,12 @@ class GlpiStates(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_states'
+        managed = True
+        db_table = 'states'
         unique_together = (('states_id', 'name'),)
 
 
-class GlpiSuppliers(models.Model):
+class Suppliers(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -5825,11 +5825,11 @@ class GlpiSuppliers(models.Model):
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_suppliers'
+        managed = True
+        db_table = 'suppliers'
 
 
-class GlpiSuppliersTickets(models.Model):
+class SuppliersTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
     suppliers_id = models.PositiveIntegerField()
     type = models.IntegerField()
@@ -5837,23 +5837,23 @@ class GlpiSuppliersTickets(models.Model):
     alternative_email = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_suppliers_tickets'
+        managed = True
+        db_table = 'suppliers_tickets'
         unique_together = (('tickets_id', 'type', 'suppliers_id'),)
 
 
-class GlpiSuppliertypes(models.Model):
+class Suppliertypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_suppliertypes'
+        managed = True
+        db_table = 'suppliertypes'
 
 
-class GlpiTaskcategories(models.Model):
+class Taskcategories(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     taskcategories_id = models.PositiveIntegerField()
@@ -5870,11 +5870,11 @@ class GlpiTaskcategories(models.Model):
     knowbaseitemcategories_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_taskcategories'
+        managed = True
+        db_table = 'taskcategories'
 
 
-class GlpiTasktemplates(models.Model):
+class Tasktemplates(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -5890,11 +5890,11 @@ class GlpiTasktemplates(models.Model):
     groups_id_tech = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tasktemplates'
+        managed = True
+        db_table = 'tasktemplates'
 
 
-class GlpiTicketcosts(models.Model):
+class Ticketcosts(models.Model):
     tickets_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -5908,11 +5908,11 @@ class GlpiTicketcosts(models.Model):
     entities_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ticketcosts'
+        managed = True
+        db_table = 'ticketcosts'
 
 
-class GlpiTicketrecurrents(models.Model):
+class Ticketrecurrents(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
@@ -5927,11 +5927,11 @@ class GlpiTicketrecurrents(models.Model):
     end_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ticketrecurrents'
+        managed = True
+        db_table = 'ticketrecurrents'
 
 
-class GlpiTickets(models.Model):
+class Tickets(models.Model):
     entities_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
@@ -5974,32 +5974,32 @@ class GlpiTickets(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tickets'
+        managed = True
+        db_table = 'tickets'
 
 
-class GlpiTicketsContracts(models.Model):
+class TicketsContracts(models.Model):
     tickets_id = models.PositiveIntegerField()
     contracts_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tickets_contracts'
+        managed = True
+        db_table = 'tickets_contracts'
         unique_together = (('tickets_id', 'contracts_id'),)
 
 
-class GlpiTicketsTickets(models.Model):
+class TicketsTickets(models.Model):
     tickets_id_1 = models.PositiveIntegerField()
     tickets_id_2 = models.PositiveIntegerField()
     link = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tickets_tickets'
+        managed = True
+        db_table = 'tickets_tickets'
         unique_together = (('tickets_id_1', 'tickets_id_2'),)
 
 
-class GlpiTicketsUsers(models.Model):
+class TicketsUsers(models.Model):
     tickets_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
     type = models.IntegerField()
@@ -6007,12 +6007,12 @@ class GlpiTicketsUsers(models.Model):
     alternative_email = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tickets_users'
+        managed = True
+        db_table = 'tickets_users'
         unique_together = (('tickets_id', 'type', 'users_id', 'alternative_email'),)
 
 
-class GlpiTicketsatisfactions(models.Model):
+class Ticketsatisfactions(models.Model):
     tickets_id = models.PositiveIntegerField(unique=True)
     type = models.IntegerField()
     date_begin = models.DateTimeField(blank=True, null=True)
@@ -6021,11 +6021,11 @@ class GlpiTicketsatisfactions(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ticketsatisfactions'
+        managed = True
+        db_table = 'ticketsatisfactions'
 
 
-class GlpiTickettasks(models.Model):
+class Tickettasks(models.Model):
     uuid = models.CharField(unique=True, max_length=255, blank=True, null=True)
     tickets_id = models.PositiveIntegerField()
     taskcategories_id = models.PositiveIntegerField()
@@ -6048,52 +6048,52 @@ class GlpiTickettasks(models.Model):
     sourceof_items_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tickettasks'
+        managed = True
+        db_table = 'tickettasks'
 
 
-class GlpiTickettemplatehiddenfields(models.Model):
+class Tickettemplatehiddenfields(models.Model):
     tickettemplates_id = models.PositiveIntegerField()
     num = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tickettemplatehiddenfields'
+        managed = True
+        db_table = 'tickettemplatehiddenfields'
         unique_together = (('tickettemplates_id', 'num'),)
 
 
-class GlpiTickettemplatemandatoryfields(models.Model):
+class Tickettemplatemandatoryfields(models.Model):
     tickettemplates_id = models.PositiveIntegerField()
     num = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tickettemplatemandatoryfields'
+        managed = True
+        db_table = 'tickettemplatemandatoryfields'
         unique_together = (('tickettemplates_id', 'num'),)
 
 
-class GlpiTickettemplatepredefinedfields(models.Model):
+class Tickettemplatepredefinedfields(models.Model):
     tickettemplates_id = models.PositiveIntegerField()
     num = models.IntegerField()
     value = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tickettemplatepredefinedfields'
+        managed = True
+        db_table = 'tickettemplatepredefinedfields'
 
 
-class GlpiTickettemplates(models.Model):
+class Tickettemplates(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_tickettemplates'
+        managed = True
+        db_table = 'tickettemplates'
 
 
-class GlpiTicketvalidations(models.Model):
+class Ticketvalidations(models.Model):
     entities_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
     tickets_id = models.PositiveIntegerField()
@@ -6106,11 +6106,11 @@ class GlpiTicketvalidations(models.Model):
     timeline_position = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_ticketvalidations'
+        managed = True
+        db_table = 'ticketvalidations'
 
 
-class GlpiTransfers(models.Model):
+class Transfers(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     keep_ticket = models.IntegerField()
     keep_networklink = models.IntegerField()
@@ -6148,11 +6148,11 @@ class GlpiTransfers(models.Model):
     clean_certificate = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_transfers'
+        managed = True
+        db_table = 'transfers'
 
 
-class GlpiUnmanageds(models.Model):
+class Unmanageds(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -6182,11 +6182,11 @@ class GlpiUnmanageds(models.Model):
     snmpcredentials_id = models.PositiveIntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'glpi_unmanageds'
+        managed = True
+        db_table = 'unmanageds'
 
 
-class GlpiUsbvendors(models.Model):
+class Usbvendors(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     vendorid = models.CharField(max_length=4)
@@ -6197,35 +6197,35 @@ class GlpiUsbvendors(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_usbvendors'
+        managed = True
+        db_table = 'usbvendors'
         unique_together = (('vendorid', 'deviceid'),)
 
 
-class GlpiUsercategories(models.Model):
+class Usercategories(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_usercategories'
+        managed = True
+        db_table = 'usercategories'
 
 
-class GlpiUseremails(models.Model):
+class Useremails(models.Model):
     users_id = models.PositiveIntegerField()
     is_default = models.IntegerField()
     is_dynamic = models.IntegerField()
     email = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_useremails'
+        managed = True
+        db_table = 'useremails'
         unique_together = (('users_id', 'email'),)
 
 
-class GlpiUsers(models.Model):
+class Users(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     password = models.CharField(max_length=255, blank=True, null=True)
     password_last_update = models.DateTimeField(blank=True, null=True)
@@ -6324,56 +6324,56 @@ class GlpiUsers(models.Model):
     nickname = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_users'
+        managed = True
+        db_table = 'users'
         unique_together = (('name', 'authtype', 'auths_id'),)
 
 
-class GlpiUsertitles(models.Model):
+class Usertitles(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_usertitles'
+        managed = True
+        db_table = 'usertitles'
 
 
-class GlpiVirtualmachinestates(models.Model):
+class Virtualmachinestates(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_virtualmachinestates'
+        managed = True
+        db_table = 'virtualmachinestates'
 
 
-class GlpiVirtualmachinesystems(models.Model):
+class Virtualmachinesystems(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_virtualmachinesystems'
+        managed = True
+        db_table = 'virtualmachinesystems'
 
 
-class GlpiVirtualmachinetypes(models.Model):
+class Virtualmachinetypes(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_virtualmachinetypes'
+        managed = True
+        db_table = 'virtualmachinetypes'
 
 
-class GlpiVlans(models.Model):
+class Vlans(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -6383,11 +6383,11 @@ class GlpiVlans(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_vlans'
+        managed = True
+        db_table = 'vlans'
 
 
-class GlpiVobjects(models.Model):
+class Vobjects(models.Model):
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
     data = models.TextField(blank=True, null=True)
@@ -6395,12 +6395,12 @@ class GlpiVobjects(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_vobjects'
+        managed = True
+        db_table = 'vobjects'
         unique_together = (('itemtype', 'items_id'),)
 
 
-class GlpiWifinetworks(models.Model):
+class Wifinetworks(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -6411,5 +6411,5 @@ class GlpiWifinetworks(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'glpi_wifinetworks'
+        managed = True
+        db_table = 'wifinetworks'
