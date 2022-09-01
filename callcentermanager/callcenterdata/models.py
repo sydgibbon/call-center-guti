@@ -302,26 +302,6 @@ class Businesscriticities(models.Model):
 
 
 
-class Cablestrands(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'cablestrands'
-
-
-class Cabletypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'cabletypes'
 
 
 class Calendars(models.Model):
@@ -359,51 +339,6 @@ class Calendarsegments(models.Model):
     class Meta:
         managed = True
         db_table = 'calendarsegments'
-
-
-class Cartridgeitems(models.Model):
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    ref = models.CharField(max_length=255, blank=True, null=True)
-    locations_id = models.PositiveIntegerField()
-    cartridgeitemtypes_id = models.PositiveIntegerField()
-    manufacturers_id = models.PositiveIntegerField()
-    users_id_tech = models.PositiveIntegerField()
-    groups_id_tech = models.PositiveIntegerField()
-    is_deleted = models.IntegerField()
-    comment = models.TextField(blank=True, null=True)
-    alarm_threshold = models.IntegerField()
-    stock_target = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    pictures = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'cartridgeitems'
-
-
-class CartridgeitemsPrintermodels(models.Model):
-    cartridgeitems_id = models.PositiveIntegerField()
-    printermodels_id = models.PositiveIntegerField()
-
-    class Meta:
-        managed = True
-        db_table = 'cartridgeitems_printermodels'
-        unique_together = (('printermodels_id', 'cartridgeitems_id'),)
-
-
-class Cartridgeitemtypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'cartridgeitemtypes'
-
 
 
 class Certificates(models.Model):
@@ -761,39 +696,6 @@ class Configs(models.Model):
         unique_together = (('context', 'name'),)
 
 
-class Consumableitems(models.Model):
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    ref = models.CharField(max_length=255, blank=True, null=True)
-    locations_id = models.PositiveIntegerField()
-    consumableitemtypes_id = models.PositiveIntegerField()
-    manufacturers_id = models.PositiveIntegerField()
-    users_id_tech = models.PositiveIntegerField()
-    groups_id_tech = models.PositiveIntegerField()
-    is_deleted = models.IntegerField()
-    comment = models.TextField(blank=True, null=True)
-    alarm_threshold = models.IntegerField()
-    stock_target = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    otherserial = models.CharField(max_length=255, blank=True, null=True)
-    pictures = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'consumableitems'
-
-
-class Consumableitemtypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'consumableitemtypes'
 
 
 
@@ -1629,17 +1531,6 @@ class Devicesensortypes(models.Model):
         managed = True
         db_table = 'devicesensortypes'
 
-
-
-class Devicesimcardtypes(models.Model):
-    name = models.CharField(max_length=255)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'devicesimcardtypes'
 
 
 class Devicesoundcardmodels(models.Model):
@@ -2802,17 +2693,6 @@ class ItemsDisks(models.Model):
         db_table = 'items_disks'
 
 
-class ItemsEnclosures(models.Model):
-    enclosures_id = models.PositiveIntegerField()
-    itemtype = models.CharField(max_length=255)
-    items_id = models.PositiveIntegerField()
-    position = models.IntegerField()
-
-    class Meta:
-        managed = True
-        db_table = 'items_enclosures'
-        unique_together = (('itemtype', 'items_id'),)
-
 
 class ItemsKanbans(models.Model):
     itemtype = models.CharField(max_length=100)
@@ -2873,21 +2753,6 @@ class ItemsProjects(models.Model):
         db_table = 'items_projects'
         unique_together = (('projects_id', 'itemtype', 'items_id'),)
 
-
-class ItemsRacks(models.Model):
-    racks_id = models.PositiveIntegerField()
-    itemtype = models.CharField(max_length=255)
-    items_id = models.PositiveIntegerField()
-    position = models.IntegerField()
-    orientation = models.IntegerField(blank=True, null=True)
-    bgcolor = models.CharField(max_length=7, blank=True, null=True)
-    hpos = models.IntegerField()
-    is_reserved = models.IntegerField()
-
-    class Meta:
-        managed = True
-        db_table = 'items_racks'
-        unique_together = (('itemtype', 'items_id', 'is_reserved'),)
 
 
 class ItemsRemotemanagements(models.Model):
@@ -3347,41 +3212,6 @@ class Manufacturers(models.Model):
         db_table = 'manufacturers'
 
 
-class Monitormodels(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    product_number = models.CharField(max_length=255, blank=True, null=True)
-    weight = models.IntegerField()
-    required_units = models.IntegerField()
-    depth = models.FloatField()
-    power_connections = models.IntegerField()
-    power_consumption = models.IntegerField()
-    is_half_rack = models.IntegerField()
-    picture_front = models.TextField(blank=True, null=True)
-    picture_rear = models.TextField(blank=True, null=True)
-    pictures = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'monitormodels'
-
-
-
-
-
-class Monitortypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'monitortypes'
-
-
 class Networkaliases(models.Model):
     entities_id = models.PositiveIntegerField()
     networknames_id = models.PositiveIntegerField()
@@ -3393,37 +3223,6 @@ class Networkaliases(models.Model):
         managed = True
         db_table = 'networkaliases'
 
-
-class Networkequipmentmodels(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    product_number = models.CharField(max_length=255, blank=True, null=True)
-    weight = models.IntegerField()
-    required_units = models.IntegerField()
-    depth = models.FloatField()
-    power_connections = models.IntegerField()
-    power_consumption = models.IntegerField()
-    is_half_rack = models.IntegerField()
-    picture_front = models.TextField(blank=True, null=True)
-    picture_rear = models.TextField(blank=True, null=True)
-    pictures = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'networkequipmentmodels'
-
-
-class Networkequipmenttypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'networkequipmenttypes'
 
 
 class Networkinterfaces(models.Model):
@@ -4004,30 +3803,6 @@ class Pdumodels(models.Model):
 
 
 
-class PdusPlugs(models.Model):
-    plugs_id = models.PositiveIntegerField()
-    pdus_id = models.PositiveIntegerField()
-    number_plugs = models.IntegerField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'pdus_plugs'
-
-
-class PdusRacks(models.Model):
-    racks_id = models.PositiveIntegerField()
-    pdus_id = models.PositiveIntegerField()
-    side = models.IntegerField(blank=True, null=True)
-    position = models.IntegerField()
-    bgcolor = models.CharField(max_length=7, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'pdus_racks'
 
 
 class Pdutypes(models.Model):
@@ -4140,42 +3915,8 @@ class Peripheraltypes(models.Model):
         db_table = 'peripheraltypes'
 
 
-class Phonemodels(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    product_number = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    picture_front = models.TextField(blank=True, null=True)
-    picture_rear = models.TextField(blank=True, null=True)
-    pictures = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'phonemodels'
 
 
-class Phonepowersupplies(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'phonepowersupplies'
-
-
-
-class Phonetypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'phonetypes'
 
 
 class Planningeventcategories(models.Model):
@@ -4295,44 +4036,6 @@ class Printerlogs(models.Model):
         db_table = 'printerlogs'
         unique_together = (('printers_id', 'date'),)
 
-
-class Printermodels(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    product_number = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    picture_front = models.TextField(blank=True, null=True)
-    picture_rear = models.TextField(blank=True, null=True)
-    pictures = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'printermodels'
-
-
-
-class PrintersCartridgeinfos(models.Model):
-    printers_id = models.PositiveIntegerField()
-    property = models.CharField(max_length=255)
-    value = models.CharField(max_length=255)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'printers_cartridgeinfos'
-
-
-class Printertypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'printertypes'
 
 
 class Problemcosts(models.Model):
@@ -5210,59 +4913,6 @@ class Sockets(models.Model):
         db_table = 'sockets'
 
 
-class Softwarecategories(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    softwarecategories_id = models.PositiveIntegerField()
-    completename = models.TextField(blank=True, null=True)
-    level = models.IntegerField()
-    ancestors_cache = models.TextField(blank=True, null=True)
-    sons_cache = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'softwarecategories'
-
-
-class Softwarelicenses(models.Model):
-    softwares_id = models.PositiveIntegerField()
-    softwarelicenses_id = models.PositiveIntegerField()
-    completename = models.TextField(blank=True, null=True)
-    level = models.IntegerField()
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    number = models.IntegerField()
-    softwarelicensetypes_id = models.PositiveIntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    serial = models.CharField(max_length=255, blank=True, null=True)
-    otherserial = models.CharField(max_length=255, blank=True, null=True)
-    softwareversions_id_buy = models.PositiveIntegerField()
-    softwareversions_id_use = models.PositiveIntegerField()
-    expire = models.DateField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    is_valid = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
-    is_deleted = models.IntegerField()
-    locations_id = models.PositiveIntegerField()
-    users_id_tech = models.PositiveIntegerField()
-    users_id = models.PositiveIntegerField()
-    groups_id_tech = models.PositiveIntegerField()
-    groups_id = models.PositiveIntegerField()
-    is_helpdesk_visible = models.IntegerField()
-    is_template = models.IntegerField()
-    template_name = models.CharField(max_length=255, blank=True, null=True)
-    states_id = models.PositiveIntegerField()
-    manufacturers_id = models.PositiveIntegerField()
-    contact = models.CharField(max_length=255, blank=True, null=True)
-    contact_num = models.CharField(max_length=255, blank=True, null=True)
-    allow_overquota = models.IntegerField()
-    pictures = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'softwarelicenses'
-
 
 class Softwarelicensetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -5281,22 +4931,6 @@ class Softwarelicensetypes(models.Model):
         managed = True
         db_table = 'softwarelicensetypes'
 
-
-class Softwareversions(models.Model):
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    softwares_id = models.PositiveIntegerField()
-    states_id = models.PositiveIntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    arch = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    operatingsystems_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'softwareversions'
 
 
 class Solutiontemplates(models.Model):
