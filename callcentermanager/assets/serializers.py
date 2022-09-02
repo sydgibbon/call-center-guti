@@ -1,5 +1,5 @@
 from rest_framework import serializers #import de serializers
-from callcenterdata.models import * #import de todos los callcenterdata, proximamente se mueve a assets
+from assets.models import * #import de todos los callcenterdata, proximamente se mueve a assets
 
 class ComputerSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
