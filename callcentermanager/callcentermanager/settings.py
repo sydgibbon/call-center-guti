@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'callcenterdata',
     'rest_framework',
+    'assets',
 ]
 
 MIDDLEWARE = [
