@@ -127,10 +127,10 @@ class ItemsDevicecontrolsSerializer(serializers.ModelSerializer):
         model = ItemsDevicecontrols #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model
 
-class IItemsDevicedrivesSerializer(serializers.ModelSerializer): 
+class ItemsDevicedrivesSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
-        model = IItemsDevicedrives #Especificar el nombre del Model
+        model = ItemsDevicedrives #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model
 
 class ItemsDevicefirmwaresSerializer(serializers.ModelSerializer): 
@@ -157,10 +157,10 @@ class ItemsDeviceharddrivesSerializer(serializers.ModelSerializer):
         model = ItemsDeviceharddrives #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model
 
-class ItemItemsDevicememoriesSerializer(serializers.ModelSerializer): 
+class ItemsDevicememoriesSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
-        model = ItemItemsDevicememories #Especificar el nombre del Model
+        model = ItemsDevicememories #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model
 
 class ItemsDevicemotherboardsSerializer(serializers.ModelSerializer): 
