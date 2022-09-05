@@ -211,4 +211,172 @@ class ItemsDevicesoundcardsSerializer(serializers.ModelSerializer):
         model = ItemsDevicesoundcards #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model
 
+# Nata (PhoneTypes hasta DeviceMotherboardModels)
+
+class PhonetypesSerializer(serializers.ModelSerializer): 
+    class Meta:
+        model = Phonetypes 
+        fields = '__all__' 
+
+class ItemsRacksSerializer(serializers.ModelSerializer):  # Este tiene problemitas (no se le puede agregar con add)
+    class Meta:
+        model = ItemsRacks
+        fields = '__all__' 
+
+class ItemsEnclosuresSerializer(serializers.ModelSerializer): # Este también tiene problemitas (no se le puede agregar con add)
+    class Meta:
+        model = ItemsEnclosures
+        fields = '__all__' 
+
+class PdusPlugsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PdusPlugs
+        fields = '__all__' 
+
+class CablestrandsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cablestrands
+        fields = '__all__' 
+
+class CabletypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cabletypes
+        fields = '__all__' 
+
+
+class DevicesimcardtypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicesimcardtypes
+        fields = '__all__' 
+
+class DevicebatteriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicebatteries
+        fields = '__all__' 
+
+class DevicebatterymodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicebatterymodels
+        fields = '__all__' 
+
+class DevicebatterytypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicebatterytypes
+        fields = '__all__' 
+
+class DevicecameramodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicecameramodels
+        fields = '__all__' 
+
+class DevicecamerasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicecameras
+        fields = '__all__'
+
+class DevicecasemodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicecasemodels
+        fields = '__all__'
+
+class DevicecasesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicecases
+        fields = '__all__'
+
+class DevicecasetypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicecasetypes
+        fields = '__all__'
+
+class DevicecontrolmodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicecontrolmodels
+        fields = '__all__'
+
+class DevicecontrolsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicecontrols
+        fields = '__all__'
+
+class DevicedrivemodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicedrivemodels
+        fields = '__all__'
+
+class DevicedrivesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicedrives
+        fields = '__all__'
+
+class DevicefirmwaremodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicefirmwaremodels
+        fields = '__all__'
+
+class DevicefirmwaresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicefirmwares
+        fields = '__all__'
+
+class DevicefirmwaretypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicefirmwaretypes
+        fields = '__all__'
+
+class DevicegenericmodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicegenericmodels
+        fields = '__all__'
+
+class DevicegenericsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicegenerics
+        fields = '__all__'
+
+class DevicegenerictypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicegenerictypes
+        fields = '__all__'
+
+class DevicegraphiccardmodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicegraphiccardmodels
+        fields = '__all__'
+
+class DevicegraphiccardsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicegraphiccards
+        fields = '__all__'
+
+class DeviceharddrivemodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Deviceharddrivemodels
+        fields = '__all__'
+
+class DeviceharddrivesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Deviceharddrives
+        fields = '__all__'
+
+class DevicememoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicememories
+        fields = '__all__'
+
+class DevicememorymodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicememorymodels
+        fields = '__all__'
+
+class DevicememorytypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicememorytypes
+        fields = '__all__'
+
+class DevicemotherboardmodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicemotherboardmodels
+        fields = '__all__'
+# --------------------------- 
 
