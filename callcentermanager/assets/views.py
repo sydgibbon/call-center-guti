@@ -12,7 +12,7 @@ from callcenterdata.models import * #import de todos los callcenterdata, proxima
 #Insertar datos desde phpmyadmin y visualizarlos en el formato JSON, luego probar insertar datos desde JSON
 def getData(request):
     computers = Computers.objects.all()
-    serializer = ComputerSerializer(computers, many=True)
+    serializer = ComputersSerializer(computers, many=True)
     return Response(serializer.data)
 
 
@@ -22,7 +22,7 @@ def getData(request):
 #copiar el formato de un dato ya ingresado desde phpmyadmin y hacer pruebas
 
 def addItem(request):
-    serializer = ComputerSerializer(data=request.data)
+    serializer = ComputersSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)

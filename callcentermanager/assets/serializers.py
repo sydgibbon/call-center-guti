@@ -380,3 +380,163 @@ class DevicemotherboardmodelsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 # --------------------------- 
 
+
+class MonitorsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Monitors
+        fields = '__all__'
+
+class SoftwaresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Softwares
+        fields = '__all__'
+
+class NetworkequipmentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Networkequipments
+        fields = '__all__'
+
+class PrintersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Printers
+        fields = '__all__'
+
+class CartridgesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cartridges
+        fields = '__all__'
+
+class ConsumablesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Consumables
+        fields = '__all__'
+
+class PhonesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Phones
+        fields = '__all__'
+
+class RacksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Racks
+        fields = '__all__'
+
+class EnclosuresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Enclosures
+        fields = '__all__'
+
+class PdusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pdus
+        fields = '__all__'
+
+class UnmanagedsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Unmanageds
+        fields = '__all__'
+
+class CablesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cables
+        fields = '__all__'
+
+class DevicesimcardsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicesimcards
+        fields = '__all__'
+
+class ComputermodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Computermodels
+        fields = '__all__'
+
+class ComputersItemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ComputersItems
+        fields = '__all__'
+
+class ComputertypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Computertypes
+        fields = '__all__'
+
+class MonitormodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Monitormodels
+        fields = '__all__'
+
+class MonitortypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Monitortypes
+        fields = '__all__'
+
+class SoftwarecategoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Softwarecategories
+        fields = '__all__'
+
+class SoftwarelicensesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Softwarelicenses
+        fields = '__all__'
+
+class SoftwareversionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Softwareversions
+        fields = '__all__'
+
+class NetworkequipmentmodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Networkequipmentmodels
+        fields = '__all__'
+
+class PrintermodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Printermodels
+        fields = '__all__'
+
+class PrintertypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Printertypes
+        fields = '__all__'
+
+class PrintersCartridgeinfosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PrintersCartridgeinfos
+        fields = '__all__'
+
+class CartridgeitemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cartridgeitems
+        fields = '__all__'
+
+class CartridgeitemsPrintermodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartridgeitemsPrintermodels
+        fields = '__all__'
+
+class CartridgeitemtypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cartridgeitemtypes
+        fields = '__all__'
+
+class ConsumableitemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Consumableitems
+        fields = '__all__'
+
+class ConsumableitemtypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Consumableitemtypes
+        fields = '__all__'
+
+class PhonemodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Phonemodels
+        fields = '__all__'
+
+class PhonepowersuppliesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Phonepowersupplies
+        fields = '__all__'

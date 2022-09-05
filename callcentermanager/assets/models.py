@@ -927,7 +927,7 @@ class Devicecasemodels(models.Model):
         managed = True
         db_table = 'devicecasemodels'
 
-class Devicecases(models.Model):
+class Devicecases(models.Model): # Hasta aqui - Guty
     designation = models.CharField(max_length=255, blank=True, null=True)
     devicecasetypes_id = models.PositiveIntegerField()
     comment = models.TextField(blank=True, null=True)
