@@ -3,5 +3,6 @@ from .views import *
 
 router=DefaultRouter()
 router.register(
-    'computers', ComputersViewSet, basename='computers'
+    'computers', ComputersViewSet, basename='computers',
+    
 )
