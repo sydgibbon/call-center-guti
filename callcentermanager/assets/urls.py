@@ -1,7 +1,7 @@
+from posixpath import basename
 from django.urls import path
-from . import views
+from .views import *
+from . import routers
 
 urlpatterns = [
-    path('', views.getData),
-    path('add/', views.addItem),
-    ]
+    ]+routers.router.urls
