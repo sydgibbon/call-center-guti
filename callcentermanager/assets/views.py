@@ -13,3 +13,13 @@ class MonitorsViewSet(viewsets.ModelViewSet):
 class SoftwaresViewSet(viewsets.ModelViewSet):
     queryset= Softwares.objects.all()
     serializer_class = SoftwaresSerializer
+
+#Desde aca empezo fran
+
+class DevicemotherboardsViewSet(viewsets.ModelViewSet):
+    queryset= Devicemotherboards.objects.all()
+    serializer_class = DevicemotherboardsSerializer
+
+class DevicenetworkcardmodelsViewSet(viewsets.ModelViewSet):
+    queryset= Devicenetworkcardmodels.objects.all()
+    serializer_class = DevicenetworkcardmodelsSerializer 
