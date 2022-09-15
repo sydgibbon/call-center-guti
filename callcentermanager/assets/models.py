@@ -952,7 +952,7 @@ class Devicecasetypes(models.Model):
         managed = True
         db_table = 'devicecasetypes'
 
-class Devicecontrolmodels(models.Model):
+class Devicecontrolmodels(models.Model): #hasta aca FRANNNNN
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
