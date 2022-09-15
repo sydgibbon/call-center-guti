@@ -540,3 +540,13 @@ class PhonepowersuppliesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Phonepowersupplies
         fields = '__all__'
+
+class PdusRacksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PdusRacks
+        fields = '__all__'
+
+class Networkequipmenttypes(serializers.ModelSerializer):
+    class Meta:
+        model = Networkequipmenttypes
+        fields = '__all__'
