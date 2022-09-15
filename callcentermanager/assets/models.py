@@ -1107,7 +1107,7 @@ class Devicegraphiccards(models.Model):
         db_table = 'devicegraphiccards'
 
 
-class Deviceharddrivemodels(models.Model):
+class Deviceharddrivemodels(models.Model):                  # Acá toy
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -1737,4 +1737,3 @@ class ItemsDevicesoundcards(models.Model):
     class Meta:
         managed = True
         db_table = 'items_devicesoundcards'
-
