@@ -546,7 +546,7 @@ class PdusRacksSerializer(serializers.ModelSerializer):
         model = PdusRacks
         fields = '__all__'
 
-class Networkequipmenttypes(serializers.ModelSerializer):
+class NetworkequipmenttypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Networkequipmenttypes
         fields = '__all__'

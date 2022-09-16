@@ -17,15 +17,6 @@ class SoftwaresViewSet(viewsets.ModelViewSet):
     serializer_class = SoftwaresSerializer
 
 #Desde aca empezo fran
-
-class DevicemotherboardsViewSet(viewsets.ModelViewSet):
-    queryset= Devicemotherboards.objects.all()
-    serializer_class = DevicemotherboardsSerializer
-
-class DevicenetworkcardmodelsViewSet(viewsets.ModelViewSet):
-    queryset= Devicenetworkcardmodels.objects.all()
-    serializer_class = DevicenetworkcardmodelsSerializer 
-
 class NetworkequipmentsViewSet(viewsets.ModelViewSet):
     queryset= Networkequipments.objects.all()
     serializer_class = NetworkequipmentsSerializer
@@ -291,7 +282,7 @@ class DevicemotherboardsViewSet(viewsets.ModelViewSet):
     queryset = Devicemotherboards.objects.all()
     serializer_class = DevicemotherboardsSerializer
 
-class Devicenetworkcardmodels(viewsets.ModelViewSet):
+class DevicenetworkcardmodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicenetworkcardmodels.objects.all()
     serializer_class = DevicenetworkcardmodelsSerializer
 
