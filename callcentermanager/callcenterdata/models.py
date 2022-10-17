@@ -778,41 +778,6 @@ class Contracttypes(models.Model):
         db_table = 'contracttypes'
 
 
-class Crontasklogs(models.Model):
-    crontasks_id = models.PositiveIntegerField()
-    crontasklogs_id = models.PositiveIntegerField()
-    date = models.DateTimeField()
-    state = models.IntegerField()
-    elapsed = models.FloatField()
-    volume = models.IntegerField()
-    content = models.CharField(max_length=255, blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'crontasklogs'
-
-
-class Crontasks(models.Model):
-    itemtype = models.CharField(max_length=100)
-    name = models.CharField(max_length=150)
-    frequency = models.IntegerField()
-    param = models.IntegerField(blank=True, null=True)
-    state = models.IntegerField()
-    mode = models.IntegerField()
-    allowmode = models.IntegerField()
-    hourmin = models.IntegerField()
-    hourmax = models.IntegerField()
-    logs_lifetime = models.IntegerField()
-    lastrun = models.DateTimeField(blank=True, null=True)
-    lastcode = models.IntegerField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'crontasks'
-        unique_together = (('itemtype', 'name'),)
 
 
 class DashboardsDashboards(models.Model):
@@ -2911,73 +2876,6 @@ class Peripheraltypes(models.Model):
 
 
 
-class Planningeventcategories(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    color = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'planningeventcategories'
-
-
-class Planningexternalevents(models.Model):
-    uuid = models.CharField(unique=True, max_length=255, blank=True, null=True)
-    planningexternaleventtemplates_id = models.PositiveIntegerField()
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    date = models.DateTimeField(blank=True, null=True)
-    users_id = models.PositiveIntegerField()
-    users_id_guests = models.TextField(blank=True, null=True)
-    groups_id = models.PositiveIntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    text = models.TextField(blank=True, null=True)
-    begin = models.DateTimeField(blank=True, null=True)
-    end = models.DateTimeField(blank=True, null=True)
-    rrule = models.TextField(blank=True, null=True)
-    state = models.IntegerField()
-    planningeventcategories_id = models.PositiveIntegerField()
-    background = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'planningexternalevents'
-
-
-class Planningexternaleventtemplates(models.Model):
-    entities_id = models.PositiveIntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    text = models.TextField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    duration = models.IntegerField()
-    before_time = models.IntegerField()
-    rrule = models.TextField(blank=True, null=True)
-    state = models.IntegerField()
-    planningeventcategories_id = models.PositiveIntegerField()
-    background = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'planningexternaleventtemplates'
-
-
-class Planningrecalls(models.Model):
-    items_id = models.PositiveIntegerField()
-    itemtype = models.CharField(max_length=100)
-    users_id = models.PositiveIntegerField()
-    before_time = models.IntegerField()
-    when = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'planningrecalls'
-        unique_together = (('itemtype', 'items_id', 'users_id'),)
 
 
 class Plugins(models.Model):
