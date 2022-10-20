@@ -29,16 +29,6 @@ class ItemsTickets(models.Model):
         db_table = 'items_tickets'
         unique_together = (('itemtype', 'items_id', 'tickets_id'),)
 
-class ItemsTickets(models.Model):
-    itemtype = models.CharField(max_length=255, blank=True, null=True)
-    items_id = models.PositiveIntegerField()
-    tickets_id = models.PositiveIntegerField()
-
-    class Meta:
-        managed = True
-        db_table = 'items_tickets'
-        unique_together = (('itemtype', 'items_id', 'tickets_id'),)
-
 class OlalevelsTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
     olalevels_id = models.PositiveIntegerField()
