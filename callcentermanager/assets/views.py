@@ -12,6 +12,12 @@ class ComputersViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Computers.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class MonitorsViewSet(viewsets.ModelViewSet):
     queryset = Monitors.objects.all()
@@ -19,13 +25,25 @@ class MonitorsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Monitors.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class SoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()
     serializer_class = SoftwaresSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)# Desde aca empezo fran
+        return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Softwares.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)# Desde aca empezo fran
 
 
 class NetworkequipmentsViewSet(viewsets.ModelViewSet):
@@ -34,6 +52,12 @@ class NetworkequipmentsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Networkequipments.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PrintersViewSet(viewsets.ModelViewSet):
     queryset = Printers.objects.all()
@@ -41,6 +65,12 @@ class PrintersViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Printers.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CartridgesViewSet(viewsets.ModelViewSet):
     queryset = Cartridges.objects.all()
@@ -48,6 +78,12 @@ class CartridgesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Cartridges.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ConsumablesViewSet(viewsets.ModelViewSet):
     queryset = Consumables.objects.all()
@@ -55,6 +91,12 @@ class ConsumablesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Consumables.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PhonesViewSet(viewsets.ModelViewSet):
     queryset = Phones.objects.all()
@@ -62,6 +104,12 @@ class PhonesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Phones.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class RacksViewSet(viewsets.ModelViewSet):
     queryset = Racks.objects.all()
@@ -69,6 +117,12 @@ class RacksViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Racks.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class EnclosuresViewSet(viewsets.ModelViewSet):
     queryset = Enclosures.objects.all()
@@ -76,6 +130,12 @@ class EnclosuresViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Enclosures.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PdusViewSet(viewsets.ModelViewSet):
     queryset = Pdus.objects.all()
@@ -83,6 +143,12 @@ class PdusViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Pdus.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class UnmanagedsViewSet(viewsets.ModelViewSet):
     queryset = Unmanageds.objects.all()
@@ -90,6 +156,12 @@ class UnmanagedsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Unmanageds.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CablesViewSet(viewsets.ModelViewSet):
     queryset = Cables.objects.all()
@@ -97,6 +169,12 @@ class CablesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Cables.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicesimcardsViewSet(viewsets.ModelViewSet):
     queryset = Devicesimcards.objects.all()
@@ -104,6 +182,12 @@ class DevicesimcardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicesimcards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ComputermodelsViewSet(viewsets.ModelViewSet):
     queryset = Computermodels.objects.all()
@@ -111,6 +195,12 @@ class ComputermodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Computermodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ComputersItemsViewSet(viewsets.ModelViewSet):
     queryset = ComputersItems.objects.all()
@@ -118,6 +208,12 @@ class ComputersItemsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ComputersItems.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ComputertypesViewSet(viewsets.ModelViewSet):
     queryset = Computertypes.objects.all()
@@ -125,6 +221,12 @@ class ComputertypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Computertypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class MonitormodelsViewSet(viewsets.ModelViewSet):
     queryset = Monitormodels.objects.all()
@@ -132,6 +234,12 @@ class MonitormodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Monitormodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class MonitortypesViewSet(viewsets.ModelViewSet):
     queryset = Monitortypes.objects.all()
@@ -139,6 +247,12 @@ class MonitortypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Monitortypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class SoftwarecategoriesViewSet(viewsets.ModelViewSet):
     queryset = Softwarecategories.objects.all()
@@ -146,6 +260,12 @@ class SoftwarecategoriesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Softwarecategories.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class SoftwarelicensesViewSet(viewsets.ModelViewSet):
     queryset = Softwarelicenses.objects.all()
@@ -153,6 +273,12 @@ class SoftwarelicensesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Softwarelicenses.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class SoftwareversionsViewSet(viewsets.ModelViewSet):
     queryset = Softwareversions.objects.all()
@@ -160,6 +286,12 @@ class SoftwareversionsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Softwareversions.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class NetworkequipmentmodelsViewSet(viewsets.ModelViewSet):
     queryset = Networkequipmentmodels.objects.all()
@@ -167,6 +299,12 @@ class NetworkequipmentmodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Networkequipmentmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class NetworkequipmenttypesViewSet(viewsets.ModelViewSet):
     queryset = Networkequipmenttypes.objects.all()
@@ -174,6 +312,12 @@ class NetworkequipmenttypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Networkequipmenttypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PrintermodelsViewSet(viewsets.ModelViewSet):
     queryset = Printermodels.objects.all()
@@ -181,6 +325,12 @@ class PrintermodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Printermodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PrintertypesViewSet(viewsets.ModelViewSet):
     queryset = Printertypes.objects.all()
@@ -188,6 +338,12 @@ class PrintertypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Printertypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PrintersCartridgeinfosViewSet(viewsets.ModelViewSet):
     queryset = PrintersCartridgeinfos.objects.all()
@@ -195,6 +351,12 @@ class PrintersCartridgeinfosViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = PrintersCartridgeinfos.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CartridgeitemsViewSet(viewsets.ModelViewSet):
     queryset = Cartridgeitems.objects.all()
@@ -202,6 +364,12 @@ class CartridgeitemsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Cartridgeitems.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CartridgeitemsPrintermodelsViewSet(viewsets.ModelViewSet):
     queryset = CartridgeitemsPrintermodels.objects.all()
@@ -209,6 +377,12 @@ class CartridgeitemsPrintermodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = CartridgeitemsPrintermodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CartridgeitemtypesViewSet(viewsets.ModelViewSet):
     queryset = Cartridgeitemtypes.objects.all()
@@ -216,6 +390,12 @@ class CartridgeitemtypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Cartridgeitemtypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ConsumableitemsViewSet(viewsets.ModelViewSet):
     queryset = Consumableitems.objects.all()
@@ -223,6 +403,12 @@ class ConsumableitemsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Consumableitems.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ConsumableitemtypesViewSet(viewsets.ModelViewSet):
     queryset = Consumableitemtypes.objects.all()
@@ -230,6 +416,12 @@ class ConsumableitemtypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Consumableitemtypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PhonemodelsViewSet(viewsets.ModelViewSet):
     queryset = Phonemodels.objects.all()
@@ -237,6 +429,12 @@ class PhonemodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Phonemodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PhonepowersuppliesViewSet(viewsets.ModelViewSet):
     queryset = Phonepowersupplies.objects.all()
@@ -244,6 +442,12 @@ class PhonepowersuppliesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Phonepowersupplies.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PhonetypesViewSet(viewsets.ModelViewSet):
     queryset = Phonetypes.objects.all()
@@ -251,6 +455,12 @@ class PhonetypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Phonetypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsRacksViewSet(viewsets.ModelViewSet):
     queryset = ItemsRacks.objects.all()
@@ -258,6 +468,12 @@ class ItemsRacksViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsRacks.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsEnclosuresViewSet(viewsets.ModelViewSet):
     queryset = ItemsEnclosures.objects.all()
@@ -265,6 +481,12 @@ class ItemsEnclosuresViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsEnclosures.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PdusPlugsViewSet(viewsets.ModelViewSet):
     queryset = PdusPlugs.objects.all()
@@ -272,6 +494,12 @@ class PdusPlugsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = PdusPlugs.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PdusRacksViewSet(viewsets.ModelViewSet):
     queryset = PdusRacks.objects.all()
@@ -279,6 +507,12 @@ class PdusRacksViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = PdusRacks.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CablestrandsViewSet(viewsets.ModelViewSet):
     queryset = Cablestrands.objects.all()
@@ -286,6 +520,12 @@ class CablestrandsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Cablestrands.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CabletypesViewSet(viewsets.ModelViewSet):
     queryset = Cabletypes.objects.all()
@@ -293,6 +533,12 @@ class CabletypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Cabletypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicesimcardtypesViewSet(viewsets.ModelViewSet):
     queryset = Devicesimcardtypes.objects.all()
@@ -300,6 +546,12 @@ class DevicesimcardtypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicesimcardtypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicebatteriesViewSet(viewsets.ModelViewSet):
     queryset = Devicebatteries.objects.all()
@@ -307,6 +559,12 @@ class DevicebatteriesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicebatteries.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicebatterymodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicebatterymodels.objects.all()
@@ -314,6 +572,12 @@ class DevicebatterymodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicebatterymodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicebatterytypesViewSet(viewsets.ModelViewSet):
     queryset = Devicebatterytypes.objects.all()
@@ -321,6 +585,12 @@ class DevicebatterytypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicebatterytypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicecameramodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicecameramodels.objects.all()
@@ -328,6 +598,12 @@ class DevicecameramodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicecameramodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicecamerasViewSet(viewsets.ModelViewSet):
     queryset = Devicecameras.objects.all()
@@ -335,6 +611,12 @@ class DevicecamerasViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicecameras.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicecasemodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicecasemodels.objects.all()
@@ -342,6 +624,12 @@ class DevicecasemodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicecasemodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicecasesViewSet(viewsets.ModelViewSet):
     queryset = Devicecases.objects.all()
@@ -349,6 +637,12 @@ class DevicecasesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicecases.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicecasetypesViewSet(viewsets.ModelViewSet):
     queryset = Devicecasetypes.objects.all()
@@ -356,13 +650,25 @@ class DevicecasetypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicecasetypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicecontrolmodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicecontrolmodels.objects.all()
     serializer_class = DevicecontrolmodelsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)# Arranca Nata
+        return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicecontrolmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)# Arranca Nata
 
 
 class DevicecontrolsViewSet(viewsets.ModelViewSet):
@@ -371,6 +677,12 @@ class DevicecontrolsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicecontrols.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicedrivemodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicedrivemodels.objects.all()
@@ -378,6 +690,12 @@ class DevicedrivemodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicedrivemodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicedrivesViewSet(viewsets.ModelViewSet):
     queryset = Devicedrives.objects.all()
@@ -385,6 +703,12 @@ class DevicedrivesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicedrives.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicefirmwaremodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicefirmwaremodels.objects.all()
@@ -392,6 +716,12 @@ class DevicefirmwaremodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicefirmwaremodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicefirmwaresViewSet(viewsets.ModelViewSet):
     queryset = Devicefirmwares.objects.all()
@@ -399,6 +729,12 @@ class DevicefirmwaresViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicefirmwares.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicefirmwaretypesViewSet(viewsets.ModelViewSet):
     queryset = Devicefirmwaretypes.objects.all()
@@ -406,6 +742,12 @@ class DevicefirmwaretypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicefirmwaretypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicegenericmodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicegenericmodels.objects.all()
@@ -413,6 +755,12 @@ class DevicegenericmodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicegenericmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicegenericsViewSet(viewsets.ModelViewSet):
     queryset = Devicegenerics.objects.all()
@@ -420,6 +768,12 @@ class DevicegenericsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicegenerics.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicegenerictypesViewSet(viewsets.ModelViewSet):
     queryset = Devicegenerictypes.objects.all()
@@ -427,6 +781,12 @@ class DevicegenerictypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicegenerictypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicegraphiccardmodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicegraphiccardmodels.objects.all()
@@ -434,6 +794,12 @@ class DevicegraphiccardmodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicegraphiccardmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicegraphiccardsViewSet(viewsets.ModelViewSet):
     queryset = Devicegraphiccards.objects.all()
@@ -441,6 +807,12 @@ class DevicegraphiccardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicegraphiccards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DeviceharddrivemodelsViewSet(viewsets.ModelViewSet):
     queryset = Deviceharddrivemodels.objects.all()
@@ -448,13 +820,25 @@ class DeviceharddrivemodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Deviceharddrivemodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DeviceharddrivesViewSet(viewsets.ModelViewSet):
-    queryset = Deviceharddrivemodels.objects.all()
+    queryset = Deviceharddrives.objects.all()
     serializer_class = DeviceharddrivemodelsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Deviceharddrives.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicememoriesViewSet(viewsets.ModelViewSet):
     queryset = Devicememories.objects.all()
@@ -462,6 +846,12 @@ class DevicememoriesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicememories.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicememorymodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicememorymodels.objects.all()
@@ -469,6 +859,12 @@ class DevicememorymodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicememorymodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicememorytypesViewSet(viewsets.ModelViewSet):
     queryset = Devicememorytypes.objects.all()
@@ -476,6 +872,12 @@ class DevicememorytypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicememorytypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicemotherboardmodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicemotherboardmodels.objects.all()
@@ -483,6 +885,12 @@ class DevicemotherboardmodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicemotherboardmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicemotherboardsViewSet(viewsets.ModelViewSet):
     queryset = Devicemotherboards.objects.all()
@@ -490,6 +898,12 @@ class DevicemotherboardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicemotherboards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicenetworkcardmodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicenetworkcardmodels.objects.all()
@@ -497,6 +911,12 @@ class DevicenetworkcardmodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicenetworkcardmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicenetworkcardsViewSet(viewsets.ModelViewSet):
     queryset = Devicenetworkcards.objects.all()
@@ -504,6 +924,12 @@ class DevicenetworkcardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicenetworkcards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicepcimodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicepcimodels.objects.all()
@@ -511,6 +937,12 @@ class DevicepcimodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicepcimodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicepcisViewSet(viewsets.ModelViewSet):
     queryset = Devicepcis.objects.all()
@@ -518,6 +950,12 @@ class DevicepcisViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicepcis.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicepowersuppliesViewSet(viewsets.ModelViewSet):
     queryset = Devicepowersupplies.objects.all()
@@ -525,6 +963,12 @@ class DevicepowersuppliesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicepowersupplies.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicepowersupplymodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicepowersupplymodels.objects.all()
@@ -532,6 +976,12 @@ class DevicepowersupplymodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicepowersupplymodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DeviceprocessormodelsViewSet(viewsets.ModelViewSet):
     queryset = Deviceprocessormodels.objects.all()
@@ -539,6 +989,12 @@ class DeviceprocessormodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Deviceprocessormodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DeviceprocessorsViewSet(viewsets.ModelViewSet):
     queryset = Deviceprocessors.objects.all()
@@ -546,6 +1002,12 @@ class DeviceprocessorsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Deviceprocessors.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicesensormodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicesensormodels.objects.all()
@@ -553,6 +1015,12 @@ class DevicesensormodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicesensormodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicesensorsViewSet(viewsets.ModelViewSet):
     queryset = Devicesensors.objects.all()
@@ -560,6 +1028,12 @@ class DevicesensorsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicesensors.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicesensortypesViewSet(viewsets.ModelViewSet):
     queryset = Devicesensortypes.objects.all()
@@ -567,6 +1041,12 @@ class DevicesensortypesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicesensortypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicesoundcardmodelsViewSet(viewsets.ModelViewSet):
     queryset = Devicesoundcardmodels.objects.all()
@@ -574,6 +1054,12 @@ class DevicesoundcardmodelsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicesoundcardmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class DevicesoundcardsViewSet(viewsets.ModelViewSet):
     queryset = Devicesoundcards.objects.all()
@@ -581,6 +1067,12 @@ class DevicesoundcardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Devicesoundcards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicebatteriesViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicebatteries.objects.all()
@@ -588,6 +1080,12 @@ class ItemsDevicebatteriesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicebatteries.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicecamerasViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicecameras.objects.all()
@@ -595,6 +1093,12 @@ class ItemsDevicecamerasViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicecameras.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicecamerasImageformatsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicecamerasImageformats.objects.all()
@@ -602,6 +1106,12 @@ class ItemsDevicecamerasImageformatsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicecamerasImageformats.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicecamerasImageresolutionsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicecamerasImageresolutions.objects.all()
@@ -609,6 +1119,12 @@ class ItemsDevicecamerasImageresolutionsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicecamerasImageresolutions.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicecasesViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicecases.objects.all()
@@ -616,6 +1132,12 @@ class ItemsDevicecasesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicecases.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicecontrolsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicecontrols.objects.all()
@@ -623,6 +1145,12 @@ class ItemsDevicecontrolsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicecontrols.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicedrivesViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicedrives.objects.all()
@@ -630,6 +1158,12 @@ class ItemsDevicedrivesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicedrives.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicefirmwaresViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicefirmwares.objects.all()
@@ -637,6 +1171,12 @@ class ItemsDevicefirmwaresViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicefirmwares.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicegenericsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicegenerics.objects.all()
@@ -644,6 +1184,12 @@ class ItemsDevicegenericsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicegenerics.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicegraphiccardsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicegraphiccards.objects.all()
@@ -651,6 +1197,12 @@ class ItemsDevicegraphiccardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicegraphiccards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDeviceharddrivesViewSet(viewsets.ModelViewSet):
     queryset = ItemsDeviceharddrives.objects.all()
@@ -658,6 +1210,12 @@ class ItemsDeviceharddrivesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDeviceharddrives.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicememoriesViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicememories.objects.all()
@@ -665,6 +1223,12 @@ class ItemsDevicememoriesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicememories.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicemotherboardsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicemotherboards.objects.all()
@@ -672,6 +1236,12 @@ class ItemsDevicemotherboardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicemotherboards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicenetworkcardsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicenetworkcards.objects.all()
@@ -679,6 +1249,12 @@ class ItemsDevicenetworkcardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicenetworkcards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicepcisViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicepcis.objects.all()
@@ -686,6 +1262,12 @@ class ItemsDevicepcisViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicepcis.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicepowersuppliesViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicepowersupplies.objects.all()
@@ -693,6 +1275,12 @@ class ItemsDevicepowersuppliesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicepowersupplies.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDeviceprocessorsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDeviceprocessors.objects.all()
@@ -700,6 +1288,12 @@ class ItemsDeviceprocessorsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDeviceprocessors.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicesensorsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicesensors.objects.all()
@@ -707,6 +1301,12 @@ class ItemsDevicesensorsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicesensors.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicesimcardsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicesimcards.objects.all()
@@ -714,6 +1314,12 @@ class ItemsDevicesimcardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicesimcards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsDevicesoundcardsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicesoundcards.objects.all()
@@ -721,3 +1327,9 @@ class ItemsDevicesoundcardsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsDevicesoundcards.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
