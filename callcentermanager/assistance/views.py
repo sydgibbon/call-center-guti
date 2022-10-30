@@ -12,6 +12,12 @@ class ChangesTicketsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ChangesTickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GroupsTicketsViewSet(viewsets.ModelViewSet):
     queryset = GroupsTickets.objects.all()
@@ -19,6 +25,12 @@ class GroupsTicketsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = GroupsTickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ItemsTicketsViewSet(viewsets.ModelViewSet):
     queryset = ItemsTickets.objects.all()
@@ -26,6 +38,12 @@ class ItemsTicketsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ItemsTickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class OlalevelsTicketsViewSet(viewsets.ModelViewSet):
     queryset = OlalevelsTickets.objects.all()
@@ -33,6 +51,12 @@ class OlalevelsTicketsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = OlalevelsTickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ProblemsTicketsViewSet(viewsets.ModelViewSet):
     queryset = ProblemsTickets.objects.all()
@@ -40,6 +64,12 @@ class ProblemsTicketsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ProblemsTickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ProjecttasksTicketsViewSet(viewsets.ModelViewSet):
     queryset = ProjecttasksTickets.objects.all()
@@ -47,13 +77,25 @@ class ProjecttasksTicketsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ProjecttasksTickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
-class SlalevelsTicketsTicketsViewSet(viewsets.ModelViewSet):
-    queryset = SlalevelsTicketsTickets.objects.all()
-    serializer_class = SlalevelsTicketsTicketsSerializer
+class SlalevelsTicketsViewSet(viewsets.ModelViewSet):
+    queryset = SlalevelsTickets.objects.all()
+    serializer_class = SlalevelsTicketsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = SlalevelsTickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class SuppliersTicketsViewSet(viewsets.ModelViewSet):
     queryset = SuppliersTickets.objects.all()
@@ -61,6 +103,12 @@ class SuppliersTicketsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = SuppliersTickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TicketcostsViewSet(viewsets.ModelViewSet):
     queryset = Ticketcosts.objects.all()
@@ -68,6 +116,12 @@ class TicketcostsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Ticketcosts.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TicketrecurrentsViewSet(viewsets.ModelViewSet):
     queryset = Ticketrecurrents.objects.all()
@@ -75,6 +129,12 @@ class TicketrecurrentsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Ticketrecurrents.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TicketsViewSet(viewsets.ModelViewSet):
     queryset = Tickets.objects.all()
@@ -82,6 +142,12 @@ class TicketsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Tickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TicketsContractsViewSet(viewsets.ModelViewSet):
     queryset = TicketsContracts.objects.all()
@@ -89,6 +155,12 @@ class TicketsContractsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = TicketsContracts.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TicketsTicketsViewSet(viewsets.ModelViewSet):
     queryset = TicketsTickets.objects.all()
@@ -96,6 +168,12 @@ class TicketsTicketsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = TicketsTickets.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TicketsUsersViewSet(viewsets.ModelViewSet):
     queryset = TicketsUsers.objects.all()
@@ -103,6 +181,12 @@ class TicketsUsersViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = TicketsUsers.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TicketsatisfactionsViewSet(viewsets.ModelViewSet):
     queryset = Ticketsatisfactions.objects.all()
@@ -110,6 +194,12 @@ class TicketsatisfactionsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Ticketsatisfactions.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TickettasksViewSet(viewsets.ModelViewSet):
     queryset = Tickettasks.objects.all()
@@ -117,6 +207,12 @@ class TickettasksViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Tickettasks.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TickettemplatehiddenfieldsViewSet(viewsets.ModelViewSet):
     queryset = Tickettemplatehiddenfields.objects.all()
@@ -124,6 +220,12 @@ class TickettemplatehiddenfieldsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Tickettemplatehiddenfields.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TickettemplatemandatoryfieldsViewSet(viewsets.ModelViewSet):
     queryset = Tickettemplatemandatoryfields.objects.all()
@@ -131,6 +233,12 @@ class TickettemplatemandatoryfieldsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Tickettemplatemandatoryfields.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TickettemplatepredefinedfieldsViewSet(viewsets.ModelViewSet):
     queryset = Tickettemplatepredefinedfields.objects.all()
@@ -138,6 +246,12 @@ class TickettemplatepredefinedfieldsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Tickettemplatepredefinedfields.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TickettemplatesViewSet(viewsets.ModelViewSet):
     queryset = Tickettemplates.objects.all()
@@ -145,6 +259,12 @@ class TickettemplatesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Tickettemplates.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TicketvalidationsViewSet(viewsets.ModelViewSet):
     queryset = Ticketvalidations.objects.all()
@@ -152,6 +272,12 @@ class TicketvalidationsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Ticketvalidations.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class LogsViewSet(viewsets.ModelViewSet):
     queryset = Logs.objects.all()
@@ -159,6 +285,12 @@ class LogsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Logs.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class EventsViewSet(viewsets.ModelViewSet):
     queryset = Events.objects.all()
@@ -166,6 +298,12 @@ class EventsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Events.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class RecurrentchangesViewSet(viewsets.ModelViewSet):
     queryset = Recurrentchanges.objects.all()
@@ -173,6 +311,12 @@ class RecurrentchangesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Recurrentchanges.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ChangesUsersViewSet(viewsets.ModelViewSet):
     queryset = ChangesUsers.objects.all()
@@ -180,6 +324,12 @@ class ChangesUsersViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ChangesUsers.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ChangesViewSet(viewsets.ModelViewSet):
     queryset = Changes.objects.all()
@@ -187,6 +337,12 @@ class ChangesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Changes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class UsersViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all()
@@ -194,6 +350,12 @@ class UsersViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Users.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ProblemsViewSet(viewsets.ModelViewSet):
     queryset = Problems.objects.all()
@@ -201,6 +363,12 @@ class ProblemsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Problems.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ProblemsUsersViewSet(viewsets.ModelViewSet):
     queryset = ProblemsUsers.objects.all()
@@ -208,6 +376,12 @@ class ProblemsUsersViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = ProblemsUsers.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PlanningexternaleventsViewSet(viewsets.ModelViewSet):
     queryset = Planningexternalevents.objects.all()
@@ -215,6 +389,12 @@ class PlanningexternaleventsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Planningexternalevents.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PlanningexternaleventtemplatesViewSet(viewsets.ModelViewSet):
     queryset = Planningexternaleventtemplates.objects.all()
@@ -222,6 +402,12 @@ class PlanningexternaleventtemplatesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Planningexternaleventtemplates.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PlanningrecallsViewSet(viewsets.ModelViewSet):
     queryset = Planningrecalls.objects.all()
@@ -229,6 +415,12 @@ class PlanningrecallsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Planningrecalls.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PlanningeventcategoriesViewSet(viewsets.ModelViewSet):
     queryset = Planningeventcategories.objects.all()
@@ -236,6 +428,12 @@ class PlanningeventcategoriesViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Planningeventcategories.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CrontasklogsViewSet(viewsets.ModelViewSet):
     queryset = Crontasklogs.objects.all()
@@ -243,6 +441,12 @@ class CrontasklogsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Crontasklogs.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CrontasksViewSet(viewsets.ModelViewSet):
     queryset = Crontasks.objects.all()
@@ -250,3 +454,9 @@ class CrontasksViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Crontasks.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
