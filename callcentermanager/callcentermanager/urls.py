@@ -21,6 +21,7 @@ from .views import Login
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(('assets.urls', 'api'))),
+    path('api/assistance/', include(('assistance.urls', 'assistance'))),
     path('api_generate_token/', views.obtain_auth_token),
     path('login/', Login.as_view(), name = 'login' )
 ]
