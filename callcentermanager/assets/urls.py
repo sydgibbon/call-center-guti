@@ -3,5 +3,4 @@ from .views import *
 from . import routers
 
 urlpatterns = [
-
     ]+routers.router.urls
