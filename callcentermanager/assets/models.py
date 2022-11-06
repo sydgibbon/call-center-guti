@@ -1174,7 +1174,71 @@ class Devicememorytypes(models.Model):
         managed = True
         db_table = 'devicememorytypes'
 
+class Peripheralmodels(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    product_number = models.CharField(max_length=255, blank=True, null=True)
+    weight = models.IntegerField()
+    required_units = models.IntegerField()
+    depth = models.FloatField()
+    power_connections = models.IntegerField()
+    power_consumption = models.IntegerField()
+    is_half_rack = models.IntegerField()
+    picture_front = models.TextField(blank=True, null=True)
+    picture_rear = models.TextField(blank=True, null=True)
+    pictures = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
 
+    class Meta:
+        managed = False
+        db_table = 'peripheralmodels'
+
+
+class Peripherals(models.Model):
+    entities_id = models.PositiveIntegerField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    contact = models.CharField(max_length=255, blank=True, null=True)
+    contact_num = models.CharField(max_length=255, blank=True, null=True)
+    users_id_tech = models.PositiveIntegerField()
+    groups_id_tech = models.PositiveIntegerField()
+    comment = models.TextField(blank=True, null=True)
+    serial = models.CharField(max_length=255, blank=True, null=True)
+    otherserial = models.CharField(max_length=255, blank=True, null=True)
+    locations_id = models.PositiveIntegerField()
+    peripheraltypes_id = models.PositiveIntegerField()
+    peripheralmodels_id = models.PositiveIntegerField()
+    brand = models.CharField(max_length=255, blank=True, null=True)
+    manufacturers_id = models.PositiveIntegerField()
+    is_global = models.IntegerField()
+    is_deleted = models.IntegerField()
+    is_template = models.IntegerField()
+    template_name = models.CharField(max_length=255, blank=True, null=True)
+    users_id = models.PositiveIntegerField()
+    groups_id = models.PositiveIntegerField()
+    states_id = models.PositiveIntegerField()
+    ticket_tco = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    is_dynamic = models.IntegerField()
+    autoupdatesystems_id = models.PositiveIntegerField()
+    uuid = models.CharField(max_length=255, blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+    is_recursive = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'peripherals'
+
+
+class Peripheraltypes(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'peripheraltypes'
 class Devicemotherboardmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
