@@ -510,6 +510,16 @@ class PdusSerializer(serializers.ModelSerializer):
         model = Pdus
         fields = '__all__'
 
+class PdutypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pdutypes
+        fields = '__all__'
+
+class PdumodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pdumodels
+        fields = '__all__'
+
 
 class UnmanagedsSerializer(serializers.ModelSerializer):
     class Meta:

@@ -2737,42 +2737,7 @@ class Pcivendors(models.Model):
         unique_together = (('vendorid', 'deviceid'),)
 
 
-class Pdumodels(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    product_number = models.CharField(max_length=255, blank=True, null=True)
-    weight = models.IntegerField()
-    required_units = models.IntegerField()
-    depth = models.FloatField()
-    power_connections = models.IntegerField()
-    max_power = models.IntegerField()
-    is_half_rack = models.IntegerField()
-    picture_front = models.TextField(blank=True, null=True)
-    picture_rear = models.TextField(blank=True, null=True)
-    pictures = models.TextField(blank=True, null=True)
-    is_rackable = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
 
-    class Meta:
-        managed = True
-        db_table = 'pdumodels'
-
-
-
-
-
-class Pdutypes(models.Model):
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'pdutypes'
 
 
 class Pendingreasons(models.Model):
