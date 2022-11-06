@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Computers(models.Model):
     entities_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -24,7 +25,8 @@ class Computers(models.Model):
     users_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
-    ticket_tco = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    ticket_tco = models.DecimalField(
+        max_digits=20, decimal_places=4, blank=True, null=True)
     uuid = models.CharField(max_length=255, blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
     is_recursive = models.IntegerField()
@@ -66,7 +68,8 @@ class Monitors(models.Model):
     users_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
-    ticket_tco = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    ticket_tco = models.DecimalField(
+        max_digits=20, decimal_places=4, blank=True, null=True)
     is_dynamic = models.IntegerField()
     autoupdatesystems_id = models.PositiveIntegerField()
     uuid = models.CharField(max_length=255, blank=True, null=True)
@@ -95,7 +98,8 @@ class Softwares(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
     users_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
-    ticket_tco = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    ticket_tco = models.DecimalField(
+        max_digits=20, decimal_places=4, blank=True, null=True)
     is_helpdesk_visible = models.IntegerField()
     softwarecategories_id = models.PositiveIntegerField()
     is_valid = models.IntegerField()
@@ -104,7 +108,7 @@ class Softwares(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'softwares'   
+        db_table = 'softwares'
 
 
 class Networkequipments(models.Model):
@@ -131,7 +135,8 @@ class Networkequipments(models.Model):
     users_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
-    ticket_tco = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    ticket_tco = models.DecimalField(
+        max_digits=20, decimal_places=4, blank=True, null=True)
     is_dynamic = models.IntegerField()
     uuid = models.CharField(max_length=255, blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
@@ -179,7 +184,8 @@ class Printers(models.Model):
     users_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
-    ticket_tco = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    ticket_tco = models.DecimalField(
+        max_digits=20, decimal_places=4, blank=True, null=True)
     is_dynamic = models.IntegerField()
     uuid = models.CharField(max_length=255, blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
@@ -251,7 +257,8 @@ class Phones(models.Model):
     users_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
-    ticket_tco = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    ticket_tco = models.DecimalField(
+        max_digits=20, decimal_places=4, blank=True, null=True)
     is_dynamic = models.IntegerField()
     autoupdatesystems_id = models.PositiveIntegerField()
     uuid = models.CharField(max_length=255, blank=True, null=True)
@@ -389,8 +396,10 @@ class Cables(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    itemtype_endpoint_a = models.CharField(max_length=255, blank=True, null=True)
-    itemtype_endpoint_b = models.CharField(max_length=255, blank=True, null=True)
+    itemtype_endpoint_a = models.CharField(
+        max_length=255, blank=True, null=True)
+    itemtype_endpoint_b = models.CharField(
+        max_length=255, blank=True, null=True)
     items_id_endpoint_a = models.PositiveIntegerField()
     items_id_endpoint_b = models.PositiveIntegerField()
     socketmodels_id_endpoint_a = models.PositiveIntegerField()
@@ -519,7 +528,6 @@ class Softwarecategories(models.Model):
         db_table = 'softwarecategories'
 
 
-
 class Softwarelicenses(models.Model):
     softwares_id = models.PositiveIntegerField()
     softwarelicenses_id = models.PositiveIntegerField()
@@ -596,7 +604,6 @@ class Networkequipmentmodels(models.Model):
     class Meta:
         managed = True
         db_table = 'networkequipmentmodels'
-
 
 
 class Networkequipmenttypes(models.Model):
@@ -889,6 +896,7 @@ class Devicebatterytypes(models.Model):
         managed = True
         db_table = 'devicebatterytypes'
 
+
 class Devicecameramodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -897,6 +905,7 @@ class Devicecameramodels(models.Model):
     class Meta:
         managed = True
         db_table = 'devicecameramodels'
+
 
 class Devicecameras(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
@@ -918,6 +927,7 @@ class Devicecameras(models.Model):
         managed = True
         db_table = 'devicecameras'
 
+
 class Devicecasemodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -927,7 +937,8 @@ class Devicecasemodels(models.Model):
         managed = True
         db_table = 'devicecasemodels'
 
-class Devicecases(models.Model): # Hasta aqui - Guty
+
+class Devicecases(models.Model):  # Hasta aqui - Guty
     designation = models.CharField(max_length=255, blank=True, null=True)
     devicecasetypes_id = models.PositiveIntegerField()
     comment = models.TextField(blank=True, null=True)
@@ -942,6 +953,7 @@ class Devicecases(models.Model): # Hasta aqui - Guty
         managed = True
         db_table = 'devicecases'
 
+
 class Devicecasetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -952,7 +964,8 @@ class Devicecasetypes(models.Model):
         managed = True
         db_table = 'devicecasetypes'
 
-class Devicecontrolmodels(models.Model): #hasta aca FRANNNNN
+
+class Devicecontrolmodels(models.Model):  # hasta aca FRANNNNN
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
@@ -960,6 +973,7 @@ class Devicecontrolmodels(models.Model): #hasta aca FRANNNNN
     class Meta:
         managed = True
         db_table = 'devicecontrolmodels'
+
 
 class Devicecontrols(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
@@ -977,6 +991,7 @@ class Devicecontrols(models.Model):
         managed = True
         db_table = 'devicecontrols'
 
+
 class Devicedrivemodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -985,6 +1000,7 @@ class Devicedrivemodels(models.Model):
     class Meta:
         managed = True
         db_table = 'devicedrivemodels'
+
 
 class Devicedrives(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
@@ -1023,13 +1039,15 @@ class Devicefirmwares(models.Model):
     devicefirmwaretypes_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    devicefirmwaremodels_id = models.PositiveIntegerField(blank=True, null=True)
+    devicefirmwaremodels_id = models.PositiveIntegerField(
+        blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'devicefirmwares'
+
 
 class Devicefirmwaretypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -1097,7 +1115,8 @@ class Devicegraphiccards(models.Model):
     memory_default = models.IntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    devicegraphiccardmodels_id = models.PositiveIntegerField(blank=True, null=True)
+    devicegraphiccardmodels_id = models.PositiveIntegerField(
+        blank=True, null=True)
     chipset = models.CharField(max_length=255, blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
@@ -1127,7 +1146,8 @@ class Deviceharddrives(models.Model):
     capacity_default = models.IntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    deviceharddrivemodels_id = models.PositiveIntegerField(blank=True, null=True)
+    deviceharddrivemodels_id = models.PositiveIntegerField(
+        blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
@@ -1174,6 +1194,7 @@ class Devicememorytypes(models.Model):
         managed = True
         db_table = 'devicememorytypes'
 
+
 class Peripheralmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -1218,7 +1239,8 @@ class Peripherals(models.Model):
     users_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
-    ticket_tco = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    ticket_tco = models.DecimalField(
+        max_digits=20, decimal_places=4, blank=True, null=True)
     is_dynamic = models.IntegerField()
     autoupdatesystems_id = models.PositiveIntegerField()
     uuid = models.CharField(max_length=255, blank=True, null=True)
@@ -1239,6 +1261,8 @@ class Peripheraltypes(models.Model):
     class Meta:
         managed = True
         db_table = 'peripheraltypes'
+
+
 class Devicemotherboardmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -1256,7 +1280,8 @@ class Devicemotherboards(models.Model):
     manufacturers_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    devicemotherboardmodels_id = models.PositiveIntegerField(blank=True, null=True)
+    devicemotherboardmodels_id = models.PositiveIntegerField(
+        blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
@@ -1283,7 +1308,8 @@ class Devicenetworkcards(models.Model):
     mac_default = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    devicenetworkcardmodels_id = models.PositiveIntegerField(blank=True, null=True)
+    devicenetworkcardmodels_id = models.PositiveIntegerField(
+        blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
@@ -1326,7 +1352,8 @@ class Devicepowersupplies(models.Model):
     manufacturers_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    devicepowersupplymodels_id = models.PositiveIntegerField(blank=True, null=True)
+    devicepowersupplymodels_id = models.PositiveIntegerField(
+        blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
@@ -1365,7 +1392,8 @@ class Deviceprocessors(models.Model):
     nbthreads_default = models.IntegerField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    deviceprocessormodels_id = models.PositiveIntegerField(blank=True, null=True)
+    deviceprocessormodels_id = models.PositiveIntegerField(
+        blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
@@ -1411,7 +1439,6 @@ class Devicesensortypes(models.Model):
         db_table = 'devicesensortypes'
 
 
-
 class Devicesoundcardmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -1429,13 +1456,15 @@ class Devicesoundcards(models.Model):
     manufacturers_id = models.PositiveIntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    devicesoundcardmodels_id = models.PositiveIntegerField(blank=True, null=True)
+    devicesoundcardmodels_id = models.PositiveIntegerField(
+        blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'devicesoundcards'
+
 
 class ItemsDevicebatteries(models.Model):
     items_id = models.PositiveIntegerField()
@@ -1518,7 +1547,9 @@ class ItemsDevicecontrols(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     serial = models.CharField(max_length=255, blank=True, null=True)
-    busid = models.CharField(db_column='busID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    busid = models.CharField(
+        db_column='busID', max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     locations_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
@@ -1537,7 +1568,9 @@ class ItemsDevicedrives(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     serial = models.CharField(max_length=255, blank=True, null=True)
-    busid = models.CharField(db_column='busID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    busid = models.CharField(
+        db_column='busID', max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     locations_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
@@ -1593,7 +1626,9 @@ class ItemsDevicegraphiccards(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     serial = models.CharField(max_length=255, blank=True, null=True)
-    busid = models.CharField(db_column='busID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    busid = models.CharField(
+        db_column='busID', max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     locations_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
@@ -1613,7 +1648,9 @@ class ItemsDeviceharddrives(models.Model):
     is_dynamic = models.IntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    busid = models.CharField(db_column='busID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    busid = models.CharField(
+        db_column='busID', max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     locations_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
@@ -1633,7 +1670,9 @@ class ItemsDevicememories(models.Model):
     is_dynamic = models.IntegerField()
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    busid = models.CharField(db_column='busID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    busid = models.CharField(
+        db_column='busID', max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     locations_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
@@ -1671,7 +1710,9 @@ class ItemsDevicenetworkcards(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     serial = models.CharField(max_length=255, blank=True, null=True)
-    busid = models.CharField(db_column='busID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    busid = models.CharField(
+        db_column='busID', max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     locations_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
@@ -1690,7 +1731,9 @@ class ItemsDevicepcis(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     serial = models.CharField(max_length=255, blank=True, null=True)
-    busid = models.CharField(db_column='busID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    busid = models.CharField(
+        db_column='busID', max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     locations_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
@@ -1730,7 +1773,9 @@ class ItemsDeviceprocessors(models.Model):
     nbthreads = models.IntegerField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    busid = models.CharField(db_column='busID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    busid = models.CharField(
+        db_column='busID', max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     locations_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()
@@ -1793,7 +1838,9 @@ class ItemsDevicesoundcards(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     serial = models.CharField(max_length=255, blank=True, null=True)
-    busid = models.CharField(db_column='busID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    busid = models.CharField(
+        db_column='busID', max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     locations_id = models.PositiveIntegerField()
     states_id = models.PositiveIntegerField()

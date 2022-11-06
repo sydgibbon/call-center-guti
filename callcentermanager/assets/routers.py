@@ -104,3 +104,6 @@ router.register(r'itemsdeviceprocessors', ItemsDeviceprocessorsViewSet, basename
 router.register(r'itemsdevicesensors', ItemsDevicesensorsViewSet, basename='itemsdevicesensors')
 router.register(r'itemsdevicesimcards', ItemsDevicesimcardsViewSet, basename='itemsdevicesimcards')
 router.register(r'itemsdevicesoundcards', ItemsDevicesoundcardsViewSet, basename='itemsdevicesoundcards')
+router.register(r'peripherals', PeripheralsViewSet, basename='peripherals')
+router.register(r'peripheralmodels', PeripheralmodelsViewSet, basename='peripheralmodels')
+router.register(r'peripheraltypes', PeripheraltypesViewSet, basename='peripheraltypes')
