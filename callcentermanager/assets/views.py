@@ -212,6 +212,51 @@ class PdumodelsViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class PassivedcequipmentsViewSet(viewsets.ModelViewSet):
+    queryset = Passivedcequipments.objects.all()
+    serializer_class = PdusSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Passivedcequipments.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class PassivedcequipmenttypesViewSet(viewsets.ModelViewSet):
+    queryset = Passivedcequipmenttypes.objects.all()
+    serializer_class = PdusSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Passivedcequipmenttypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class PassivedcequipmentmodelsViewSet(viewsets.ModelViewSet):
+    queryset = Passivedcequipmentmodels.objects.all()
+    serializer_class = PdusSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Passivedcequipmentmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class UnmanagedsViewSet(viewsets.ModelViewSet):
     queryset = Unmanageds.objects.all()

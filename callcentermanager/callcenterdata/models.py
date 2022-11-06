@@ -2663,64 +2663,6 @@ class Operatingsystemversions(models.Model):
         managed = True
         db_table = 'operatingsystemversions'
 
-
-class Passivedcequipmentmodels(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    product_number = models.CharField(max_length=255, blank=True, null=True)
-    weight = models.IntegerField()
-    required_units = models.IntegerField()
-    depth = models.FloatField()
-    power_connections = models.IntegerField()
-    power_consumption = models.IntegerField()
-    is_half_rack = models.IntegerField()
-    picture_front = models.TextField(blank=True, null=True)
-    picture_rear = models.TextField(blank=True, null=True)
-    pictures = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'passivedcequipmentmodels'
-
-
-class Passivedcequipments(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    locations_id = models.PositiveIntegerField()
-    serial = models.CharField(max_length=255, blank=True, null=True)
-    otherserial = models.CharField(max_length=255, blank=True, null=True)
-    passivedcequipmentmodels_id = models.PositiveIntegerField(blank=True, null=True)
-    passivedcequipmenttypes_id = models.PositiveIntegerField()
-    users_id_tech = models.PositiveIntegerField()
-    groups_id_tech = models.PositiveIntegerField()
-    is_template = models.IntegerField()
-    template_name = models.CharField(max_length=255, blank=True, null=True)
-    is_deleted = models.IntegerField()
-    states_id = models.PositiveIntegerField()
-    comment = models.TextField(blank=True, null=True)
-    manufacturers_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'passivedcequipments'
-
-
-class Passivedcequipmenttypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'passivedcequipmenttypes'
-
-
 class Pcivendors(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()

@@ -520,7 +520,20 @@ class PdumodelsSerializer(serializers.ModelSerializer):
         model = Pdumodels
         fields = '__all__'
 
+class PassivedcequipmentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Passivedcequipments
+        fields = '__all__'
 
+class PassivedcequipmentmodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Passivedcequipmentmodels
+        fields = '__all__'
+
+class PassivedcequipmenttypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Passivedcequipmenttypes
+        fields = '__all__'
 class UnmanagedsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Unmanageds
