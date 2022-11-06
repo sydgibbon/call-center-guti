@@ -1191,7 +1191,7 @@ class Peripheralmodels(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'peripheralmodels'
 
 
@@ -1226,7 +1226,7 @@ class Peripherals(models.Model):
     is_recursive = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'peripherals'
 
 
@@ -1237,7 +1237,7 @@ class Peripheraltypes(models.Model):
     date_creation = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'peripheraltypes'
 class Devicemotherboardmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
