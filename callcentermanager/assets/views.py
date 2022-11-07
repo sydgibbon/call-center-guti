@@ -184,7 +184,7 @@ class PdusViewSet(viewsets.ModelViewSet):
 
 class PdustypesViewSet(viewsets.ModelViewSet):
     queryset = Pdutypes.objects.all()
-    serializer_class = PdusSerializer
+    serializer_class = PdutypesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
     def post(self, request, *args, **kwargs):
@@ -199,7 +199,7 @@ class PdustypesViewSet(viewsets.ModelViewSet):
 
 class PdumodelsViewSet(viewsets.ModelViewSet):
     queryset = Pdumodels.objects.all()
-    serializer_class = PdusSerializer
+    serializer_class = PdumodelsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
     def post(self, request, *args, **kwargs):
@@ -214,7 +214,7 @@ class PdumodelsViewSet(viewsets.ModelViewSet):
 
 class PassivedcequipmentsViewSet(viewsets.ModelViewSet):
     queryset = Passivedcequipments.objects.all()
-    serializer_class = PdusSerializer
+    serializer_class = PassivedcequipmentsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
     def post(self, request, *args, **kwargs):
@@ -229,7 +229,7 @@ class PassivedcequipmentsViewSet(viewsets.ModelViewSet):
 
 class PassivedcequipmenttypesViewSet(viewsets.ModelViewSet):
     queryset = Passivedcequipmenttypes.objects.all()
-    serializer_class = PdusSerializer
+    serializer_class = PassivedcequipmenttypesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
     def post(self, request, *args, **kwargs):
@@ -244,7 +244,7 @@ class PassivedcequipmenttypesViewSet(viewsets.ModelViewSet):
 
 class PassivedcequipmentmodelsViewSet(viewsets.ModelViewSet):
     queryset = Passivedcequipmentmodels.objects.all()
-    serializer_class = PdusSerializer
+    serializer_class = PassivedcequipmentmodelsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
     def post(self, request, *args, **kwargs):
