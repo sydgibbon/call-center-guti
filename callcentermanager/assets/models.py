@@ -81,6 +81,43 @@ class Monitors(models.Model):
         db_table = 'monitors'
 
 
+class States(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    comment = models.TextField(blank=True, null=True)
+    states_id = models.PositiveIntegerField()
+    completename = models.TextField(blank=True, null=True)
+    level = models.IntegerField()
+    ancestors_cache = models.TextField(blank=True, null=True)
+    sons_cache = models.TextField(blank=True, null=True)
+    is_visible_computer = models.IntegerField()
+    is_visible_monitor = models.IntegerField()
+    is_visible_networkequipment = models.IntegerField()
+    is_visible_peripheral = models.IntegerField()
+    is_visible_phone = models.IntegerField()
+    is_visible_printer = models.IntegerField()
+    is_visible_softwareversion = models.IntegerField()
+    is_visible_softwarelicense = models.IntegerField()
+    is_visible_line = models.IntegerField()
+    is_visible_certificate = models.IntegerField()
+    is_visible_rack = models.IntegerField()
+    is_visible_passivedcequipment = models.IntegerField()
+    is_visible_enclosure = models.IntegerField()
+    is_visible_pdu = models.IntegerField()
+    is_visible_cluster = models.IntegerField()
+    is_visible_contract = models.IntegerField()
+    is_visible_appliance = models.IntegerField()
+    is_visible_databaseinstance = models.IntegerField()
+    is_visible_cable = models.IntegerField()
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'states'
+        unique_together = (('states_id', 'name'),)
+
 class Softwares(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -213,6 +250,32 @@ class Cartridges(models.Model):
     class Meta:
         managed = True
         db_table = 'cartridges'
+
+class Rackmodels(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    product_number = models.CharField(max_length=255, blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+    pictures = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'rackmodels'
+
+
+
+class Racktypes(models.Model):
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'racktypes'
 
 
 class Consumables(models.Model):
@@ -1913,7 +1976,8 @@ class Passivedcequipments(models.Model):
     locations_id = models.PositiveIntegerField()
     serial = models.CharField(max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
-    passivedcequipmentmodels_id = models.PositiveIntegerField(blank=True, null=True)
+    passivedcequipmentmodels_id = models.PositiveIntegerField(
+        blank=True, null=True)
     passivedcequipmenttypes_id = models.PositiveIntegerField()
     users_id_tech = models.PositiveIntegerField()
     groups_id_tech = models.PositiveIntegerField()
@@ -1941,3 +2005,489 @@ class Passivedcequipmenttypes(models.Model):
         managed = True
         db_table = 'passivedcequipmenttypes'
 
+
+class Entities(models.Model):
+    id = models.PositiveIntegerField(primary_key=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
+    entities_id = models.PositiveIntegerField(blank=True, null=True)
+    completename = models.TextField(blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    level = models.IntegerField()
+    sons_cache = models.TextField(blank=True, null=True)
+    ancestors_cache = models.TextField(blank=True, null=True)
+    registration_number = models.CharField(
+        max_length=255, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    postcode = models.CharField(max_length=255, blank=True, null=True)
+    town = models.CharField(max_length=255, blank=True, null=True)
+    state = models.CharField(max_length=255, blank=True, null=True)
+    country = models.CharField(max_length=255, blank=True, null=True)
+    website = models.CharField(max_length=255, blank=True, null=True)
+    phonenumber = models.CharField(max_length=255, blank=True, null=True)
+    fax = models.CharField(max_length=255, blank=True, null=True)
+    email = models.CharField(max_length=255, blank=True, null=True)
+    admin_email = models.CharField(max_length=255, blank=True, null=True)
+    admin_email_name = models.CharField(max_length=255, blank=True, null=True)
+    from_email = models.CharField(max_length=255, blank=True, null=True)
+    from_email_name = models.CharField(max_length=255, blank=True, null=True)
+    noreply_email = models.CharField(max_length=255, blank=True, null=True)
+    noreply_email_name = models.CharField(
+        max_length=255, blank=True, null=True)
+    replyto_email = models.CharField(max_length=255, blank=True, null=True)
+    replyto_email_name = models.CharField(
+        max_length=255, blank=True, null=True)
+    notification_subject_tag = models.CharField(
+        max_length=255, blank=True, null=True)
+    ldap_dn = models.CharField(max_length=255, blank=True, null=True)
+    tag = models.CharField(max_length=255, blank=True, null=True)
+    authldaps_id = models.PositiveIntegerField()
+    mail_domain = models.CharField(max_length=255, blank=True, null=True)
+    entity_ldapfilter = models.TextField(blank=True, null=True)
+    mailing_signature = models.TextField(blank=True, null=True)
+    cartridges_alert_repeat = models.IntegerField()
+    consumables_alert_repeat = models.IntegerField()
+    use_licenses_alert = models.IntegerField()
+    send_licenses_alert_before_delay = models.IntegerField()
+    use_certificates_alert = models.IntegerField()
+    send_certificates_alert_before_delay = models.IntegerField()
+    certificates_alert_repeat_interval = models.IntegerField()
+    use_contracts_alert = models.IntegerField()
+    send_contracts_alert_before_delay = models.IntegerField()
+    use_infocoms_alert = models.IntegerField()
+    send_infocoms_alert_before_delay = models.IntegerField()
+    use_reservations_alert = models.IntegerField()
+    use_domains_alert = models.IntegerField()
+    send_domains_alert_close_expiries_delay = models.IntegerField()
+    send_domains_alert_expired_delay = models.IntegerField()
+    autoclose_delay = models.IntegerField()
+    autopurge_delay = models.IntegerField()
+    notclosed_delay = models.IntegerField()
+    calendars_strategy = models.IntegerField()
+    calendars_id = models.PositiveIntegerField()
+    auto_assign_mode = models.IntegerField()
+    tickettype = models.IntegerField()
+    max_closedate = models.DateTimeField(blank=True, null=True)
+    inquest_config = models.IntegerField()
+    inquest_rate = models.IntegerField()
+    inquest_delay = models.IntegerField()
+    # Field name made lowercase.
+    inquest_url = models.CharField(
+        db_column='inquest_URL', max_length=255, blank=True, null=True)
+    autofill_warranty_date = models.CharField(max_length=255)
+    autofill_use_date = models.CharField(max_length=255)
+    autofill_buy_date = models.CharField(max_length=255)
+    autofill_delivery_date = models.CharField(max_length=255)
+    autofill_order_date = models.CharField(max_length=255)
+    tickettemplates_strategy = models.IntegerField()
+    tickettemplates_id = models.PositiveIntegerField()
+    changetemplates_strategy = models.IntegerField()
+    changetemplates_id = models.PositiveIntegerField()
+    problemtemplates_strategy = models.IntegerField()
+    problemtemplates_id = models.PositiveIntegerField()
+    entities_strategy_software = models.IntegerField()
+    entities_id_software = models.PositiveIntegerField()
+    default_contract_alert = models.IntegerField()
+    default_infocom_alert = models.IntegerField()
+    default_cartridges_alarm_threshold = models.IntegerField()
+    default_consumables_alarm_threshold = models.IntegerField()
+    delay_send_emails = models.IntegerField()
+    is_notif_enable_default = models.IntegerField()
+    inquest_duration = models.IntegerField()
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+    autofill_decommission_date = models.CharField(max_length=255)
+    suppliers_as_private = models.IntegerField()
+    anonymize_support_agents = models.IntegerField()
+    display_users_initials = models.IntegerField()
+    contracts_strategy_default = models.IntegerField()
+    contracts_id_default = models.PositiveIntegerField()
+    enable_custom_css = models.IntegerField()
+    custom_css_code = models.TextField(blank=True, null=True)
+    latitude = models.CharField(max_length=255, blank=True, null=True)
+    longitude = models.CharField(max_length=255, blank=True, null=True)
+    altitude = models.CharField(max_length=255, blank=True, null=True)
+    transfers_strategy = models.IntegerField()
+    transfers_id = models.PositiveIntegerField()
+    agent_base_url = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'entities'
+        unique_together = (('entities_id', 'name'),)
+
+
+class EntitiesKnowbaseitems(models.Model):
+    knowbaseitems_id = models.PositiveIntegerField()
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'entities_knowbaseitems'
+
+
+class EntitiesReminders(models.Model):
+    reminders_id = models.PositiveIntegerField()
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'entities_reminders'
+
+
+class EntitiesRssfeeds(models.Model):
+    rssfeeds_id = models.PositiveIntegerField()
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'entities_rssfeeds'
+
+
+class Manufacturers(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'manufacturers'
+
+
+class Networkaliases(models.Model):
+    entities_id = models.PositiveIntegerField()
+    networknames_id = models.PositiveIntegerField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    fqdns_id = models.PositiveIntegerField()
+    comment = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkaliases'
+
+
+class Networkinterfaces(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkinterfaces'
+
+
+class Networknames(models.Model):
+    entities_id = models.PositiveIntegerField()
+    items_id = models.PositiveIntegerField()
+    itemtype = models.CharField(max_length=100)
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    fqdns_id = models.PositiveIntegerField()
+    ipnetworks_id = models.PositiveIntegerField()
+    is_deleted = models.IntegerField()
+    is_dynamic = models.IntegerField()
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networknames'
+
+
+class Networkportaggregates(models.Model):
+    networkports_id = models.PositiveIntegerField(unique=True)
+    networkports_id_list = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkportaggregates'
+
+
+class Networkportaliases(models.Model):
+    networkports_id = models.PositiveIntegerField(unique=True)
+    networkports_id_alias = models.PositiveIntegerField()
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkportaliases'
+
+
+class Networkportconnectionlogs(models.Model):
+    date = models.DateTimeField(blank=True, null=True)
+    connected = models.IntegerField()
+    networkports_id_source = models.PositiveIntegerField()
+    networkports_id_destination = models.PositiveIntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'networkportconnectionlogs'
+
+
+class Networkportdialups(models.Model):
+    networkports_id = models.PositiveIntegerField(unique=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkportdialups'
+
+
+class Networkportethernets(models.Model):
+    networkports_id = models.PositiveIntegerField(unique=True)
+    items_devicenetworkcards_id = models.PositiveIntegerField()
+    type = models.CharField(max_length=10, blank=True, null=True)
+    speed = models.IntegerField()
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkportethernets'
+
+
+class Networkportfiberchannels(models.Model):
+    networkports_id = models.PositiveIntegerField(unique=True)
+    items_devicenetworkcards_id = models.PositiveIntegerField()
+    networkportfiberchanneltypes_id = models.PositiveIntegerField()
+    wwn = models.CharField(max_length=16, blank=True, null=True)
+    speed = models.IntegerField()
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkportfiberchannels'
+
+
+class Networkportfiberchanneltypes(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkportfiberchanneltypes'
+
+
+class Networkportlocals(models.Model):
+    networkports_id = models.PositiveIntegerField(unique=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkportlocals'
+
+
+class Networkportmetrics(models.Model):
+    date = models.DateField(blank=True, null=True)
+    ifinbytes = models.BigIntegerField()
+    ifinerrors = models.BigIntegerField()
+    ifoutbytes = models.BigIntegerField()
+    ifouterrors = models.BigIntegerField()
+    networkports_id = models.PositiveIntegerField()
+    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkportmetrics'
+        unique_together = (('networkports_id', 'date'),)
+
+
+class Networkports(models.Model):
+    items_id = models.PositiveIntegerField()
+    itemtype = models.CharField(max_length=100)
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    logical_number = models.IntegerField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    instantiation_type = models.CharField(
+        max_length=255, blank=True, null=True)
+    mac = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    is_deleted = models.IntegerField()
+    is_dynamic = models.IntegerField()
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+    ifmtu = models.IntegerField()
+    ifspeed = models.BigIntegerField()
+    ifinternalstatus = models.CharField(max_length=255, blank=True, null=True)
+    ifconnectionstatus = models.IntegerField()
+    iflastchange = models.CharField(max_length=255, blank=True, null=True)
+    ifinbytes = models.BigIntegerField()
+    ifinerrors = models.BigIntegerField()
+    ifoutbytes = models.BigIntegerField()
+    ifouterrors = models.BigIntegerField()
+    ifstatus = models.CharField(max_length=255, blank=True, null=True)
+    ifdescr = models.CharField(max_length=255, blank=True, null=True)
+    ifalias = models.CharField(max_length=255, blank=True, null=True)
+    portduplex = models.CharField(max_length=255, blank=True, null=True)
+    trunk = models.IntegerField()
+    lastup = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkports'
+
+
+class NetworkportsNetworkports(models.Model):
+    networkports_id_1 = models.PositiveIntegerField()
+    networkports_id_2 = models.PositiveIntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'networkports_networkports'
+        unique_together = (('networkports_id_1', 'networkports_id_2'),)
+
+
+class NetworkportsVlans(models.Model):
+    networkports_id = models.PositiveIntegerField()
+    vlans_id = models.PositiveIntegerField()
+    tagged = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'networkports_vlans'
+        unique_together = (('networkports_id', 'vlans_id'),)
+
+
+class Networkporttypes(models.Model):
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    value_decimal = models.IntegerField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    is_importable = models.IntegerField()
+    instantiation_type = models.CharField(
+        max_length=255, blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkporttypes'
+
+
+class Networkportwifis(models.Model):
+    networkports_id = models.PositiveIntegerField(unique=True)
+    items_devicenetworkcards_id = models.PositiveIntegerField()
+    wifinetworks_id = models.PositiveIntegerField()
+    networkportwifis_id = models.PositiveIntegerField()
+    version = models.CharField(max_length=20, blank=True, null=True)
+    mode = models.CharField(max_length=20, blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networkportwifis'
+
+
+class Networks(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'networks'
+
+
+class Locations(models.Model):
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    locations_id = models.PositiveIntegerField()
+    completename = models.TextField(blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    level = models.IntegerField()
+    ancestors_cache = models.TextField(blank=True, null=True)
+    sons_cache = models.TextField(blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    postcode = models.CharField(max_length=255, blank=True, null=True)
+    town = models.CharField(max_length=255, blank=True, null=True)
+    state = models.CharField(max_length=255, blank=True, null=True)
+    country = models.CharField(max_length=255, blank=True, null=True)
+    building = models.CharField(max_length=255, blank=True, null=True)
+    room = models.CharField(max_length=255, blank=True, null=True)
+    latitude = models.CharField(max_length=255, blank=True, null=True)
+    longitude = models.CharField(max_length=255, blank=True, null=True)
+    altitude = models.CharField(max_length=255, blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'locations'
+        unique_together = (('entities_id', 'locations_id', 'name'),)
+
+
+class Autoupdatesystems(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'autoupdatesystems'
+
+class Snmpcredentials(models.Model):
+    name = models.CharField(max_length=64, blank=True, null=True)
+    snmpversion = models.CharField(max_length=8)
+    community = models.CharField(max_length=255, blank=True, null=True)
+    username = models.CharField(max_length=255, blank=True, null=True)
+    authentication = models.CharField(max_length=255, blank=True, null=True)
+    auth_passphrase = models.CharField(max_length=255, blank=True, null=True)
+    encryption = models.CharField(max_length=255, blank=True, null=True)
+    priv_passphrase = models.CharField(max_length=255, blank=True, null=True)
+    is_deleted = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'snmpcredentials'
+
+class Dcrooms(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    locations_id = models.PositiveIntegerField()
+    vis_cols = models.IntegerField(blank=True, null=True)
+    vis_rows = models.IntegerField(blank=True, null=True)
+    blueprint = models.TextField(blank=True, null=True)
+    datacenters_id = models.PositiveIntegerField()
+    is_deleted = models.IntegerField()
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dcrooms'
+
+class Enclosuremodels(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    product_number = models.CharField(max_length=255, blank=True, null=True)
+    weight = models.IntegerField()
+    required_units = models.IntegerField()
+    depth = models.FloatField()
+    power_connections = models.IntegerField()
+    power_consumption = models.IntegerField()
+    is_half_rack = models.IntegerField()
+    picture_front = models.TextField(blank=True, null=True)
+    picture_rear = models.TextField(blank=True, null=True)
+    pictures = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'enclosuremodels'

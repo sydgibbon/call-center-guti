@@ -1,13 +1,13 @@
 from rest_framework import serializers  # import de serializers
 # import de todos los callcenterdata, proximamente se mueve a assets
 from assets.models import *
+from assistance import models as assistanceModels, serializers as assistanceSerializers
 
 
-class ComputersSerializer(serializers.ModelSerializer):
-    # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
-    class Meta:  # Clase meta para configurar el serializer
-        model = Computers  # Especificar el nombre del Model
-        fields = '__all__'  # Para todos los atributos del model
+class AutoupdatesystemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Autoupdatesystems
+        fields = '__all__'
 
 
 class DevicemotherboardsSerializer(serializers.ModelSerializer):
@@ -257,6 +257,16 @@ class PhonetypesSerializer(serializers.ModelSerializer):
 
 
 # Este tiene problemitas (no se le puede agregar con add)
+class RackmodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rackmodels
+        fields = '__all__'
+
+class RacktypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Racktypes
+        fields = '__all__'
+
 class ItemsRacksSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemsRacks
@@ -268,6 +278,11 @@ class ItemsEnclosuresSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemsEnclosures
         fields = '__all__'
+class EnclosuremodelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Enclosuremodels
+        fields = '__all__'
+
 
 
 class PdusPlugsSerializer(serializers.ModelSerializer):
@@ -451,58 +466,12 @@ class DevicemotherboardmodelsSerializer(serializers.ModelSerializer):
 # ---------------------------
 
 
-class MonitorsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Monitors
-        fields = '__all__'
-
-
-class SoftwaresSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Softwares
-        fields = '__all__'
-
-
-class NetworkequipmentsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Networkequipments
-        fields = '__all__'
-
-
-class PrintersSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Printers
-        fields = '__all__'
-
-
-class CartridgesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cartridges
-        fields = '__all__'
-
-
 class ConsumablesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Consumables
         fields = '__all__'
 
 
-class PhonesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Phones
-        fields = '__all__'
-
-
-class RacksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Racks
-        fields = '__all__'
-
-
-class EnclosuresSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Enclosures
-        fields = '__all__'
 
 
 class PdusSerializer(serializers.ModelSerializer):
@@ -510,19 +479,16 @@ class PdusSerializer(serializers.ModelSerializer):
         model = Pdus
         fields = '__all__'
 
+
 class PdutypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdutypes
         fields = '__all__'
 
+
 class PdumodelsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdumodels
-        fields = '__all__'
-
-class PassivedcequipmentsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Passivedcequipments
         fields = '__all__'
 
 class PassivedcequipmentmodelsSerializer(serializers.ModelSerializer):
@@ -530,25 +496,21 @@ class PassivedcequipmentmodelsSerializer(serializers.ModelSerializer):
         model = Passivedcequipmentmodels
         fields = '__all__'
 
+
 class PassivedcequipmenttypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Passivedcequipmenttypes
         fields = '__all__'
+
+
 class UnmanagedsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Unmanageds
         fields = '__all__'
 
-
-class CablesSerializer(serializers.ModelSerializer):
+class DevicesimcardtypesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Cables
-        fields = '__all__'
-
-
-class DevicesimcardsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Devicesimcards
+        model = Devicesimcardtypes
         fields = '__all__'
 
 
@@ -624,12 +586,6 @@ class PrintersCartridgeinfosSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CartridgeitemsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cartridgeitems
-        fields = '__all__'
-
-
 class CartridgeitemsPrintermodelsSerializer(serializers.ModelSerializer):
     class Meta:
         model = CartridgeitemsPrintermodels
@@ -639,12 +595,6 @@ class CartridgeitemsPrintermodelsSerializer(serializers.ModelSerializer):
 class CartridgeitemtypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cartridgeitemtypes
-        fields = '__all__'
-
-
-class ConsumableitemsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Consumableitems
         fields = '__all__'
 
 
@@ -678,12 +628,6 @@ class NetworkequipmenttypesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class PeripheralsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Peripherals
-        fields = '__all__'
-
-
 class PeripheraltypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Peripheraltypes
@@ -694,3 +638,1338 @@ class PeripheralmodelsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Peripheralmodels
         fields = '__all__'
+
+
+class EntitiesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Entities
+        fields = '__all__'
+
+
+class NetworksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Networks
+        fields = '__all__'
+
+
+class SnmpcredentialsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Snmpcredentials
+        fields = '__all__'
+
+
+class ManufacturersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Manufacturers
+        fields = '__all__'
+
+class DcroomsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Dcrooms
+        fields = '__all__'
+
+
+class LocationsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Locations
+        fields = '__all__'
+
+
+class StatesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = States
+        fields = '__all__'
+
+
+class ComputersSerializer(serializers.ModelSerializer):
+    computertypes_id = serializers.SerializerMethodField()
+    computermodels_id = serializers.SerializerMethodField()
+    entities_id = serializers.SerializerMethodField()
+    networks_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
+
+    class Meta:  # Clase meta para configurar el serializer
+        model = Computers  # Especificar el nombre del Model
+        fields = '__all__'  # Para todos los atributos del model
+
+    def get_computermodels_id(self, obj):
+        computermodels_id_query = Computermodels.objects.filter(id=obj.id)
+        serializer = ComputermodelsSerializer(
+            computermodels_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_computertypes_id(self, obj):
+        computertypes_id_query = Computertypes.objects.filter(id=obj.id)
+        serializer = ComputertypesSerializer(computertypes_id_query, many=True)
+        return serializer.data
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(id=obj.id)
+        serializer = EntitiesSerializer(entities_id_query, many=True)
+        return serializer.data
+
+    def get_networks_id(self, obj):
+        networks_id_query = Networks.objects.filter(id=obj.id)
+        serializer = NetworksSerializer(networks_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(id=obj.id)
+        serializer = LocationsSerializer(locations_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+
+class MonitorsSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    monitortypes_id = serializers.SerializerMethodField()
+    monitormodels_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Monitors
+        fields = '__all__'
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(id=obj.id)
+        serializer = EntitiesSerializer(entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(id=obj.id)
+        serializer = LocationsSerializer(locations_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_monitortypes_id(self, obj):
+        monitortypes_id_query = Monitortypes.objects.filter(
+            id=obj.id)
+        serializer = MonitortypesSerializer(
+            monitortypes_id_query, many=True)
+        return serializer.data
+
+    def get_monitormodels_id(self, obj):
+        monitormodels_id_query = Monitormodels.objects.filter(
+            id=obj.id)
+        serializer = MonitormodelsSerializer(
+            monitormodels_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+
+class SoftwaresSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    softwarecategories_id = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Softwares
+        fields = '__all__'
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(id=obj.id)
+        serializer = EntitiesSerializer(entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(id=obj.id)
+        serializer = LocationsSerializer(locations_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_softwarecategories_id(self, obj):
+        softwarecategories_id_query = Softwarecategories.objects.filter(
+            id=obj.id)
+        serializer = SoftwarecategoriesSerializer(
+            softwarecategories_id_query, many=True)
+        return serializer.data
+
+
+class NetworkequipmentsSerializer(serializers.ModelSerializer):
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    networks_id = serializers.SerializerMethodField()
+    networkequipmenttypes_id = serializers.SerializerMethodField()
+    networkequipmentmodels_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+    snmpcredentials_id = serializers.SerializerMethodField()
+    entities_id = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Networkequipments
+        fields = '__all__'
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(id=obj.id)
+        serializer = LocationsSerializer(locations_id_query, many=True)
+        return serializer.data
+
+    def get_networks_id(self, obj):
+        networks_id_query = Networks.objects.filter(id=obj.id)
+        serializer = NetworksSerializer(networks_id_query, many=True)
+        return serializer.data
+
+    def get_networkequipmenttypes_id(self, obj):
+        networks_id_query = Networkequipmenttypes.objects.filter(id=obj.id)
+        serializer = NetworkequipmenttypesSerializer(
+            networks_id_query, many=True)
+        return serializer.data
+
+    def get_networkequipmentmodels_id(self, obj):
+        networks_id_query = Networkequipmentmodels.objects.filter(id=obj.id)
+        serializer = NetworksSerializer(networks_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(id=obj.id)
+        serializer = ManufacturersSerializer(manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+    def get_snmpcredentials_id(self, obj):
+        snmpcredentials_id_query = Snmpcredentials.objects.filter(
+            id=obj.id)
+        serializer = SnmpcredentialsSerializer(
+            snmpcredentials_id_query, many=True)
+        return serializer.data
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+
+class PeripheralsSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    peripheraltypes_id = serializers.SerializerMethodField()
+    peripheralmodels_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Peripherals
+        fields = '__all__'
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(id=obj.id)
+        serializer = LocationsSerializer(locations_id_query, many=True)
+        return serializer.data
+
+    def get_peripheraltypes_id(self, obj):
+        peripheraltypes_id_query = Peripheraltypes.objects.filter(id=obj.id)
+        serializer = PeripheraltypesSerializer(
+            peripheraltypes_id_query, many=True)
+        return serializer.data
+
+    def get_peripheralmodels_id(self, obj):
+        peripheralmodels_id_query = Peripheralmodels.objects.filter(id=obj.id)
+        serializer = PeripheralmodelsSerializer(
+            peripheralmodels_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(id=obj.id)
+        serializer = ManufacturersSerializer(manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(id=obj.id)
+        serializer = StatesSerializer(states_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+
+class PrintersSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    networks_id = serializers.SerializerMethodField()
+    printermodels_id = serializers.SerializerMethodField()
+    printertypes_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    snmpcredentials_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Printers
+        fields = '__all__'
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(id=obj.id)
+        serializer = LocationsSerializer(locations_id_query, many=True)
+        return serializer.data
+
+    def get_networks_id(self, obj):
+        networks_id_query = Networks.objects.filter(id=obj.id)
+        serializer = NetworksSerializer(networks_id_query, many=True)
+        return serializer.data
+
+    def get_printermodels_id(self, obj):
+        printermodels_id_query = Printermodels.objects.filter(id=obj.id)
+        serializer = PrintermodelsSerializer(printermodels_id_query, many=True)
+        return serializer.data
+
+    def get_printertypes_id(self, obj):
+        printertypes_id_query = Printertypes.objects.filter(id=obj.id)
+        serializer = PrintertypesSerializer(printertypes_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(id=obj.id)
+        serializer = ManufacturersSerializer(manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(id=obj.id)
+        serializer = StatesSerializer(states_id_query, many=True)
+        return serializer.data
+
+    def get_snmpcredentials_id(self, obj):
+        snmpcredentials_id_query = Snmpcredentials.objects.filter(id=obj.id)
+        serializer = SnmpcredentialsSerializer(
+            snmpcredentials_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+
+class CartridgeitemsSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    cartridgeitemtypes_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Cartridgeitems
+        fields = '__all__'
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(
+            id=obj.id)
+        serializer = LocationsSerializer(
+            locations_id_query, many=True)
+        return serializer.data
+
+    def get_cartridgeitemtypes_id(self, obj):
+        cartridgeitemtypes_id_query = Cartridgeitemtypes.objects.filter(
+            id=obj.id)
+        serializer = CartridgeitemtypesSerializer(
+            cartridgeitemtypes_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+
+class CartridgesSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    cartridgeitems_id = serializers.SerializerMethodField()
+    printers_id = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Cartridges
+        fields = '__all__'
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_cartridgeitems_id(self, obj):
+        cartridgeitems_id_query = Cartridgeitems.objects.filter(
+            id=obj.id)
+        serializer = CartridgeitemsSerializer(
+            cartridgeitems_id_query, many=True)
+        return serializer.data
+
+    def get_printers_id(self, obj):
+        printers_id_query = Printers.objects.filter(id=obj.id)
+        serializer = PrintersSerializer(printers_id_query, many=True)
+        return serializer.data
+
+
+class ConsumableitemsSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    consumableitemtypes_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Consumableitems
+        fields = '__all__'
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(
+            id=obj.id)
+        serializer = LocationsSerializer(
+            locations_id_query, many=True)
+        return serializer.data
+
+    def get_consumableitemtypes_id(self, obj):
+        consumableitemtypes_id_query = Consumableitemtypes.objects.filter(
+            id=obj.id)
+        serializer = ConsumableitemtypesSerializer(
+            consumableitemtypes_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+
+class PhonesSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    phonetypes_id = serializers.SerializerMethodField()
+    phonemodels_id = serializers.SerializerMethodField()
+    phonepowersupplies_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Phones
+        fields = '__all__'
+
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(
+            id=obj.id)
+        serializer = LocationsSerializer(
+            locations_id_query, many=True)
+        return serializer.data
+
+    def get_phonetypes_id(self, obj):
+        phonetypes_id_query = Phonetypes.objects.filter(
+            id=obj.id)
+        serializer = PhonetypesSerializer(
+            phonetypes_id_query, many=True)
+        return serializer.data
+
+    def get_phonemodels_id(self, obj):
+        phonemodels_id_query = Phonemodels.objects.filter(
+            id=obj.id)
+        serializer = PhonemodelsSerializer(
+            phonemodels_id_query, many=True)
+        return serializer.data
+
+    def get_phonepowersupplies_id(self, obj):
+        phonepowersupplies_id_query = Phonepowersupplies.objects.filter(
+            id=obj.id)
+        serializer = PhonepowersuppliesSerializer(
+            phonepowersupplies_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+
+class RacksSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    racktypes_id = serializers.SerializerMethodField()
+    rackmodels_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    dcrooms_id = serializers.SerializerMethodField()
+    class Meta:
+        model = Racks
+        fields = '__all__'
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(
+            id=obj.id)
+        serializer = LocationsSerializer(
+            locations_id_query, many=True)
+        return serializer.data
+
+    def get_racktypes_id(self, obj):
+        racktypes_id_query = Racktypes.objects.filter(
+            id=obj.id)
+        serializer = RacktypesSerializer(
+            racktypes_id_query, many=True)
+        return serializer.data
+
+    def get_rackmodels_id(self, obj):
+        rackmodels_id_query = Rackmodels.objects.filter(
+            id=obj.id)
+        serializer = RackmodelsSerializer(
+            rackmodels_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+    def get_dcrooms_id(self, obj):
+        dcrooms_id_query = Dcrooms.objects.filter(
+            id=obj.id)
+        serializer = DcroomsSerializer(
+            dcrooms_id_query, many=True)
+        return serializer.data
+
+class EnclosuresSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    enclosuremodels_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    class Meta:
+        model = Enclosures
+        fields = '__all__'
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(
+            id=obj.id)
+        serializer = LocationsSerializer(
+            locations_id_query, many=True)
+        return serializer.data
+
+    def get_enclosuremodels_id(self, obj):
+        enclosuremodels_id_query = Enclosuremodels.objects.filter(
+            id=obj.id)
+        serializer = EnclosuremodelsSerializer(
+            enclosuremodels_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+
+class PdusSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    pdumodels_id = serializers.SerializerMethodField()
+    pdutypes_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    class Meta:
+        model = Pdus
+        fields = '__all__'
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(
+            id=obj.id)
+        serializer = LocationsSerializer(
+            locations_id_query, many=True)
+        return serializer.data
+
+    def get_pdumodels_id(self, obj):
+        pdumodels_id_query = Pdumodels.objects.filter(
+            id=obj.id)
+        serializer = PdumodelsSerializer(
+            pdumodels_id_query, many=True)
+        return serializer.data
+    def get_pdutypes_id(self, obj):
+        pdutypes_id_query = Pdutypes.objects.filter(
+            id=obj.id)
+        serializer = PdutypesSerializer(
+            pdutypes_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+
+
+class PassivedcequipmentsSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    passivedcequipmentmodels_id = serializers.SerializerMethodField()
+    passivedcequipmenttypes_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    class Meta:
+        model = Passivedcequipments
+        fields = '__all__'
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(
+            id=obj.id)
+        serializer = LocationsSerializer(
+            locations_id_query, many=True)
+        return serializer.data
+
+    def get_passivedcequipmentmodels_id(self, obj):
+        passivedcequipmentmodels_id_query = Passivedcequipmentmodels.objects.filter(
+            id=obj.id)
+        serializer = PassivedcequipmentmodelsSerializer(
+            passivedcequipmentmodels_id_query, many=True)
+        return serializer.data
+    def get_passivedcequipmenttypes_id(self, obj):
+        passivedcequipmenttypes_id_query = Passivedcequipmenttypes.objects.filter(
+            id=obj.id)
+        serializer = PassivedcequipmenttypesSerializer(
+            passivedcequipmenttypes_id_query, many=True)
+        return serializer.data
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+
+class UnmanagedsSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    locations_id = serializers.SerializerMethodField()
+    networks_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    groups_id_tech = serializers.SerializerMethodField()
+    users_id = serializers.SerializerMethodField()
+    groups_id = serializers.SerializerMethodField()
+    autoupdatesystems_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    class Meta:
+        model = Unmanageds
+        fields = '__all__'
+
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+
+    def get_groups_id_tech(self, obj):
+        groups_id_tech_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_tech_query, many=True)
+        return serializer.data
+
+    def get_users_id(self, obj):
+        users_id_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_query, many=True)
+        return serializer.data
+
+    def get_groups_id(self, obj):
+        groups_id_query = assistanceModels.Groups.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.GroupsSerializer(
+            groups_id_query, many=True)
+        return serializer.data
+
+    def get_autoupdatesystems_id(self, obj):
+        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
+            id=obj.id)
+        serializer = AutoupdatesystemsSerializer(
+            autoupdatesystems_id_query, many=True)
+        return serializer.data
+
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+
+    def get_locations_id(self, obj):
+        locations_id_query = Locations.objects.filter(
+            id=obj.id)
+        serializer = LocationsSerializer(
+            locations_id_query, many=True)
+        return serializer.data
+    def get_networks_id(self, obj):
+        networks_id_query = Networks.objects.filter(
+            id=obj.id)
+        serializer = NetworksSerializer(
+            networks_id_query, many=True)
+        return serializer.data
+
+class CablesSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    users_id_tech = serializers.SerializerMethodField()
+    cablestrands_id = serializers.SerializerMethodField()
+    cabletypes_id = serializers.SerializerMethodField()
+    states_id = serializers.SerializerMethodField()
+    class Meta:
+        model = Cables
+        fields = '__all__'
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+    def get_cablestrands_id(self, obj):
+        cablestrands_id_query = Cablestrands.objects.filter(
+            id=obj.id)
+        serializer = CablestrandsSerializer(
+            cablestrands_id_query, many=True)
+        return serializer.data
+    def get_users_id_tech(self, obj):
+        users_id_tech_query = assistanceModels.Users.objects.filter(
+            id=obj.id)
+        serializer = assistanceSerializers.UsersSerializer(
+            users_id_tech_query, many=True)
+        return serializer.data
+    def get_cabletypes_id(self, obj):
+        cabletypes_id_query = Cabletypes.objects.filter(
+            id=obj.id)
+        serializer = CabletypesSerializer(
+            cabletypes_id_query, many=True)
+        return serializer.data
+    def get_states_id(self, obj):
+        states_id_query = States.objects.filter(
+            id=obj.id)
+        serializer = StatesSerializer(
+            states_id_query, many=True)
+        return serializer.data
+
+class DevicesimcardsSerializer(serializers.ModelSerializer):
+    entities_id = serializers.SerializerMethodField()
+    manufacturers_id = serializers.SerializerMethodField()
+    devicesimcardtypes_id = serializers.SerializerMethodField()
+    class Meta:
+        model = Devicesimcards
+        fields = '__all__'
+    def get_entities_id(self, obj):
+        entities_id_query = Entities.objects.filter(
+            id=obj.id)
+        serializer = EntitiesSerializer(
+            entities_id_query, many=True)
+        return serializer.data
+    def get_manufacturers_id(self, obj):
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.id)
+        serializer = ManufacturersSerializer(
+            manufacturers_id_query, many=True)
+        return serializer.data
+    def get_devicesimcardtypes_id(self, obj):
+        devicesimcardtypes_id_query = Devicesimcardtypes.objects.filter(
+            id=obj.id)
+        serializer = DevicesimcardtypesSerializer(
+            devicesimcardtypes_id_query, many=True)
+        return serializer.data

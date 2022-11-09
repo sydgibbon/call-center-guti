@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ChangesTickets(models.Model):
     changes_id = models.PositiveIntegerField()
     tickets_id = models.PositiveIntegerField()
@@ -8,6 +9,7 @@ class ChangesTickets(models.Model):
         managed = True
         db_table = 'changes_tickets'
         unique_together = (('changes_id', 'tickets_id'),)
+
 
 class GroupsTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
@@ -19,6 +21,7 @@ class GroupsTickets(models.Model):
         db_table = 'groups_tickets'
         unique_together = (('tickets_id', 'type', 'groups_id'),)
 
+
 class ItemsTickets(models.Model):
     itemtype = models.CharField(max_length=255, blank=True, null=True)
     items_id = models.PositiveIntegerField()
@@ -28,6 +31,7 @@ class ItemsTickets(models.Model):
         managed = True
         db_table = 'items_tickets'
         unique_together = (('itemtype', 'items_id', 'tickets_id'),)
+
 
 class OlalevelsTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
@@ -39,6 +43,7 @@ class OlalevelsTickets(models.Model):
         db_table = 'olalevels_tickets'
         unique_together = (('tickets_id', 'olalevels_id'),)
 
+
 class ProblemsTickets(models.Model):
     problems_id = models.PositiveIntegerField()
     tickets_id = models.PositiveIntegerField()
@@ -47,6 +52,7 @@ class ProblemsTickets(models.Model):
         managed = True
         db_table = 'problems_tickets'
         unique_together = (('problems_id', 'tickets_id'),)
+
 
 class ProjecttasksTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
@@ -57,6 +63,7 @@ class ProjecttasksTickets(models.Model):
         db_table = 'projecttasks_tickets'
         unique_together = (('tickets_id', 'projecttasks_id'),)
 
+
 class SlalevelsTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
     slalevels_id = models.PositiveIntegerField()
@@ -66,6 +73,7 @@ class SlalevelsTickets(models.Model):
         managed = True
         db_table = 'slalevels_tickets'
         unique_together = (('tickets_id', 'slalevels_id'),)
+
 
 class SuppliersTickets(models.Model):
     tickets_id = models.PositiveIntegerField()
@@ -78,6 +86,7 @@ class SuppliersTickets(models.Model):
         managed = True
         db_table = 'suppliers_tickets'
         unique_together = (('tickets_id', 'type', 'suppliers_id'),)
+
 
 class Ticketcosts(models.Model):
     tickets_id = models.PositiveIntegerField()
@@ -96,6 +105,7 @@ class Ticketcosts(models.Model):
         managed = True
         db_table = 'ticketcosts'
 
+
 class Ticketrecurrents(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -113,6 +123,7 @@ class Ticketrecurrents(models.Model):
     class Meta:
         managed = True
         db_table = 'ticketrecurrents'
+
 
 class Tickets(models.Model):
     entities_id = models.PositiveIntegerField()
@@ -160,6 +171,7 @@ class Tickets(models.Model):
         managed = True
         db_table = 'tickets'
 
+
 class TicketsContracts(models.Model):
     tickets_id = models.PositiveIntegerField()
     contracts_id = models.PositiveIntegerField()
@@ -191,7 +203,8 @@ class TicketsUsers(models.Model):
     class Meta:
         managed = True
         db_table = 'tickets_users'
-        unique_together = (('tickets_id', 'type', 'users_id', 'alternative_email'),)
+        unique_together = (
+            ('tickets_id', 'type', 'users_id', 'alternative_email'),)
 
 
 class Ticketsatisfactions(models.Model):
@@ -234,6 +247,7 @@ class Tickettasks(models.Model):
         db_table = 'tickettasks'
 
 # Verificar - Ver Abajo
+
 
 class Tickettemplatehiddenfields(models.Model):
     tickettemplates_id = models.PositiveIntegerField()
@@ -294,6 +308,7 @@ class Ticketvalidations(models.Model):
 
 # Verificar - Ver Arriba
 
+
 class Logs(models.Model):
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
@@ -309,6 +324,7 @@ class Logs(models.Model):
         managed = True
         db_table = 'logs'
 
+
 class Events(models.Model):
     items_id = models.PositiveIntegerField()
     type = models.CharField(max_length=255, blank=True, null=True)
@@ -320,6 +336,7 @@ class Events(models.Model):
     class Meta:
         managed = True
         db_table = 'events'
+
 
 class Recurrentchanges(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -339,6 +356,7 @@ class Recurrentchanges(models.Model):
         managed = True
         db_table = 'recurrentchanges'
 
+
 class ChangesUsers(models.Model):
     changes_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
@@ -349,7 +367,9 @@ class ChangesUsers(models.Model):
     class Meta:
         managed = True
         db_table = 'changes_users'
-        unique_together = (('changes_id', 'type', 'users_id', 'alternative_email'),)
+        unique_together = (
+            ('changes_id', 'type', 'users_id', 'alternative_email'),)
+
 
 class Changes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -386,6 +406,96 @@ class Changes(models.Model):
     class Meta:
         managed = True
         db_table = 'changes'
+
+
+class GroupsKnowbaseitems(models.Model):
+    knowbaseitems_id = models.PositiveIntegerField()
+    groups_id = models.PositiveIntegerField()
+    entities_id = models.PositiveIntegerField(blank=True, null=True)
+    is_recursive = models.IntegerField()
+    no_entity_restriction = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'groups_knowbaseitems'
+
+
+class GroupsProblems(models.Model):
+    problems_id = models.PositiveIntegerField()
+    groups_id = models.PositiveIntegerField()
+    type = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'groups_problems'
+        unique_together = (('problems_id', 'type', 'groups_id'),)
+
+
+class GroupsReminders(models.Model):
+    reminders_id = models.PositiveIntegerField()
+    groups_id = models.PositiveIntegerField()
+    entities_id = models.PositiveIntegerField(blank=True, null=True)
+    is_recursive = models.IntegerField()
+    no_entity_restriction = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'groups_reminders'
+
+
+class GroupsRssfeeds(models.Model):
+    rssfeeds_id = models.PositiveIntegerField()
+    groups_id = models.PositiveIntegerField()
+    entities_id = models.PositiveIntegerField(blank=True, null=True)
+    is_recursive = models.IntegerField()
+    no_entity_restriction = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'groups_rssfeeds'
+
+
+class GroupsUsers(models.Model):
+    users_id = models.PositiveIntegerField()
+    groups_id = models.PositiveIntegerField()
+    is_dynamic = models.IntegerField()
+    is_manager = models.IntegerField()
+    is_userdelegate = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'groups_users'
+        unique_together = (('users_id', 'groups_id'),)
+
+
+class Groups(models.Model):
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    ldap_field = models.CharField(max_length=255, blank=True, null=True)
+    ldap_value = models.TextField(blank=True, null=True)
+    ldap_group_dn = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    groups_id = models.PositiveIntegerField()
+    completename = models.TextField(blank=True, null=True)
+    level = models.IntegerField()
+    ancestors_cache = models.TextField(blank=True, null=True)
+    sons_cache = models.TextField(blank=True, null=True)
+    is_requester = models.IntegerField()
+    is_watcher = models.IntegerField()
+    is_assign = models.IntegerField()
+    is_task = models.IntegerField()
+    is_notify = models.IntegerField()
+    is_itemgroup = models.IntegerField()
+    is_usergroup = models.IntegerField()
+    is_manager = models.IntegerField()
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'groups'
+
 
 class Users(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -427,11 +537,14 @@ class Users(models.Model):
     priority_6 = models.CharField(max_length=20, blank=True, null=True)
     followup_private = models.IntegerField(blank=True, null=True)
     task_private = models.IntegerField(blank=True, null=True)
-    default_requesttypes_id = models.PositiveIntegerField(blank=True, null=True)
-    password_forget_token = models.CharField(max_length=40, blank=True, null=True)
+    default_requesttypes_id = models.PositiveIntegerField(
+        blank=True, null=True)
+    password_forget_token = models.CharField(
+        max_length=40, blank=True, null=True)
     password_forget_token_date = models.DateTimeField(blank=True, null=True)
     user_dn = models.TextField(blank=True, null=True)
-    registration_number = models.CharField(max_length=255, blank=True, null=True)
+    registration_number = models.CharField(
+        max_length=255, blank=True, null=True)
     show_count_on_tabs = models.IntegerField(blank=True, null=True)
     refresh_views = models.IntegerField(blank=True, null=True)
     set_default_tech = models.IntegerField(blank=True, null=True)
@@ -444,12 +557,16 @@ class Users(models.Model):
     display_count_on_home = models.IntegerField(blank=True, null=True)
     notification_to_myself = models.IntegerField(blank=True, null=True)
     duedateok_color = models.CharField(max_length=255, blank=True, null=True)
-    duedatewarning_color = models.CharField(max_length=255, blank=True, null=True)
-    duedatecritical_color = models.CharField(max_length=255, blank=True, null=True)
+    duedatewarning_color = models.CharField(
+        max_length=255, blank=True, null=True)
+    duedatecritical_color = models.CharField(
+        max_length=255, blank=True, null=True)
     duedatewarning_less = models.IntegerField(blank=True, null=True)
     duedatecritical_less = models.IntegerField(blank=True, null=True)
-    duedatewarning_unit = models.CharField(max_length=255, blank=True, null=True)
-    duedatecritical_unit = models.CharField(max_length=255, blank=True, null=True)
+    duedatewarning_unit = models.CharField(
+        max_length=255, blank=True, null=True)
+    duedatecritical_unit = models.CharField(
+        max_length=255, blank=True, null=True)
     display_options = models.TextField(blank=True, null=True)
     is_deleted_ldap = models.IntegerField()
     pdffont = models.CharField(max_length=255, blank=True, null=True)
@@ -478,10 +595,14 @@ class Users(models.Model):
     groups_id = models.PositiveIntegerField()
     users_id_supervisor = models.PositiveIntegerField()
     timezone = models.CharField(max_length=50, blank=True, null=True)
-    default_dashboard_central = models.CharField(max_length=100, blank=True, null=True)
-    default_dashboard_assets = models.CharField(max_length=100, blank=True, null=True)
-    default_dashboard_helpdesk = models.CharField(max_length=100, blank=True, null=True)
-    default_dashboard_mini_ticket = models.CharField(max_length=100, blank=True, null=True)
+    default_dashboard_central = models.CharField(
+        max_length=100, blank=True, null=True)
+    default_dashboard_assets = models.CharField(
+        max_length=100, blank=True, null=True)
+    default_dashboard_helpdesk = models.CharField(
+        max_length=100, blank=True, null=True)
+    default_dashboard_mini_ticket = models.CharField(
+        max_length=100, blank=True, null=True)
     default_central_tab = models.IntegerField(blank=True, null=True)
     nickname = models.CharField(max_length=255, blank=True, null=True)
 
@@ -489,6 +610,7 @@ class Users(models.Model):
         managed = True
         db_table = 'users'
         unique_together = (('name', 'authtype', 'auths_id'),)
+
 
 class Problems(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -522,6 +644,7 @@ class Problems(models.Model):
         managed = True
         db_table = 'problems'
 
+
 class ProblemsUsers(models.Model):
     problems_id = models.PositiveIntegerField()
     users_id = models.PositiveIntegerField()
@@ -532,7 +655,9 @@ class ProblemsUsers(models.Model):
     class Meta:
         managed = True
         db_table = 'problems_users'
-        unique_together = (('problems_id', 'type', 'users_id', 'alternative_email'),)
+        unique_together = (
+            ('problems_id', 'type', 'users_id', 'alternative_email'),)
+
 
 class Planningexternalevents(models.Model):
     uuid = models.CharField(unique=True, max_length=255, blank=True, null=True)
@@ -590,6 +715,7 @@ class Planningrecalls(models.Model):
         db_table = 'planningrecalls'
         unique_together = (('itemtype', 'items_id', 'users_id'),)
 
+
 class Planningeventcategories(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     color = models.CharField(max_length=255, blank=True, null=True)
@@ -600,6 +726,7 @@ class Planningeventcategories(models.Model):
     class Meta:
         managed = True
         db_table = 'planningeventcategories'
+
 
 class Crontasklogs(models.Model):
     crontasks_id = models.PositiveIntegerField()
@@ -613,6 +740,7 @@ class Crontasklogs(models.Model):
     class Meta:
         managed = True
         db_table = 'crontasklogs'
+
 
 class Crontasks(models.Model):
     itemtype = models.CharField(max_length=100)
@@ -635,4 +763,3 @@ class Crontasks(models.Model):
         managed = True
         db_table = 'crontasks'
         unique_together = (('itemtype', 'name'),)
-

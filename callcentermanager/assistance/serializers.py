@@ -1,6 +1,11 @@
 from rest_framework import serializers
 from assistance.models import *
 
+class GroupsSerializer(serializers.ModelSerializer): 
+    #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
+    class Meta: #Clase meta para configurar el serializer
+        model = Groups #Especificar el nombre del Model
+        fields = '__all__' #Para todos los atributos del model
 
 class ChangesTicketsSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
@@ -162,7 +167,7 @@ class UsersSerializer(serializers.ModelSerializer):
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
         model = Users #Especificar el nombre del Model
-        fields = '__all__' #Para todos los atributos del model
+        fields = ['id', 'name']
         
 class ProblemsSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
