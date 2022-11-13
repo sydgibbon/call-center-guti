@@ -1487,9 +1487,6 @@ class RacksSerializer(serializers.ModelSerializer):
     manufacturers_id = serializers.SerializerMethodField()
     users_id_tech = serializers.SerializerMethodField()
     groups_id_tech = serializers.SerializerMethodField()
-    users_id = serializers.SerializerMethodField()
-    groups_id = serializers.SerializerMethodField()
-    autoupdatesystems_id = serializers.SerializerMethodField()
     states_id = serializers.SerializerMethodField()
     dcrooms_id = serializers.SerializerMethodField()
 
@@ -1545,28 +1542,7 @@ class RacksSerializer(serializers.ModelSerializer):
         serializer = assistanceSerializers.GroupsSerializer(
             groups_id_tech_query, many=True)
         return serializer.data
-
-    def get_users_id(self, obj):
-        users_id_query = assistanceModels.Users.objects.filter(
-            id=obj.users_id)
-        serializer = assistanceSerializers.UsersSerializer(
-            users_id_query, many=True)
-        return serializer.data
-
-    def get_groups_id(self, obj):
-        groups_id_query = assistanceModels.Groups.objects.filter(
-            id=obj.groups_id)
-        serializer = assistanceSerializers.GroupsSerializer(
-            groups_id_query, many=True)
-        return serializer.data
-
-    def get_autoupdatesystems_id(self, obj):
-        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
-            id=obj.autoupdatesystems_id)
-        serializer = AutoupdatesystemsSerializer(
-            autoupdatesystems_id_query, many=True)
-        return serializer.data
-
+        
     def get_states_id(self, obj):
         states_id_query = States.objects.filter(
             id=obj.states_id)
