@@ -717,7 +717,7 @@ class ComputersSerializer(serializers.ModelSerializer):
         return serializer.data
 
     def get_computertypes_id(self, obj):
-        computertypes_id_query = Computertypes.objects.filter(id=obj.manufacturers_id)
+        computertypes_id_query = Computertypes.objects.filter(id=obj.computertypes_id)
         serializer = ComputertypesSerializer(computertypes_id_query, many=True)
         return serializer.data
 
