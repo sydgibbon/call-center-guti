@@ -705,19 +705,22 @@ class ComputersSerializer(serializers.ModelSerializer):
         fields = '__all__'  # Para todos los atributos del model
 
     def get_computermodels_id(self, obj):
-        computermodels_id_query = Computermodels.objects.filter(id=obj.computermodels_id)
+        computermodels_id_query = Computermodels.objects.filter(
+            id=obj.computermodels_id)
         serializer = ComputermodelsSerializer(
             computermodels_id_query, many=True)
         return serializer.data
 
     def get_manufacturers_id(self, obj):
-        manufacturers_id_query = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.manufacturers_id)
         serializer = ManufacturersSerializer(
             manufacturers_id_query, many=True)
         return serializer.data
 
     def get_computertypes_id(self, obj):
-        computertypes_id_query = Computertypes.objects.filter(id=obj.computertypes_id)
+        computertypes_id_query = Computertypes.objects.filter(
+            id=obj.computertypes_id)
         serializer = ComputertypesSerializer(computertypes_id_query, many=True)
         return serializer.data
 
@@ -863,7 +866,8 @@ class MonitorsSerializer(serializers.ModelSerializer):
         return serializer.data
 
     def get_manufacturers_id(self, obj):
-        manufacturers_id_query = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.manufacturers_id)
         serializer = ManufacturersSerializer(
             manufacturers_id_query, many=True)
         return serializer.data
@@ -908,7 +912,8 @@ class SoftwaresSerializer(serializers.ModelSerializer):
         return serializer.data
 
     def get_manufacturers_id(self, obj):
-        manufacturers_id_query = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.manufacturers_id)
         serializer = ManufacturersSerializer(
             manufacturers_id_query, many=True)
         return serializer.data
@@ -979,18 +984,21 @@ class NetworkequipmentsSerializer(serializers.ModelSerializer):
         return serializer.data
 
     def get_networkequipmenttypes_id(self, obj):
-        networks_id_query = Networkequipmenttypes.objects.filter(id=obj.networkequipmenttypes_id)
+        networks_id_query = Networkequipmenttypes.objects.filter(
+            id=obj.networkequipmenttypes_id)
         serializer = NetworkequipmenttypesSerializer(
             networks_id_query, many=True)
         return serializer.data
 
     def get_networkequipmentmodels_id(self, obj):
-        networks_id_query = Networkequipmentmodels.objects.filter(id=obj.networkequipmentmodels_id)
+        networks_id_query = Networkequipmentmodels.objects.filter(
+            id=obj.networkequipmentmodels_id)
         serializer = NetworksSerializer(networks_id_query, many=True)
         return serializer.data
 
     def get_manufacturers_id(self, obj):
-        manufacturers_id_query = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.manufacturers_id)
         serializer = ManufacturersSerializer(manufacturers_id_query, many=True)
         return serializer.data
 
@@ -1081,19 +1089,22 @@ class PeripheralsSerializer(serializers.ModelSerializer):
         return serializer.data
 
     def get_peripheraltypes_id(self, obj):
-        peripheraltypes_id_query = Peripheraltypes.objects.filter(id=obj.peripheraltypes_id)
+        peripheraltypes_id_query = Peripheraltypes.objects.filter(
+            id=obj.peripheraltypes_id)
         serializer = PeripheraltypesSerializer(
             peripheraltypes_id_query, many=True)
         return serializer.data
 
     def get_peripheralmodels_id(self, obj):
-        peripheralmodels_id_query = Peripheralmodels.objects.filter(id=obj.peripheralmodels_id)
+        peripheralmodels_id_query = Peripheralmodels.objects.filter(
+            id=obj.peripheralmodels_id)
         serializer = PeripheralmodelsSerializer(
             peripheralmodels_id_query, many=True)
         return serializer.data
 
     def get_manufacturers_id(self, obj):
-        manufacturers_id_query = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.manufacturers_id)
         serializer = ManufacturersSerializer(manufacturers_id_query, many=True)
         return serializer.data
 
@@ -1175,17 +1186,20 @@ class PrintersSerializer(serializers.ModelSerializer):
         return serializer.data
 
     def get_printermodels_id(self, obj):
-        printermodels_id_query = Printermodels.objects.filter(id=obj.printermodels_id)
+        printermodels_id_query = Printermodels.objects.filter(
+            id=obj.printermodels_id)
         serializer = PrintermodelsSerializer(printermodels_id_query, many=True)
         return serializer.data
 
     def get_printertypes_id(self, obj):
-        printertypes_id_query = Printertypes.objects.filter(id=obj.printertypes_id)
+        printertypes_id_query = Printertypes.objects.filter(
+            id=obj.printertypes_id)
         serializer = PrintertypesSerializer(printertypes_id_query, many=True)
         return serializer.data
 
     def get_manufacturers_id(self, obj):
-        manufacturers_id_query = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        manufacturers_id_query = Manufacturers.objects.filter(
+            id=obj.manufacturers_id)
         serializer = ManufacturersSerializer(manufacturers_id_query, many=True)
         return serializer.data
 
@@ -1209,7 +1223,8 @@ class PrintersSerializer(serializers.ModelSerializer):
         return serializer.data
 
     def get_snmpcredentials_id(self, obj):
-        snmpcredentials_id_query = Snmpcredentials.objects.filter(id=obj.snmpcredentials_id)
+        snmpcredentials_id_query = Snmpcredentials.objects.filter(
+            id=obj.snmpcredentials_id)
         serializer = SnmpcredentialsSerializer(
             snmpcredentials_id_query, many=True)
         return serializer.data
@@ -1574,9 +1589,6 @@ class EnclosuresSerializer(serializers.ModelSerializer):
     manufacturers_id = serializers.SerializerMethodField()
     users_id_tech = serializers.SerializerMethodField()
     groups_id_tech = serializers.SerializerMethodField()
-    users_id = serializers.SerializerMethodField()
-    groups_id = serializers.SerializerMethodField()
-    autoupdatesystems_id = serializers.SerializerMethodField()
     states_id = serializers.SerializerMethodField()
 
     class Meta:
@@ -1623,27 +1635,6 @@ class EnclosuresSerializer(serializers.ModelSerializer):
             id=obj.groups_id_tech)
         serializer = assistanceSerializers.GroupsSerializer(
             groups_id_tech_query, many=True)
-        return serializer.data
-
-    def get_users_id(self, obj):
-        users_id_query = assistanceModels.Users.objects.filter(
-            id=obj.users_id)
-        serializer = assistanceSerializers.UsersSerializer(
-            users_id_query, many=True)
-        return serializer.data
-
-    def get_groups_id(self, obj):
-        groups_id_query = assistanceModels.Groups.objects.filter(
-            id=obj.groups_id)
-        serializer = assistanceSerializers.GroupsSerializer(
-            groups_id_query, many=True)
-        return serializer.data
-
-    def get_autoupdatesystems_id(self, obj):
-        autoupdatesystems_id_query = Autoupdatesystems.objects.filter(
-            id=obj.autoupdatesystems_id)
-        serializer = AutoupdatesystemsSerializer(
-            autoupdatesystems_id_query, many=True)
         return serializer.data
 
     def get_states_id(self, obj):
