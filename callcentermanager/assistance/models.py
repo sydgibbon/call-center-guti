@@ -338,6 +338,66 @@ class Events(models.Model):
         db_table = 'events'
 
 
+class Agents(models.Model):
+    deviceid = models.CharField(unique=True, max_length=255)
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    agenttypes_id = models.PositiveIntegerField()
+    last_contact = models.DateTimeField(blank=True, null=True)
+    version = models.CharField(max_length=255, blank=True, null=True)
+    locked = models.IntegerField()
+    itemtype = models.CharField(max_length=100)
+    items_id = models.PositiveIntegerField()
+    useragent = models.CharField(max_length=255, blank=True, null=True)
+    tag = models.CharField(max_length=255, blank=True, null=True)
+    port = models.CharField(max_length=6, blank=True, null=True)
+    threads_networkdiscovery = models.IntegerField()
+    threads_networkinventory = models.IntegerField()
+    timeout_networkdiscovery = models.IntegerField()
+    timeout_networkinventory = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'agents'
+
+
+class Domains(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    domaintypes_id = models.PositiveIntegerField()
+    date_expiration = models.DateTimeField(blank=True, null=True)
+    date_domaincreation = models.DateTimeField(blank=True, null=True)
+    users_id_tech = models.PositiveIntegerField()
+    groups_id_tech = models.PositiveIntegerField()
+    is_deleted = models.IntegerField()
+    comment = models.TextField(blank=True, null=True)
+    is_template = models.IntegerField()
+    template_name = models.CharField(max_length=255, blank=True, null=True)
+    is_active = models.IntegerField()
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'domains'
+
+
+class Calendars(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    entities_id = models.PositiveIntegerField()
+    is_recursive = models.IntegerField()
+    comment = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    cache_duration = models.TextField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'calendars'
+
+
 class Recurrentchanges(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)

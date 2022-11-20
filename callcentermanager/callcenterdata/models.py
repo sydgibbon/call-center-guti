@@ -1,29 +1,5 @@
 from django.db import models
 
-class Agents(models.Model):
-    deviceid = models.CharField(unique=True, max_length=255)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    agenttypes_id = models.PositiveIntegerField()
-    last_contact = models.DateTimeField(blank=True, null=True)
-    version = models.CharField(max_length=255, blank=True, null=True)
-    locked = models.IntegerField()
-    itemtype = models.CharField(max_length=100)
-    items_id = models.PositiveIntegerField()
-    useragent = models.CharField(max_length=255, blank=True, null=True)
-    tag = models.CharField(max_length=255, blank=True, null=True)
-    port = models.CharField(max_length=6, blank=True, null=True)
-    threads_networkdiscovery = models.IntegerField()
-    threads_networkinventory = models.IntegerField()
-    timeout_networkdiscovery = models.IntegerField()
-    timeout_networkinventory = models.IntegerField()
-
-    class Meta:
-        managed = True
-        db_table = 'agents'
-
-
 class Agenttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
 
@@ -146,60 +122,6 @@ class Authldapreplicates(models.Model):
         db_table = 'authldapreplicates'
 
 
-class Authldaps(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    host = models.CharField(max_length=255, blank=True, null=True)
-    basedn = models.CharField(max_length=255, blank=True, null=True)
-    rootdn = models.CharField(max_length=255, blank=True, null=True)
-    port = models.IntegerField()
-    condition = models.TextField(blank=True, null=True)
-    login_field = models.CharField(max_length=255, blank=True, null=True)
-    sync_field = models.CharField(max_length=255, blank=True, null=True)
-    use_tls = models.IntegerField()
-    group_field = models.CharField(max_length=255, blank=True, null=True)
-    group_condition = models.TextField(blank=True, null=True)
-    group_search_type = models.IntegerField()
-    group_member_field = models.CharField(max_length=255, blank=True, null=True)
-    email1_field = models.CharField(max_length=255, blank=True, null=True)
-    realname_field = models.CharField(max_length=255, blank=True, null=True)
-    firstname_field = models.CharField(max_length=255, blank=True, null=True)
-    phone_field = models.CharField(max_length=255, blank=True, null=True)
-    phone2_field = models.CharField(max_length=255, blank=True, null=True)
-    mobile_field = models.CharField(max_length=255, blank=True, null=True)
-    comment_field = models.CharField(max_length=255, blank=True, null=True)
-    use_dn = models.IntegerField()
-    time_offset = models.IntegerField()
-    deref_option = models.IntegerField()
-    title_field = models.CharField(max_length=255, blank=True, null=True)
-    category_field = models.CharField(max_length=255, blank=True, null=True)
-    language_field = models.CharField(max_length=255, blank=True, null=True)
-    entity_field = models.CharField(max_length=255, blank=True, null=True)
-    entity_condition = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    is_default = models.IntegerField()
-    is_active = models.IntegerField()
-    rootdn_passwd = models.CharField(max_length=255, blank=True, null=True)
-    registration_number_field = models.CharField(max_length=255, blank=True, null=True)
-    email2_field = models.CharField(max_length=255, blank=True, null=True)
-    email3_field = models.CharField(max_length=255, blank=True, null=True)
-    email4_field = models.CharField(max_length=255, blank=True, null=True)
-    location_field = models.CharField(max_length=255, blank=True, null=True)
-    responsible_field = models.CharField(max_length=255, blank=True, null=True)
-    pagesize = models.IntegerField()
-    ldap_maxlimit = models.IntegerField()
-    can_support_pagesize = models.IntegerField()
-    picture_field = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    inventory_domain = models.CharField(max_length=255, blank=True, null=True)
-    tls_certfile = models.TextField(blank=True, null=True)
-    tls_keyfile = models.TextField(blank=True, null=True)
-    use_bind = models.IntegerField()
-    timeout = models.IntegerField()
-
-    class Meta:
-        managed = True
-        db_table = 'authldaps'
 
 
 class Authmails(models.Model):
@@ -295,20 +217,6 @@ class Businesscriticities(models.Model):
 
 
 
-
-
-class Calendars(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    cache_duration = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'calendars'
 
 
 class CalendarsHolidays(models.Model):
@@ -895,21 +803,6 @@ class Databases(models.Model):
         managed = True
         db_table = 'databases'
 
-
-class Datacenters(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    locations_id = models.PositiveIntegerField()
-    is_deleted = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    pictures = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'datacenters'
-
 class Displaypreferences(models.Model):
     itemtype = models.CharField(max_length=100)
     num = models.IntegerField()
@@ -1040,28 +933,6 @@ class Domainrelations(models.Model):
         db_table = 'domainrelations'
 
 
-class Domains(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    domaintypes_id = models.PositiveIntegerField()
-    date_expiration = models.DateTimeField(blank=True, null=True)
-    date_domaincreation = models.DateTimeField(blank=True, null=True)
-    users_id_tech = models.PositiveIntegerField()
-    groups_id_tech = models.PositiveIntegerField()
-    is_deleted = models.IntegerField()
-    comment = models.TextField(blank=True, null=True)
-    is_template = models.IntegerField()
-    template_name = models.CharField(max_length=255, blank=True, null=True)
-    is_active = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'domains'
-
-
 class DomainsItems(models.Model):
     domains_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
@@ -1142,18 +1013,6 @@ class Filesystems(models.Model):
         db_table = 'filesystems'
 
 
-class Fqdns(models.Model):
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    fqdn = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'fqdns'
 class Holidays(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities_id = models.PositiveIntegerField()
@@ -1168,33 +1027,6 @@ class Holidays(models.Model):
     class Meta:
         managed = True
         db_table = 'holidays'
-
-
-class Imageformats(models.Model):
-    name = models.CharField(unique=True, max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-
-    class Meta:
-        managed = True
-        db_table = 'imageformats'
-
-
-class Imageresolutions(models.Model):
-    name = models.CharField(unique=True, max_length=255, blank=True, null=True)
-    is_video = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-
-    class Meta:
-        managed = True
-        db_table = 'imageresolutions'
 
 
 class Impactcompounds(models.Model):
@@ -1285,15 +1117,7 @@ class Infocoms(models.Model):
         unique_together = (('itemtype', 'items_id'),)
 
 
-class Interfacetypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
 
-    class Meta:
-        managed = True
-        db_table = 'interfacetypes'
 
 
 class Ipaddresses(models.Model):
@@ -1731,55 +1555,6 @@ class Knowbaseitemtranslations(models.Model):
         db_table = 'knowbaseitemtranslations'
 
 
-class Lineoperators(models.Model):
-    name = models.CharField(max_length=255)
-    comment = models.TextField(blank=True, null=True)
-    mcc = models.IntegerField(blank=True, null=True)
-    mnc = models.IntegerField(blank=True, null=True)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'lineoperators'
-        unique_together = (('mcc', 'mnc'),)
-
-
-class Lines(models.Model):
-    name = models.CharField(max_length=255)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    is_deleted = models.IntegerField()
-    caller_num = models.CharField(max_length=255)
-    caller_name = models.CharField(max_length=255)
-    users_id = models.PositiveIntegerField()
-    groups_id = models.PositiveIntegerField()
-    lineoperators_id = models.PositiveIntegerField()
-    locations_id = models.PositiveIntegerField()
-    states_id = models.PositiveIntegerField()
-    linetypes_id = models.PositiveIntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'lines'
-
-
-class Linetypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'linetypes'
-
-
 class Links(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
@@ -2065,15 +1840,7 @@ class Operatingsystemkernelversions(models.Model):
         db_table = 'operatingsystemkernelversions'
 
 
-class Operatingsystems(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
 
-    class Meta:
-        managed = True
-        db_table = 'operatingsystems'
 
 
 class Operatingsystemservicepacks(models.Model):
@@ -2159,15 +1926,6 @@ class Plugins(models.Model):
         db_table = 'plugins'
 
 
-class Plugs(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'plugs'
 
 
 class Printerlogs(models.Model):
@@ -2916,52 +2674,10 @@ class Slms(models.Model):
         managed = True
         db_table = 'slms'
 
-class Socketmodels(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'socketmodels'
-
-
-class Sockets(models.Model):
-    position = models.IntegerField()
-    locations_id = models.PositiveIntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    socketmodels_id = models.PositiveIntegerField()
-    wiring_side = models.IntegerField(blank=True, null=True)
-    itemtype = models.CharField(max_length=255, blank=True, null=True)
-    items_id = models.PositiveIntegerField()
-    networkports_id = models.PositiveIntegerField()
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'sockets'
 
 
 
-class Softwarelicensetypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    softwarelicensetypes_id = models.PositiveIntegerField()
-    level = models.IntegerField()
-    ancestors_cache = models.TextField(blank=True, null=True)
-    sons_cache = models.TextField(blank=True, null=True)
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    completename = models.TextField(blank=True, null=True)
 
-    class Meta:
-        managed = True
-        db_table = 'softwarelicensetypes'
 
 
 
@@ -3214,18 +2930,6 @@ class Virtualmachinetypes(models.Model):
         db_table = 'virtualmachinetypes'
 
 
-class Vlans(models.Model):
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    tag = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'vlans'
 
 
 class Vobjects(models.Model):
