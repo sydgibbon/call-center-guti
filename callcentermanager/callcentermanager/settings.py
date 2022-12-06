@@ -63,9 +63,15 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-)
+CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:3000',
+# )
+
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+# r"^http://localhost:3000"
+# ]
 
 ROOT_URLCONF = 'callcentermanager.urls'
 
