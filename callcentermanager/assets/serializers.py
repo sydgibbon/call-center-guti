@@ -5,6 +5,7 @@ from assistance import models as assistanceModels, serializers as assistanceSeri
 
 
 class AutoupdatesystemsSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Autoupdatesystems
         fields = '__all__'
@@ -12,13 +13,23 @@ class AutoupdatesystemsSerializer(serializers.ModelSerializer):
 
 class DevicemotherboardsSerializer(serializers.ModelSerializer):
     # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
+    designation = serializers.CharField(required=False)
+    chipset = serializers.CharField(required=False)
+    comment = serializers.CharField(required=False)
+    manufacturers = serializers.IntegerField(required=False)
+    is_deleted = serializers.IntegerField(required=False)
+    entities = serializers.IntegerField(required=False)
+    is_recursive = serializers.IntegerField(required=False)
+    devicemotherboardmodels = serializers.IntegerField(required=False)
+    date_creation = serializers.DateTimeField(required=False)
     class Meta:  # Clase meta para configurar el serializer
         model = Devicemotherboards  # Especificar el nombre del Model
         fields = '__all__'  # Para todos los atributos del model
 
 
 class DevicenetworkcardmodelsSerializer(serializers.ModelSerializer):
-    # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
+    comment = serializers.CharField(required=False)
+    product_number = serializers.CharField(required=False)
     class Meta:  # Clase meta para configurar el serializer
         model = Devicenetworkcardmodels  # Especificar el nombre del Model
         fields = '__all__'  # Para todos los atributos del model
@@ -32,7 +43,18 @@ class DevicenetworkcardsSerializer(serializers.ModelSerializer):
 
 
 class DevicepcimodelsSerializer(serializers.ModelSerializer):
-    # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
+    designation = models.CharField(max_length=255, blank=True, null=True)
+    bandwidth = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    manufacturers = serializers.IntegerField(default=0, required=False)
+    is_deleted = models.IntegerField()
+    mac_default = models.CharField(max_length=255, blank=True, null=True)
+    entities = serializers.IntegerField(default=0, required=False)
+    is_recursive = models.IntegerField()
+    devicenetworkcardmodels = models.ForeignKey(
+        Devicenetworkcardmodels, on_delete=models.CASCADE, blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)    
     class Meta:  # Clase meta para configurar el serializer
         model = Devicepcimodels  # Especificar el nombre del Model
         fields = '__all__'  # Para todos los atributos del model
