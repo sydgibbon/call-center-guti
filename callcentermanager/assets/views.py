@@ -1762,3 +1762,170 @@ class PeripheraltypesViewSet(viewsets.ModelViewSet):
             queryset = Peripheraltypes.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class AutoupdatesystemsViewSet(viewsets.ModelViewSet):
+    queryset = Autoupdatesystems.objects.all()
+    serializer_class = AutoupdatesystemsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Autoupdatesystems.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class RackmodelsViewSet(viewsets.ModelViewSet):
+    queryset = Rackmodels.objects.all()
+    serializer_class = RackmodelsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Rackmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class RacktypesViewSet(viewsets.ModelViewSet):
+    queryset = Racktypes.objects.all()
+    serializer_class = RacktypesSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Racktypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class EnclosuremodelsViewSet(viewsets.ModelViewSet):
+    queryset = Enclosuremodels.objects.all()
+    serializer_class = EnclosuremodelsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Enclosuremodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class EntitiesViewSet(viewsets.ModelViewSet):
+    queryset = Entities.objects.all()
+    serializer_class = EntitiesSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Entities.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class NetworksViewSet(viewsets.ModelViewSet):
+    queryset = Networks.objects.all()
+    serializer_class = NetworksSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Networks.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class SnmpcredentialsViewSet(viewsets.ModelViewSet):
+    queryset = Snmpcredentials.objects.all()
+    serializer_class = SnmpcredentialsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Snmpcredentials.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+        
+class ManufacturersViewSet(viewsets.ModelViewSet):
+    queryset = Manufacturers.objects.all()
+    serializer_class = ManufacturersSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Manufacturers.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+                
+class DcroomsViewSet(viewsets.ModelViewSet):
+    queryset = Dcrooms.objects.all()
+    serializer_class = DcroomsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Dcrooms.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class LocationsViewSet(viewsets.ModelViewSet):
+    queryset = Locations.objects.all()
+    serializer_class = LocationsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Locations.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+        
+class StatesViewSet(viewsets.ModelViewSet):
+    queryset = States.objects.all()
+    serializer_class = StatesSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = States.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
