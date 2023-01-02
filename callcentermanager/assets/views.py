@@ -1,10 +1,22 @@
-from rest_framework import viewsets  # import de ViewSets
+from rest_framework import viewsets, views, permissions, status  # import de ViewSets
 from assets.serializers import *  # import de todos los serializers,
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from django.contrib.auth import login
 
 # ViewSets para cada Serializer
 
+class LoginView(views.APIView):
+    # This view should be accessible also for unauthenticated users.
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format=None):
+        serializer = LoginSerializer(data=self.request.data,
+            context={ 'request': self.request })
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        login(request, user)
+        return Response(None, status=status.HTTP_202_ACCEPTED)
 
 class ComputersViewSet(viewsets.ModelViewSet):
     queryset = Computers.objects.all()
