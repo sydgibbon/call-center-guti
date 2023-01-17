@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 
 class ChangesTickets(models.Model):
     changes_id = models.PositiveIntegerField()
@@ -528,10 +528,9 @@ class GroupsUsers(models.Model):
         unique_together = (('users_id', 'groups_id'),)
 
 
-class Groups(AbstractUser):
+class Groups(Group):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     ldap_field = models.CharField(max_length=255, blank=True, null=True)
     ldap_value = models.TextField(blank=True, null=True)

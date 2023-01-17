@@ -113,6 +113,8 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = "assistance.Users"
+AUTH_GROUP_MODEL = "assistance.Groups"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
