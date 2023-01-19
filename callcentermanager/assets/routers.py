@@ -123,3 +123,5 @@ router.register(r'manufacturers', ManufacturersViewSet, basename='manufacturers'
 router.register(r'dcrooms', DcroomsViewSet, basename='dcrooms')
 router.register(r'locations', LocationsViewSet, basename='locations')
 router.register(r'states', StatesViewSet, basename='states')
+router.register(r'users', UsersViewSet, basename='users')
+

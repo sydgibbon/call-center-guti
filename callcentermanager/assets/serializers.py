@@ -55,6 +55,19 @@ class AutoupdatesystemsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class GroupsSerializer(serializers.ModelSerializer): 
+    #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
+    class Meta: #Clase meta para configurar el serializer
+        model = Groups #Especificar el nombre del Model
+        fields = '__all__' #Para todos los atributos del model
+
+        
+class UsersSerializer(serializers.ModelSerializer): 
+    #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
+    class Meta: #Clase meta para configurar el serializer
+        model = Users #Especificar el nombre del Model
+        fields = ['id', 'name']
+
 class DevicemotherboardsSerializer(serializers.ModelSerializer):
     # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta:  # Clase meta para configurar el serializer
@@ -735,8 +748,8 @@ class ComputersSerializer(serializers.ModelSerializer):
     networks = NetworksSerializer(required=False)
     locations = LocationsSerializer(required=False)
     autoupdatesystems = AutoupdatesystemsSerializer(required=False)
-    users = assistanceSerializers.UsersSerializer(required=False)
-    groups = assistanceSerializers.GroupsSerializer(required=False)
+    users = UsersSerializer(required=False)
+    groups = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
     # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
@@ -748,14 +761,14 @@ class ComputersSerializer(serializers.ModelSerializer):
 
 class MonitorsSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     locations = LocationsSerializer(required=False)
     monitortypes = MonitortypesSerializer(required=False)
     monitormodels = MonitormodelsSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users = assistanceSerializers.UsersSerializer(required=False)
-    groups = assistanceSerializers.GroupsSerializer(required=False)
+    users = UsersSerializer(required=False)
+    groups = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
     autoupdatesystems = AutoupdatesystemsSerializer(required=False)
 
@@ -767,11 +780,11 @@ class MonitorsSerializer(serializers.ModelSerializer):
 class SoftwaresSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
     locations = LocationsSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users = assistanceSerializers.UsersSerializer(required=False)
-    groups = assistanceSerializers.GroupsSerializer(required=False)
+    users = UsersSerializer(required=False)
+    groups = GroupsSerializer(required=False)
     softwarecategories = SoftwarecategoriesSerializer(required=False)
 
     class Meta:
@@ -780,15 +793,15 @@ class SoftwaresSerializer(serializers.ModelSerializer):
 
 
 class NetworkequipmentsSerializer(serializers.ModelSerializer):
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     locations = LocationsSerializer(required=False)
     networks = NetworksSerializer(required=False)
     networkequipmenttypes = NetworkequipmenttypesSerializer(required=False)
     networkequipmentmodels = NetworkequipmentmodelsSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users = assistanceSerializers.UsersSerializer(required=False)
-    groups = assistanceSerializers.GroupsSerializer(required=False)
+    users = UsersSerializer(required=False)
+    groups = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
     autoupdatesystems = AutoupdatesystemsSerializer(required=False)
     snmpcredentials = SnmpcredentialsSerializer(required=False)
@@ -801,14 +814,14 @@ class NetworkequipmentsSerializer(serializers.ModelSerializer):
 
 class PeripheralsSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     locations = LocationsSerializer(required=False)
     peripheraltypes = PeripheraltypesSerializer(required=False)
     peripheralmodels = PeripheralmodelsSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users = assistanceSerializers.UsersSerializer(required=False)
-    groups = assistanceSerializers.GroupsSerializer(required=False)
+    users = UsersSerializer(required=False)
+    groups = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
     autoupdatesystems = AutoupdatesystemsSerializer(required=False)
 
@@ -819,15 +832,15 @@ class PeripheralsSerializer(serializers.ModelSerializer):
 
 class PrintersSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     locations = LocationsSerializer(required=False)
     networks = NetworksSerializer(required=False)
     printermodels = PrintermodelsSerializer
     printertypes = PrintertypesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users = assistanceSerializers.UsersSerializer(required=False)
-    groups = assistanceSerializers.GroupsSerializer(required=False)
+    users = UsersSerializer(required=False)
+    groups = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
     snmpcredentials = SnmpcredentialsSerializer(required=False)
     autoupdatesystems = AutoupdatesystemsSerializer(required=False)
@@ -842,8 +855,8 @@ class CartridgeitemsSerializer(serializers.ModelSerializer):
     locations = LocationsSerializer(required=False)
     cartridgeitemtypes = CartridgeitemtypesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
 
     class Meta:
         model = Cartridgeitems
@@ -865,8 +878,8 @@ class ConsumableitemsSerializer(serializers.ModelSerializer):
     locations = LocationsSerializer(required=False)
     consumableitemtypes = ConsumableitemtypesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
 
     class Meta:
         model = Consumableitems
@@ -880,10 +893,10 @@ class PhonesSerializer(serializers.ModelSerializer):
     phonemodels = PhonemodelsSerializer(required=False)
     phonepowersupplies = PhonepowersuppliesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
-    users = assistanceSerializers.UsersSerializer(required=False)
-    groups = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
+    users = UsersSerializer(required=False)
+    groups = GroupsSerializer(required=False)
     autoupdatesystems = AutoupdatesystemsSerializer(required=False)
     states = StatesSerializer(required=False)
 
@@ -898,8 +911,8 @@ class RacksSerializer(serializers.ModelSerializer):
     racktypes = RacktypesSerializer(required=False)
     rackmodels = RackmodelsSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
     dcrooms = DcroomsSerializer(required=False)
 
@@ -913,8 +926,8 @@ class EnclosuresSerializer(serializers.ModelSerializer):
     locations = LocationsSerializer(required=False)
     enclosuremodels = EnclosuremodelsSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
 
     class Meta:
@@ -928,8 +941,8 @@ class PdusSerializer(serializers.ModelSerializer):
     pdumodels = PdumodelsSerializer(required=False)
     pdutypes = PdutypesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
 
     class Meta:
@@ -943,8 +956,8 @@ class PassivedcequipmentsSerializer(serializers.ModelSerializer):
     passivedcequipmentmodels = PassivedcequipmentmodelsSerializer(required=False)
     passivedcequipmenttypes = PassivedcequipmenttypesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
 
     class Meta:
@@ -957,10 +970,10 @@ class UnmanagedsSerializer(serializers.ModelSerializer):
     locations = LocationsSerializer(required=False)
     networks = NetworksSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
-    groups_tech = assistanceSerializers.GroupsSerializer(required=False)
-    users = assistanceSerializers.UsersSerializer(required=False)
-    groups = assistanceSerializers.GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
+    users = UsersSerializer(required=False)
+    groups = GroupsSerializer(required=False)
     autoupdatesystems = AutoupdatesystemsSerializer(required=False)
     states = StatesSerializer(required=False)
 
@@ -971,7 +984,7 @@ class UnmanagedsSerializer(serializers.ModelSerializer):
 
 class CablesSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
-    users_tech = assistanceSerializers.UsersSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
     cablestrands = CablestrandsSerializer(required=False)
     cabletypes = CabletypesSerializer(required=False)
     states = StatesSerializer(required=False)

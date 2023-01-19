@@ -18,6 +18,19 @@ class LoginView(views.APIView):
         login(request, user)
         return Response(None, status=status.HTTP_202_ACCEPTED)
 
+class UsersViewSet(viewsets.ModelViewSet):
+    queryset = Users.objects.all()
+    serializer_class = UsersSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Users.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 class ComputersViewSet(viewsets.ModelViewSet):
     queryset = Computers.objects.all()
     serializer_class = ComputersSerializer

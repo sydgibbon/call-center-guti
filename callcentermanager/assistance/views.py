@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from rest_framework import viewsets  # import de ViewSets
+from rest_framework import viewsets, status  # import de ViewSets
 from assistance.serializers import *  # import de todos los serializers,
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -341,19 +341,6 @@ class ChangesViewSet(viewsets.ModelViewSet):
         ids = request.query_params.get('ids').split(',')
         if ids:
             queryset = Changes.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-class UsersViewSet(viewsets.ModelViewSet):
-    queryset = Users.objects.all()
-    serializer_class = UsersSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Users.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

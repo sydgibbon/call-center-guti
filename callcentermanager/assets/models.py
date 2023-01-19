@@ -1,5 +1,6 @@
 from django.db import models
 from assistance import models as assistanceModels
+from django.contrib.auth.models import AbstractUser, Group
 
 
 class Autoupdatesystems(models.Model):
@@ -196,11 +197,11 @@ class Entities(models.Model):
     tickettemplates = models.ForeignKey(
         assistanceModels.Tickettemplates, on_delete=models.CASCADE, blank=True, null=True, default=None)
     changetemplates_strategy = models.IntegerField(default=0)
-    changetemplates = models.PositiveIntegerField()
+    changetemplates = models.PositiveIntegerField(blank=True, null=True)
     problemtemplates_strategy = models.IntegerField(default=0)
-    problemtemplates = models.PositiveIntegerField()
+    problemtemplates = models.PositiveIntegerField(blank=True, null=True)
     entities_strategy_software = models.IntegerField(default=0)
-    entities_software = models.PositiveIntegerField()
+    entities_software = models.PositiveIntegerField(blank=True, null=True)
     default_contract_alert = models.IntegerField(default=0)
     default_infocom_alert = models.IntegerField(default=0)
     default_cartridges_alarm_threshold = models.IntegerField(default=0)
@@ -215,14 +216,14 @@ class Entities(models.Model):
     anonymize_support_agents = models.IntegerField(default=0)
     display_users_initials = models.IntegerField(default=0)
     contracts_strategy_default = models.IntegerField(default=0)
-    contracts_default = models.PositiveIntegerField()
+    contracts_default = models.PositiveIntegerField(blank=True, null=True)
     enable_custom_css = models.IntegerField(default=0)
     custom_css_code = models.TextField(blank=True, null=True)
     latitude = models.CharField(max_length=255, blank=True, null=True)
     longitude = models.CharField(max_length=255, blank=True, null=True)
     altitude = models.CharField(max_length=255, blank=True, null=True)
     transfers_strategy = models.IntegerField(default=0)
-    transfers = models.PositiveIntegerField()
+    transfers = models.PositiveIntegerField(blank=True, null=True)
     agent_base_url = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
@@ -259,6 +260,152 @@ class Locations(models.Model):
         managed = True
         db_table = 'locations'
         unique_together = (('entities_id', 'locations_id', 'name'),)
+
+
+
+class Groups(Group):
+    entities_id = models.PositiveIntegerField(blank=True, null=True)
+    is_recursive = models.IntegerField()
+    comment = models.TextField(blank=True, null=True)
+    ldap_field = models.CharField(max_length=255, blank=True, null=True)
+    ldap_value = models.TextField(blank=True, null=True)
+    ldap_group_dn = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    groups_id = models.PositiveIntegerField(blank=True, null=True)
+    completename = models.TextField(blank=True, null=True)
+    level = models.IntegerField()
+    ancestors_cache = models.TextField(blank=True, null=True)
+    sons_cache = models.TextField(blank=True, null=True)
+    is_requester = models.IntegerField()
+    is_watcher = models.IntegerField()
+    is_assign = models.IntegerField()
+    is_task = models.IntegerField()
+    is_notify = models.IntegerField()
+    is_itemgroup = models.IntegerField()
+    is_usergroup = models.IntegerField()
+    is_manager = models.IntegerField()
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'groups'
+
+
+class Users(AbstractUser):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    password = models.CharField(max_length=255, blank=True, null=True)
+    password_last_update = models.DateTimeField(blank=True, null=True)
+    phone = models.CharField(max_length=255, blank=True, null=True)
+    phone2 = models.CharField(max_length=255, blank=True, null=True)
+    mobile = models.CharField(max_length=255, blank=True, null=True)
+    realname = models.CharField(max_length=255, blank=True, null=True)
+    firstname = models.CharField(max_length=255, blank=True, null=True)
+    locations = models.ForeignKey(
+        Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
+    language = models.CharField(max_length=10, blank=True, null=True)
+    use_mode = models.IntegerField()
+    list_limit = models.IntegerField(blank=True, null=True)
+    is_active = models.IntegerField()
+    comment = models.TextField(blank=True, null=True)
+    auths_id = models.PositiveIntegerField(blank=True, null=True)
+    authtype = models.IntegerField()
+    last_login = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_sync = models.DateTimeField(blank=True, null=True)
+    is_deleted = models.IntegerField()
+    profiles_id = models.PositiveIntegerField(blank=True, null=True)
+    entities_id = models.PositiveIntegerField(blank=True, null=True)
+    usertitles_id = models.PositiveIntegerField(blank=True, null=True)
+    usercategories_id = models.PositiveIntegerField(blank=True, null=True)
+    date_format = models.IntegerField(blank=True, null=True)
+    number_format = models.IntegerField(blank=True, null=True)
+    names_format = models.IntegerField(blank=True, null=True)
+    csv_delimiter = models.CharField(max_length=1, blank=True, null=True)
+    is_ids_visible = models.IntegerField(blank=True, null=True)
+    use_flat_dropdowntree = models.IntegerField(blank=True, null=True)
+    show_jobs_at_login = models.IntegerField(blank=True, null=True)
+    priority_1 = models.CharField(max_length=20, blank=True, null=True)
+    priority_2 = models.CharField(max_length=20, blank=True, null=True)
+    priority_3 = models.CharField(max_length=20, blank=True, null=True)
+    priority_4 = models.CharField(max_length=20, blank=True, null=True)
+    priority_5 = models.CharField(max_length=20, blank=True, null=True)
+    priority_6 = models.CharField(max_length=20, blank=True, null=True)
+    followup_private = models.IntegerField(blank=True, null=True)
+    task_private = models.IntegerField(blank=True, null=True)
+    default_requesttypes_id = models.PositiveIntegerField(
+        blank=True, null=True)
+    password_forget_token = models.CharField(
+        max_length=40, blank=True, null=True)
+    password_forget_token_date = models.DateTimeField(blank=True, null=True)
+    user_dn = models.TextField(blank=True, null=True)
+    registration_number = models.CharField(
+        max_length=255, blank=True, null=True)
+    show_count_on_tabs = models.IntegerField(blank=True, null=True)
+    refresh_views = models.IntegerField(blank=True, null=True)
+    set_default_tech = models.IntegerField(blank=True, null=True)
+    personal_token = models.CharField(max_length=255, blank=True, null=True)
+    personal_token_date = models.DateTimeField(blank=True, null=True)
+    api_token = models.CharField(max_length=255, blank=True, null=True)
+    api_token_date = models.DateTimeField(blank=True, null=True)
+    cookie_token = models.CharField(max_length=255, blank=True, null=True)
+    cookie_token_date = models.DateTimeField(blank=True, null=True)
+    display_count_on_home = models.IntegerField(blank=True, null=True)
+    notification_to_myself = models.IntegerField(blank=True, null=True)
+    duedateok_color = models.CharField(max_length=255, blank=True, null=True)
+    duedatewarning_color = models.CharField(
+        max_length=255, blank=True, null=True)
+    duedatecritical_color = models.CharField(
+        max_length=255, blank=True, null=True)
+    duedatewarning_less = models.IntegerField(blank=True, null=True)
+    duedatecritical_less = models.IntegerField(blank=True, null=True)
+    duedatewarning_unit = models.CharField(
+        max_length=255, blank=True, null=True)
+    duedatecritical_unit = models.CharField(
+        max_length=255, blank=True, null=True)
+    display_options = models.TextField(blank=True, null=True)
+    is_deleted_ldap = models.IntegerField()
+    pdffont = models.CharField(max_length=255, blank=True, null=True)
+    picture = models.CharField(max_length=255, blank=True, null=True)
+    begin_date = models.DateTimeField(blank=True, null=True)
+    end_date = models.DateTimeField(blank=True, null=True)
+    keep_devices_when_purging_item = models.IntegerField(blank=True, null=True)
+    privatebookmarkorder = models.TextField(blank=True, null=True)
+    backcreated = models.IntegerField(blank=True, null=True)
+    task_state = models.IntegerField(blank=True, null=True)
+    palette = models.CharField(max_length=20, blank=True, null=True)
+    page_layout = models.CharField(max_length=20, blank=True, null=True)
+    fold_menu = models.IntegerField(blank=True, null=True)
+    fold_search = models.IntegerField(blank=True, null=True)
+    savedsearches_pinned = models.TextField(blank=True, null=True)
+    timeline_order = models.CharField(max_length=20, blank=True, null=True)
+    itil_layout = models.TextField(blank=True, null=True)
+    richtext_layout = models.CharField(max_length=20, blank=True, null=True)
+    set_default_requester = models.IntegerField(blank=True, null=True)
+    lock_autolock_mode = models.IntegerField(blank=True, null=True)
+    lock_directunlock_notification = models.IntegerField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+    highcontrast_css = models.IntegerField(blank=True, null=True)
+    plannings = models.TextField(blank=True, null=True)
+    sync_field = models.CharField(max_length=255, blank=True, null=True)
+    groups_id = models.PositiveIntegerField(blank=True, null=True)
+    users_id_supervisor = models.PositiveIntegerField(blank=True, null=True)
+    timezone = models.CharField(max_length=50, blank=True, null=True)
+    default_dashboard_central = models.CharField(
+        max_length=100, blank=True, null=True)
+    default_dashboard_assets = models.CharField(
+        max_length=100, blank=True, null=True)
+    default_dashboard_helpdesk = models.CharField(
+        max_length=100, blank=True, null=True)
+    default_dashboard_mini_ticket = models.CharField(
+        max_length=100, blank=True, null=True)
+    default_central_tab = models.IntegerField(blank=True, null=True)
+    nickname = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'users'
+        unique_together = (('name', 'authtype', 'auths_id'),)
+
 
 
 class States(models.Model):
@@ -323,9 +470,9 @@ class Softwares(models.Model):
     locations = models.ForeignKey(
         Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwares_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwares_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwares_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwares_groups_tech')
     is_update = models.IntegerField(default=0)
     softwares = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwares_softwares')
     manufacturers = models.ForeignKey(
@@ -336,9 +483,9 @@ class Softwares(models.Model):
     template_name = models.CharField(max_length=255, blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     ticket_tco = models.DecimalField(
         max_digits=20, decimal_places=4, blank=True, null=True)
     is_helpdesk_visible = models.IntegerField(default=0)
@@ -396,9 +543,9 @@ class Networkequipments(models.Model):
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='networkequipments_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='networkequipments_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='networkequipments_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='networkequipments_groups_tech')
     date_mod = models.DateTimeField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     locations = models.ForeignKey(
@@ -416,9 +563,9 @@ class Networkequipments(models.Model):
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     ticket_tco = models.DecimalField(
@@ -475,9 +622,9 @@ class Printers(models.Model):
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='printers_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='printers_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='printers_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='printers_groups_tech')
     serial = models.CharField(max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     have_serial = models.IntegerField(default=0)
@@ -505,9 +652,9 @@ class Printers(models.Model):
     init_pages_counter = models.IntegerField(default=0)
     last_pages_counter = models.IntegerField(default=0)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     ticket_tco = models.DecimalField(
@@ -540,9 +687,9 @@ class Cartridgeitems(models.Model):
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='cartridgeitems_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='cartridgeitems_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='cartridgeitems_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='cartridgeitems_groups_tech')
     is_deleted = models.IntegerField(default=0)
     comment = models.TextField(blank=True, null=True)
     alarm_threshold = models.IntegerField(default=0)
@@ -627,9 +774,9 @@ class Consumableitems(models.Model):
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='consumableitems_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='consumableitems_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='consumableitems_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='consumableitems_groups_tech')
     is_deleted = models.IntegerField(default=0)
     comment = models.TextField(blank=True, null=True)
     alarm_threshold = models.IntegerField(default=0)
@@ -720,9 +867,9 @@ class Racks(models.Model):
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='racks_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='racks_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='racks_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='racks_groups_tech')
     width = models.IntegerField(blank=True, null=True)
     height = models.IntegerField(blank=True, null=True)
     depth = models.IntegerField(blank=True, null=True)
@@ -779,9 +926,9 @@ class Enclosures(models.Model):
     enclosuremodels = models.ForeignKey(
         Enclosuremodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='enclosures_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='enclosures_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='enclosures_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='enclosures_groups_tech')
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     is_deleted = models.IntegerField(default=0)
@@ -849,9 +996,9 @@ class Pdus(models.Model):
     pdumodels = models.ForeignKey(
         Pdumodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='pdus_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='pdus_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='pdus_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='pdus_groups_tech')
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     is_deleted = models.IntegerField(default=0)
@@ -891,9 +1038,9 @@ class Unmanageds(models.Model):
     is_deleted = models.IntegerField(default=0)
     is_deleted = models.IntegerField(default=0)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_dynamic = models.IntegerField(default=0)
@@ -1034,7 +1181,7 @@ class Cables(models.Model):
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='cables_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='cables_users_tech')
     cabletypes = models.ForeignKey(
         Cabletypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
     comment = models.TextField(blank=True, null=True)
@@ -1147,11 +1294,11 @@ class Softwarelicensetypes(models.Model):
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     date_creation = models.DateTimeField(blank=True, null=True)
-    softwarelicensetypes = models.PositiveIntegerField()
+    softwarelicensetypes = models.PositiveIntegerField(blank=True, null=True)
     level = models.IntegerField(default=0)
     ancestors_cache = models.TextField(blank=True, null=True)
     sons_cache = models.TextField(blank=True, null=True)
-    entities = models.PositiveIntegerField()
+    entities = models.PositiveIntegerField(blank=True, null=True)
     is_recursive = models.IntegerField(default=0)
     completename = models.TextField(blank=True, null=True)
 
@@ -1209,13 +1356,13 @@ class Softwarelicenses(models.Model):
     locations = models.ForeignKey(
         Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwarelicenses_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwarelicenses_users_tech')
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwarelicenses_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwarelicenses_groups_tech')
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_helpdesk_visible = models.IntegerField(default=0)
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
@@ -1315,9 +1462,9 @@ class Phones(models.Model):
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='phones_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='phones_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='phones_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='phones_groups_tech')
     comment = models.TextField(blank=True, null=True)
     serial = models.CharField(max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
@@ -1341,9 +1488,9 @@ class Phones(models.Model):
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     ticket_tco = models.DecimalField(
@@ -1868,9 +2015,9 @@ class Peripherals(models.Model):
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='peripherals_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='peripherals_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='peripherals_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='peripherals_groups_tech')
     comment = models.TextField(blank=True, null=True)
     serial = models.CharField(max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
@@ -1889,9 +2036,9 @@ class Peripherals(models.Model):
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     ticket_tco = models.DecimalField(
@@ -2607,9 +2754,9 @@ class Lines(models.Model):
     caller_num = models.CharField(max_length=255)
     caller_name = models.CharField(max_length=255)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     lineoperators = models.ForeignKey(
         Lineoperators, on_delete=models.CASCADE, blank=True, null=True, default=None)
     locations = models.ForeignKey(
@@ -2646,9 +2793,9 @@ class ItemsDevicesimcards(models.Model):
     lines = models.ForeignKey(
         Lines, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     pin = models.CharField(max_length=255)
     pin2 = models.CharField(max_length=255)
     puk = models.CharField(max_length=255)
@@ -2731,9 +2878,9 @@ class Passivedcequipments(models.Model):
     passivedcequipmenttypes = models.ForeignKey(
         Passivedcequipmenttypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='passivedcequipments_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='passivedcequipments_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='passivedcequipments_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='passivedcequipments_groups_tech')
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     is_deleted = models.IntegerField(default=0)
@@ -2752,7 +2899,7 @@ class Passivedcequipments(models.Model):
 
 
 class EntitiesKnowbaseitems(models.Model):
-    knowbaseitems = models.PositiveIntegerField()
+    knowbaseitems = models.PositiveIntegerField(blank=True, null=True)
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_recursive = models.IntegerField(default=0)
@@ -2763,7 +2910,7 @@ class EntitiesKnowbaseitems(models.Model):
 
 
 class EntitiesReminders(models.Model):
-    reminders = models.PositiveIntegerField()
+    reminders = models.PositiveIntegerField(blank=True, null=True)
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_recursive = models.IntegerField(default=0)
@@ -2774,7 +2921,7 @@ class EntitiesReminders(models.Model):
 
 
 class EntitiesRssfeeds(models.Model):
-    rssfeeds = models.PositiveIntegerField()
+    rssfeeds = models.PositiveIntegerField(blank=True, null=True)
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_recursive = models.IntegerField(default=0)
@@ -3048,9 +3195,9 @@ class Computers(models.Model):
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='computers_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='computers_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='computers_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='computers_groups_tech')
     comment = models.TextField(blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
     autoupdatesystems = models.ForeignKey(
@@ -3070,9 +3217,9 @@ class Computers(models.Model):
     is_deleted = models.IntegerField(default=0)
     is_dynamic = models.IntegerField(default=0)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     ticket_tco = models.DecimalField(
@@ -3095,9 +3242,9 @@ class Monitors(models.Model):
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='monitors_users_tech')
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='monitors_users_tech')
     groups_tech = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='monitors_groups_tech')
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='monitors_groups_tech')
     comment = models.TextField(blank=True, null=True)
     serial = models.CharField(max_length=255, blank=True, null=True)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
@@ -3124,9 +3271,9 @@ class Monitors(models.Model):
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     users = models.ForeignKey(
-        assistanceModels.Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
-        assistanceModels.Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
+        Groups, on_delete=models.CASCADE, blank=True, null=True, default=None)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     ticket_tco = models.DecimalField(
