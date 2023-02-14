@@ -478,7 +478,6 @@ class Softwares(models.Model):
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
-    is_deleted = models.IntegerField(default=0)
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     date_mod = models.DateTimeField(blank=True, null=True)
@@ -558,7 +557,6 @@ class Networkequipments(models.Model):
         Networkequipmentmodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    is_deleted = models.IntegerField(default=0)
     is_deleted = models.IntegerField(default=0)
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
@@ -2032,7 +2030,6 @@ class Peripherals(models.Model):
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
     is_global = models.IntegerField(default=0)
-    is_deleted = models.IntegerField(default=0)
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     users = models.ForeignKey(
@@ -3267,7 +3264,6 @@ class Monitors(models.Model):
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
     is_global = models.IntegerField(default=0)
-    is_deleted = models.IntegerField(default=0)
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
     users = models.ForeignKey(
