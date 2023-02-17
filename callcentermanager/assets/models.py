@@ -642,7 +642,6 @@ class Printers(models.Model):
         Printermodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    is_deleted = models.IntegerField(default=0)
     is_global = models.IntegerField(default=0)
     is_deleted = models.IntegerField(default=0)
     is_template = models.IntegerField(default=0)
@@ -683,7 +682,6 @@ class Cartridgeitems(models.Model):
     cartridgeitemtypes = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, default=None)
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    is_deleted = models.IntegerField(default=0)
     users_tech = models.ForeignKey(
         Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='cartridgeitems_users_tech')
     groups_tech = models.ForeignKey(
@@ -770,7 +768,6 @@ class Consumableitems(models.Model):
         Consumableitemtypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    is_deleted = models.IntegerField(default=0)
     users_tech = models.ForeignKey(
         Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='consumableitems_users_tech')
     groups_tech = models.ForeignKey(
@@ -859,7 +856,6 @@ class Racks(models.Model):
         Rackmodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    is_deleted = models.IntegerField(default=0)
     racktypes = models.ForeignKey(
         Racktypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
     states = models.ForeignKey(
@@ -929,7 +925,6 @@ class Enclosures(models.Model):
         Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='enclosures_groups_tech')
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
-    is_deleted = models.IntegerField(default=0)
     orientation = models.IntegerField(blank=True, null=True)
     power_supplies = models.IntegerField(default=0)
     states = models.ForeignKey(
@@ -999,7 +994,6 @@ class Pdus(models.Model):
         Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='pdus_groups_tech')
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
-    is_deleted = models.IntegerField(default=0)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     comment = models.TextField(blank=True, null=True)
@@ -1033,7 +1027,6 @@ class Unmanageds(models.Model):
         Networks, on_delete=models.CASCADE, blank=True, null=True, default=None)
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    is_deleted = models.IntegerField(default=0)
     is_deleted = models.IntegerField(default=0)
     users = models.ForeignKey(
         Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
@@ -1350,7 +1343,6 @@ class Softwarelicenses(models.Model):
     date_mod = models.DateTimeField(blank=True, null=True)
     is_valid = models.IntegerField(default=0)
     date_creation = models.DateTimeField(blank=True, null=True)
-    is_deleted = models.IntegerField(default=0)
     locations = models.ForeignKey(
         Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
@@ -1480,7 +1472,6 @@ class Phones(models.Model):
     have_hp = models.IntegerField(default=0)
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    is_deleted = models.IntegerField(default=0)
     is_global = models.IntegerField(default=0)
     is_deleted = models.IntegerField(default=0)
     is_template = models.IntegerField(default=0)
@@ -2880,7 +2871,6 @@ class Passivedcequipments(models.Model):
         Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='passivedcequipments_groups_tech')
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
-    is_deleted = models.IntegerField(default=0)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     comment = models.TextField(blank=True, null=True)
