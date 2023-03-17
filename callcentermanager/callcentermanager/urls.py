@@ -17,11 +17,23 @@ from rest_framework.authtoken import views
 from django.contrib import admin
 from django.urls import path, include
 from .views import Login
+from django.views.generic import TemplateView
+from rest_framework.schemas import get_schema_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/assets/', include(('assets.urls', 'assets'))),
     path('api/assistance/', include(('assistance.urls', 'assistance'))),
     path('api_generate_token/', views.obtain_auth_token),
-    path('login/', Login.as_view(), name = 'login' )
+    path('login/', Login.as_view(), name = 'login' ),
+    path('openapi', get_schema_view(
+            title="GUTI API Documentation",
+            description="API for assets",
+            version="1.0.0"
+        ), name='openapi-schema'),
+    path('swagger-ui/', TemplateView.as_view(
+        template_name='swagger-ui.html',
+        extra_context={'schema_url':'openapi-schema'}
+    ), name='swagger-ui'),
 ]

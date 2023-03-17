@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, path
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
@@ -9,7 +9,17 @@ from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
 from rest_framework.authtoken.models import Token
+from django.views.generic import TemplateView
 
+urlpatterns = [
+    # ...
+    # Route TemplateView to serve Swagger UI template.
+    #   * Provide `extra_context` with view name of `SchemaView`.
+    path('swagger-ui/', TemplateView.as_view(
+        template_name='swagger-ui.html',
+        extra_context={'schema_url':'openapi-schema'}
+    ), name='swagger-ui'),
+]
 class Login(FormView):
     template_name = "login.html"
     form_class = AuthenticationForm
