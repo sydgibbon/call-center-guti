@@ -1408,8 +1408,8 @@ FROM glpi.glpi_pdutypes;
 INSERT IGNORE INTO callcentermanager.pdumodels ()
 SELECT *
 FROM glpi.glpi_pdumodels;
-INSERT IGNORE INTO callcentermanager.pdus (name, is_recursive, serial, otherserial, is_template, template_name, orientation, power_supplies, comment, is_deleted, date_mod, date_creation, enclosuremodels_id, entities_id, groups_tech_id, locations_id, manufacturers_id, states_id, users_tech_id)
-SELECT name, is_recursive, serial, otherserial, is_template, template_name, orientation, power_supplies, comment, is_deleted, date_mod, date_creation, enclosuremodels_id, entities_id, groups_id_tech, locations_id, manufacturers_id, states_id, users_id_tech
+INSERT IGNORE INTO callcentermanager.pdus ()
+SELECT *
 FROM glpi.glpi_pdus;
 INSERT IGNORE INTO callcentermanager.unmanageds (
         is_recursive,
