@@ -1,5 +1,4 @@
-SET FOREIGN_KEY_CHECKS=0;
-
+SET FOREIGN_KEY_CHECKS = 0;
 INSERT IGNORE INTO callcentermanager.changes_tickets (changes_id, tickets_id)
 SELECT changes_id,
     tickets_id
@@ -1321,8 +1320,8 @@ FROM glpi.glpi_networkequipmentmodels;
 INSERT IGNORE INTO callcentermanager.networkequipmenttypes ()
 SELECT *
 FROM glpi.glpi_networkequipmenttypes;
-INSERT IGNORE INTO callcentermanager.networkequipments ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.networkequipments (is_recursive, name, ram, serial, otherserial, contact, contact_num, date_mod, comment, is_deleted, is_template, template_name, ticket_tco, is_dynamic, uuid, date_creation, sysdescr, cpu, uptime, last_inventory_update, autoupdatesystems_id, entities_id, groups_id, groups_tech_id, locations_id, manufacturers_id, networkequipmentmodels_id, networkequipmenttypes_id, networks_id, snmpcredentials_id, states_id, users_id, users_tech_id)
+SELECT is_recursive, name, ram, serial, otherserial, contact, contact_num, date_mod, comment, is_deleted, is_template, template_name, ticket_tco, is_dynamic, uuid, date_creation, sysdescr, cpu, uptime, last_inventory_update, autoupdatesystems_id, entities_id, groups_id, groups_id_tech, locations_id, manufacturers_id, networkequipmentmodels_id, networkequipmenttypes_id, networks_id, snmpcredentials_id, states_id, users_id, users_id_tech
 FROM glpi.glpi_networkequipments;
 INSERT IGNORE INTO callcentermanager.printermodels ()
 SELECT *
@@ -1330,11 +1329,11 @@ FROM glpi.glpi_printermodels;
 INSERT IGNORE INTO callcentermanager.printertypes ()
 SELECT *
 FROM glpi.glpi_printertypes;
-INSERT IGNORE INTO callcentermanager.printers ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.printers (is_recursive, name, date_mod, contact, contact_num, serial, otherserial, have_serial, have_parallel, have_usb, have_wifi, have_ethernet, comment, memory_size, is_global, is_deleted, is_template, template_name, init_pages_counter, last_pages_counter, ticket_tco, is_dynamic, uuid, date_creation, sysdescr, last_inventory_update, autoupdatesystems_id, entities_id, groups_id, groups_tech_id, locations_id, manufacturers_id, networks_id, printermodels_id, printertypes_id, snmpcredentials_id, states_id, users_id, users_tech_id)
+SELECT is_recursive, name, date_mod, contact, contact_num, serial, otherserial, have_serial, have_parallel, have_usb, have_wifi, have_ethernet, comment, memory_size, is_global, is_deleted, is_template, template_name, init_pages_counter, last_pages_counter, ticket_tco, is_dynamic, uuid, date_creation, sysdescr, last_inventory_update, autoupdatesystems_id, entities_id, groups_id, groups_id_tech, locations_id, manufacturers_id, networks_id, printermodels_id, printertypes_id, snmpcredentials_id, states_id, users_id, users_id_tech
 FROM glpi.glpi_printers;
-INSERT IGNORE INTO callcentermanager.cartridgeitems ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.cartridgeitems (is_recursive, name, ref, is_deleted, comment, alarm_threshold, stock_target, date_mod, date_creation, pictures, cartridgeitemtypes_id, entities_id, groups_tech_id, locations_id, manufacturers_id, users_tech_id)
+SELECT is_recursive, name, ref, is_deleted, comment, alarm_threshold, stock_target, date_mod, date_creation, pictures, cartridgeitemtypes_id, entities_id, groups_id_tech, locations_id, manufacturers_id, users_id_tech
 FROM glpi.glpi_cartridgeitems;
 INSERT IGNORE INTO callcentermanager.cartridges ()
 SELECT *
@@ -1348,8 +1347,42 @@ FROM glpi.glpi_racktypes;
 INSERT IGNORE INTO callcentermanager.consumableitemtypes ()
 SELECT *
 FROM glpi.glpi_consumableitemtypes;
-INSERT IGNORE INTO callcentermanager.consumableitems ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.consumableitems (
+        is_recursive,
+        name,
+        ref,
+        is_deleted,
+        comment,
+        alarm_threshold,
+        stock_target,
+        date_mod,
+        date_creation,
+        otherserial,
+        pictures,
+        consumableitemtypes_id,
+        entities_id,
+        groups_tech_id,
+        locations_id,
+        manufacturers_id,
+        users_tech_id
+    )
+SELECT is_recursive,
+    name,
+    ref,
+    is_deleted,
+    comment,
+    alarm_threshold,
+    stock_target,
+    date_mod,
+    date_creation,
+    otherserial,
+    pictures,
+    consumableitemtypes_id,
+    entities_id,
+    groups_id_tech,
+    locations_id,
+    manufacturers_id,
+    users_id_tech
 FROM glpi.glpi_consumableitems;
 INSERT IGNORE INTO callcentermanager.consumables ()
 SELECT *
@@ -1360,14 +1393,14 @@ FROM glpi.glpi_datacenters;
 INSERT IGNORE INTO callcentermanager.dcrooms ()
 SELECT *
 FROM glpi.glpi_dcrooms;
-INSERT IGNORE INTO callcentermanager.racks ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.racks (name, comment, is_recursive, serial, otherserial, width, height, depth, number_units, is_template, template_name, is_deleted, room_orientation, position, bgcolor, max_power, mesured_power, max_weight, date_creation, dcrooms_id, entities_id, groups_tech_id, locations_id, manufacturers_id, rackmodels_id, racktypes_id, states_id, users_tech_id)
+SELECT name, comment, is_recursive, serial, otherserial, width, height, depth, number_units, is_template, template_name, is_deleted, room_orientation, position, bgcolor, max_power, mesured_power, max_weight, date_creation, dcrooms_id, entities_id, groups_id_tech, locations_id, manufacturers_id, rackmodels_id, racktypes_id, states_id, users_id_tech
 FROM glpi.glpi_racks;
 INSERT IGNORE INTO callcentermanager.enclosuremodels ()
 SELECT *
 FROM glpi.glpi_enclosuremodels;
-INSERT IGNORE INTO callcentermanager.enclosures ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.enclosures (name, is_recursive, serial, otherserial, is_template, template_name, orientation, power_supplies, comment, is_deleted, date_mod, date_creation, enclosuremodels_id, entities_id, groups_tech_id, locations_id, manufacturers_id, states_id, users_tech_id)
+SELECT name, is_recursive, serial, otherserial, is_template, template_name, orientation, power_supplies, comment, is_deleted, date_mod, date_creation, enclosuremodels_id, entities_id, groups_id_tech, locations_id, manufacturers_id, states_id, users_id_tech
 FROM glpi.glpi_enclosures;
 INSERT IGNORE INTO callcentermanager.pdutypes ()
 SELECT *
@@ -1375,8 +1408,8 @@ FROM glpi.glpi_pdutypes;
 INSERT IGNORE INTO callcentermanager.pdumodels ()
 SELECT *
 FROM glpi.glpi_pdumodels;
-INSERT IGNORE INTO callcentermanager.pdus ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.pdus (name, is_recursive, serial, otherserial, is_template, template_name, orientation, power_supplies, comment, is_deleted, date_mod, date_creation, enclosuremodels_id, entities_id, groups_tech_id, locations_id, manufacturers_id, states_id, users_tech_id)
+SELECT name, is_recursive, serial, otherserial, is_template, template_name, orientation, power_supplies, comment, is_deleted, date_mod, date_creation, enclosuremodels_id, entities_id, groups_id_tech, locations_id, manufacturers_id, states_id, users_id_tech
 FROM glpi.glpi_pdus;
 INSERT IGNORE INTO callcentermanager.unmanageds (
         is_recursive,
@@ -1558,8 +1591,8 @@ FROM glpi.glpi_phonepowersupplies;
 INSERT IGNORE INTO callcentermanager.phonetypes ()
 SELECT *
 FROM glpi.glpi_phonetypes;
-INSERT IGNORE INTO callcentermanager.phones ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.phones (name, date_mod, contact, contact_num, comment, serial, otherserial, brand, number_line, have_headset, have_hp, is_global, is_deleted, is_template, template_name, ticket_tco, is_dynamic, uuid, date_creation, is_recursive, last_inventory_update, autoupdatesystems_id, entities_id, groups_id, groups_tech_id, locations_id, manufacturers_id, phonemodels_id, phonepowersupplies_id, phonetypes_id, states_id, users_id, users_tech_id)
+SELECT name, date_mod, contact, contact_num, comment, serial, otherserial, brand, number_line, have_headset, have_hp, is_global, is_deleted, is_template, template_name, ticket_tco, is_dynamic, uuid, date_creation, is_recursive, last_inventory_update, autoupdatesystems_id, entities_id, groups_id, groups_id_tech, locations_id, manufacturers_id, phonemodels_id, phonepowersupplies_id, phonetypes_id, states_id, users_id, users_id_tech
 FROM glpi.glpi_phones;
 INSERT IGNORE INTO callcentermanager.items_racks ()
 SELECT *
@@ -1882,8 +1915,8 @@ FROM glpi.glpi_peripheralmodels;
 INSERT IGNORE INTO callcentermanager.peripheraltypes ()
 SELECT *
 FROM glpi.glpi_peripheraltypes;
-INSERT IGNORE INTO callcentermanager.peripherals ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.peripherals (name, date_mod, contact, contact_num, comment, serial, otherserial, brand, is_deleted, is_global, is_template, template_name, ticket_tco, is_dynamic, uuid, date_creation, is_recursive, autoupdatesystems_id, entities_id, groups_id, groups_tech_id, locations_id, manufacturers_id, peripheralmodels_id, peripheraltypes_id, states_id, users_id, users_tech_id)
+SELECT name, date_mod, contact, contact_num, comment, serial, otherserial, brand, is_deleted, is_global, is_template, template_name, ticket_tco, is_dynamic, uuid, date_creation, is_recursive, autoupdatesystems_id, entities_id, groups_id, groups_id_tech, locations_id, manufacturers_id, peripheralmodels_id, peripheraltypes_id, states_id, users_id, users_id_tech
 FROM glpi.glpi_peripherals;
 INSERT IGNORE INTO callcentermanager.devicemotherboardmodels ()
 SELECT *
@@ -2201,8 +2234,44 @@ FROM glpi.glpi_passivedcequipmentmodels;
 INSERT IGNORE INTO callcentermanager.passivedcequipmenttypes ()
 SELECT *
 FROM glpi.glpi_passivedcequipmenttypes;
-INSERT IGNORE INTO callcentermanager.passivedcequipments ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.passivedcequipments (
+        name,
+        is_recursive,
+        serial,
+        otherserial,
+        is_template,
+        template_name,
+        comment,
+        is_deleted,
+        date_mod,
+        date_creation,
+        entities_id,
+        groups_tech_id,
+        locations_id,
+        manufacturers_id,
+        passivedcequipmentmodels_id,
+        passivedcequipmenttypes_id,
+        states_id,
+        users_tech_id
+    )
+SELECT name,
+    is_recursive,
+    serial,
+    otherserial,
+    is_template,
+    template_name,
+    comment,
+    is_deleted,
+    date_mod,
+    date_creation,
+    entities_id,
+    groups_id_tech,
+    locations_id,
+    manufacturers_id,
+    passivedcequipmentmodels_id,
+    passivedcequipmenttypes_id,
+    states_id,
+    users_id_tech
 FROM glpi.glpi_passivedcequipments;
 INSERT IGNORE INTO callcentermanager.entities_knowbaseitems ()
 SELECT *
@@ -2326,8 +2395,8 @@ SELECT entities_id,
     is_recursive,
     last_inventory_update
 FROM glpi.glpi_computers;
-INSERT IGNORE INTO callcentermanager.monitors ()
-SELECT *
+INSERT IGNORE INTO callcentermanager.monitors (name, date_mod, contact, contact_num, comment, serial, otherserial, size, have_micro, have_speaker, have_subd, have_bnc, have_pivot, have_hdmi, have_displayport, is_deleted, is_global, is_template, template_name, ticket_tco, is_dynamic, uuid, date_creation, is_recursive, autoupdatesystems_id, entities_id, groups_id, groups_tech_id, locations_id, manufacturers_id, monitormodels_id, monitortypes_id, states_id, users_id)
+SELECT name, date_mod, contact, contact_num, comment, serial, otherserial, size, have_micro, have_speaker, have_subd, have_bnc, have_pivot, have_hdmi, have_displayport, is_deleted, is_global, is_template, template_name, ticket_tco, is_dynamic, uuid, date_creation, is_recursive, autoupdatesystems_id, entities_id, groups_id, groups_id_tech, locations_id, manufacturers_id, monitormodels_id, monitortypes_id, states_id, users_id
 FROM glpi.glpi_monitors;
 INSERT IGNORE INTO callcentermanager.computers_items ()
 SELECT *
