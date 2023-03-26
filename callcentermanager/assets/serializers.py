@@ -836,7 +836,7 @@ class PrintersSerializer(serializers.ModelSerializer):
     groups_tech = GroupsSerializer(required=False)
     locations = LocationsSerializer(required=False)
     networks = NetworksSerializer(required=False)
-    printermodels = PrintermodelsSerializer
+    printermodels = PrintermodelsSerializer(required=False)
     printertypes = PrintertypesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
     users = UsersSerializer(required=False)
