@@ -671,6 +671,15 @@ class Printers(models.Model):
         db_table = 'printers'
 
 
+class Cartridgeitemtypes(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'cartridgeitemtypes'
 class Cartridgeitems(models.Model):
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
@@ -679,7 +688,8 @@ class Cartridgeitems(models.Model):
     ref = models.CharField(max_length=255, blank=True, null=True)
     locations = models.ForeignKey(
         Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    cartridgeitemtypes = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, default=None)
+    cartridgeitemtypes = models.ForeignKey(
+        Cartridgeitemtypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
@@ -1394,17 +1404,6 @@ class CartridgeitemsPrintermodels(models.Model):
         managed = True
         db_table = 'cartridgeitems_printermodels'
         unique_together = (('printermodels_id', 'cartridgeitems_id'),)
-
-
-class Cartridgeitemtypes(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'cartridgeitemtypes'
 
 
 class Phonemodels(models.Model):
