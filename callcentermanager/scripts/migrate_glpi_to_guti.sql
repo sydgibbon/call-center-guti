@@ -1576,6 +1576,9 @@ FROM glpi.glpi_softwarelicenses;
 INSERT IGNORE INTO callcentermanager.printers_cartridgeinfos ()
 SELECT *
 FROM glpi.glpi_printers_cartridgeinfos;
+INSERT IGNORE INTO callcentermanager.cartridgeitemtypes ()
+SELECT *
+FROM glpi.glpi_cartridgeitemtypes;
 INSERT IGNORE INTO callcentermanager.cartridgeitems_printermodels ()
 SELECT *
 FROM glpi.glpi_cartridgeitems_printermodels;
