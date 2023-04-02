@@ -6,6 +6,12 @@ from assistance import models as assistanceModels, serializers as assistanceSeri
 
 #Login Auth
 
+
+class OperatingsystemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Operatingsystems
+        fields = '__all__'
+
 class LoginSerializer(serializers.Serializer):
     """
     This serializer defines two fields for authentication:
@@ -615,10 +621,6 @@ class SoftwarelicensesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class SoftwareversionsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Softwareversions
-        fields = '__all__'
 
 
 class NetworkequipmentmodelsSerializer(serializers.ModelSerializer):
@@ -1001,4 +1003,15 @@ class DevicesimcardsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Devicesimcards
+        fields = '__all__'
+
+
+class SoftwareversionsSerializer(serializers.ModelSerializer):
+
+    entities = EntitiesSerializer(required=False)
+    softwares = SoftwaresSerializer(required=False)
+    states = StatesSerializer(required=False)
+    operatingsystems = OperatingsystemsSerializer(required=False)
+    class Meta:
+        model = Softwareversions
         fields = '__all__'
