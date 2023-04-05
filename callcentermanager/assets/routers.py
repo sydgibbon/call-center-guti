@@ -126,3 +126,6 @@ router.register(r'states', StatesViewSet, basename='states')
 router.register(r'users', UsersViewSet, basename='users')
 router.register(r'operatingsystems', OperatingsystemsViewSet, basename='operatingsystems')
 
+# tables
+router.register(r'getComputers', GetComputersViewSet, basename='getComputers')
+

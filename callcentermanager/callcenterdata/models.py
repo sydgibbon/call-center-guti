@@ -1244,30 +1244,6 @@ class ItemsKanbans(models.Model):
         unique_together = (('itemtype', 'items_id', 'users_id'),)
 
 
-class ItemsOperatingsystems(models.Model):
-    items_id = models.PositiveIntegerField()
-    itemtype = models.CharField(max_length=255, blank=True, null=True)
-    operatingsystems_id = models.PositiveIntegerField()
-    operatingsystemversions_id = models.PositiveIntegerField()
-    operatingsystemservicepacks_id = models.PositiveIntegerField()
-    operatingsystemarchitectures_id = models.PositiveIntegerField()
-    operatingsystemkernelversions_id = models.PositiveIntegerField()
-    license_number = models.CharField(max_length=255, blank=True, null=True)
-    licenseid = models.CharField(max_length=255, blank=True, null=True)
-    operatingsystemeditions_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    is_deleted = models.IntegerField()
-    is_dynamic = models.IntegerField()
-    entities_id = models.PositiveIntegerField()
-    is_recursive = models.IntegerField()
-
-    class Meta:
-        managed = True
-        db_table = 'items_operatingsystems'
-        unique_together = (('items_id', 'itemtype', 'operatingsystems_id', 'operatingsystemarchitectures_id'),)
-
-
 class ItemsProblems(models.Model):
     problems_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100, blank=True, null=True)

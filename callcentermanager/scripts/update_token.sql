@@ -1,0 +1,1 @@
+update callcentermanager.authtoken_token set `key` = 'fe2cd32a6c7b8f8d28a505ef574c971ae8045a7f' where user_id = 1;

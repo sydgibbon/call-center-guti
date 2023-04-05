@@ -1015,3 +1015,50 @@ class SoftwareversionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwareversions
         fields = '__all__'
+
+
+# tables
+class GetComputersSerializer(serializers.ModelSerializer):
+    states = serializers.SerializerMethodField()
+    manufacturers = serializers.SerializerMethodField()
+    computertypes = serializers.SerializerMethodField()
+    computermodels = serializers.SerializerMethodField()
+    operatingsystems = serializers.SerializerMethodField()
+    locations = serializers.SerializerMethodField()
+    processors = serializers.SerializerMethodField()
+
+    def get_states(self, obj):
+        return States.objects.filter(id=obj.states_id)[0].name
+
+    def get_manufacturers(self, obj):
+        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+
+    def get_computertypes(self, obj):
+        return Computertypes.objects.filter(id=obj.computertypes_id)[0].name
+    
+    def get_computermodels(self, obj):
+        return Computermodels.objects.filter(id=obj.computermodels_id)[0].name
+    
+    def get_operatingsystems(self, obj):
+        items_operatingsystems = ItemsOperatingsystems.objects.filter(items_id=obj.id, itemtype='Computer')
+        if (items_operatingsystems.count() > 0):
+            return Operatingsystems.objects.filter(id=items_operatingsystems[0].operatingsystems_id)[0].name
+        return None
+            
+    
+    def get_locations(self, obj):
+        return Computermodels.objects.filter(id=obj.computermodels_id)[0].name
+    
+    def get_processors(self, obj):
+        items_deviceprocessors = ItemsDeviceprocessors.objects.filter(items_id=obj.id, itemtype='Computer')
+        print(items_deviceprocessors)
+        if (items_deviceprocessors.count() > 0):
+            return items_deviceprocessors.count()
+        return None
+    
+    class Meta:
+        model = Computers
+        fields = ['id', 'name', 'states', 'manufacturers', 'serial', 'computertypes', 'computermodels',
+                  'operatingsystems', 'locations', 'date_mod', 'processors']
+
+

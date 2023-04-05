@@ -2404,3 +2404,6 @@ FROM glpi.glpi_monitors;
 INSERT IGNORE INTO callcentermanager.computers_items ()
 SELECT *
 FROM glpi.glpi_computers_items;
+INSERT IGNORE INTO callcentermanager.items_operatingsystems (items_id, itemtype, operatingsystems_id, operatingsystemversions_id, operatingsystemservicepacks_id, operatingsystemarchitectures_id, operatingsystemkernelversions_id, license_number, licenseid, operatingsystemeditions_id, date_mod, date_creation, is_deleted, is_dynamic, entities_id, is_recursive)
+SELECT items_id, itemtype, operatingsystems_id, operatingsystemversions_id, operatingsystemservicepacks_id, operatingsystemarchitectures_id, operatingsystemkernelversions_id, license_number, licenseid, operatingsystemeditions_id, date_mod, date_creation, is_deleted, is_dynamic, entities_id, is_recursive
+FROM glpi.glpi_items_operatingsystems;

@@ -1967,4 +1967,13 @@ class OperatingsystemsViewSet(viewsets.ModelViewSet):
             queryset = States.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+# tables
+class GetComputersViewSet(viewsets.ModelViewSet):
+    queryset = Computers.objects.all()
+    serializer_class = GetComputersSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
