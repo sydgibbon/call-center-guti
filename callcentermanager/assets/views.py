@@ -1986,4 +1986,8 @@ class GetPeripheralsViewSet(viewsets.ModelViewSet):
     queryset = Peripherals.objects.all()
     serializer_class = GetPeripheralsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+class GetPdusViewSet(viewsets.ModelViewSet):
+    queryset = Pdus.objects.all()
+    serializer_class = GetPdusSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
 

@@ -1121,3 +1121,7 @@ class GetPeripheralsSerializer(serializers.ModelSerializer):
         model = Peripherals
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'peripheraltypes', 'peripheralmodels', 
                   'date_mod', 'contact']
+class GetPdusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pdus
+        fields = ['name']
