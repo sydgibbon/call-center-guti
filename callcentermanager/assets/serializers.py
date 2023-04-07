@@ -1155,3 +1155,30 @@ class GetPdusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdus
         fields = ['id', 'name']
+
+class GetPhonesSerializer(serializers.ModelSerializer):
+    states = serializers.SerializerMethodField()
+    manufacturers = serializers.SerializerMethodField()
+    locations = serializers.SerializerMethodField()
+    phonetypes = serializers.SerializerMethodField()
+    phonemodels = serializers.SerializerMethodField()
+    date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M") 
+
+    def get_states(self, obj):
+        return States.objects.filter(id=obj.states_id)[0].name
+
+    def get_manufacturers(self, obj):
+        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+                
+    def get_locations(self, obj):
+        return Locations.objects.filter(id=obj.locations_id)[0].name
+
+    def get_phonetypes(self, obj):
+        return Phonetypes.objects.filter(id=obj.phonetypes_id)[0].name
+    
+    def get_phonemodels(self, obj):
+        return Phonemodels.objects.filter(id=obj.phonemodels_id)[0].name
+    class Meta:
+        model = Phones
+        fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'phonetypes', 'phonemodels', 
+                  'date_mod', 'contact']
