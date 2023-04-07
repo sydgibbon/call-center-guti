@@ -1063,3 +1063,29 @@ class GetComputersSerializer(serializers.ModelSerializer):
                   'operatingsystems', 'locations', 'date_mod', 'processors']
 
 
+class GetMonitorsSerializer(serializers.ModelSerializer):
+    states = serializers.SerializerMethodField()
+    manufacturers = serializers.SerializerMethodField()
+    locations = serializers.SerializerMethodField()
+    monitortypes = serializers.SerializerMethodField()
+    monitormodels = serializers.SerializerMethodField()
+    date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M") 
+
+    def get_states(self, obj):
+        return States.objects.filter(id=obj.states_id)[0].name
+
+    def get_manufacturers(self, obj):
+        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+                
+    def get_locations(self, obj):
+        return Locations.objects.filter(id=obj.locations_id)[0].name
+
+    def get_monitortypes(self, obj):
+        return Monitortypes.objects.filter(id=obj.monitortypes_id)[0].name
+    
+    def get_monitormodels(self, obj):
+        return Monitormodels.objects.filter(id=obj.monitormodels_id)[0].name
+    class Meta:
+        model = Monitors
+        fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'monitortypes', 'monitormodels', 
+                  'date_mod', 'contact']

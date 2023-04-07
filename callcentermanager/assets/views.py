@@ -1977,3 +1977,11 @@ class GetComputersViewSet(viewsets.ModelViewSet):
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
+class GetMonitorsViewSet(viewsets.ModelViewSet):
+    queryset = Monitors.objects.all()
+    serializer_class = GetMonitorsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
