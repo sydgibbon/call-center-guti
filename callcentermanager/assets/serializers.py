@@ -1180,7 +1180,7 @@ class GetNetworkequipmentsSerializer(serializers.ModelSerializer):
     def get_devicefirmwares(self, obj):
         items_devicefirmwares = ItemsDevicefirmwares.objects.filter(items_id=obj.id, itemtype='NetworkEquipment')
         if (items_devicefirmwares.count() > 0):
-            return Devicefirmwares.objects.filter(id=items_devicefirmwares[0].devicefirmwares_id)[0].name
+            return Devicefirmwares.objects.filter(id=items_devicefirmwares[0].devicefirmwares_id)[0].version
         return None
     
     def get_locations(self, obj):
