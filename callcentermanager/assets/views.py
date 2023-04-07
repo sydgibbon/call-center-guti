@@ -1986,4 +1986,8 @@ class GetPeripheralsViewSet(viewsets.ModelViewSet):
     queryset = Peripherals.objects.all()
     serializer_class = GetPeripheralsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+class GetEnclosuresViewSet(viewsets.ModelViewSet):
+    queryset = Enclosures.objects.all()
+    serializer_class = GetEnclosuresSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
 

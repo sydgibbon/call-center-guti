@@ -1121,3 +1121,7 @@ class GetPeripheralsSerializer(serializers.ModelSerializer):
         model = Peripherals
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'peripheraltypes', 'peripheralmodels', 
                   'date_mod', 'contact']
+class GetEnclosuresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Enclosures
+        fields = ['name']
