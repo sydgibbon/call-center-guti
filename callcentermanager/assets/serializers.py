@@ -1155,3 +1155,8 @@ class GetPdusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdus
         fields = ['id', 'name']
+
+class GetRacksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Racks
+        fields = ['id', 'name']

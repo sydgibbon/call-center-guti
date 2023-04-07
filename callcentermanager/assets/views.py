@@ -2001,3 +2001,10 @@ class GetPdusViewSet(viewsets.ModelViewSet):
     serializer_class = GetPdusSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
+class GetRacksViewSet(viewsets.ModelViewSet):
+    queryset = Racks.objects.all()
+    serializer_class = GetRacksSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
