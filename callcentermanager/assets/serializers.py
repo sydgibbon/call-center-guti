@@ -1146,4 +1146,4 @@ class GetPrintersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Printers
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'printertypes', 'printermodels', 
-                  'date_mod', 'contact']
+                  'date_mod']
