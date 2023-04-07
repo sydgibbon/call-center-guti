@@ -1124,4 +1124,4 @@ class GetPeripheralsSerializer(serializers.ModelSerializer):
 class GetEnclosuresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enclosures
-        fields = ['name']
+        fields = ['id', 'name']
