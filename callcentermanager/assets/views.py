@@ -1974,22 +1974,16 @@ class GetComputersViewSet(viewsets.ModelViewSet):
     serializer_class = GetComputersSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
 class GetMonitorsViewSet(viewsets.ModelViewSet):
     queryset = Monitors.objects.all()
     serializer_class = GetMonitorsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-    
 class GetDevicesimcardsViewSet(viewsets.ModelViewSet):
     queryset = Devicesimcards.objects.all()
     serializer_class = GetDevicesimcardsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+class GetPeripheralsViewSet(viewsets.ModelViewSet):
+    queryset = Peripherals.objects.all()
+    serializer_class = GetPeripheralsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
 

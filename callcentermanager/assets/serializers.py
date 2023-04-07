@@ -1094,3 +1094,30 @@ class GetDevicesimcardsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Devicesimcards
         fields = ['id']
+
+class GetPeripheralsSerializer(serializers.ModelSerializer):
+    states = serializers.SerializerMethodField()
+    manufacturers = serializers.SerializerMethodField()
+    locations = serializers.SerializerMethodField()
+    peripheraltypes = serializers.SerializerMethodField()
+    peripheralmodels = serializers.SerializerMethodField()
+    date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M") 
+
+    def get_states(self, obj):
+        return States.objects.filter(id=obj.states_id)[0].name
+
+    def get_manufacturers(self, obj):
+        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+                
+    def get_locations(self, obj):
+        return Locations.objects.filter(id=obj.locations_id)[0].name
+
+    def get_peripheraltypes(self, obj):
+        return Peripheraltypes.objects.filter(id=obj.peripheraltypes_id)[0].name
+    
+    def get_peripheralmodels(self, obj):
+        return Peripheralmodels.objects.filter(id=obj.peripheralmodels_id)[0].name
+    class Meta:
+        model = Peripherals
+        fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'peripheraltypes', 'peripheralmodels', 
+                  'date_mod', 'contact']
