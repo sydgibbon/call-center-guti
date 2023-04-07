@@ -1121,3 +1121,29 @@ class GetPeripheralsSerializer(serializers.ModelSerializer):
         model = Peripherals
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'peripheraltypes', 'peripheralmodels', 
                   'date_mod', 'contact']
+class GetPrintersSerializer(serializers.ModelSerializer):
+    states = serializers.SerializerMethodField()
+    manufacturers = serializers.SerializerMethodField()
+    locations = serializers.SerializerMethodField()
+    printertypes = serializers.SerializerMethodField()
+    printermodels = serializers.SerializerMethodField()
+    date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M") 
+
+    def get_states(self, obj):
+        return States.objects.filter(id=obj.states_id)[0].name
+
+    def get_manufacturers(self, obj):
+        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+                
+    def get_locations(self, obj):
+        return Locations.objects.filter(id=obj.locations_id)[0].name
+
+    def get_printertypes(self, obj):
+        return Printertypes.objects.filter(id=obj.printertypes_id)[0].name
+    
+    def get_printermodels(self, obj):
+        return Printermodels.objects.filter(id=obj.printermodels_id)[0].name
+    class Meta:
+        model = Printers
+        fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'printertypes', 'printermodels', 
+                  'date_mod', 'contact']
