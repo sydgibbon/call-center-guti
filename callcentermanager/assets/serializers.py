@@ -1124,4 +1124,4 @@ class GetPeripheralsSerializer(serializers.ModelSerializer):
 class GetPdusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdus
-        fields = ['name']
+        fields = ['id', 'name']
