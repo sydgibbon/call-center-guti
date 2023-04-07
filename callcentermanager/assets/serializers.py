@@ -1025,6 +1025,7 @@ class GetComputersSerializer(serializers.ModelSerializer):
     computermodels = serializers.SerializerMethodField()
     operatingsystems = serializers.SerializerMethodField()
     locations = serializers.SerializerMethodField()
+    date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M")
     processors = serializers.SerializerMethodField()
 
     def get_states(self, obj):
