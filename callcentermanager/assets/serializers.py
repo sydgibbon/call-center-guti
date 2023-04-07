@@ -1089,3 +1089,8 @@ class GetMonitorsSerializer(serializers.ModelSerializer):
         model = Monitors
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'monitortypes', 'monitormodels', 
                   'date_mod', 'contact']
+        
+class GetDevicesimcardsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicesimcards
+        fields = ['id']

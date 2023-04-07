@@ -129,4 +129,5 @@ router.register(r'operatingsystems', OperatingsystemsViewSet, basename='operatin
 # tables
 router.register(r'getComputers', GetComputersViewSet, basename='getComputers')
 router.register(r'getMonitors', GetMonitorsViewSet, basename='getMonitors')
+router.register(r'getDevicesimcards', GetDevicesimcardsViewSet, basename='getDevicesimcards')
 

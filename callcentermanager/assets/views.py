@@ -1984,4 +1984,12 @@ class GetMonitorsViewSet(viewsets.ModelViewSet):
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+    
+class GetDevicesimcardsViewSet(viewsets.ModelViewSet):
+    queryset = Devicesimcards.objects.all()
+    serializer_class = GetDevicesimcardsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
