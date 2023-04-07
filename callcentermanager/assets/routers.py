@@ -133,3 +133,4 @@ router.register(r'getDevicesimcards', GetDevicesimcardsViewSet, basename='getDev
 router.register(r'getPeripherals', GetPeripheralsViewSet, basename='getPeripherals')
 router.register(r'getPrinters', GetPrintersViewSet, basename='getPrinters')
 router.register(r'getEnclosures', GetEnclosuresViewSet, basename='getEnclosures')
+router.register(r'getPdus', GetPdusViewSet, basename='getPdus')

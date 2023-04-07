@@ -1992,5 +1992,8 @@ class GetPrintersViewSet(viewsets.ModelViewSet):
 class GetEnclosuresViewSet(viewsets.ModelViewSet):
     queryset = Enclosures.objects.all()
     serializer_class = GetEnclosuresSerializer
+class GetPdusViewSet(viewsets.ModelViewSet):
+    queryset = Pdus.objects.all()
+    serializer_class = GetPdusSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 

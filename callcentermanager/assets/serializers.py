@@ -1150,4 +1150,7 @@ class GetPrintersSerializer(serializers.ModelSerializer):
 class GetEnclosuresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enclosures
+class GetPdusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pdus
         fields = ['id', 'name']
