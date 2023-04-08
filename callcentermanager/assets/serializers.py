@@ -1048,7 +1048,7 @@ class GetComputersSerializer(serializers.ModelSerializer):
             
     
     def get_locations(self, obj):
-        return Computermodels.objects.filter(id=obj.computermodels_id)[0].name
+        return Locations.objects.filter(id=obj.locations_id)[0].name
     
     def get_processors(self, obj):
         items_deviceprocessors = ItemsDeviceprocessors.objects.filter(items_id=obj.id, itemtype='Computer')
