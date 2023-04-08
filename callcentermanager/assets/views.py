@@ -2001,3 +2001,8 @@ class GetPdusViewSet(viewsets.ModelViewSet):
     serializer_class = GetPdusSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
+class GetCablesViewSet(viewsets.ModelViewSet):
+    queryset = Cables.objects.all()
+    serializer_class = GetCablesSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+

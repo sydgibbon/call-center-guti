@@ -986,6 +986,11 @@ class Pdumodels(models.Model):
         managed = True
         db_table = 'pdumodels'
 
+# class Cables(models.Model):
+#     name = models.CharField(max_length=255, blank=True, null=True)
+#     users_tech = models.ForeignKey(
+#         Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='pdus_users_tech')
+
 
 class Pdus(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)

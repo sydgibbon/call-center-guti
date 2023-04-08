@@ -25,14 +25,14 @@ SET time_zone = "+00:00";
 -- Volcado de datos para la tabla `authtoken_token`
 --
 
-INSERT INTO `authtoken_token` (`key`, `created`, `user_id`) VALUES
+INSERT IGNORE INTO `authtoken_token` (`key`, `created`, `user_id`) VALUES
 ('fe2cd32a6c7b8f8d28a505ef574c971ae8045a7f', '2023-04-07 01:47:53.278309', 1);
 
 --
 -- Volcado de datos para la tabla `auth_permission`
 --
 
-INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
+INSERT IGNORE INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
 (1, 'Can add log entry', 1, 'add_logentry'),
 (2, 'Can change log entry', 1, 'change_logentry'),
 (3, 'Can delete log entry', 1, 'delete_logentry'),
@@ -828,7 +828,7 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (793, 'Can add autoupdatesystems', 199, 'add_autoupdatesystems'),
 (794, 'Can change autoupdatesystems', 199, 'change_autoupdatesystems'),
 (795, 'Can delete autoupdatesystems', 199, 'delete_autoupdatesystems');
-INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
+INSERT IGNORE INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
 (796, 'Can view autoupdatesystems', 199, 'view_autoupdatesystems'),
 (797, 'Can add cablestrands', 200, 'add_cablestrands'),
 (798, 'Can change cablestrands', 200, 'change_cablestrands'),
@@ -1591,7 +1591,7 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (1555, 'Can delete planningrecalls', 389, 'delete_planningrecalls'),
 (1556, 'Can view planningrecalls', 389, 'view_planningrecalls'),
 (1557, 'Can add olalevels tickets', 390, 'add_olalevelstickets');
-INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
+INSERT IGNORE INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
 (1558, 'Can change olalevels tickets', 390, 'change_olalevelstickets'),
 (1559, 'Can delete olalevels tickets', 390, 'delete_olalevelstickets'),
 (1560, 'Can view olalevels tickets', 390, 'view_olalevelstickets'),
@@ -1628,56 +1628,56 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 -- Volcado de datos para la tabla `autoupdatesystems`
 --
 
-INSERT INTO `autoupdatesystems` (`id`, `name`, `comment`) VALUES
+INSERT IGNORE INTO `autoupdatesystems` (`id`, `name`, `comment`) VALUES
 (1, 'UpdateSource1', '');
 
 --
 -- Volcado de datos para la tabla `cables`
 --
 
-INSERT INTO `cables` (`id`, `name`, `is_recursive`, `itemtype_endpoint_a`, `itemtype_endpoint_b`, `color`, `otherserial`, `comment`, `date_mod`, `date_creation`, `cablestrands_id`, `cabletypes_id`, `entities_id`, `items_endpoint_a_id`, `items_endpoint_b_id`, `socketmodels_endpoint_a_id`, `socketmodels_endpoint_b_id`, `sockets_endpoint_a_id`, `sockets_endpoint_b_id`, `states_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `cables` (`id`, `name`, `is_recursive`, `itemtype_endpoint_a`, `itemtype_endpoint_b`, `color`, `otherserial`, `comment`, `date_mod`, `date_creation`, `cablestrands_id`, `cabletypes_id`, `entities_id`, `items_endpoint_a_id`, `items_endpoint_b_id`, `socketmodels_endpoint_a_id`, `socketmodels_endpoint_b_id`, `sockets_endpoint_a_id`, `sockets_endpoint_b_id`, `states_id`, `users_tech_id`) VALUES
 (1, 'Cable1', 0, 'Computer', 'Computer', '#dddddd', '12312321', 'Comment', '2023-03-19 16:40:27.000000', '2023-03-19 16:40:27.000000', 1, 1, 0, 1, 1, 1, 1, 0, 0, 2, 0);
 
 --
 -- Volcado de datos para la tabla `cablestrands`
 --
 
-INSERT INTO `cablestrands` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `cablestrands` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'CableStrand1', 'Comment', '2023-03-19 16:39:31.000000', '2023-03-19 16:39:31.000000');
 
 --
 -- Volcado de datos para la tabla `cabletypes`
 --
 
-INSERT INTO `cabletypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `cabletypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'CableType1', 'Comment', '2023-03-19 16:39:17.000000', '2023-03-19 16:39:17.000000');
 
 --
 -- Volcado de datos para la tabla `calendars`
 --
 
-INSERT INTO `calendars` (`id`, `name`, `entities_id`, `is_recursive`, `comment`, `date_mod`, `cache_duration`, `date_creation`) VALUES
+INSERT IGNORE INTO `calendars` (`id`, `name`, `entities_id`, `is_recursive`, `comment`, `date_mod`, `cache_duration`, `date_creation`) VALUES
 (1, 'Default', 0, 1, 'Default calendar', NULL, '[0,43200,43200,43200,43200,43200,0]', NULL);
 
 --
 -- Volcado de datos para la tabla `cartridgeitems`
 --
 
-INSERT INTO `cartridgeitems` (`id`, `is_recursive`, `name`, `ref`, `is_deleted`, `comment`, `alarm_threshold`, `stock_target`, `date_mod`, `date_creation`, `pictures`, `cartridgeitemtypes_id`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `cartridgeitems` (`id`, `is_recursive`, `name`, `ref`, `is_deleted`, `comment`, `alarm_threshold`, `stock_target`, `date_mod`, `date_creation`, `pictures`, `cartridgeitemtypes_id`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `users_tech_id`) VALUES
 (1, 0, 'CartridgeCon2horasdesueno', 'reference', 0, 'Comment1', 10, 2, '2023-03-19 16:33:19.000000', '2023-03-19 16:33:19.000000', NULL, 1, 0, 0, 1, 2, 0);
 
 --
 -- Volcado de datos para la tabla `cartridgeitemtypes`
 --
 
-INSERT INTO `cartridgeitemtypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `cartridgeitemtypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'CartridgeType1', 'comment', '2023-03-19 16:33:01.000000', '2023-03-19 16:33:01.000000');
 
 --
 -- Volcado de datos para la tabla `computermodels`
 --
 
-INSERT INTO `computermodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `computermodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
 (1, 'ComputerModel1', '', '', 0, 1, 1, 0, 0, 0, NULL, NULL, NULL, '2023-03-19 16:16:21.000000', '2023-03-19 16:16:21.000000'),
 (2, 'ComputerModel2', 'Comment', '23423432423434', 2, 3, 1, 2, 123, 0, NULL, NULL, NULL, '2023-03-19 16:16:45.000000', '2023-03-19 16:16:45.000000');
 
@@ -1685,14 +1685,14 @@ INSERT INTO `computermodels` (`id`, `name`, `comment`, `product_number`, `weight
 -- Volcado de datos para la tabla `computers`
 --
 
-INSERT INTO `computers` (`id`, `name`, `serial`, `otherserial`, `contact`, `contact_num`, `comment`, `date_mod`, `is_template`, `template_name`, `is_deleted`, `is_dynamic`, `ticket_tco`, `uuid`, `date_creation`, `is_recursive`, `last_inventory_update`, `autoupdatesystems_id`, `computermodels_id`, `computertypes_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `networks_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `computers` (`id`, `name`, `serial`, `otherserial`, `contact`, `contact_num`, `comment`, `date_mod`, `is_template`, `template_name`, `is_deleted`, `is_dynamic`, `ticket_tco`, `uuid`, `date_creation`, `is_recursive`, `last_inventory_update`, `autoupdatesystems_id`, `computermodels_id`, `computertypes_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `networks_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
 (1, 'Computer1', '333333333333', '2222222', 'ALTERNATEUSERNAME', '123232323', '', '2023-03-19 16:17:32.000000', 0, NULL, 0, 0, '0.0000', 'uuid', '2023-03-19 16:17:32.000000', 0, NULL, 1, 2, 3, 0, 0, 0, 1, 2, 1, 1, 0, 0);
 
 --
 -- Volcado de datos para la tabla `computertypes`
 --
 
-INSERT INTO `computertypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `computertypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'PC', '', '2023-03-19 16:15:32.000000', '2023-03-19 16:15:32.000000'),
 (2, 'Laptop', '', '2023-03-19 16:15:36.000000', '2023-03-19 16:15:36.000000'),
 (3, 'All-In-One', '', '2023-03-19 16:15:46.000000', '2023-03-19 16:15:46.000000');
@@ -1701,21 +1701,21 @@ INSERT INTO `computertypes` (`id`, `name`, `comment`, `date_mod`, `date_creation
 -- Volcado de datos para la tabla `consumableitems`
 --
 
-INSERT INTO `consumableitems` (`id`, `is_recursive`, `name`, `ref`, `is_deleted`, `comment`, `alarm_threshold`, `stock_target`, `date_mod`, `date_creation`, `otherserial`, `pictures`, `consumableitemtypes_id`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `consumableitems` (`id`, `is_recursive`, `name`, `ref`, `is_deleted`, `comment`, `alarm_threshold`, `stock_target`, `date_mod`, `date_creation`, `otherserial`, `pictures`, `consumableitemtypes_id`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `users_tech_id`) VALUES
 (1, 0, 'ConsumableKindOfModelProbably', 'ref', 0, '', 10, 0, '2023-03-19 16:33:56.000000', '2023-03-19 16:33:56.000000', '2223232323', NULL, 1, 0, 0, 1, 2, 0);
 
 --
 -- Volcado de datos para la tabla `consumableitemtypes`
 --
 
-INSERT INTO `consumableitemtypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `consumableitemtypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'asdsadasdas', '', '2023-03-19 16:33:44.000000', '2023-03-19 16:33:44.000000');
 
 --
 -- Volcado de datos para la tabla `crontasklogs`
 --
 
-INSERT INTO `crontasklogs` (`id`, `crontasks_id`, `crontasklogs_id`, `date`, `state`, `elapsed`, `volume`, `content`) VALUES
+INSERT IGNORE INTO `crontasklogs` (`id`, `crontasks_id`, `crontasklogs_id`, `date`, `state`, `elapsed`, `volume`, `content`) VALUES
 (1, 5, 0, '2023-03-19 16:12:52.000000', 0, 0, 0, 'Run mode: GLPI'),
 (2, 5, 1, '2023-03-19 16:12:52.000000', 2, 0.1766979992389679, 0, 'Action completed, no processing required'),
 (3, 6, 0, '2023-03-19 16:18:51.000000', 0, 0, 0, 'Run mode: GLPI'),
@@ -1733,7 +1733,7 @@ INSERT INTO `crontasklogs` (`id`, `crontasks_id`, `crontasklogs_id`, `date`, `st
 -- Volcado de datos para la tabla `crontasks`
 --
 
-INSERT INTO `crontasks` (`id`, `itemtype`, `name`, `frequency`, `param`, `state`, `mode`, `allowmode`, `hourmin`, `hourmax`, `logs_lifetime`, `lastrun`, `lastcode`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `crontasks` (`id`, `itemtype`, `name`, `frequency`, `param`, `state`, `mode`, `allowmode`, `hourmin`, `hourmax`, `logs_lifetime`, `lastrun`, `lastcode`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'CartridgeItem', 'cartridge', 86400, 10, 0, 1, 3, 0, 24, 30, NULL, NULL, NULL, NULL, NULL),
 (2, 'ConsumableItem', 'consumable', 86400, 10, 0, 1, 3, 0, 24, 30, NULL, NULL, NULL, NULL, NULL),
 (3, 'SoftwareLicense', 'software', 86400, NULL, 0, 1, 3, 0, 24, 30, NULL, NULL, NULL, NULL, NULL),
@@ -1780,14 +1780,14 @@ INSERT INTO `crontasks` (`id`, `itemtype`, `name`, `frequency`, `param`, `state`
 -- Volcado de datos para la tabla `dcrooms`
 --
 
-INSERT INTO `dcrooms` (`id`, `name`, `is_recursive`, `vis_cols`, `vis_rows`, `blueprint`, `is_deleted`, `date_mod`, `date_creation`, `datacenters_id`, `entities_id`, `locations_id`) VALUES
+INSERT IGNORE INTO `dcrooms` (`id`, `name`, `is_recursive`, `vis_cols`, `vis_rows`, `blueprint`, `is_deleted`, `date_mod`, `date_creation`, `datacenters_id`, `entities_id`, `locations_id`) VALUES
 (1, 'ServerRoom1', 0, 0, 1, '1', 1, NULL, '0000-00-00 00:00:00.000000', 0, 4294967295, 20230319163619);
 
 --
 -- Volcado de datos para la tabla `devicefirmwaretypes`
 --
 
-INSERT INTO `devicefirmwaretypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `devicefirmwaretypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'BIOS', NULL, NULL, NULL),
 (2, 'UEFI', NULL, NULL, NULL),
 (3, 'Firmware', NULL, NULL, NULL);
@@ -1796,7 +1796,7 @@ INSERT INTO `devicefirmwaretypes` (`id`, `name`, `comment`, `date_mod`, `date_cr
 -- Volcado de datos para la tabla `devicememorytypes`
 --
 
-INSERT INTO `devicememorytypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `devicememorytypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'EDO', NULL, NULL, NULL),
 (2, 'DDR', NULL, NULL, NULL),
 (3, 'SDRAM', NULL, NULL, NULL),
@@ -1806,14 +1806,14 @@ INSERT INTO `devicememorytypes` (`id`, `name`, `comment`, `date_mod`, `date_crea
 -- Volcado de datos para la tabla `devicesimcards`
 --
 
-INSERT INTO `devicesimcards` (`id`, `designation`, `comment`, `is_recursive`, `is_deleted`, `voltage`, `date_mod`, `date_creation`, `allow_voip`, `devicesimcardtypes_id`, `entities_id`, `manufacturers_id`) VALUES
+INSERT IGNORE INTO `devicesimcards` (`id`, `designation`, `comment`, `is_recursive`, `is_deleted`, `voltage`, `date_mod`, `date_creation`, `allow_voip`, `devicesimcardtypes_id`, `entities_id`, `manufacturers_id`) VALUES
 (1, 'SimcardComponent', 'Comment', 0, 0, 123, '2023-03-19 16:40:50.000000', '2023-03-19 16:40:50.000000', 1, 1, 0, 4);
 
 --
 -- Volcado de datos para la tabla `devicesimcardtypes`
 --
 
-INSERT INTO `devicesimcardtypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `devicesimcardtypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'Full SIM', NULL, NULL, NULL),
 (2, 'Mini SIM', NULL, NULL, NULL),
 (3, 'Micro SIM', NULL, NULL, NULL),
@@ -1823,14 +1823,14 @@ INSERT INTO `devicesimcardtypes` (`id`, `name`, `comment`, `date_mod`, `date_cre
 -- Volcado de datos para la tabla `django_admin_log`
 --
 
-INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
+INSERT IGNORE INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
 (1, '2023-04-07 01:47:53.279152', '1', '73e20aa5e9d7a077432975be789c9643b8b1ba68', 1, '[{\"added\": {}}]', 196, 1);
 
 --
 -- Volcado de datos para la tabla `django_content_type`
 --
 
-INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
+INSERT IGNORE INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (1, 'admin', 'logentry'),
 (198, 'assets', 'authldaps'),
 (199, 'assets', 'autoupdatesystems'),
@@ -2233,7 +2233,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 -- Volcado de datos para la tabla `django_migrations`
 --
 
-INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
+INSERT IGNORE INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (1, 'contenttypes', '0001_initial', '2023-04-07 01:44:13.283440'),
 (2, 'contenttypes', '0002_remove_content_type_name', '2023-04-07 01:44:13.621819'),
 (3, 'auth', '0001_initial', '2023-04-07 01:44:14.122676'),
@@ -2263,35 +2263,35 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 -- Volcado de datos para la tabla `django_session`
 --
 
-INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+INSERT IGNORE INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('vfl6vpkvjumifq02c3r4xa96a5htr3y0', '.eJxVjEEOwiAQRe_C2pARClNcuu8ZyJQZbNVAUtqV8e7apAtd_v9e3ktF2tYpbk2WOLO6qLM6_X4jpYeUHfCdyq3qVMu6zKPeFX3QpofK8rwe7l9gojbt2eBQvBPJhBZHl3rA4MAEAzYLcO7Qw3ekDi33fbZMKIacBeMNeFHvD8bNNuw:1pkbCa:68nc1pLpGj213RkJL0TGROOhRgBMvdSo7_9ixVGmqTM', '2023-04-21 01:47:44.725081');
 
 --
 -- Volcado de datos para la tabla `enclosuremodels`
 --
 
-INSERT INTO `enclosuremodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `enclosuremodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
 (1, 'EnclosureModel1', 'Comment', '123123', 2, 1, 1, 0, 0, 0, NULL, NULL, NULL, '2023-03-19 16:37:11.000000', '2023-03-19 16:37:11.000000');
 
 --
 -- Volcado de datos para la tabla `enclosures`
 --
 
-INSERT INTO `enclosures` (`id`, `name`, `is_recursive`, `serial`, `otherserial`, `is_template`, `template_name`, `orientation`, `power_supplies`, `comment`, `is_deleted`, `date_mod`, `date_creation`, `enclosuremodels_id`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `states_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `enclosures` (`id`, `name`, `is_recursive`, `serial`, `otherserial`, `is_template`, `template_name`, `orientation`, `power_supplies`, `comment`, `is_deleted`, `date_mod`, `date_creation`, `enclosuremodels_id`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `states_id`, `users_tech_id`) VALUES
 (1, 'Enclosure1', 0, '123123123', '23132323', 0, NULL, NULL, 1, 'Comment', 0, '2023-03-19 16:37:19.000000', '2023-03-19 16:37:19.000000', 1, 0, 0, 1, 2, 2, 0);
 
 --
 -- Volcado de datos para la tabla `entities`
 --
 
-INSERT INTO `entities` (`id`, `name`, `completename`, `comment`, `level`, `sons_cache`, `ancestors_cache`, `registration_number`, `address`, `postcode`, `town`, `state`, `country`, `website`, `phonenumber`, `fax`, `email`, `admin_email`, `admin_email_name`, `from_email`, `from_email_name`, `noreply_email`, `noreply_email_name`, `replyto_email`, `replyto_email_name`, `notification_subject_tag`, `ldap_dn`, `tag`, `mail_domain`, `entity_ldapfilter`, `mailing_signature`, `cartridges_alert_repeat`, `consumables_alert_repeat`, `use_licenses_alert`, `send_licenses_alert_before_delay`, `use_certificates_alert`, `send_certificates_alert_before_delay`, `certificates_alert_repeat_interval`, `use_contracts_alert`, `send_contracts_alert_before_delay`, `use_infocoms_alert`, `send_infocoms_alert_before_delay`, `use_reservations_alert`, `use_domains_alert`, `send_domains_alert_close_expiries_delay`, `send_domains_alert_expired_delay`, `autoclose_delay`, `autopurge_delay`, `notclosed_delay`, `calendars_strategy`, `auto_assign_mode`, `tickettype`, `max_closedate`, `inquest_config`, `inquest_rate`, `inquest_delay`, `inquest_URL`, `autofill_warranty_date`, `autofill_use_date`, `autofill_buy_date`, `autofill_delivery_date`, `autofill_order_date`, `tickettemplates_strategy`, `changetemplates_strategy`, `changetemplates`, `problemtemplates_strategy`, `problemtemplates`, `entities_strategy_software`, `entities_software`, `default_contract_alert`, `default_infocom_alert`, `default_cartridges_alarm_threshold`, `default_consumables_alarm_threshold`, `delay_send_emails`, `is_notif_enable_default`, `inquest_duration`, `date_mod`, `date_creation`, `autofill_decommission_date`, `suppliers_as_private`, `anonymize_support_agents`, `display_users_initials`, `contracts_strategy_default`, `contracts_default`, `enable_custom_css`, `custom_css_code`, `latitude`, `longitude`, `altitude`, `transfers_strategy`, `transfers`, `agent_base_url`, `authldaps_id`, `calendars_id`, `entities_id`, `tickettemplates_id`) VALUES
+INSERT IGNORE INTO `entities` (`id`, `name`, `completename`, `comment`, `level`, `sons_cache`, `ancestors_cache`, `registration_number`, `address`, `postcode`, `town`, `state`, `country`, `website`, `phonenumber`, `fax`, `email`, `admin_email`, `admin_email_name`, `from_email`, `from_email_name`, `noreply_email`, `noreply_email_name`, `replyto_email`, `replyto_email_name`, `notification_subject_tag`, `ldap_dn`, `tag`, `mail_domain`, `entity_ldapfilter`, `mailing_signature`, `cartridges_alert_repeat`, `consumables_alert_repeat`, `use_licenses_alert`, `send_licenses_alert_before_delay`, `use_certificates_alert`, `send_certificates_alert_before_delay`, `certificates_alert_repeat_interval`, `use_contracts_alert`, `send_contracts_alert_before_delay`, `use_infocoms_alert`, `send_infocoms_alert_before_delay`, `use_reservations_alert`, `use_domains_alert`, `send_domains_alert_close_expiries_delay`, `send_domains_alert_expired_delay`, `autoclose_delay`, `autopurge_delay`, `notclosed_delay`, `calendars_strategy`, `auto_assign_mode`, `tickettype`, `max_closedate`, `inquest_config`, `inquest_rate`, `inquest_delay`, `inquest_URL`, `autofill_warranty_date`, `autofill_use_date`, `autofill_buy_date`, `autofill_delivery_date`, `autofill_order_date`, `tickettemplates_strategy`, `changetemplates_strategy`, `changetemplates`, `problemtemplates_strategy`, `problemtemplates`, `entities_strategy_software`, `entities_software`, `default_contract_alert`, `default_infocom_alert`, `default_cartridges_alarm_threshold`, `default_consumables_alarm_threshold`, `delay_send_emails`, `is_notif_enable_default`, `inquest_duration`, `date_mod`, `date_creation`, `autofill_decommission_date`, `suppliers_as_private`, `anonymize_support_agents`, `display_users_initials`, `contracts_strategy_default`, `contracts_default`, `enable_custom_css`, `custom_css_code`, `latitude`, `longitude`, `altitude`, `transfers_strategy`, `transfers`, `agent_base_url`, `authldaps_id`, `calendars_id`, `entities_id`, `tickettemplates_id`) VALUES
 (0, 'Root Entity', 'Root Entity', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, -2, -2, -10, -10, 0, 0, -10, 1, NULL, 1, 0, 0, NULL, '0', '0', '0', '0', '0', 0, 0, 1, 0, 1, -10, 0, 0, 0, 10, 0, 0, 1, 0, NULL, NULL, '0', 0, 0, 1, 0, 0, 0, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, NULL, 1);
 
 --
 -- Volcado de datos para la tabla `events`
 --
 
-INSERT INTO `events` (`id`, `items_id`, `type`, `date`, `service`, `level`, `message`) VALUES
+INSERT IGNORE INTO `events` (`id`, `items_id`, `type`, `date`, `service`, `level`, `message`) VALUES
 (1, 0, 'system', '2023-03-17 16:47:56.000000', 'login', 3, ' は IP: ::1 からのログインに失敗しました'),
 (2, 0, 'system', '2023-03-19 16:12:54.000000', 'login', 3, 'glpi は IP: ::1 からログインしました'),
 (3, 1, 'Location', '2023-03-19 16:14:30.000000', 'setup', 4, 'glpi adds the item Cordoba'),
@@ -2365,7 +2365,7 @@ INSERT INTO `events` (`id`, `items_id`, `type`, `date`, `service`, `level`, `mes
 -- Volcado de datos para la tabla `interfacetypes`
 --
 
-INSERT INTO `interfacetypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `interfacetypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'IDE', NULL, NULL, NULL),
 (2, 'SATA', NULL, NULL, NULL),
 (3, 'SCSI', NULL, NULL, NULL),
@@ -2379,35 +2379,35 @@ INSERT INTO `interfacetypes` (`id`, `name`, `comment`, `date_mod`, `date_creatio
 -- Volcado de datos para la tabla `items_operatingsystems`
 --
 
-INSERT INTO `items_operatingsystems` (`id`, `items_id`, `itemtype`, `operatingsystems_id`, `operatingsystemversions_id`, `operatingsystemservicepacks_id`, `operatingsystemarchitectures_id`, `operatingsystemkernelversions_id`, `license_number`, `licenseid`, `operatingsystemeditions_id`, `date_mod`, `date_creation`, `is_deleted`, `is_dynamic`, `entities_id`, `is_recursive`) VALUES
+INSERT IGNORE INTO `items_operatingsystems` (`id`, `items_id`, `itemtype`, `operatingsystems_id`, `operatingsystemversions_id`, `operatingsystemservicepacks_id`, `operatingsystemarchitectures_id`, `operatingsystemkernelversions_id`, `license_number`, `licenseid`, `operatingsystemeditions_id`, `date_mod`, `date_creation`, `is_deleted`, `is_dynamic`, `entities_id`, `is_recursive`) VALUES
 (1, 1, 'Computer', 1, 1, 1, 1, 1, '123123123123', 'IDPRODUCT', 1, '2023-03-19 16:43:01.000000', '2023-03-19 16:43:01.000000', 0, 0, 0, 0);
 
 --
 -- Volcado de datos para la tabla `lineoperators`
 --
 
-INSERT INTO `lineoperators` (`id`, `name`, `comment`, `mcc`, `mnc`, `is_recursive`, `date_mod`, `date_creation`, `entities_id`) VALUES
+INSERT IGNORE INTO `lineoperators` (`id`, `name`, `comment`, `mcc`, `mnc`, `is_recursive`, `date_mod`, `date_creation`, `entities_id`) VALUES
 (1, 'LineOperator1', 'Comment', 0, 0, 0, '0000-00-00 00:00:00.000000', '2023-03-19 16:41:26.000000', 4294967295);
 
 --
 -- Volcado de datos para la tabla `lines`
 --
 
-INSERT INTO `lines` (`id`, `name`, `is_recursive`, `is_deleted`, `caller_num`, `caller_name`, `date_creation`, `date_mod`, `comment`, `entities_id`, `groups_id`, `lineoperators_id`, `linetypes_id`, `locations_id`, `states_id`, `users_id`) VALUES
+INSERT IGNORE INTO `lines` (`id`, `name`, `is_recursive`, `is_deleted`, `caller_num`, `caller_name`, `date_creation`, `date_mod`, `comment`, `entities_id`, `groups_id`, `lineoperators_id`, `linetypes_id`, `locations_id`, `states_id`, `users_id`) VALUES
 (1, 'Line1', 0, 0, '0', '123123', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0', 1, 1, 2, 1, 20230319164129, 20230319164129, 123123);
 
 --
 -- Volcado de datos para la tabla `linetypes`
 --
 
-INSERT INTO `linetypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `linetypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'LineType1', '123123123', '2023-03-19 16:41:13.000000', '2023-03-19 16:41:13.000000');
 
 --
 -- Volcado de datos para la tabla `locations`
 --
 
-INSERT INTO `locations` (`id`, `is_recursive`, `name`, `completename`, `comment`, `level`, `ancestors_cache`, `sons_cache`, `address`, `postcode`, `town`, `state`, `country`, `building`, `room`, `latitude`, `longitude`, `altitude`, `date_mod`, `date_creation`, `entities_id`, `locations_id`) VALUES
+INSERT IGNORE INTO `locations` (`id`, `is_recursive`, `name`, `completename`, `comment`, `level`, `ancestors_cache`, `sons_cache`, `address`, `postcode`, `town`, `state`, `country`, `building`, `room`, `latitude`, `longitude`, `altitude`, `date_mod`, `date_creation`, `entities_id`, `locations_id`) VALUES
 (1, 0, 'Cordoba', 'Cordoba', '', 1, '[]', NULL, '', 'x5000', 'Cordoba', '', '', '', '', '', '', '', '2023-03-19 16:14:30.000000', '2023-03-19 16:14:30.000000', 0, 0),
 (2, 0, 'Trelew', 'Trelew', '', 1, '[]', NULL, '', '9100', 'Trelew', 'Chubut', 'Argentina', '', '', '', '', '', '2023-03-19 16:14:48.000000', '2023-03-19 16:14:48.000000', 0, 0);
 
@@ -2415,7 +2415,7 @@ INSERT INTO `locations` (`id`, `is_recursive`, `name`, `completename`, `comment`
 -- Volcado de datos para la tabla `logs`
 --
 
-INSERT INTO `logs` (`id`, `itemtype`, `items_id`, `itemtype_link`, `linked_action`, `user_name`, `date_mod`, `id_search_option`, `old_value`, `new_value`) VALUES
+INSERT IGNORE INTO `logs` (`id`, `itemtype`, `items_id`, `itemtype_link`, `linked_action`, `user_name`, `date_mod`, `id_search_option`, `old_value`, `new_value`) VALUES
 (1, 'RuleImportAsset', 1, '0', 20, '', '2023-03-17 16:45:27.000000', 0, '', ''),
 (2, 'RuleImportAsset', 1, 'RuleCriteria', 17, '', '2023-03-17 16:45:27.000000', 0, '', 'Is partial is Yes (1)'),
 (3, 'RuleCriteria', 1, '0', 20, '', '2023-03-17 16:45:27.000000', 0, '', ''),
@@ -2892,7 +2892,7 @@ INSERT INTO `logs` (`id`, `itemtype`, `items_id`, `itemtype_link`, `linked_actio
 (474, 'RuleCriteria', 148, '0', 20, '', '2023-03-17 16:45:27.000000', 0, '', ''),
 (475, 'RuleImportAsset', 60, 'RuleAction', 17, '', '2023-03-17 16:45:27.000000', 0, '', 'Inventory link Assign Link if possible (60)'),
 (476, 'RuleAction', 60, '0', 20, '', '2023-03-17 16:45:27.000000', 0, '', '');
-INSERT INTO `logs` (`id`, `itemtype`, `items_id`, `itemtype_link`, `linked_action`, `user_name`, `date_mod`, `id_search_option`, `old_value`, `new_value`) VALUES
+INSERT IGNORE INTO `logs` (`id`, `itemtype`, `items_id`, `itemtype_link`, `linked_action`, `user_name`, `date_mod`, `id_search_option`, `old_value`, `new_value`) VALUES
 (477, 'RuleImportAsset', 61, '0', 20, '', '2023-03-17 16:45:27.000000', 0, '', ''),
 (478, 'RuleImportAsset', 61, 'RuleCriteria', 17, '', '2023-03-17 16:45:27.000000', 0, '', 'Asset &#62; Item Type is Unmanaged devices (149)'),
 (479, 'RuleCriteria', 149, '0', 20, '', '2023-03-17 16:45:27.000000', 0, '', ''),
@@ -3105,7 +3105,7 @@ INSERT INTO `logs` (`id`, `itemtype`, `items_id`, `itemtype_link`, `linked_actio
 -- Volcado de datos para la tabla `manufacturers`
 --
 
-INSERT INTO `manufacturers` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `manufacturers` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'Lenovo', '', '2023-03-19 16:15:55.000000', '2023-03-19 16:15:55.000000'),
 (2, 'ASUS', '', '2023-03-19 16:16:00.000000', '2023-03-19 16:16:00.000000'),
 (3, 'MSI', '', '2023-03-19 16:16:03.000000', '2023-03-19 16:16:03.000000'),
@@ -3115,49 +3115,49 @@ INSERT INTO `manufacturers` (`id`, `name`, `comment`, `date_mod`, `date_creation
 -- Volcado de datos para la tabla `monitormodels`
 --
 
-INSERT INTO `monitormodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `monitormodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
 (1, 'MonitorModel', 'werwer', '1213154645', 12, 1, 1, 22, 12, 0, NULL, NULL, NULL, '2023-03-19 16:18:35.000000', '2023-03-19 16:18:35.000000');
 
 --
 -- Volcado de datos para la tabla `monitors`
 --
 
-INSERT INTO `monitors` (`id`, `name`, `date_mod`, `contact`, `contact_num`, `comment`, `serial`, `otherserial`, `size`, `have_micro`, `have_speaker`, `have_subd`, `have_bnc`, `have_dvi`, `have_pivot`, `have_hdmi`, `have_displayport`, `is_deleted`, `is_global`, `is_template`, `template_name`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `is_recursive`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `monitormodels_id`, `monitortypes_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `monitors` (`id`, `name`, `date_mod`, `contact`, `contact_num`, `comment`, `serial`, `otherserial`, `size`, `have_micro`, `have_speaker`, `have_subd`, `have_bnc`, `have_dvi`, `have_pivot`, `have_hdmi`, `have_displayport`, `is_deleted`, `is_global`, `is_template`, `template_name`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `is_recursive`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `monitormodels_id`, `monitortypes_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
 (1, 'Monitor1', '2023-03-19 16:18:51.000000', 'Alternate', 'Alternate1', 'MonitorComment1', '23231323132323', '12323132313', '11.00', 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, NULL, '0.0000', 0, 'uuid23', '2023-03-19 16:18:51.000000', 0, 1, 0, 0, 0, 2, 4, 1, 1, 2, 0, NULL);
 
 --
 -- Volcado de datos para la tabla `monitortypes`
 --
 
-INSERT INTO `monitortypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `monitortypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'MonitorType1', 'MonitorTypeComment1', '2023-03-19 16:18:13.000000', '2023-03-19 16:18:13.000000');
 
 --
 -- Volcado de datos para la tabla `networkequipmentmodels`
 --
 
-INSERT INTO `networkequipmentmodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `networkequipmentmodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
 (1, 'NetEquipmentModel1', 'Comment', '2131313', 2323, 1, 1, 2, 1, 1, NULL, NULL, NULL, '2023-03-19 16:26:05.000000', NULL);
 
 --
 -- Volcado de datos para la tabla `networkequipments`
 --
 
-INSERT INTO `networkequipments` (`id`, `is_recursive`, `name`, `ram`, `serial`, `otherserial`, `contact`, `contact_num`, `date_mod`, `comment`, `is_deleted`, `is_template`, `template_name`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `sysdescr`, `cpu`, `uptime`, `last_inventory_update`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `networkequipmentmodels_id`, `networkequipmenttypes_id`, `networks_id`, `snmpcredentials_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `networkequipments` (`id`, `is_recursive`, `name`, `ram`, `serial`, `otherserial`, `contact`, `contact_num`, `date_mod`, `comment`, `is_deleted`, `is_template`, `template_name`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `sysdescr`, `cpu`, `uptime`, `last_inventory_update`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `networkequipmentmodels_id`, `networkequipmenttypes_id`, `networks_id`, `snmpcredentials_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
 (1, 0, 'NetworkDevice1', '23', '232131321', '121212121', 'Alternateusername1', 'Alternate1', '2023-03-19 16:26:16.000000', 'NetDeviceComment', 0, 0, NULL, '0.0000', 0, 'uuid', '2023-03-19 16:26:16.000000', 'SysDescr', 0, '0', NULL, 1, 0, 0, 0, 1, 4, 1, 1, 1, 1, 1, 0, 0);
 
 --
 -- Volcado de datos para la tabla `networkequipmenttypes`
 --
 
-INSERT INTO `networkequipmenttypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `networkequipmenttypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'NetEquipmentType1', 'comment', '2023-03-19 16:25:10.000000', '2023-03-19 16:25:10.000000');
 
 --
 -- Volcado de datos para la tabla `networkporttypes`
 --
 
-INSERT INTO `networkporttypes` (`id`, `is_recursive`, `value_decimal`, `name`, `comment`, `is_importable`, `instantiation_type`, `date_creation`, `date_mod`, `entities_id`) VALUES
+INSERT IGNORE INTO `networkporttypes` (`id`, `is_recursive`, `value_decimal`, `name`, `comment`, `is_importable`, `instantiation_type`, `date_creation`, `date_mod`, `entities_id`) VALUES
 (1, 0, 0, '0', 'Name', 0, '0', NULL, '2023-03-17 16:45:27.000000', 4294967295),
 (2, 0, 0, '1', 'other', 0, '0', NULL, '2023-03-17 16:45:27.000000', 4294967295),
 (3, 0, 0, '2', 'regular1822', 0, '0', NULL, '2023-03-17 16:45:27.000000', 4294967295),
@@ -3464,154 +3464,154 @@ INSERT INTO `networkporttypes` (`id`, `is_recursive`, `value_decimal`, `name`, `
 -- Volcado de datos para la tabla `networks`
 --
 
-INSERT INTO `networks` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `networks` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'Network1', 'CommentNetwork1', '2023-03-19 16:17:17.000000', '2023-03-19 16:17:17.000000');
 
 --
 -- Volcado de datos para la tabla `operatingsystems`
 --
 
-INSERT INTO `operatingsystems` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `operatingsystems` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'Windows11', 'ccc', '2023-03-19 16:42:10.000000', '2023-03-19 16:42:10.000000');
 
 --
 -- Volcado de datos para la tabla `passivedcequipmentmodels`
 --
 
-INSERT INTO `passivedcequipmentmodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `passivedcequipmentmodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
 (1, 'PassiveDcModel1', '23123', '123123', 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2023-03-19 16:38:51.000000', '2023-03-19 16:38:51.000000');
 
 --
 -- Volcado de datos para la tabla `passivedcequipments`
 --
 
-INSERT INTO `passivedcequipments` (`id`, `name`, `is_recursive`, `serial`, `otherserial`, `is_template`, `template_name`, `comment`, `is_deleted`, `date_mod`, `date_creation`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `passivedcequipmentmodels_id`, `passivedcequipmenttypes_id`, `states_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `passivedcequipments` (`id`, `name`, `is_recursive`, `serial`, `otherserial`, `is_template`, `template_name`, `comment`, `is_deleted`, `date_mod`, `date_creation`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `passivedcequipmentmodels_id`, `passivedcequipmenttypes_id`, `states_id`, `users_tech_id`) VALUES
 (1, 'PassiveDc1', 0, '23123213', '123123123', 0, NULL, '123123123', 0, '2023-03-19 16:38:56.000000', '2023-03-19 16:38:56.000000', 0, 0, 1, 2, 1, 1, 2, 0);
 
 --
 -- Volcado de datos para la tabla `passivedcequipmenttypes`
 --
 
-INSERT INTO `passivedcequipmenttypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `passivedcequipmenttypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'PassiveDcType1', 'Comment', '2023-03-19 16:38:31.000000', '2023-03-19 16:38:31.000000');
 
 --
 -- Volcado de datos para la tabla `pdumodels`
 --
 
-INSERT INTO `pdumodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `max_power`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `is_rackable`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `pdumodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `max_power`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `is_rackable`, `date_mod`, `date_creation`) VALUES
 (1, 'PduModel1', 'Comment', 'Perwer', 0, 1, 1, 0, 0, 0, NULL, NULL, NULL, 0, '2023-03-19 16:38:01.000000', '2023-03-19 16:38:01.000000');
 
 --
 -- Volcado de datos para la tabla `pdus`
 --
 
-INSERT INTO `pdus` (`id`, `name`, `is_recursive`, `serial`, `otherserial`, `is_template`, `template_name`, `comment`, `is_deleted`, `date_mod`, `date_creation`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `pdumodels_id`, `pdutypes_id`, `states_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `pdus` (`id`, `name`, `is_recursive`, `serial`, `otherserial`, `is_template`, `template_name`, `comment`, `is_deleted`, `date_mod`, `date_creation`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `pdumodels_id`, `pdutypes_id`, `states_id`, `users_tech_id`) VALUES
 (1, 'Pdu1', 0, '12312323', '12323132313231', 0, NULL, 'Comment', 0, '2023-03-19 16:38:06.000000', '2023-03-19 16:38:06.000000', 0, NULL, 1, 4, 1, 1, 2, NULL);
 
 --
 -- Volcado de datos para la tabla `pdutypes`
 --
 
-INSERT INTO `pdutypes` (`id`, `is_recursive`, `name`, `comment`, `date_creation`, `date_mod`, `entities_id`) VALUES
+INSERT IGNORE INTO `pdutypes` (`id`, `is_recursive`, `name`, `comment`, `date_creation`, `date_mod`, `entities_id`) VALUES
 (1, 0, '0', 'PduType1', '0000-00-00 00:00:00.000000', '2023-03-19 16:37:48.000000', 4294967295);
 
 --
 -- Volcado de datos para la tabla `peripheralmodels`
 --
 
-INSERT INTO `peripheralmodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `peripheralmodels` (`id`, `name`, `comment`, `product_number`, `weight`, `required_units`, `depth`, `power_connections`, `power_consumption`, `is_half_rack`, `picture_front`, `picture_rear`, `pictures`, `date_mod`, `date_creation`) VALUES
 (1, 'Model1', 'comment', '2323', 0, 1, 1, 0, 0, 0, NULL, NULL, NULL, '2023-03-19 16:27:47.000000', '2023-03-19 16:27:47.000000');
 
 --
 -- Volcado de datos para la tabla `peripherals`
 --
 
-INSERT INTO `peripherals` (`id`, `name`, `date_mod`, `contact`, `contact_num`, `comment`, `serial`, `otherserial`, `brand`, `is_deleted`, `is_global`, `is_template`, `template_name`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `is_recursive`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `peripheralmodels_id`, `peripheraltypes_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `peripherals` (`id`, `name`, `date_mod`, `contact`, `contact_num`, `comment`, `serial`, `otherserial`, `brand`, `is_deleted`, `is_global`, `is_template`, `template_name`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `is_recursive`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `peripheralmodels_id`, `peripheraltypes_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
 (1, 'Device1', '2023-03-19 16:28:09.000000', 'alternateusername', 'Alternate1', 'comments1', '23232323', '23231323', 'brand1', 0, 0, 0, NULL, '0.0000', 0, 'uuid', '2023-03-19 16:28:09.000000', 0, 1, 0, 0, 0, 1, 2, 1, 1, 1, 0, 0);
 
 --
 -- Volcado de datos para la tabla `peripheraltypes`
 --
 
-INSERT INTO `peripheraltypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `peripheraltypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'DeviceType1', 'qweqwe', '2023-03-19 16:27:28.000000', '2023-03-19 16:27:28.000000');
 
 --
 -- Volcado de datos para la tabla `phonemodels`
 --
 
-INSERT INTO `phonemodels` (`id`, `name`, `comment`, `product_number`, `date_mod`, `date_creation`, `picture_front`, `picture_rear`, `pictures`) VALUES
+INSERT IGNORE INTO `phonemodels` (`id`, `name`, `comment`, `product_number`, `date_mod`, `date_creation`, `picture_front`, `picture_rear`, `pictures`) VALUES
 (1, 'PhoneModel1', 'comment', '12323', '2023-03-19 16:34:41.000000', '2023-03-19 16:34:41.000000', NULL, NULL, NULL);
 
 --
 -- Volcado de datos para la tabla `phonepowersupplies`
 --
 
-INSERT INTO `phonepowersupplies` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `phonepowersupplies` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'PhonePowerSupply1', 'comment', '2023-03-19 16:35:12.000000', '2023-03-19 16:35:12.000000');
 
 --
 -- Volcado de datos para la tabla `phones`
 --
 
-INSERT INTO `phones` (`id`, `name`, `date_mod`, `contact`, `contact_num`, `comment`, `serial`, `otherserial`, `brand`, `number_line`, `have_headset`, `have_hp`, `is_global`, `is_deleted`, `is_template`, `template_name`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `is_recursive`, `last_inventory_update`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `phonemodels_id`, `phonepowersupplies_id`, `phonetypes_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `phones` (`id`, `name`, `date_mod`, `contact`, `contact_num`, `comment`, `serial`, `otherserial`, `brand`, `number_line`, `have_headset`, `have_hp`, `is_global`, `is_deleted`, `is_template`, `template_name`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `is_recursive`, `last_inventory_update`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `phonemodels_id`, `phonepowersupplies_id`, `phonetypes_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
 (1, 'Phone1', '2023-03-19 16:35:19.000000', 'Alternate', 'Alternate1', 'comment', '23232313', '1232313', 'brand', '5', 1, 1, 0, 0, 0, NULL, '0.0000', 0, 'uuid', '2023-03-19 16:35:19.000000', 0, NULL, 1, 0, 0, 0, 1, 2, 1, 1, 1, 2, 0, 0);
 
 --
 -- Volcado de datos para la tabla `phonetypes`
 --
 
-INSERT INTO `phonetypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `phonetypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'PhoneType1', 'Comment', '2023-03-19 16:34:27.000000', '2023-03-19 16:34:27.000000');
 
 --
 -- Volcado de datos para la tabla `printermodels`
 --
 
-INSERT INTO `printermodels` (`id`, `name`, `comment`, `product_number`, `date_mod`, `date_creation`, `picture_front`, `picture_rear`, `pictures`) VALUES
+INSERT IGNORE INTO `printermodels` (`id`, `name`, `comment`, `product_number`, `date_mod`, `date_creation`, `picture_front`, `picture_rear`, `pictures`) VALUES
 (1, 'PrinterModel1', 'Comment', '213123213', '2023-03-19 16:31:19.000000', '2023-03-19 16:31:19.000000', NULL, NULL, NULL);
 
 --
 -- Volcado de datos para la tabla `printers`
 --
 
-INSERT INTO `printers` (`id`, `is_recursive`, `name`, `date_mod`, `contact`, `contact_num`, `serial`, `otherserial`, `have_serial`, `have_parallel`, `have_usb`, `have_wifi`, `have_ethernet`, `comment`, `memory_size`, `is_global`, `is_deleted`, `is_template`, `template_name`, `init_pages_counter`, `last_pages_counter`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `sysdescr`, `last_inventory_update`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `networks_id`, `printermodels_id`, `printertypes_id`, `snmpcredentials_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `printers` (`id`, `is_recursive`, `name`, `date_mod`, `contact`, `contact_num`, `serial`, `otherserial`, `have_serial`, `have_parallel`, `have_usb`, `have_wifi`, `have_ethernet`, `comment`, `memory_size`, `is_global`, `is_deleted`, `is_template`, `template_name`, `init_pages_counter`, `last_pages_counter`, `ticket_tco`, `is_dynamic`, `uuid`, `date_creation`, `sysdescr`, `last_inventory_update`, `autoupdatesystems_id`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `networks_id`, `printermodels_id`, `printertypes_id`, `snmpcredentials_id`, `states_id`, `users_id`, `users_tech_id`) VALUES
 (1, 0, 'printer1', '2023-03-19 16:31:53.000000', 'Alternate', 'Alternate1', '1213131213', '233131312', 1, 1, 1, 0, 1, 'comment', '2', 0, 0, 0, NULL, 2, 2, '0.0000', 0, 'uuid', '2023-03-19 16:31:53.000000', 'Sysdescr', NULL, 1, 0, 0, 0, 1, 2, 1, 1, 1, 1, 2, 0, 0);
 
 --
 -- Volcado de datos para la tabla `printertypes`
 --
 
-INSERT INTO `printertypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `printertypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'PrinterType1', 'Comment1', '2023-03-19 16:31:02.000000', '2023-03-19 16:31:02.000000');
 
 --
 -- Volcado de datos para la tabla `rackmodels`
 --
 
-INSERT INTO `rackmodels` (`id`, `name`, `comment`, `product_number`, `date_mod`, `date_creation`, `pictures`) VALUES
+INSERT IGNORE INTO `rackmodels` (`id`, `name`, `comment`, `product_number`, `date_mod`, `date_creation`, `pictures`) VALUES
 (1, 'RackModel1', 'Comment', '1213231', '2023-03-19 16:35:56.000000', '2023-03-19 16:35:56.000000', NULL);
 
 --
 -- Volcado de datos para la tabla `racks`
 --
 
-INSERT INTO `racks` (`id`, `name`, `comment`, `is_recursive`, `serial`, `otherserial`, `width`, `height`, `depth`, `number_units`, `is_template`, `template_name`, `is_deleted`, `room_orientation`, `position`, `bgcolor`, `max_power`, `mesured_power`, `max_weight`, `date_mod`, `date_creation`, `dcrooms_id`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `rackmodels_id`, `racktypes_id`, `states_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `racks` (`id`, `name`, `comment`, `is_recursive`, `serial`, `otherserial`, `width`, `height`, `depth`, `number_units`, `is_template`, `template_name`, `is_deleted`, `room_orientation`, `position`, `bgcolor`, `max_power`, `mesured_power`, `max_weight`, `date_mod`, `date_creation`, `dcrooms_id`, `entities_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `rackmodels_id`, `racktypes_id`, `states_id`, `users_tech_id`) VALUES
 (1, 'Rack1', 'Comment', 0, '111111111111', '1232313', 0, 0, 0, 42, 0, NULL, 0, 1, '1,1', '#fec95c', 0, 0, 0, NULL, '2023-03-19 16:36:30.000000', 1, 0, 0, 1, 2, 1, 1, 2, 0);
 
 --
 -- Volcado de datos para la tabla `racktypes`
 --
 
-INSERT INTO `racktypes` (`id`, `is_recursive`, `name`, `comment`, `date_creation`, `date_mod`, `entities_id`) VALUES
+INSERT IGNORE INTO `racktypes` (`id`, `is_recursive`, `name`, `comment`, `date_creation`, `date_mod`, `entities_id`) VALUES
 (1, 0, '0', 'RackType1', '0000-00-00 00:00:00.000000', '2023-03-19 16:35:43.000000', 4294967295);
 
 --
 -- Volcado de datos para la tabla `snmpcredentials`
 --
 
-INSERT INTO `snmpcredentials` (`id`, `name`, `snmpversion`, `community`, `username`, `authentication`, `auth_passphrase`, `encryption`, `priv_passphrase`, `is_deleted`) VALUES
+INSERT IGNORE INTO `snmpcredentials` (`id`, `name`, `snmpversion`, `community`, `username`, `authentication`, `auth_passphrase`, `encryption`, `priv_passphrase`, `is_deleted`) VALUES
 (1, 'Public community v1', '1', 'public', NULL, NULL, NULL, NULL, NULL, 0),
 (2, 'Public community v2c', '2', 'public', NULL, NULL, NULL, NULL, NULL, 0);
 
@@ -3619,7 +3619,7 @@ INSERT INTO `snmpcredentials` (`id`, `name`, `snmpversion`, `community`, `userna
 -- Volcado de datos para la tabla `socketmodels`
 --
 
-INSERT INTO `socketmodels` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
+INSERT IGNORE INTO `socketmodels` (`id`, `name`, `comment`, `date_mod`, `date_creation`) VALUES
 (1, 'Socket1', 'comment', '2023-03-19 16:39:44.000000', '2023-03-19 16:39:44.000000'),
 (2, 'SocketModel1', 'comment', '2023-03-19 16:40:04.000000', '2023-03-19 16:40:04.000000');
 
@@ -3627,28 +3627,28 @@ INSERT INTO `socketmodels` (`id`, `name`, `comment`, `date_mod`, `date_creation`
 -- Volcado de datos para la tabla `sockets`
 --
 
-INSERT INTO `sockets` (`id`, `position`, `name`, `wiring_side`, `itemtype`, `comment`, `date_mod`, `date_creation`, `items_id`, `locations_id`, `networkports_id`, `socketmodels_id`) VALUES
+INSERT IGNORE INTO `sockets` (`id`, `position`, `name`, `wiring_side`, `itemtype`, `comment`, `date_mod`, `date_creation`, `items_id`, `locations_id`, `networkports_id`, `socketmodels_id`) VALUES
 (1, -1, '1', 0, '2', '1', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', 0, 0, 20230319164020, 20230319164020);
 
 --
 -- Volcado de datos para la tabla `softwarecategories`
 --
 
-INSERT INTO `softwarecategories` (`id`, `name`, `comment`, `completename`, `level`, `ancestors_cache`, `sons_cache`, `softwarecategories_id`) VALUES
+INSERT IGNORE INTO `softwarecategories` (`id`, `name`, `comment`, `completename`, `level`, `ancestors_cache`, `sons_cache`, `softwarecategories_id`) VALUES
 (1, 'Inventoried', NULL, 'Software from inventories', 1, NULL, NULL, 0);
 
 --
 -- Volcado de datos para la tabla `softwarelicensetypes`
 --
 
-INSERT INTO `softwarelicensetypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`, `softwarelicensetypes`, `level`, `ancestors_cache`, `sons_cache`, `entities`, `is_recursive`, `completename`) VALUES
+INSERT IGNORE INTO `softwarelicensetypes` (`id`, `name`, `comment`, `date_mod`, `date_creation`, `softwarelicensetypes`, `level`, `ancestors_cache`, `sons_cache`, `entities`, `is_recursive`, `completename`) VALUES
 (1, 'OEM', NULL, NULL, NULL, 0, 0, NULL, NULL, 0, 1, 'OEM');
 
 --
 -- Volcado de datos para la tabla `softwares`
 --
 
-INSERT INTO `softwares` (`id`, `is_recursive`, `name`, `comment`, `is_update`, `is_deleted`, `is_template`, `template_name`, `date_mod`, `ticket_tco`, `is_helpdesk_visible`, `is_valid`, `date_creation`, `pictures`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `softwarecategories_id`, `softwares_id`, `users_id`, `users_tech_id`) VALUES
+INSERT IGNORE INTO `softwares` (`id`, `is_recursive`, `name`, `comment`, `is_update`, `is_deleted`, `is_template`, `template_name`, `date_mod`, `ticket_tco`, `is_helpdesk_visible`, `is_valid`, `date_creation`, `pictures`, `entities_id`, `groups_id`, `groups_tech_id`, `locations_id`, `manufacturers_id`, `softwarecategories_id`, `softwares_id`, `users_id`, `users_tech_id`) VALUES
 (1, 0, 'Software1', 'Software1Comment', 0, 0, 0, NULL, '2023-03-19 16:20:51.000000', '0.0000', 1, 1, '2023-03-19 16:20:51.000000', NULL, 0, 0, 0, 1, 0, 1, 0, 0, 0),
 (2, 0, 'Software2', 'Software2Comment', 1, 0, 0, NULL, '2023-03-19 16:21:10.000000', '0.0000', 1, 1, '2023-03-19 16:21:10.000000', NULL, 0, 0, 0, 1, 0, 1, 1, 0, 0);
 
@@ -3656,7 +3656,7 @@ INSERT INTO `softwares` (`id`, `is_recursive`, `name`, `comment`, `is_update`, `
 -- Volcado de datos para la tabla `states`
 --
 
-INSERT INTO `states` (`id`, `name`, `is_recursive`, `comment`, `completename`, `level`, `ancestors_cache`, `sons_cache`, `is_visible_computer`, `is_visible_monitor`, `is_visible_networkequipment`, `is_visible_peripheral`, `is_visible_phone`, `is_visible_printer`, `is_visible_softwareversion`, `is_visible_softwarelicense`, `is_visible_line`, `is_visible_certificate`, `is_visible_rack`, `is_visible_passivedcequipment`, `is_visible_enclosure`, `is_visible_pdu`, `is_visible_cluster`, `is_visible_contract`, `is_visible_appliance`, `is_visible_databaseinstance`, `is_visible_cable`, `date_mod`, `date_creation`, `entities_id`, `states_id`) VALUES
+INSERT IGNORE INTO `states` (`id`, `name`, `is_recursive`, `comment`, `completename`, `level`, `ancestors_cache`, `sons_cache`, `is_visible_computer`, `is_visible_monitor`, `is_visible_networkequipment`, `is_visible_peripheral`, `is_visible_phone`, `is_visible_printer`, `is_visible_softwareversion`, `is_visible_softwarelicense`, `is_visible_line`, `is_visible_certificate`, `is_visible_rack`, `is_visible_passivedcequipment`, `is_visible_enclosure`, `is_visible_pdu`, `is_visible_cluster`, `is_visible_contract`, `is_visible_appliance`, `is_visible_databaseinstance`, `is_visible_cable`, `date_mod`, `date_creation`, `entities_id`, `states_id`) VALUES
 (1, 'Live', 0, '', 'Live', 1, '[]', NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2023-03-19 16:15:09.000000', '2023-03-19 16:15:09.000000', 0, 0),
 (2, 'Down', 0, '', 'Down', 1, '[]', NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2023-03-19 16:15:14.000000', '2023-03-19 16:15:14.000000', 0, 0);
 
@@ -3664,21 +3664,21 @@ INSERT INTO `states` (`id`, `name`, `is_recursive`, `comment`, `completename`, `
 -- Volcado de datos para la tabla `tickettemplatemandatoryfields`
 --
 
-INSERT INTO `tickettemplatemandatoryfields` (`id`, `tickettemplates_id`, `num`) VALUES
+INSERT IGNORE INTO `tickettemplatemandatoryfields` (`id`, `tickettemplates_id`, `num`) VALUES
 (1, 1, 21);
 
 --
 -- Volcado de datos para la tabla `tickettemplates`
 --
 
-INSERT INTO `tickettemplates` (`id`, `name`, `entities_id`, `is_recursive`, `comment`) VALUES
+INSERT IGNORE INTO `tickettemplates` (`id`, `name`, `entities_id`, `is_recursive`, `comment`) VALUES
 (1, 'Default', 0, 1, NULL);
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `date_joined`, `name`, `password`, `password_last_update`, `phone`, `phone2`, `mobile`, `realname`, `firstname`, `language`, `use_mode`, `list_limit`, `is_active`, `comment`, `auths_id`, `authtype`, `last_login`, `date_mod`, `date_sync`, `is_deleted`, `profiles_id`, `entities_id`, `usertitles_id`, `usercategories_id`, `date_format`, `number_format`, `names_format`, `csv_delimiter`, `is_ids_visible`, `use_flat_dropdowntree`, `show_jobs_at_login`, `priority_1`, `priority_2`, `priority_3`, `priority_4`, `priority_5`, `priority_6`, `followup_private`, `task_private`, `default_requesttypes_id`, `password_forget_token`, `password_forget_token_date`, `user_dn`, `registration_number`, `show_count_on_tabs`, `refresh_views`, `set_default_tech`, `personal_token`, `personal_token_date`, `api_token`, `api_token_date`, `cookie_token`, `cookie_token_date`, `display_count_on_home`, `notification_to_myself`, `duedateok_color`, `duedatewarning_color`, `duedatecritical_color`, `duedatewarning_less`, `duedatecritical_less`, `duedatewarning_unit`, `duedatecritical_unit`, `display_options`, `is_deleted_ldap`, `pdffont`, `picture`, `begin_date`, `end_date`, `keep_devices_when_purging_item`, `privatebookmarkorder`, `backcreated`, `task_state`, `palette`, `page_layout`, `fold_menu`, `fold_search`, `savedsearches_pinned`, `timeline_order`, `itil_layout`, `richtext_layout`, `set_default_requester`, `lock_autolock_mode`, `lock_directunlock_notification`, `date_creation`, `highcontrast_css`, `plannings`, `sync_field`, `groups_id`, `users_id_supervisor`, `timezone`, `default_dashboard_central`, `default_dashboard_assets`, `default_dashboard_helpdesk`, `default_dashboard_mini_ticket`, `default_central_tab`, `nickname`, `locations_id`) VALUES
+INSERT IGNORE INTO `users` (`id`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `date_joined`, `name`, `password`, `password_last_update`, `phone`, `phone2`, `mobile`, `realname`, `firstname`, `language`, `use_mode`, `list_limit`, `is_active`, `comment`, `auths_id`, `authtype`, `last_login`, `date_mod`, `date_sync`, `is_deleted`, `profiles_id`, `entities_id`, `usertitles_id`, `usercategories_id`, `date_format`, `number_format`, `names_format`, `csv_delimiter`, `is_ids_visible`, `use_flat_dropdowntree`, `show_jobs_at_login`, `priority_1`, `priority_2`, `priority_3`, `priority_4`, `priority_5`, `priority_6`, `followup_private`, `task_private`, `default_requesttypes_id`, `password_forget_token`, `password_forget_token_date`, `user_dn`, `registration_number`, `show_count_on_tabs`, `refresh_views`, `set_default_tech`, `personal_token`, `personal_token_date`, `api_token`, `api_token_date`, `cookie_token`, `cookie_token_date`, `display_count_on_home`, `notification_to_myself`, `duedateok_color`, `duedatewarning_color`, `duedatecritical_color`, `duedatewarning_less`, `duedatecritical_less`, `duedatewarning_unit`, `duedatecritical_unit`, `display_options`, `is_deleted_ldap`, `pdffont`, `picture`, `begin_date`, `end_date`, `keep_devices_when_purging_item`, `privatebookmarkorder`, `backcreated`, `task_state`, `palette`, `page_layout`, `fold_menu`, `fold_search`, `savedsearches_pinned`, `timeline_order`, `itil_layout`, `richtext_layout`, `set_default_requester`, `lock_autolock_mode`, `lock_directunlock_notification`, `date_creation`, `highcontrast_css`, `plannings`, `sync_field`, `groups_id`, `users_id_supervisor`, `timezone`, `default_dashboard_central`, `default_dashboard_assets`, `default_dashboard_helpdesk`, `default_dashboard_mini_ticket`, `default_central_tab`, `nickname`, `locations_id`) VALUES
 (1, 1, 'admin', '', '', 'admin@admin.com', 1, '2023-04-07 01:46:58.406505', NULL, 'pbkdf2_sha256$320000$VlsGZMejUv9gJSUBwEcl81$NUNCnYBOsH4ZzErAHarGaDzz2ZOME/imIOO2ZHH4sLY=', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, '2023-04-07 01:47:44.718249', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 

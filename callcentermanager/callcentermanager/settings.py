@@ -78,6 +78,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # ]
 
 ROOT_URLCONF = 'callcentermanager.urls'
+USE_TZ = False
 
 TEMPLATES = [
     {
@@ -143,8 +144,6 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
