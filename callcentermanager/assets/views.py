@@ -2001,3 +2001,7 @@ class GetPdusViewSet(viewsets.ModelViewSet):
     serializer_class = GetPdusSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
+class GetSoftwaresViewSet(viewsets.ModelViewSet):
+    queryset = Softwares.objects.all()
+    serializer_class = GetSoftwaresSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
