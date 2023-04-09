@@ -1155,3 +1155,9 @@ class GetPdusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdus
         fields = ['id', 'name']
+class GetCartridgeItemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cartridgeitems
+        fields = ['id', 'name']
+
+
