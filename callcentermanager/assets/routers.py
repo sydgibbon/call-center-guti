@@ -134,3 +134,4 @@ router.register(r'getPeripherals', GetPeripheralsViewSet, basename='getPeriphera
 router.register(r'getPrinters', GetPrintersViewSet, basename='getPrinters')
 router.register(r'getEnclosures', GetEnclosuresViewSet, basename='getEnclosures')
 router.register(r'getPdus', GetPdusViewSet, basename='getPdus')
+router.register(r'getConsumableitems', GetConsumableitemsViewSet, basename='getConsumableitems')

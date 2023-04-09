@@ -2000,4 +2000,8 @@ class GetPdusViewSet(viewsets.ModelViewSet):
     queryset = Pdus.objects.all()
     serializer_class = GetPdusSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+class GetConsumableitemsViewSet(viewsets.ModelViewSet):
+    queryset = Consumableitems.objects.all()
+    serializer_class = GetConsumableitemsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
 
