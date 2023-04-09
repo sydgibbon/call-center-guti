@@ -1162,6 +1162,7 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
     operatingsystems = serializers.SerializerMethodField()
     softwarelicenses = serializers.SerializerMethodField()
 
+
     def get_manufacturers(self, obj):
         return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
     
@@ -1185,4 +1186,4 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Softwares
-        fields = ['id', 'name', 'manufacturers', 'operatingsystems', 'softwarelicenses']
+        fields = ['id', 'name', 'manufacturers', 'softwareversions', 'operatingsystems', 'softwarelicenses']

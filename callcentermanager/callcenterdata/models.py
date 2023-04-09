@@ -1278,33 +1278,7 @@ class ItemsRemotemanagements(models.Model):
         db_table = 'items_remotemanagements'
 
 
-class ItemsSoftwarelicenses(models.Model):
-    items_id = models.PositiveIntegerField()
-    itemtype = models.CharField(max_length=100)
-    softwarelicenses_id = models.PositiveIntegerField()
-    is_deleted = models.IntegerField()
-    is_dynamic = models.IntegerField()
 
-    class Meta:
-        managed = True
-        db_table = 'items_softwarelicenses'
-
-
-class ItemsSoftwareversions(models.Model):
-    items_id = models.PositiveIntegerField()
-    itemtype = models.CharField(max_length=100)
-    softwareversions_id = models.PositiveIntegerField()
-    is_deleted_item = models.IntegerField()
-    is_template_item = models.IntegerField()
-    entities_id = models.PositiveIntegerField()
-    is_deleted = models.IntegerField()
-    is_dynamic = models.IntegerField()
-    date_install = models.DateField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'items_softwareversions'
-        unique_together = (('itemtype', 'items_id', 'softwareversions_id'),)
 
 
 
