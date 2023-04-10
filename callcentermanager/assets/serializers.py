@@ -1161,6 +1161,7 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
     softwareversions = serializers.SerializerMethodField()
     operatingsystems = serializers.SerializerMethodField()
     softwarelicenses = serializers.SerializerMethodField()
+    installations  = serializers.SerializerMethodField()
 
 
     def get_manufacturers(self, obj):
@@ -1184,6 +1185,13 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
             return Softwarelicenses.objects.filter(id=items_softwarelicenses[0].softwarelicenses_id)[0].name
         return None
     
+    def get_installations(self, obj):
+        items_softwareversions = ItemsSoftwareversions.objects.filter(items_id=obj.id, itemtype='Computer')
+        print(items_softwareversions)
+        if (items_softwareversions.count() > 0):
+            return items_softwareversions.count()
+        return None
+    
     class Meta:
         model = Softwares
-        fields = ['id', 'name', 'manufacturers', 'softwareversions', 'operatingsystems', 'softwarelicenses']
+        fields = ['id', 'name', 'manufacturers', 'softwareversions', 'operatingsystems', 'installations', 'softwarelicenses']
