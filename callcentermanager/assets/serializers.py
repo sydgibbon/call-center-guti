@@ -1195,3 +1195,37 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwares
         fields = ['id', 'name', 'manufacturers', 'softwareversions', 'operatingsystems', 'installations', 'softwarelicenses']
+class GetNetworkequipmentsSerializer(serializers.ModelSerializer):
+    states = serializers.SerializerMethodField()
+    manufacturers = serializers.SerializerMethodField()
+    networkequipmenttypes = serializers.SerializerMethodField()
+    networkequipmentmodels = serializers.SerializerMethodField()
+    devicefirmwares = serializers.SerializerMethodField()
+    locations = serializers.SerializerMethodField()
+    date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M")
+
+    def get_states(self, obj):
+        return States.objects.filter(id=obj.states_id)[0].name
+
+    def get_manufacturers(self, obj):
+        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+
+    def get_networkequipmenttypes(self, obj):
+        return Networkequipmenttypes.objects.filter(id=obj.networkequipmenttypes_id)[0].name
+    
+    def get_networkequipmentmodels(self, obj):
+        return Networkequipmentmodels.objects.filter(id=obj.networkequipmentmodels_id)[0].name
+    
+    def get_devicefirmwares(self, obj):
+        items_devicefirmwares = ItemsDevicefirmwares.objects.filter(items_id=obj.id, itemtype='NetworkEquipment')
+        if (items_devicefirmwares.count() > 0):
+            return Devicefirmwares.objects.filter(id=items_devicefirmwares[0].devicefirmwares_id)[0].version
+        return None
+    
+    def get_locations(self, obj):
+        return Locations.objects.filter(id=obj.locations_id)[0].name
+    
+    class Meta:
+        model = Networkequipments
+        fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'networkequipmenttypes', 'networkequipmentmodels',
+                  'devicefirmwares', 'date_mod']

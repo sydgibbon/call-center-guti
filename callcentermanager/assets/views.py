@@ -2004,4 +2004,7 @@ class GetPdusViewSet(viewsets.ModelViewSet):
 class GetSoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()
     serializer_class = GetSoftwaresSerializer
+class GetNetworkequipmentsViewSet(viewsets.ModelViewSet):
+    queryset = Networkequipments.objects.all()
+    serializer_class = GetNetworkequipmentsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
