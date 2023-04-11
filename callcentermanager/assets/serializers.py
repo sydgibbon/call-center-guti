@@ -1155,3 +1155,43 @@ class GetPdusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdus
         fields = ['id', 'name']
+
+class GetSoftwaresSerializer(serializers.ModelSerializer):
+    manufacturers = serializers.SerializerMethodField()
+    softwareversions = serializers.SerializerMethodField()
+    operatingsystems = serializers.SerializerMethodField()
+    softwarelicenses = serializers.SerializerMethodField()
+    installations  = serializers.SerializerMethodField()
+
+
+    def get_manufacturers(self, obj):
+        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+    
+    def get_softwareversions(self, obj):
+        items_softwareversions = ItemsSoftwareversions.objects.filter(items_id=obj.id, itemtype='Software')
+        if (items_softwareversions.count() > 0):
+            return Softwareversions.objects.filter(id=items_softwareversions[0].softwareversions_id)[0].name
+        return None
+    
+    def get_operatingsystems(self, obj):
+        items_operatingsystems = ItemsOperatingsystems.objects.filter(items_id=obj.id, itemtype='Software')
+        if (items_operatingsystems.count() > 0):
+            return Operatingsystems.objects.filter(id=items_operatingsystems[0].operatingsystems_id)[0].name
+        return None
+    
+    def get_softwarelicenses(self, obj):
+        items_softwarelicenses = ItemsSoftwarelicenses.objects.filter(items_id=obj.id, itemtype='Software')
+        if (items_softwarelicenses.count() > 0):
+            return Softwarelicenses.objects.filter(id=items_softwarelicenses[0].softwarelicenses_id)[0].name
+        return None
+    
+    def get_installations(self, obj):
+        items_softwareversions = ItemsSoftwareversions.objects.filter(items_id=obj.id, itemtype='Computer')
+        print(items_softwareversions)
+        if (items_softwareversions.count() > 0):
+            return items_softwareversions.count()
+        return None
+    
+    class Meta:
+        model = Softwares
+        fields = ['id', 'name', 'manufacturers', 'softwareversions', 'operatingsystems', 'installations', 'softwarelicenses']
