@@ -1256,3 +1256,7 @@ class GetPhonesSerializer(serializers.ModelSerializer):
         model = Phones
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'phonetypes', 'phonemodels', 
                   'date_mod', 'contact']
+class GetRacksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Racks
+        fields = ['id', 'name']

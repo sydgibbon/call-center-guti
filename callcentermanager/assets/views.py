@@ -2015,3 +2015,8 @@ class GetPhonesViewSet(viewsets.ModelViewSet):
     queryset = Phones.objects.all()
     serializer_class = GetPhonesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+
+class GetRacksViewSet(viewsets.ModelViewSet):
+    queryset = Racks.objects.all()
+    serializer_class = GetRacksSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
