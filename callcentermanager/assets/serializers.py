@@ -1306,3 +1306,21 @@ class GetConsumableitemsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Consumableitems
         fields = ['id', 'name' , 'ref', 'manufacturers', 'locations', 'consumableitemtypes']
+class GetCartridgeItemsSerializer(serializers.ModelSerializer):
+    manufacturers = serializers.SerializerMethodField()
+    locations = serializers.SerializerMethodField()
+    cartridgeitemtypes = serializers.SerializerMethodField()
+
+    def get_manufacturers(self, obj):
+        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+                
+    def get_locations(self, obj):
+        return Locations.objects.filter(id=obj.locations_id)[0].name
+    
+    def get_cartridgeitemtypes(self, obj):
+        return Cartridgeitems.objects.filter(id=obj.locations_id)[0].name
+    class Meta:
+        model = Cartridgeitems
+        fields = ['id', 'name' , 'ref', 'manufacturers' , 'locations', 'cartridgeitemtypes']
+
+

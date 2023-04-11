@@ -2031,4 +2031,9 @@ class GetConsumableitemsViewSet(viewsets.ModelViewSet):
     queryset = Consumableitems.objects.all()
     serializer_class = GetConsumableitemsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+class GetCartridgeItemsViewSet(viewsets.ModelViewSet):
+    queryset = Cartridgeitems.objects.all()
+    serializer_class = GetCartridgeItemsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
 
