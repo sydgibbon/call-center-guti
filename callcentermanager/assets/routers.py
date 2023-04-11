@@ -136,3 +136,4 @@ router.register(r'getEnclosures', GetEnclosuresViewSet, basename='getEnclosures'
 router.register(r'getPdus', GetPdusViewSet, basename='getPdus')
 router.register(r'getSofwtares', GetSoftwaresViewSet, basename='getSofwtares')
 router.register(r'getNetworkequipments', GetNetworkequipmentsViewSet, basename='getNetworkequipments')
+router.register(r'getPhones', GetPhonesViewSet, basename='getPhones')

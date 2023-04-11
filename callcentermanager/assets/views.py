@@ -2004,7 +2004,14 @@ class GetPdusViewSet(viewsets.ModelViewSet):
 class GetSoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()
     serializer_class = GetSoftwaresSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
 class GetNetworkequipmentsViewSet(viewsets.ModelViewSet):
     queryset = Networkequipments.objects.all()
     serializer_class = GetNetworkequipmentsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+class GetPhonesViewSet(viewsets.ModelViewSet):
+    queryset = Phones.objects.all()
+    serializer_class = GetPhonesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
