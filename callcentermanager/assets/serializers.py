@@ -1290,3 +1290,19 @@ class GetPassivedcequipmentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdus
         fields = ['id', 'name']
+class GetConsumableitemsSerializer(serializers.ModelSerializer):
+    manufacturers = serializers.SerializerMethodField()
+    locations = serializers.SerializerMethodField()
+    consumableitemtypes = serializers.SerializerMethodField()
+
+    def get_manufacturers(self, obj):
+        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+                
+    def get_locations(self, obj):
+        return Locations.objects.filter(id=obj.locations_id)[0].name
+    
+    def get_consumableitemtypes(self, obj):
+        return Consumableitemtypes.objects.filter(id=obj.locations_id)[0].name
+    class Meta:
+        model = Consumableitems
+        fields = ['id', 'name' , 'ref', 'manufacturers', 'locations', 'consumableitemtypes']

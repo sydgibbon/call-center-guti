@@ -2027,5 +2027,8 @@ class GetRacksViewSet(viewsets.ModelViewSet):
 class GetCablesViewSet(viewsets.ModelViewSet):
     queryset = Cables.objects.all()
     serializer_class = GetCablesSerializer
+class GetConsumableitemsViewSet(viewsets.ModelViewSet):
+    queryset = Consumableitems.objects.all()
+    serializer_class = GetConsumableitemsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
