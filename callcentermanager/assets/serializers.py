@@ -1286,3 +1286,7 @@ class GetCablesSerializer(serializers.ModelSerializer):
         model = Cables
         fields = ['id', 'name' , 'cabletypes', 'states', 'users_tech', 'otherserial' , 'color'
                   , 'items_endpoint_b', 'items_endpoint_a', 'sockets_endpoint_b', 'sockets_endpoint_a']
+class GetPassivedcequipmentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pdus
+        fields = ['id', 'name']
