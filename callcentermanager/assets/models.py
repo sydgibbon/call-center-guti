@@ -985,8 +985,6 @@ class Pdumodels(models.Model):
     class Meta:
         managed = True
         db_table = 'pdumodels'
-
-
 class Pdus(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     entities = models.ForeignKey(

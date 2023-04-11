@@ -2020,3 +2020,8 @@ class GetRacksViewSet(viewsets.ModelViewSet):
     queryset = Racks.objects.all()
     serializer_class = GetRacksSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+class GetCablesViewSet(viewsets.ModelViewSet):
+    queryset = Cables.objects.all()
+    serializer_class = GetCablesSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+

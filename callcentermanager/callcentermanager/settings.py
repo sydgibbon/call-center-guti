@@ -78,6 +78,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # ]
 
 ROOT_URLCONF = 'callcentermanager.urls'
+USE_TZ = False
 
 TEMPLATES = [
     {
