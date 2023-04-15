@@ -1029,16 +1029,28 @@ class GetComputersSerializer(serializers.ModelSerializer):
     processors = serializers.SerializerMethodField()
 
     def get_states(self, obj):
-        return States.objects.filter(id=obj.states_id)[0].name
+        states = States.objects.filter(id=obj.manufacturers_id)
+        if (states.count() > 0):
+            return States.objects.filter(id=obj.states_id)[0].name
+        return None
 
     def get_manufacturers(self, obj):
-        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
 
     def get_computertypes(self, obj):
-        return Computertypes.objects.filter(id=obj.computertypes_id)[0].name
+        computers = Computers.objects.filter(id=obj.computertypes_id)
+        if (computers.count() > 0):
+            return Computertypes.objects.filter(id=obj.computertypes_id)[0].name
+        return None
     
     def get_computermodels(self, obj):
-        return Computermodels.objects.filter(id=obj.computermodels_id)[0].name
+        computermodels = Computermodels.objects.filter(id=obj.computermodels_id)
+        if (computermodels.count() > 0):
+            return Computermodels.objects.filter(id=obj.computermodels_id)[0].name
+        return None
     
     def get_operatingsystems(self, obj):
         items_operatingsystems = ItemsOperatingsystems.objects.filter(items_id=obj.id, itemtype='Computer')
@@ -1048,7 +1060,10 @@ class GetComputersSerializer(serializers.ModelSerializer):
             
     
     def get_locations(self, obj):
-        return Locations.objects.filter(id=obj.locations_id)[0].name
+        locations = Locations.objects.filter(id=obj.locations_id)
+        if (locations.count() > 0):
+            return Locations.objects.filter(id=obj.locations_id)[0].name
+        return None
     
     def get_processors(self, obj):
         items_deviceprocessors = ItemsDeviceprocessors.objects.filter(items_id=obj.id, itemtype='Computer')
@@ -1072,19 +1087,34 @@ class GetMonitorsSerializer(serializers.ModelSerializer):
     date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M") 
 
     def get_states(self, obj):
-        return States.objects.filter(id=obj.states_id)[0].name
+        states = States.objects.filter(id=obj.manufacturers_id)
+        if (states.count() > 0):
+            return States.objects.filter(id=obj.states_id)[0].name
+        return None
 
     def get_manufacturers(self, obj):
-        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
                 
     def get_locations(self, obj):
-        return Locations.objects.filter(id=obj.locations_id)[0].name
+        locations = Locations.objects.filter(id=obj.locations_id)
+        if (locations.count() > 0):
+            return Locations.objects.filter(id=obj.locations_id)[0].name
+        return None
 
-    def get_monitortypes(self, obj):
-        return Monitortypes.objects.filter(id=obj.monitortypes_id)[0].name
+    def get_monitortypes(self, obj):  
+        monitortypes = Monitortypes.objects.filter(id=obj.monitortypes_id)
+        if (monitortypes.count() > 0):
+            return Monitortypes.objects.filter(id=obj.monitortypes_id)[0].name
+        return None
     
-    def get_monitormodels(self, obj):
-        return Monitormodels.objects.filter(id=obj.monitormodels_id)[0].name
+    def get_monitormodels(self, obj):    
+        monitormodels = Monitormodels.objects.filter(id=obj.monitormodels_id)
+        if (monitormodels.count() > 0):
+            return Monitormodels.objects.filter(id=obj.monitormodels_id)[0].name
+        return None
     class Meta:
         model = Monitors
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'monitortypes', 'monitormodels', 
@@ -1104,19 +1134,34 @@ class GetPeripheralsSerializer(serializers.ModelSerializer):
     date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M") 
 
     def get_states(self, obj):
-        return States.objects.filter(id=obj.states_id)[0].name
+        states = States.objects.filter(id=obj.manufacturers_id)
+        if (states.count() > 0):
+            return States.objects.filter(id=obj.states_id)[0].name
+        return None
 
     def get_manufacturers(self, obj):
-        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
                 
     def get_locations(self, obj):
-        return Locations.objects.filter(id=obj.locations_id)[0].name
+        locations = Locations.objects.filter(id=obj.locations_id)
+        if (locations.count() > 0):
+            return Locations.objects.filter(id=obj.locations_id)[0].name
+        return None
 
-    def get_peripheraltypes(self, obj):
-        return Peripheraltypes.objects.filter(id=obj.peripheraltypes_id)[0].name
+    def get_peripheraltypes(self, obj):    
+        peripheraltypes = Peripheraltypes.objects.filter(id=obj.peripheraltypes_id)
+        if (peripheraltypes.count() > 0):
+            return Peripheraltypes.objects.filter(id=obj.peripheraltypes_id)[0].name
+        return None
     
-    def get_peripheralmodels(self, obj):
-        return Peripheralmodels.objects.filter(id=obj.peripheralmodels_id)[0].name
+    def get_peripheralmodels(self, obj):    
+        peripheralmodels = Peripheralmodels.objects.filter(id=obj.peripheralmodels_id)
+        if (peripheralmodels.count() > 0):
+            return Peripheralmodels.objects.filter(id=obj.peripheralmodels_id)[0].name
+        return None
     class Meta:
         model = Peripherals
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'peripheraltypes', 'peripheralmodels', 
@@ -1131,19 +1176,34 @@ class GetPrintersSerializer(serializers.ModelSerializer):
     date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M") 
 
     def get_states(self, obj):
-        return States.objects.filter(id=obj.states_id)[0].name
+        states = States.objects.filter(id=obj.manufacturers_id)
+        if (states.count() > 0):
+            return States.objects.filter(id=obj.states_id)[0].name
+        return None
 
     def get_manufacturers(self, obj):
-        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
                 
     def get_locations(self, obj):
-        return Locations.objects.filter(id=obj.locations_id)[0].name
+        locations = Locations.objects.filter(id=obj.locations_id)
+        if (locations.count() > 0):
+            return Locations.objects.filter(id=obj.locations_id)[0].name
+        return None
 
     def get_printertypes(self, obj):
-        return Printertypes.objects.filter(id=obj.printertypes_id)[0].name
+        printertypes = Printertypes.objects.filter(id=obj.printertypes_id)
+        if (printertypes.count() > 0):
+            return Printertypes.objects.filter(id=obj.printertypes_id)[0].name
+        return None
     
     def get_printermodels(self, obj):
-        return Printermodels.objects.filter(id=obj.printermodels_id)[0].name
+        printermodels = Printermodels.objects.filter(id=obj.printermodels_id)
+        if (printermodels.count() > 0):
+            return Printermodels.objects.filter(id=obj.printermodels_id)[0].name
+        return None
     class Meta:
         model = Printers
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'printertypes', 'printermodels', 
@@ -1166,7 +1226,10 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
 
 
     def get_manufacturers(self, obj):
-        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
     
     def get_softwareversions(self, obj):
         items_softwareversions = ItemsSoftwareversions.objects.filter(items_id=obj.id, itemtype='Software')
@@ -1205,15 +1268,28 @@ class GetNetworkequipmentsSerializer(serializers.ModelSerializer):
     locations = serializers.SerializerMethodField()
     date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M")
     def get_states(self, obj):
-        return States.objects.filter(id=obj.states_id)[0].name
+        states = States.objects.filter(id=obj.manufacturers_id)
+        if (states.count() > 0):
+            return States.objects.filter(id=obj.states_id)[0].name
+        return None
 
     def get_manufacturers(self, obj):
-        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
-    def get_networkequipmenttypes(self, obj):
-        return Networkequipmenttypes.objects.filter(id=obj.networkequipmenttypes_id)[0].name
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
     
-    def get_networkequipmentmodels(self, obj):
-        return Networkequipmentmodels.objects.filter(id=obj.networkequipmentmodels_id)[0].name
+    def get_networkequipmenttypes(self, obj):
+        networkequipmenttypes = Networkequipmenttypes.objects.filter(id=obj.manufacturers_id)
+        if (networkequipmenttypes.count() > 0):
+            return Networkequipmenttypes.objects.filter(id=obj.networkequipmenttypes_id)[0].name
+        return None
+    
+    def get_networkequipmentmodels(self, obj):    
+        networkequipmentmodels = Networkequipmentmodels.objects.filter(id=obj.manufacturers_id)
+        if (networkequipmentmodels.count() > 0):
+            return Networkequipmentmodels.objects.filter(id=obj.networkequipmentmodels_id)[0].name
+        return None
     
     def get_devicefirmwares(self, obj):
         items_devicefirmwares = ItemsDevicefirmwares.objects.filter(items_id=obj.id, itemtype='NetworkEquipment')
@@ -1222,7 +1298,10 @@ class GetNetworkequipmentsSerializer(serializers.ModelSerializer):
         return None
     
     def get_locations(self, obj):
-        return Locations.objects.filter(id=obj.locations_id)[0].name
+        locations = Locations.objects.filter(id=obj.locations_id)
+        if (locations.count() > 0):
+            return Locations.objects.filter(id=obj.locations_id)[0].name
+        return None
     
     class Meta:
         model = Networkequipments
@@ -1238,21 +1317,34 @@ class GetPhonesSerializer(serializers.ModelSerializer):
     date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M") 
 
     def get_states(self, obj):
-        return States.objects.filter(id=obj.states_id)[0].name
+        states = States.objects.filter(id=obj.manufacturers_id)
+        if (states.count() > 0):
+            return States.objects.filter(id=obj.states_id)[0].name
+        return None
 
     def get_manufacturers(self, obj):
-        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
-
-    
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
                 
     def get_locations(self, obj):
-        return Locations.objects.filter(id=obj.locations_id)[0].name
+        locations = Locations.objects.filter(id=obj.locations_id)
+        if (locations.count() > 0):
+            return Locations.objects.filter(id=obj.locations_id)[0].name
+        return None
 
     def get_phonetypes(self, obj):
-        return Phonetypes.objects.filter(id=obj.phonetypes_id)[0].name
+        phonetypes = Phonetypes.objects.filter(id=obj.phonetypes_id)
+        if (phonetypes.count() > 0):
+            return Phonetypes.objects.filter(id=obj.phonetypes_id)[0].name
+        return None
     
     def get_phonemodels(self, obj):
-        return Phonemodels.objects.filter(id=obj.phonemodels_id)[0].name
+        phonemodels = Phonemodels.objects.filter(id=obj.phonemodels_id)
+        if (phonemodels.count() > 0):
+            return Phonemodels.objects.filter(id=obj.phonemodels_id)[0].name
+        return None
     class Meta:
         model = Phones
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'phonetypes', 'phonemodels', 
@@ -1296,13 +1388,22 @@ class GetConsumableitemsSerializer(serializers.ModelSerializer):
     consumableitemtypes = serializers.SerializerMethodField()
 
     def get_manufacturers(self, obj):
-        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
                 
     def get_locations(self, obj):
-        return Locations.objects.filter(id=obj.locations_id)[0].name
+        locations = Locations.objects.filter(id=obj.locations_id)
+        if (locations.count() > 0):
+            return Locations.objects.filter(id=obj.locations_id)[0].name
+        return None
     
-    def get_consumableitemtypes(self, obj):
-        return Consumableitemtypes.objects.filter(id=obj.locations_id)[0].name
+    def get_consumableitemtypes(self, obj):  
+        consumableitemtypes = Consumableitemtypes.objects.filter(id=obj.consumableitemtypes_id)
+        if (consumableitemtypes.count() > 0):
+            return Consumableitemtypes.objects.filter(id=obj.consumableitemtypes_id)[0].name
+        return None
     class Meta:
         model = Consumableitems
         fields = ['id', 'name' , 'ref', 'manufacturers', 'locations', 'consumableitemtypes']
@@ -1312,13 +1413,22 @@ class GetCartridgeItemsSerializer(serializers.ModelSerializer):
     cartridgeitemtypes = serializers.SerializerMethodField()
 
     def get_manufacturers(self, obj):
-        return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
                 
     def get_locations(self, obj):
-        return Locations.objects.filter(id=obj.locations_id)[0].name
+        locations = Locations.objects.filter(id=obj.locations_id)
+        if (locations.count() > 0):
+            return Locations.objects.filter(id=obj.locations_id)[0].name
+        return None
     
     def get_cartridgeitemtypes(self, obj):
-        return Cartridgeitems.objects.filter(id=obj.locations_id)[0].name
+        cartridgeitemtypes = Cartridgeitemtypes.objects.filter(id=obj.cartridgeitemtypes_id)
+        if (cartridgeitemtypes.count() > 0):
+            return Cartridgeitemtypes.objects.filter(id=obj.cartridgeitemtypes_id)[0].name
+        return None
     class Meta:
         model = Cartridgeitems
         fields = ['id', 'name' , 'ref', 'manufacturers' , 'locations', 'cartridgeitemtypes']
