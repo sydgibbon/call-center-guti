@@ -139,6 +139,6 @@ router.register(r'getNetworkequipments', GetNetworkequipmentsViewSet, basename='
 router.register(r'getPhones', GetPhonesViewSet, basename='getPhones')
 router.register(r'getRacks', GetRacksViewSet, basename='getRacks')
 router.register(r'getCables', GetCablesViewSet, basename='getCables')
-router.register(r'getPassivedequipments', GetPassivedequipmentsViewSet, basename='getPassivedequipments')
+router.register(r'getPassivedcequipments', GetPassivedcequipmentsViewSet, basename='getPassivedcequipments')
 router.register(r'getConsumableitems', GetConsumableitemsViewSet, basename='getConsumableitems')
 router.register(r'getCartridgeitems', GetCartridgeItemsViewSet, basename='getCartridgeitems')

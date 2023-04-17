@@ -2000,7 +2000,7 @@ class GetPdusViewSet(viewsets.ModelViewSet):
     queryset = Pdus.objects.all()
     serializer_class = GetPdusSerializer
     permission_classes = (IsAuthenticated, AllowAny)
-class GetPassivedequipmentsViewSet(viewsets.ModelViewSet):
+class GetPassivedcequipmentsViewSet(viewsets.ModelViewSet):
     queryset = Passivedcequipments.objects.all()
     serializer_class = GetPassivedcequipmentsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
