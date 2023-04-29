@@ -1,6 +1,8 @@
 from rest_framework.routers import DefaultRouter
 from .views import *
-from assets.computers import views as ComputersViews
+from assets.computers import views as computers
+from assets.locations import views as locations
+from assets.states import views as states
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -144,3 +146,8 @@ router.register(r'getPassivedcequipments', GetPassivedcequipmentsViewSet, basena
 router.register(r'getConsumableitems', GetConsumableitemsViewSet, basename='getConsumableitems')
 router.register(r'getCartridgeitems', GetCartridgeItemsViewSet, basename='getCartridgeitems')
 
+#selects
+router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewSet, basename='getComputertypesSelect')
+router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectViewSet, basename='getComputermodelsSelect')
+router.register(r'getLocationsSelect', locations.GetLocationsSelectViewSet, basename='getLocationsSelect')
+router.register(r'getStatesSelect', states.GetStatesSelectViewSet, basename='getStatesSelect')
