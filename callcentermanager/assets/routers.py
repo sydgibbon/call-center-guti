@@ -1,6 +1,5 @@
 from rest_framework.routers import DefaultRouter
 from .views import *
-from assets.computers import views as computers
 from assets.locations import views as locations
 from assets.states import views as states
 from assets.manufacturers import views as manufacturers
@@ -8,6 +7,8 @@ from assets.autoupdatesystems import views as autoupdatesystems
 from assets.networks import views as networks
 from assets.users import views as users
 from assets.groups import views as groups
+from assets.computers import views as computers
+from assets.monitors import views as monitors
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -152,8 +153,6 @@ router.register(r'getConsumableitems', GetConsumableitemsViewSet, basename='getC
 router.register(r'getCartridgeitems', GetCartridgeItemsViewSet, basename='getCartridgeitems')
 
 #selects
-router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewSet, basename='getComputertypesSelect')
-router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectViewSet, basename='getComputermodelsSelect')
 router.register(r'getLocationsSelect', locations.GetLocationsSelectViewSet, basename='getLocationsSelect')
 router.register(r'getStatesSelect', states.GetStatesSelectViewSet, basename='getStatesSelect')
 router.register(r'getManufacturersSelect', manufacturers.GetManufacturersSelectViewSet, basename='getManufacturersSelect')
@@ -163,3 +162,8 @@ router.register(r'getGroupsSelect', groups.GetGroupsSelectViewSet, basename='get
 router.register(r'getGroupInChargeSelect', groups.GetGroupInChargeSelectViewSet, basename='getGroupInChargeSelect')
 router.register(r'getUsersSelect', users.GetUsersSelectViewSet, basename='getUsersSelect')
 router.register(r'getUserInChargeSelect', users.GetTechInChargeSelectViewSet, basename='getUserInChargeSelect')
+
+router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewSet, basename='getComputertypesSelect')
+router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectViewSet, basename='getComputermodelsSelect')
+router.register(r'getMonitortypesSelect', monitors.GetMonitortypesSelectViewSet, basename='getMonitortypesSelect')
+router.register(r'getMonitormodelsSelect', monitors.GetMonitormodelsSelectViewSet, basename='getMonitormodelsSelect')
