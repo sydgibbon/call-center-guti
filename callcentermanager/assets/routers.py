@@ -1,5 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from .views import *
+from assets.computers import views as ComputersViews
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -142,3 +143,4 @@ router.register(r'getCables', GetCablesViewSet, basename='getCables')
 router.register(r'getPassivedcequipments', GetPassivedcequipmentsViewSet, basename='getPassivedcequipments')
 router.register(r'getConsumableitems', GetConsumableitemsViewSet, basename='getConsumableitems')
 router.register(r'getCartridgeitems', GetCartridgeItemsViewSet, basename='getCartridgeitems')
+
