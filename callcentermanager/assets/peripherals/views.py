@@ -18,6 +18,6 @@ class GetPeripheralmodelsSelectViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        periferalmodels = GetPeripheralmodelsSelectSerializer(Peripheralmodels.objects.all(), many=True)
+        peripheralmodels = GetPeripheralmodelsSelectSerializer(Peripheralmodels.objects.all(), many=True)
 
-        return Response(periferalmodels.data)
+        return Response(peripheralmodels.data)
