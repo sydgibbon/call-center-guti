@@ -9,13 +9,13 @@ class GetPdutypesSelectViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        states = GetPdutypesSelectSerializer(Pdutypes.objects.all(), many=True) 
-        return Response(states.data)
+        pdutypes = GetPdutypesSelectSerializer(Pdutypes.objects.all(), many=True) 
+        return Response(pdutypes.data)
     
 class GetPdumodelsSelectViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        states = GetPdumodelsSelectSerializer(Pdumodels.objects.all(), many=True) 
-        return Response(states.data)
+        pdumodels = GetPdumodelsSelectSerializer(Pdumodels.objects.all(), many=True) 
+        return Response(pdumodels.data)
