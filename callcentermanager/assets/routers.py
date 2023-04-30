@@ -9,8 +9,10 @@ from assets.networks import views as networks
 from assets.snmpcredentials import views as snmpcredentials
 from assets.users import views as users
 from assets.groups import views as groups
+from assets.peripherals import views as peripherals
 from assets.networkequipments import views as networkequipments
 from assets.simcards import views as simcards
+from assets.printers import views as printers
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -171,3 +173,7 @@ router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworke
 router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodelsSelect')
 router.register(r'getDevicesimcardsSelect', simcards.GetDevicesimcardsSelectViewSet, basename='getDevicesimcardsSelect')
 router.register(r'getLinesSelect', simcards.GetLinesSelectViewSet, basename='getLinesSelect')
+router.register(r'getPeripheraltypesSelect', peripherals.GetPeripheraltypesSelectViewSet , basename='getPeripheraltypesSelect')
+router.register(r'getPeripheralmodelsSelect', peripherals.GetPeripheralmodelsSelectViewSet , basename='getPeripheralmodelsSelect')
+router.register(r'getPrintermodelsSelect', printers.GetPrintermodelsSelectViewSet, basename='getPrintermodels')
+router.register(r'getPrintertypesSelect', printers.GetPrintertypesSelectViewSet, basename='getPrintertypes')
