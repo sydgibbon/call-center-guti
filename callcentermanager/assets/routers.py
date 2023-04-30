@@ -18,6 +18,7 @@ from assets.consumableitems import views as consumableitems
 from assets.passivedcequipments import views as passivedcequipments
 from assets.phones import views as phones
 from assets.racks import views as racks
+from assets.enclosures import views as enclosures
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -198,3 +199,4 @@ router.register(r'getGetPhonepowersuppliesSelect', phones.GetPhonepowersuppliesS
 router.register(r'getRacktypesSelect', racks.GetRacktypesSelectViewSet, basename='getRacktypes')
 router.register(r'getRackmodelsSelect', racks.GetRackmodelsSelectViewSet, basename='getRackmodels')
 router.register(r'getDcroomsSelect', racks.GetDcroomsSelectViewSet, basename='getDcrooms')
+router.register(r'getEnclosuremoldesSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
