@@ -10,6 +10,7 @@ from assets.snmpcredentials import views as snmpcredentials
 from assets.users import views as users
 from assets.groups import views as groups
 from assets.networkequipments import views as networkequipments
+from assets.simcards import views as simcards
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -166,5 +167,7 @@ router.register(r'getGroupsSelect', groups.GetGroupsSelectViewSet, basename='get
 router.register(r'getGroupInChargeSelect', groups.GetGroupInChargeSelectViewSet, basename='getGroupInChargeSelect')
 router.register(r'getUsersSelect', users.GetUsersSelectViewSet, basename='getUsersSelect')
 router.register(r'getUserInChargeSelect', users.GetTechInChargeSelectViewSet, basename='getUserInChargeSelect')
-router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
-router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
+router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypesSelect')
+router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodelsSelect')
+router.register(r'getDevicesimcardsSelect', simcards.GetDevicesimcardsSelectViewSet, basename='getDevicesimcardsSelect')
+router.register(r'getLinesSelect', simcards.GetLinesSelectViewSet, basename='getLinesSelect')
