@@ -16,6 +16,9 @@ from assets.simcards import views as simcards
 from assets.printers import views as printers
 from assets.consumableitems import views as consumableitems
 from assets.passivedcequipments import views as passivedcequipments
+from assets.phones import views as phones
+from assets.racks import views as racks
+from assets.enclosures import views as enclosures
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -192,3 +195,12 @@ router.register(r'getConsumableitemtypesSelect', consumableitems.GetConsumableit
 router.register(r'getPassivedcequipmentsSelect', passivedcequipments.GetPassivedcequipmentsSelectViewSet, basename='getPassivedcequipmentsSelect')
 router.register(r'getPassivedcequipmenttypesSelect', passivedcequipments.GetPassivedcequipmenttypesSelectViewSet, basename='getPassivedcequipmenttypesSelect')
 router.register(r'getPassivedcequipmentmodelsSelect', passivedcequipments.GetPassivedcequipmentmodelsSelectViewSet, basename='getPassivedcequipmentmodelsSelect')
+router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
+router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
+router.register(r'getPhonemodelsSelect', phones.GetPhonemodelsSelectViewSet, basename='getPhonemodels')
+router.register(r'getPhonetypesSelect', phones.GetPhonetypesSelectViewSet, basename='getPhonetypes')
+router.register(r'getGetPhonepowersuppliesSelect', phones.GetPhonepowersuppliesSelectViewSet, basename='getPhonepowersupplies')
+router.register(r'getRacktypesSelect', racks.GetRacktypesSelectViewSet, basename='getRacktypes')
+router.register(r'getRackmodelsSelect', racks.GetRackmodelsSelectViewSet, basename='getRackmodels')
+router.register(r'getDcroomsSelect', racks.GetDcroomsSelectViewSet, basename='getDcrooms')
+router.register(r'getEnclosuremoldesSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
