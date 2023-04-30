@@ -10,6 +10,7 @@ from assets.snmpcredentials import views as snmpcredentials
 from assets.users import views as users
 from assets.groups import views as groups
 from assets.networkequipments import views as networkequipments
+from assets.racks import views as racks
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -168,3 +169,6 @@ router.register(r'getUsersSelect', users.GetUsersSelectViewSet, basename='getUse
 router.register(r'getUserInChargeSelect', users.GetTechInChargeSelectViewSet, basename='getUserInChargeSelect')
 router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
 router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
+router.register(r'getRacktypesSelect', racks.GetRacktypesSelectViewSet, basename='getRacktypes')
+router.register(r'getRackmodelsSelect', racks.GetRackmodelsSelectViewSet, basename='getRackmodels')
+router.register(r'getDcroomsSelect', racks.GetDcroomsSelectViewSet, basename='getDcrooms')
