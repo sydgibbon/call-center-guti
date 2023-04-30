@@ -10,6 +10,7 @@ from assets.snmpcredentials import views as snmpcredentials
 from assets.users import views as users
 from assets.groups import views as groups
 from assets.networkequipments import views as networkequipments
+from assets.cables import views as cables
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -154,6 +155,7 @@ router.register(r'getConsumableitems', GetConsumableitemsViewSet, basename='getC
 router.register(r'getCartridgeitems', GetCartridgeItemsViewSet, basename='getCartridgeitems')
 
 #selects
+router.register(r'getComputersSelect', computers.GetComputersSelectViewSet, basename='getComputersSelect')
 router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewSet, basename='getComputertypesSelect')
 router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectViewSet, basename='getComputermodelsSelect')
 router.register(r'getLocationsSelect', locations.GetLocationsSelectViewSet, basename='getLocationsSelect')
@@ -168,3 +170,7 @@ router.register(r'getUsersSelect', users.GetUsersSelectViewSet, basename='getUse
 router.register(r'getUserInChargeSelect', users.GetTechInChargeSelectViewSet, basename='getUserInChargeSelect')
 router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
 router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
+router.register(r'getCabletypesSelect', cables.GetCabletypesSelectViewSet, basename='getCabletypesSelect')
+router.register(r'getCablestrandsSelect', cables.GetCablestrandsSelectViewSet, basename='getCablestrandsSelect')
+router.register(r'getSocketsSelect', cables.GetSocketsSelectViewSet, basename='getSocketsSelect')
+router.register(r'getSocketmodelsSelect', cables.GetSocketmodelsSelectViewSet, basename='getCablestrandsSelect')
