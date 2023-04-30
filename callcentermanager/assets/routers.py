@@ -14,6 +14,7 @@ from assets.networkequipments import views as networkequipments
 from assets.simcards import views as simcards
 from assets.printers import views as printers
 from assets.consumableitems import views as consumableitems
+from assets.passivedcequipments import views as passivedcequipments
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -176,8 +177,8 @@ router.register(r'getDevicesimcardsSelect', simcards.GetDevicesimcardsSelectView
 router.register(r'getLinesSelect', simcards.GetLinesSelectViewSet, basename='getLinesSelect')
 router.register(r'getPeripheraltypesSelect', peripherals.GetPeripheraltypesSelectViewSet , basename='getPeripheraltypesSelect')
 router.register(r'getPeripheralmodelsSelect', peripherals.GetPeripheralmodelsSelectViewSet , basename='getPeripheralmodelsSelect')
-router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
-router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
 router.register(r'getPrintermodelsSelect', printers.GetPrintermodelsSelectViewSet, basename='getPrintermodelsSelect')
 router.register(r'getPrintertypesSelect', printers.GetPrintertypesSelectViewSet, basename='getPrintertypesSelect')
 router.register(r'getConsumableitemtypesSelect', consumableitems.GetConsumableitemtypesSelectViewSet, basename='getConsumableitemtypesSelect')
+router.register(r'getPassivedcequipmenttypesSelect', passivedcequipments.GetPassivedcequipmenttypesSelectViewSet, basename='getPassivedcequipmenttypes')
+router.register(r'getPassivedcequipmentmodelsSelect', passivedcequipments.GetPassivedcequipmentmodelsSelectViewSet, basename='getPassivedcequipmentmodels')
