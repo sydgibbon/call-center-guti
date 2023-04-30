@@ -16,6 +16,7 @@ from assets.simcards import views as simcards
 from assets.printers import views as printers
 from assets.consumableitems import views as consumableitems
 from assets.passivedcequipments import views as passivedcequipments
+from assets.phones import views as phones
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -188,3 +189,8 @@ router.register(r'getPrintertypesSelect', printers.GetPrintertypesSelectViewSet,
 router.register(r'getConsumableitemtypesSelect', consumableitems.GetConsumableitemtypesSelectViewSet, basename='getConsumableitemtypesSelect')
 router.register(r'getPassivedcequipmenttypesSelect', passivedcequipments.GetPassivedcequipmenttypesSelectViewSet, basename='getPassivedcequipmenttypesSelect')
 router.register(r'getPassivedcequipmentmodelsSelect', passivedcequipments.GetPassivedcequipmentmodelsSelectViewSet, basename='getPassivedcequipmentmodelsSelect')
+router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
+router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
+router.register(r'getPhonemodelsSelect', phones.GetPhonemodelsSelectViewSet, basename='getPhonemodels')
+router.register(r'getPhonetypesSelect', phones.GetPhonetypesSelectViewSet, basename='getPhonetypes')
+router.register(r'getGetPhonepowersuppliesSelect', phones.GetPhonepowersuppliesSelectViewSet, basename='getPhonepowersupplies')
