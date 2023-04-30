@@ -197,6 +197,7 @@ router.register(r'getPassivedcequipmenttypesSelect', passivedcequipments.GetPass
 router.register(r'getPassivedcequipmentmodelsSelect', passivedcequipments.GetPassivedcequipmentmodelsSelectViewSet, basename='getPassivedcequipmentmodelsSelect')
 router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
 router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
+router.register(r'getPhonesSelect', phones.GetPhonesSelectViewSet, basename='getPhones')
 router.register(r'getPhonemodelsSelect', phones.GetPhonemodelsSelectViewSet, basename='getPhonemodels')
 router.register(r'getPhonetypesSelect', phones.GetPhonetypesSelectViewSet, basename='getPhonetypes')
 router.register(r'getGetPhonepowersuppliesSelect', phones.GetPhonepowersuppliesSelectViewSet, basename='getPhonepowersupplies')

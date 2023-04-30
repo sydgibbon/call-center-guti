@@ -1,6 +1,11 @@
 
 from rest_framework import serializers  # import de serializers
-from assets.models import Phonetypes, Phonemodels, Phonepowersupplies
+from assets.models import Phones, Phonetypes, Phonemodels, Phonepowersupplies
+
+class GetPhonesSelectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Phones
+        fields = ['id', 'name']
 
 class GetPhonetypesSelectSerializer(serializers.ModelSerializer):
     class Meta:
