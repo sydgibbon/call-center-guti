@@ -168,5 +168,6 @@ router.register(r'getGroupInChargeSelect', groups.GetGroupInChargeSelectViewSet,
 router.register(r'getUsersSelect', users.GetUsersSelectViewSet, basename='getUsersSelect')
 router.register(r'getUserInChargeSelect', users.GetTechInChargeSelectViewSet, basename='getUserInChargeSelect')
 router.register(r'getPeripheraltypesSelect', peripherals.GetPeripheraltypesSelectViewSet , basename='getPeripheraltypesSelect')
+router.register(r'getPeripheralmodelsSelect', peripherals.GetPeripheralmodelsSelectViewSet , basename='getPeripheralmodelsSelect')
 router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
 router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
