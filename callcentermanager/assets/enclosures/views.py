@@ -9,5 +9,5 @@ class GetEnclosuremodelsSelectViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        states = GetEnclosuremodelsSelectSerializer(Enclosuremodels.objects.all(), many=True) 
-        return Response(states.data)
+        enclosuremodels = GetEnclosuremodelsSelectSerializer(Enclosuremodels.objects.all(), many=True) 
+        return Response(enclosuremodels.data)
