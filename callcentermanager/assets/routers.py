@@ -169,4 +169,4 @@ router.register(r'getUsersSelect', users.GetUsersSelectViewSet, basename='getUse
 router.register(r'getUserInChargeSelect', users.GetTechInChargeSelectViewSet, basename='getUserInChargeSelect')
 router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
 router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
-router.register(r'getEnclosuremoldesSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
+router.register(r'getEnclosuremodelsSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
