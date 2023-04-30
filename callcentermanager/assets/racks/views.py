@@ -9,21 +9,21 @@ class GetRacktypesSelectViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        states = GetRacktypesSelectSerializer(Racktypes.objects.all(), many=True) 
-        return Response(states.data)
+        racktypes = GetRacktypesSelectSerializer(Racktypes.objects.all(), many=True) 
+        return Response(racktypes.data)
     
 class GetRackmodelsSelectViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        states = GetRackmodelsSelectSerializer(Rackmodels.objects.all(), many=True) 
-        return Response(states.data)
+        rackmodels = GetRackmodelsSelectSerializer(Rackmodels.objects.all(), many=True) 
+        return Response(rackmodels.data)
     
 class GetDcroomsSelectViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        states = GetDcroomsSelectSerializer(Dcrooms.objects.all(), many=True) 
-        return Response(states.data)
+        dcrooms = GetDcroomsSelectSerializer(Dcrooms.objects.all(), many=True) 
+        return Response(dcrooms.data)
