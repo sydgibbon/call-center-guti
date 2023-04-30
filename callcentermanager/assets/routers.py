@@ -203,3 +203,4 @@ router.register(r'getDcroomsSelect', racks.GetDcroomsSelectViewSet, basename='ge
 router.register(r'getEnclosuremoldesSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
 router.register(r'getPdutypesSelect', pdu.GetPdutypesSelectViewSet, basename='getPdutypes')
 router.register(r'getPdumodelsSelect', pdu.GetPdumodelsSelectViewSet, basename='getPdumodels')
+router.register(r'getEnclosuremodelsSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
