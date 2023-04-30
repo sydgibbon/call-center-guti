@@ -1,14 +1,11 @@
 from rest_framework import serializers  # import de serializers
-from assets.models import Printers, Printermodels, Printertypes
+from assets.models import Printermodels, Printertypes
 
-class GetPrintersSerializer(serializers.ModelSerializer):
-    model = Printers
-    fields = ('id', 'name')
-
-class GetPrintermodelsSerializer(serializers.ModelSerializer):
-    model = Printermodels
-    fields = ('id', 'name')
-
-class GetPrintertypesSerializer(serializers.ModelSerializer):
-    model = Printertypes
-    fields = ('id', 'name')
+class GetPrintermodelsSelectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Printermodels
+        fields = ['id', 'name']
+class GetPrintertypesSelectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Printertypes
+        fields = ['id', 'name']
