@@ -1,6 +1,12 @@
 
 from rest_framework import serializers  # import de serializers
-from assets.models import Computermodels, Computertypes
+from assets.models import Computers, Computermodels, Computertypes
+
+class GetComputersSelectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Computers
+        fields = ['id', 'name']
+
 class GetComputertypesSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Computertypes

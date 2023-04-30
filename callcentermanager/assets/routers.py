@@ -11,6 +11,7 @@ from assets.users import views as users
 from assets.groups import views as groups
 from assets.peripherals import views as peripherals
 from assets.networkequipments import views as networkequipments
+from assets.cables import views as cables
 from assets.simcards import views as simcards
 from assets.printers import views as printers
 from assets.consumableitems import views as consumableitems
@@ -159,6 +160,7 @@ router.register(r'getConsumableitems', GetConsumableitemsViewSet, basename='getC
 router.register(r'getCartridgeitems', GetCartridgeItemsViewSet, basename='getCartridgeitems')
 
 #selects
+router.register(r'getComputersSelect', computers.GetComputersSelectViewSet, basename='getComputersSelect')
 router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewSet, basename='getComputertypesSelect')
 router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectViewSet, basename='getComputermodelsSelect')
 router.register(r'getLocationsSelect', locations.GetLocationsSelectViewSet, basename='getLocationsSelect')
@@ -177,8 +179,12 @@ router.register(r'getDevicesimcardsSelect', simcards.GetDevicesimcardsSelectView
 router.register(r'getLinesSelect', simcards.GetLinesSelectViewSet, basename='getLinesSelect')
 router.register(r'getPeripheraltypesSelect', peripherals.GetPeripheraltypesSelectViewSet , basename='getPeripheraltypesSelect')
 router.register(r'getPeripheralmodelsSelect', peripherals.GetPeripheralmodelsSelectViewSet , basename='getPeripheralmodelsSelect')
+router.register(r'getCabletypesSelect', cables.GetCabletypesSelectViewSet, basename='getCabletypesSelect')
+router.register(r'getCablestrandsSelect', cables.GetCablestrandsSelectViewSet, basename='getCablestrandsSelect')
+router.register(r'getSocketsSelect', cables.GetSocketsSelectViewSet, basename='getSocketsSelect')
+router.register(r'getSocketmodelsSelect', cables.GetSocketmodelsSelectViewSet, basename='getCablestrandsSelect')
 router.register(r'getPrintermodelsSelect', printers.GetPrintermodelsSelectViewSet, basename='getPrintermodelsSelect')
 router.register(r'getPrintertypesSelect', printers.GetPrintertypesSelectViewSet, basename='getPrintertypesSelect')
 router.register(r'getConsumableitemtypesSelect', consumableitems.GetConsumableitemtypesSelectViewSet, basename='getConsumableitemtypesSelect')
-router.register(r'getPassivedcequipmenttypesSelect', passivedcequipments.GetPassivedcequipmenttypesSelectViewSet, basename='getPassivedcequipmenttypes')
-router.register(r'getPassivedcequipmentmodelsSelect', passivedcequipments.GetPassivedcequipmentmodelsSelectViewSet, basename='getPassivedcequipmentmodels')
+router.register(r'getPassivedcequipmenttypesSelect', passivedcequipments.GetPassivedcequipmenttypesSelectViewSet, basename='getPassivedcequipmenttypesSelect')
+router.register(r'getPassivedcequipmentmodelsSelect', passivedcequipments.GetPassivedcequipmentmodelsSelectViewSet, basename='getPassivedcequipmentmodelsSelect')
