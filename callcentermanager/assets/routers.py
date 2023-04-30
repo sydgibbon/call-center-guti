@@ -12,6 +12,7 @@ from assets.groups import views as groups
 from assets.peripherals import views as peripherals
 from assets.networkequipments import views as networkequipments
 from assets.printers import views as printers
+from assets.consumableitems import views as consumableitems
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -172,5 +173,6 @@ router.register(r'getPeripheraltypesSelect', peripherals.GetPeripheraltypesSelec
 router.register(r'getPeripheralmodelsSelect', peripherals.GetPeripheralmodelsSelectViewSet , basename='getPeripheralmodelsSelect')
 router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
 router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
-router.register(r'getPrintermodelsSelect', printers.GetPrintermodelsSelectViewSet, basename='getPrintermodels')
-router.register(r'getPrintertypesSelect', printers.GetPrintertypesSelectViewSet, basename='getPrintertypes')
+router.register(r'getPrintermodelsSelect', printers.GetPrintermodelsSelectViewSet, basename='getPrintermodelsSelect')
+router.register(r'getPrintertypesSelect', printers.GetPrintertypesSelectViewSet, basename='getPrintertypesSelect')
+router.register(r'getConsumableitemtypesSelect', consumableitems.GetConsumableitemtypesSelectViewSet, basename='getConsumableitemtypesSelect')
