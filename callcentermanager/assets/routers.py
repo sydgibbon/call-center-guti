@@ -9,8 +9,12 @@ from assets.networks import views as networks
 from assets.snmpcredentials import views as snmpcredentials
 from assets.users import views as users
 from assets.groups import views as groups
+from assets.peripherals import views as peripherals
 from assets.networkequipments import views as networkequipments
 from assets.cables import views as cables
+from assets.simcards import views as simcards
+from assets.printers import views as printers
+from assets.consumableitems import views as consumableitems
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -168,9 +172,18 @@ router.register(r'getGroupsSelect', groups.GetGroupsSelectViewSet, basename='get
 router.register(r'getGroupInChargeSelect', groups.GetGroupInChargeSelectViewSet, basename='getGroupInChargeSelect')
 router.register(r'getUsersSelect', users.GetUsersSelectViewSet, basename='getUsersSelect')
 router.register(r'getUserInChargeSelect', users.GetTechInChargeSelectViewSet, basename='getUserInChargeSelect')
+router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypesSelect')
+router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodelsSelect')
+router.register(r'getDevicesimcardsSelect', simcards.GetDevicesimcardsSelectViewSet, basename='getDevicesimcardsSelect')
+router.register(r'getLinesSelect', simcards.GetLinesSelectViewSet, basename='getLinesSelect')
+router.register(r'getPeripheraltypesSelect', peripherals.GetPeripheraltypesSelectViewSet , basename='getPeripheraltypesSelect')
+router.register(r'getPeripheralmodelsSelect', peripherals.GetPeripheralmodelsSelectViewSet , basename='getPeripheralmodelsSelect')
 router.register(r'getNetworkequipmenttypesSelect', networkequipments.GetNetworkequipmenttypesSelectViewSet, basename='getNetworkequipmenttypes')
 router.register(r'getNetworkequipmentmodelsSelect', networkequipments.GetNetworkequipmentmodelsSelectViewSet, basename='getNetworkequipmentmodels')
 router.register(r'getCabletypesSelect', cables.GetCabletypesSelectViewSet, basename='getCabletypesSelect')
 router.register(r'getCablestrandsSelect', cables.GetCablestrandsSelectViewSet, basename='getCablestrandsSelect')
 router.register(r'getSocketsSelect', cables.GetSocketsSelectViewSet, basename='getSocketsSelect')
 router.register(r'getSocketmodelsSelect', cables.GetSocketmodelsSelectViewSet, basename='getCablestrandsSelect')
+router.register(r'getPrintermodelsSelect', printers.GetPrintermodelsSelectViewSet, basename='getPrintermodelsSelect')
+router.register(r'getPrintertypesSelect', printers.GetPrintertypesSelectViewSet, basename='getPrintertypesSelect')
+router.register(r'getConsumableitemtypesSelect', consumableitems.GetConsumableitemtypesSelectViewSet, basename='getConsumableitemtypesSelect')
