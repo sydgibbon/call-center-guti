@@ -1,10 +1,10 @@
 from rest_framework import serializers  # import de serializers
 from assets.models import Peripheraltypes, Peripheralmodels
 
-class GetPeripheraltypesSerializer(serializers.ModelSerializer):
+class GetPeripheraltypesSelectSerializer(serializers.ModelSerializer):
     model = Peripheraltypes
     fields = ('id', 'name')
 
-class GetPeripheralmodelsSerializer(serializers.ModelSerializer):
+class GetPeripheralmodelsSelectSerializer(serializers.ModelSerializer):
     model = Peripheralmodels
     fields = ('id', 'name')

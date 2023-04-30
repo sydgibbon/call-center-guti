@@ -8,6 +8,7 @@ from assets.autoupdatesystems import views as autoupdatesystems
 from assets.networks import views as networks
 from assets.users import views as users
 from assets.groups import views as groups
+from assets.peripherals import views as peripherals
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -163,3 +164,4 @@ router.register(r'getGroupsSelect', groups.GetGroupsSelectViewSet, basename='get
 router.register(r'getGroupInChargeSelect', groups.GetGroupInChargeSelectViewSet, basename='getGroupInChargeSelect')
 router.register(r'getUsersSelect', users.GetUsersSelectViewSet, basename='getUsersSelect')
 router.register(r'getUserInChargeSelect', users.GetTechInChargeSelectViewSet, basename='getUserInChargeSelect')
+router.register(r'getPeripheraltypesSelect', peripherals.GetPeripheraltypesSelectViewSet , basename='getPeripheraltypesSelect')
