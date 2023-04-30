@@ -8,6 +8,7 @@ from assets.autoupdatesystems import views as autoupdatesystems
 from assets.networks import views as networks
 from assets.users import views as users
 from assets.groups import views as groups
+from assets.snmpcredentials import views as snmpcredentials
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -158,7 +159,8 @@ router.register(r'getLocationsSelect', locations.GetLocationsSelectViewSet, base
 router.register(r'getStatesSelect', states.GetStatesSelectViewSet, basename='getStatesSelect')
 router.register(r'getManufacturersSelect', manufacturers.GetManufacturersSelectViewSet, basename='getManufacturersSelect')
 router.register(r'getAutoupdatesystemsSelect', autoupdatesystems.GetAutoupdatesystemsSelectViewSet, basename='getAutoupdatesystemsSelect')
-router.register(r'getNetworksystemsSelect', networks.GetNetworksSelectViewSet, basename='getNetworksystemsSelect')
+router.register(r'getNetworksSelect', networks.GetNetworksSelectViewSet, basename='getNetworksSelect')
+router.register(r'getSnmpcredentialsSelect', snmpcredentials.GetSnmpcredentialsSelectViewSet, basename='getSnmpcredentialsSelect')
 router.register(r'getGroupsSelect', groups.GetGroupsSelectViewSet, basename='getGroupsSelect')
 router.register(r'getGroupInChargeSelect', groups.GetGroupInChargeSelectViewSet, basename='getGroupInChargeSelect')
 router.register(r'getUsersSelect', users.GetUsersSelectViewSet, basename='getUsersSelect')
