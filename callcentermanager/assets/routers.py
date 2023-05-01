@@ -208,6 +208,7 @@ router.register(r'getEnclosuremoldesSelect', enclosures.GetEnclosuremodelsSelect
 router.register(r'getPdutypesSelect', pdu.GetPdutypesSelectViewSet, basename='getPdutypes')
 router.register(r'getPdumodelsSelect', pdu.GetPdumodelsSelectViewSet, basename='getPdumodels')
 router.register(r'getEnclosuremodelsSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
+router.register(r'getComputersSelect', computers.GetComputersSelectViewSet, basename='getComputersSelect')
 router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewSet, basename='getComputertypesSelect')
 router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectViewSet, basename='getComputermodelsSelect')
 router.register(r'getMonitortypesSelect', monitors.GetMonitortypesSelectViewSet, basename='getMonitortypesSelect')
