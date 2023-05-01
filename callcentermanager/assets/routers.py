@@ -1,6 +1,5 @@
 from rest_framework.routers import DefaultRouter
 from .views import *
-from assets.computers import views as computers
 from assets.locations import views as locations
 from assets.states import views as states
 from assets.manufacturers import views as manufacturers
@@ -20,6 +19,8 @@ from assets.phones import views as phones
 from assets.racks import views as racks
 from assets.enclosures import views as enclosures
 from assets.pdu import views as pdu
+from assets.computers import views as computers
+from assets.monitors import views as monitors
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -164,9 +165,6 @@ router.register(r'getConsumableitems', GetConsumableitemsViewSet, basename='getC
 router.register(r'getCartridgeitems', GetCartridgeItemsViewSet, basename='getCartridgeitems')
 
 #selects
-router.register(r'getComputersSelect', computers.GetComputersSelectViewSet, basename='getComputersSelect')
-router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewSet, basename='getComputertypesSelect')
-router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectViewSet, basename='getComputermodelsSelect')
 router.register(r'getLocationsSelect', locations.GetLocationsSelectViewSet, basename='getLocationsSelect')
 router.register(r'getStatesSelect', states.GetStatesSelectViewSet, basename='getStatesSelect')
 router.register(r'getManufacturersSelect', manufacturers.GetManufacturersSelectViewSet, basename='getManufacturersSelect')
@@ -209,3 +207,7 @@ router.register(r'getEnclosuremoldesSelect', enclosures.GetEnclosuremodelsSelect
 router.register(r'getPdutypesSelect', pdu.GetPdutypesSelectViewSet, basename='getPdutypes')
 router.register(r'getPdumodelsSelect', pdu.GetPdumodelsSelectViewSet, basename='getPdumodels')
 router.register(r'getEnclosuremodelsSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
+router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewSet, basename='getComputertypesSelect')
+router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectViewSet, basename='getComputermodelsSelect')
+router.register(r'getMonitortypesSelect', monitors.GetMonitortypesSelectViewSet, basename='getMonitortypesSelect')
+router.register(r'getMonitormodelsSelect', monitors.GetMonitormodelsSelectViewSet, basename='getMonitormodelsSelect')
