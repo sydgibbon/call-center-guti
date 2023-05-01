@@ -9,21 +9,21 @@ class GetPhonetypesSelectViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        Phonetypes = GetPhonetypesSelectSerializer(Phonetypes.objects.all(), many=True) 
-        return Response(Phonetypes.data)
+        phonetypes = GetPhonetypesSelectSerializer(Phonetypes.objects.all(), many=True) 
+        return Response(phonetypes.data)
     
 class GetPhonemodelsSelectViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        Phonemodels = GetPhonemodelsSelectSerializer(Phonemodels.objects.all(), many=True) 
-        return Response(Phonemodels.data)
+        phonemodels = GetPhonemodelsSelectSerializer(Phonemodels.objects.all(), many=True) 
+        return Response(phonemodels.data)
     
 class GetPhonepowersuppliesSelectViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        Phonepowersupplies = GetPhonepowersuppliesSelectSerializer(Phonepowersupplies.objects.all(), many=True) 
-        return Response(Phonepowersupplies.data)
+        phonepowersupplies = GetPhonepowersuppliesSelectSerializer(Phonepowersupplies.objects.all(), many=True) 
+        return Response(phonepowersupplies.data)
