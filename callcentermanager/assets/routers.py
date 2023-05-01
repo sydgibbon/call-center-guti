@@ -21,6 +21,7 @@ from assets.enclosures import views as enclosures
 from assets.pdu import views as pdu
 from assets.computers import views as computers
 from assets.monitors import views as monitors
+from assets.softwares import views as softwares
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
@@ -211,3 +212,4 @@ router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewS
 router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectViewSet, basename='getComputermodelsSelect')
 router.register(r'getMonitortypesSelect', monitors.GetMonitortypesSelectViewSet, basename='getMonitortypesSelect')
 router.register(r'getMonitormodelsSelect', monitors.GetMonitormodelsSelectViewSet, basename='getMonitormodelsSelect')
+router.register(r'getSoftwarecategoriesSelect', softwares.GetSoftwarecategoriesSelectViewSet, basename='getSoftwarecategoriesSelect')
