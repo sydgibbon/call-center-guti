@@ -1,6 +1,6 @@
-from assets.cables.serializers import GetCabletypesSelectSerializer, GetCablestrandsSelectSerializer, GetSocketsSelectSerializer, GetSocketmodelsSelectSerializer
-from assets.models import Cabletypes, Cablestrands, Sockets, Socketmodels
-from rest_framework import viewsets  # import de ViewSets
+from assets.cables.serializers import CablesSerializer, GetCablesSerializer, GetCabletypesSelectSerializer, GetCablestrandsSelectSerializer, GetSocketsSelectSerializer, GetSocketmodelsSelectSerializer
+from assets.models import Cables, Cabletypes, Cablestrands, Sockets, Socketmodels
+from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
@@ -35,3 +35,23 @@ class GetSocketmodelsSelectViewSet(viewsets.ViewSet):
     def list(self, request, format=None):
         socketmodels = GetSocketmodelsSelectSerializer(Socketmodels.objects.all(), many=True) 
         return Response(socketmodels.data)
+    
+class CablesViewSet(viewsets.ModelViewSet):
+    queryset = Cables.objects.all()
+    serializer_class = CablesSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Cables.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class GetCablesViewSet(viewsets.ModelViewSet):
+    queryset = Cables.objects.all()
+    serializer_class = GetCablesSerializer
+    http_method_names = ['get']

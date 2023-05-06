@@ -299,20 +299,7 @@ class UnmanagedsViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class CablesViewSet(viewsets.ModelViewSet):
-    queryset = Cables.objects.all()
-    serializer_class = CablesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Cables.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class DevicesimcardsViewSet(viewsets.ModelViewSet):
@@ -2024,9 +2011,7 @@ class GetRacksViewSet(viewsets.ModelViewSet):
     queryset = Racks.objects.all()
     serializer_class = GetRacksSerializer
     permission_classes = (IsAuthenticated, AllowAny)
-class GetCablesViewSet(viewsets.ModelViewSet):
-    queryset = Cables.objects.all()
-    serializer_class = GetCablesSerializer
+
 class GetConsumableitemsViewSet(viewsets.ModelViewSet):
     queryset = Consumableitems.objects.all()
     serializer_class = GetConsumableitemsSerializer
