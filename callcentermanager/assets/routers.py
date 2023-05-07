@@ -25,7 +25,7 @@ from assets.softwares import views as softwares
 
 router=DefaultRouter()
 router.register(r'computers', ComputersViewSet, basename='computers')
-router.register(r'monitors', MonitorsViewSet, basename='monitors')
+router.register(r'monitors', monitors.MonitorsViewSet, basename='monitors')
 router.register(r'softwares', SoftwaresViewSet, basename='softwares')
 router.register(r'networkequipments', NetworkequipmentsViewSet, basename='networkequipments')
 router.register(r'printers', PrintersViewSet, basename='printers')
@@ -46,8 +46,8 @@ router.register(r'devicesimcards', DevicesimcardsViewSet, basename='devicesimcar
 router.register(r'computermodels', ComputermodelsViewSet, basename='computermodels')
 router.register(r'computersitems', ComputersItemsViewSet, basename='computersitems')
 router.register(r'computertypes', ComputertypesViewSet, basename='computertypes')
-router.register(r'monitormodels', MonitormodelsViewSet, basename='monitormodels')
-router.register(r'monitortypes', MonitortypesViewSet, basename='monitortypes')
+router.register(r'monitormodels', monitors.MonitormodelsViewSet, basename='monitormodels')
+router.register(r'monitortypes', monitors.MonitortypesViewSet, basename='monitortypes')
 router.register(r'softwarecategories', SoftwarecategoriesViewSet, basename='softwarecategories')
 router.register(r'softwarelicenses', SoftwarelicensesViewSet, basename='softwarelicenses')
 router.register(r'softwareversions', SoftwareversionsViewSet, basename='softwareversions')
@@ -150,7 +150,7 @@ router.register(r'operatingsystems', OperatingsystemsViewSet, basename='operatin
 
 # tables
 router.register(r'getComputers', GetComputersViewSet, basename='getComputers')
-router.register(r'getMonitors', GetMonitorsViewSet, basename='getMonitors')
+router.register(r'getMonitors', monitors.GetMonitorsViewSet, basename='getMonitors')
 router.register(r'getDevicesimcards', GetDevicesimcardsViewSet, basename='getDevicesimcards')
 router.register(r'getPeripherals', GetPeripheralsViewSet, basename='getPeripherals')
 router.register(r'getPrinters', GetPrintersViewSet, basename='getPrinters')

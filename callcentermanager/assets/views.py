@@ -46,23 +46,6 @@ class ComputersViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
-class MonitorsViewSet(viewsets.ModelViewSet):
-    queryset = Monitors.objects.all()
-    serializer_class = MonitorsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Monitors.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
 class SoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()
     serializer_class = SoftwaresSerializer
@@ -333,39 +316,6 @@ class ComputertypesViewSet(viewsets.ModelViewSet):
             queryset = Computertypes.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class MonitormodelsViewSet(viewsets.ModelViewSet):
-    queryset = Monitormodels.objects.all()
-    serializer_class = MonitormodelsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Monitormodels.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class MonitortypesViewSet(viewsets.ModelViewSet):
-    queryset = Monitortypes.objects.all()
-    serializer_class = MonitortypesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Monitortypes.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 class SoftwarecategoriesViewSet(viewsets.ModelViewSet):
     queryset = Softwarecategories.objects.all()
@@ -1822,10 +1772,7 @@ class GetComputersViewSet(viewsets.ModelViewSet):
     serializer_class = GetComputersSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
-class GetMonitorsViewSet(viewsets.ModelViewSet):
-    queryset = Monitors.objects.all()
-    serializer_class = GetMonitorsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
+
 class GetDevicesimcardsViewSet(viewsets.ModelViewSet):
     queryset = Devicesimcards.objects.all()
     serializer_class = GetDevicesimcardsSerializer
