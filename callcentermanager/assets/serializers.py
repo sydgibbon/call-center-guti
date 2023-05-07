@@ -577,15 +577,6 @@ class SoftwarelicensesSerializer(serializers.ModelSerializer):
         model = Softwarelicenses
         fields = '__all__'
 
-
-
-
-class NetworkequipmentmodelsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Networkequipmentmodels
-        fields = '__all__'
-
-
 class PrintermodelsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Printermodels
@@ -633,10 +624,7 @@ class PdusRacksSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class NetworkequipmenttypesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Networkequipmenttypes
-        fields = '__all__'
+
 
 
 class PeripheraltypesSerializer(serializers.ModelSerializer):
@@ -727,27 +715,6 @@ class SoftwaresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwares
         fields = '__all__'
-
-
-class NetworkequipmentsSerializer(serializers.ModelSerializer):
-    users_tech = UsersSerializer(required=False)
-    groups_tech = GroupsSerializer(required=False)
-    locations = LocationsSerializer(required=False)
-    networks = NetworksSerializer(required=False)
-    networkequipmenttypes = NetworkequipmenttypesSerializer(required=False)
-    networkequipmentmodels = NetworkequipmentmodelsSerializer(required=False)
-    manufacturers = ManufacturersSerializer(required=False)
-    users = UsersSerializer(required=False)
-    groups = GroupsSerializer(required=False)
-    states = StatesSerializer(required=False)
-    autoupdatesystems = AutoupdatesystemsSerializer(required=False)
-    snmpcredentials = SnmpcredentialsSerializer(required=False)
-    entities = EntitiesSerializer(required=False)
-
-    class Meta:
-        model = Networkequipments
-        fields = '__all__'
-
 
 class PeripheralsSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
@@ -1110,54 +1077,7 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwares
         fields = ['id', 'name', 'manufacturers', 'softwareversions', 'operatingsystems', 'installations', 'softwarelicenses']
-class GetNetworkequipmentsSerializer(serializers.ModelSerializer):
-    states = serializers.SerializerMethodField()
-    manufacturers = serializers.SerializerMethodField()
-    networkequipmenttypes = serializers.SerializerMethodField()
-    networkequipmentmodels = serializers.SerializerMethodField()
-    devicefirmwares = serializers.SerializerMethodField()
-    locations = serializers.SerializerMethodField()
-    date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M")
-    def get_states(self, obj):
-        states = States.objects.filter(id=obj.manufacturers_id)
-        if (states.count() > 0):
-            return States.objects.filter(id=obj.states_id)[0].name
-        return None
 
-    def get_manufacturers(self, obj):
-        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
-        if (manufacturers.count() > 0):
-            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
-        return None
-    
-    def get_networkequipmenttypes(self, obj):
-        networkequipmenttypes = Networkequipmenttypes.objects.filter(id=obj.manufacturers_id)
-        if (networkequipmenttypes.count() > 0):
-            return Networkequipmenttypes.objects.filter(id=obj.networkequipmenttypes_id)[0].name
-        return None
-    
-    def get_networkequipmentmodels(self, obj):    
-        networkequipmentmodels = Networkequipmentmodels.objects.filter(id=obj.manufacturers_id)
-        if (networkequipmentmodels.count() > 0):
-            return Networkequipmentmodels.objects.filter(id=obj.networkequipmentmodels_id)[0].name
-        return None
-    
-    def get_devicefirmwares(self, obj):
-        items_devicefirmwares = ItemsDevicefirmwares.objects.filter(items_id=obj.id, itemtype='NetworkEquipment')
-        if (items_devicefirmwares.count() > 0):
-            return Devicefirmwares.objects.filter(id=items_devicefirmwares[0].devicefirmwares_id)[0].version
-        return None
-    
-    def get_locations(self, obj):
-        locations = Locations.objects.filter(id=obj.locations_id)
-        if (locations.count() > 0):
-            return Locations.objects.filter(id=obj.locations_id)[0].name
-        return None
-    
-    class Meta:
-        model = Networkequipments
-        fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'networkequipmenttypes', 'networkequipmentmodels',
-                  'devicefirmwares', 'date_mod']
     
 class GetPhonesSerializer(serializers.ModelSerializer):
     states = serializers.SerializerMethodField()
