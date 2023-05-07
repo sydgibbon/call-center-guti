@@ -3,6 +3,7 @@ from assets.autoupdatesystems.serializers import AutoupdatesystemsSerializer  # 
 # import de todos los callcenterdata, proximamente se mueve a assets
 from assets.models import *
 from django.contrib.auth import authenticate
+from assets.networks.serializers import NetworksSerializer
 from assistance import models as assistanceModels, serializers as assistanceSerializers
 
 #Login Auth
@@ -564,8 +565,6 @@ class ComputertypesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
-
 class SoftwarecategoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwarecategories
@@ -623,10 +622,6 @@ class PdusRacksSerializer(serializers.ModelSerializer):
         model = PdusRacks
         fields = '__all__'
 
-
-
-
-
 class PeripheraltypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Peripheraltypes
@@ -643,13 +638,6 @@ class EntitiesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Entities
         fields = '__all__'
-
-
-class NetworksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Networks
-        fields = '__all__'
-
 
 class SnmpcredentialsSerializer(serializers.ModelSerializer):
     class Meta:

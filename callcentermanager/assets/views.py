@@ -1615,21 +1615,6 @@ class EntitiesViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class NetworksViewSet(viewsets.ModelViewSet):
-    queryset = Networks.objects.all()
-    serializer_class = NetworksSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Networks.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 class SnmpcredentialsViewSet(viewsets.ModelViewSet):
     queryset = Snmpcredentials.objects.all()
     serializer_class = SnmpcredentialsSerializer
