@@ -158,20 +158,7 @@ class RacksViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class EnclosuresViewSet(viewsets.ModelViewSet):
-    queryset = Enclosures.objects.all()
-    serializer_class = EnclosuresSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Enclosures.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class PdusViewSet(viewsets.ModelViewSet):
@@ -615,22 +602,6 @@ class ItemsRacksViewSet(viewsets.ModelViewSet):
         ids = request.query_params.get('ids').split(',')
         if ids:
             queryset = ItemsRacks.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class ItemsEnclosuresViewSet(viewsets.ModelViewSet):
-    queryset = ItemsEnclosures.objects.all()
-    serializer_class = ItemsEnclosuresSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = ItemsEnclosures.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -1724,20 +1695,6 @@ class RacktypesViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class EnclosuremodelsViewSet(viewsets.ModelViewSet):
-    queryset = Enclosuremodels.objects.all()
-    serializer_class = EnclosuremodelsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Enclosuremodels.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class EntitiesViewSet(viewsets.ModelViewSet):
     queryset = Entities.objects.all()
@@ -1880,11 +1837,6 @@ class GetPeripheralsViewSet(viewsets.ModelViewSet):
 class GetPrintersViewSet(viewsets.ModelViewSet):
     queryset = Printers.objects.all()
     serializer_class = GetPrintersSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-class GetEnclosuresViewSet(viewsets.ModelViewSet):
-    queryset = Enclosures.objects.all()
-    serializer_class = GetEnclosuresSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
 class GetPdusViewSet(viewsets.ModelViewSet):

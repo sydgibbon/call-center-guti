@@ -335,16 +335,7 @@ class ItemsRacksSerializer(serializers.ModelSerializer):
 
 
 # Este también tiene problemitas (no se le puede agregar con add)
-class ItemsEnclosuresSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ItemsEnclosures
-        fields = '__all__'
 
-
-class EnclosuremodelsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Enclosuremodels
-        fields = '__all__'
 
 class PdusPlugsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -877,21 +868,6 @@ class RacksSerializer(serializers.ModelSerializer):
         model = Racks
         fields = '__all__'
 
-
-class EnclosuresSerializer(serializers.ModelSerializer):
-    entities = EntitiesSerializer(required=False)
-    locations = LocationsSerializer(required=False)
-    enclosuremodels = EnclosuremodelsSerializer(required=False)
-    manufacturers = ManufacturersSerializer(required=False)
-    users_tech = UsersSerializer(required=False)
-    groups_tech = GroupsSerializer(required=False)
-    states = StatesSerializer(required=False)
-
-    class Meta:
-        model = Enclosures
-        fields = '__all__'
-
-
 class PdusSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
     locations = LocationsSerializer(required=False)
@@ -1154,10 +1130,7 @@ class GetPrintersSerializer(serializers.ModelSerializer):
         model = Printers
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'printertypes', 'printermodels', 
                   'date_mod']
-class GetEnclosuresSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Enclosures
-        fields = ['id', 'name']
+
 class GetPdusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdus
