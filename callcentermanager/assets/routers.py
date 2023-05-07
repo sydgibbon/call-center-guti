@@ -134,7 +134,7 @@ router.register(r'itemsdevicesoundcards', ItemsDevicesoundcardsViewSet, basename
 router.register(r'peripherals', PeripheralsViewSet, basename='peripherals')
 router.register(r'peripheralmodels', PeripheralmodelsViewSet, basename='peripheralmodels')
 router.register(r'peripheraltypes', PeripheraltypesViewSet, basename='peripheraltypes')
-router.register(r'autoupdatesystems', AutoupdatesystemsViewSet, basename='autoupdatesystems')
+router.register(r'autoupdatesystems', autoupdatesystems.AutoupdatesystemsViewSet, basename='autoupdatesystems')
 router.register(r'rackmodels', RackmodelsViewSet, basename='rackmodels')
 router.register(r'racktypes', RacktypesViewSet, basename='racktypes')
 router.register(r'enclosuremodels', EnclosuremodelsViewSet, basename='enclosuremodels')

@@ -6,3 +6,9 @@ class GetAutoupdatesystemsSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Autoupdatesystems
         fields = ['id', 'name']
+
+class AutoupdatesystemsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Autoupdatesystems
+        fields = '__all__'

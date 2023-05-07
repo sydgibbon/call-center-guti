@@ -1,4 +1,5 @@
-from rest_framework import serializers  # import de serializers
+from rest_framework import serializers
+from assets.autoupdatesystems.serializers import AutoupdatesystemsSerializer  # import de serializers
 # import de todos los callcenterdata, proximamente se mueve a assets
 from assets.models import *
 from django.contrib.auth import authenticate
@@ -54,11 +55,7 @@ class LoginSerializer(serializers.Serializer):
 
 #Model serializers
 
-class AutoupdatesystemsSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Autoupdatesystems
-        fields = '__all__'
 
 
 class GroupsSerializer(serializers.ModelSerializer): 

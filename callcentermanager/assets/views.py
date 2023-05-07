@@ -718,9 +718,6 @@ class PdusRacksViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-
-
-
 class DevicesimcardtypesViewSet(viewsets.ModelViewSet):
     queryset = Devicesimcardtypes.objects.all()
     serializer_class = DevicesimcardtypesSerializer
@@ -1746,20 +1743,7 @@ class PeripheraltypesViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class AutoupdatesystemsViewSet(viewsets.ModelViewSet):
-    queryset = Autoupdatesystems.objects.all()
-    serializer_class = AutoupdatesystemsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Autoupdatesystems.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class RackmodelsViewSet(viewsets.ModelViewSet):
     queryset = Rackmodels.objects.all()
