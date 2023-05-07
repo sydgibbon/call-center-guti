@@ -1,7 +1,7 @@
 
 from rest_framework import serializers  # import de serializers
 from assets.models import Cables, Cabletypes, Cablestrands, Sockets, Socketmodels, States, Users
-from assets.serializers import CablestrandsSerializer, CabletypesSerializer, EntitiesSerializer, StatesSerializer, UsersSerializer
+from assets.serializers import EntitiesSerializer, StatesSerializer, UsersSerializer
 
 class GetCabletypesSelectSerializer(serializers.ModelSerializer):
     class Meta:
@@ -47,7 +47,17 @@ class GetCablesSerializer(serializers.ModelSerializer):
         model = Cables
         fields = ['id', 'name' , 'cabletypes', 'states', 'users_tech', 'otherserial' , 'color'
                   , 'items_endpoint_b', 'items_endpoint_a', 'sockets_endpoint_b', 'sockets_endpoint_a']
-        
+
+class CablestrandsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cablestrands
+        fields = '__all__'
+
+class CabletypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cabletypes
+        fields = '__all__'
+
 class CablesSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
     users_tech = UsersSerializer(required=False)
@@ -58,3 +68,7 @@ class CablesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cables
         fields = '__all__'
+
+
+
+

@@ -718,36 +718,7 @@ class PdusRacksViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class CablestrandsViewSet(viewsets.ModelViewSet):
-    queryset = Cablestrands.objects.all()
-    serializer_class = CablestrandsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Cablestrands.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class CabletypesViewSet(viewsets.ModelViewSet):
-    queryset = Cabletypes.objects.all()
-    serializer_class = CabletypesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Cabletypes.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class DevicesimcardtypesViewSet(viewsets.ModelViewSet):

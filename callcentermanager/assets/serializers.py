@@ -349,22 +349,9 @@ class EnclosuremodelsSerializer(serializers.ModelSerializer):
         model = Enclosuremodels
         fields = '__all__'
 
-
 class PdusPlugsSerializer(serializers.ModelSerializer):
     class Meta:
         model = PdusPlugs
-        fields = '__all__'
-
-
-class CablestrandsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cablestrands
-        fields = '__all__'
-
-
-class CabletypesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cabletypes
         fields = '__all__'
 
 
@@ -372,7 +359,6 @@ class DevicesimcardtypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Devicesimcardtypes
         fields = '__all__'
-
 
 class DevicebatteriesSerializer(serializers.ModelSerializer):
     class Meta:
