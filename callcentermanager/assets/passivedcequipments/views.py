@@ -1,6 +1,6 @@
-from assets.passivedcequipments.serializers import GetPassivedcequipmentsSelectSerializer, GetPassivedcequipmenttypesSelectSerializer, GetPassivedcequipmentmodelsSelectSerializer
+from assets.passivedcequipments.serializers import GetPassivedcequipmentsSelectSerializer, GetPassivedcequipmentsSerializer, GetPassivedcequipmenttypesSelectSerializer, GetPassivedcequipmentmodelsSelectSerializer, PassivedcequipmentmodelsSerializer, PassivedcequipmentsSerializer, PassivedcequipmenttypesSerializer
 from assets.models import Passivedcequipments, Passivedcequipmenttypes, Passivedcequipmentmodels
-from rest_framework import viewsets  # import de ViewSets
+from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
@@ -27,3 +27,54 @@ class GetPassivedcequipmentmodelsSelectViewSet(viewsets.ViewSet):
     def list(self, request, format=None):
         passivedcequipmentmodels = GetPassivedcequipmentmodelsSelectSerializer(Passivedcequipmentmodels.objects.all(), many=True) 
         return Response(passivedcequipmentmodels.data)
+    
+class GetPassivedcequipmentsViewSet(viewsets.ModelViewSet):
+    queryset = Passivedcequipments.objects.all()
+    serializer_class = GetPassivedcequipmentsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+    
+class PassivedcequipmentsViewSet(viewsets.ModelViewSet):
+    queryset = Passivedcequipments.objects.all()
+    serializer_class = PassivedcequipmentsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Passivedcequipments.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class PassivedcequipmenttypesViewSet(viewsets.ModelViewSet):
+    queryset = Passivedcequipmenttypes.objects.all()
+    serializer_class = PassivedcequipmenttypesSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Passivedcequipmenttypes.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class PassivedcequipmentmodelsViewSet(viewsets.ModelViewSet):
+    queryset = Passivedcequipmentmodels.objects.all()
+    serializer_class = PassivedcequipmentmodelsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        ids = request.query_params.get('ids').split(',')
+        if ids:
+            queryset = Passivedcequipmentmodels.objects.filter(id__in=ids)
+            queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

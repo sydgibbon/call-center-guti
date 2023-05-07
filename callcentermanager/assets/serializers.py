@@ -523,18 +523,6 @@ class PdumodelsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class PassivedcequipmentmodelsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Passivedcequipmentmodels
-        fields = '__all__'
-
-
-class PassivedcequipmenttypesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Passivedcequipmenttypes
-        fields = '__all__'
-
-
 class UnmanagedsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Unmanageds
@@ -813,19 +801,7 @@ class PdusSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class PassivedcequipmentsSerializer(serializers.ModelSerializer):
-    entities = EntitiesSerializer(required=False)
-    locations = LocationsSerializer(required=False)
-    passivedcequipmentmodels = PassivedcequipmentmodelsSerializer(required=False)
-    passivedcequipmenttypes = PassivedcequipmenttypesSerializer(required=False)
-    manufacturers = ManufacturersSerializer(required=False)
-    users_tech = UsersSerializer(required=False)
-    groups_tech = GroupsSerializer(required=False)
-    states = StatesSerializer(required=False)
 
-    class Meta:
-        model = Passivedcequipments
-        fields = '__all__'
 
 
 class UnmanagedsSerializer(serializers.ModelSerializer):
@@ -1114,10 +1090,6 @@ class GetRacksSerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 
-class GetPassivedcequipmentsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pdus
-        fields = ['id', 'name']
 
 class GetCartridgeItemsSerializer(serializers.ModelSerializer):
     manufacturers = serializers.SerializerMethodField()
