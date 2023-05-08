@@ -1,7 +1,10 @@
 from rest_framework import serializers
-from assets.groups.serializers import GroupsSerializer  # import de serializers
+from assets.groups.serializers import GroupsSerializer
+from assets.locations.serializers import LocationsSerializer
+from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 from assets.models import Consumableitems, Consumableitemtypes, Consumables, Locations, Manufacturers
-from assets.serializers import EntitiesSerializer, LocationsSerializer, ManufacturersSerializer, UsersSerializer
+from assets.serializers import EntitiesSerializer
+from assets.users.serializers import UsersSerializer
 
 class GetConsumableitemtypesSelectSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,9 +1,14 @@
 from rest_framework import serializers
-from assets.autoupdatesystems.serializers import AutoupdatesystemsSerializer  # import de serializers
+from assets.autoupdatesystems.serializers import AutoupdatesystemsSerializer
+from assets.groups.serializers import GroupsSerializer
+from assets.locations.serializers import LocationsSerializer
+from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 # import de todos los callcenterdata, proximamente se mueve a assets
 from assets.models import *
 from django.contrib.auth import authenticate
 from assets.networks.serializers import NetworksSerializer
+from assets.states.serializers import StatesSerializer
+from assets.users.serializers import UsersSerializer
 from assistance import models as assistanceModels, serializers as assistanceSerializers
 
 #Login Auth
