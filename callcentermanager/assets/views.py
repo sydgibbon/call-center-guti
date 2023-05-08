@@ -18,22 +18,6 @@ class LoginView(views.APIView):
         login(request, user)
         return Response(None, status=status.HTTP_202_ACCEPTED)
 
-
-class ComputersViewSet(viewsets.ModelViewSet):
-    queryset = Computers.objects.all()
-    serializer_class = ComputersSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Computers.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 class SoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()
     serializer_class = SoftwaresSerializer
@@ -150,53 +134,6 @@ class DevicesimcardsViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
-class ComputermodelsViewSet(viewsets.ModelViewSet):
-    queryset = Computermodels.objects.all()
-    serializer_class = ComputermodelsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Computermodels.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class ComputersItemsViewSet(viewsets.ModelViewSet):
-    queryset = ComputersItems.objects.all()
-    serializer_class = ComputersItemsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = ComputersItems.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class ComputertypesViewSet(viewsets.ModelViewSet):
-    queryset = Computertypes.objects.all()
-    serializer_class = ComputertypesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Computertypes.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class SoftwarecategoriesViewSet(viewsets.ModelViewSet):
     queryset = Softwarecategories.objects.all()
@@ -1524,12 +1461,6 @@ class OperatingsystemsViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 # tables
-class GetComputersViewSet(viewsets.ModelViewSet):
-    queryset = Computers.objects.all()
-    serializer_class = GetComputersSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-
 class GetDevicesimcardsViewSet(viewsets.ModelViewSet):
     queryset = Devicesimcards.objects.all()
     serializer_class = GetDevicesimcardsSerializer

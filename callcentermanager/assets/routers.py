@@ -24,7 +24,7 @@ from assets.monitors import views as monitors
 from assets.softwares import views as softwares
 
 router=DefaultRouter()
-router.register(r'computers', ComputersViewSet, basename='computers')
+router.register(r'computers', computers.ComputersViewSet, basename='computers')
 router.register(r'monitors', monitors.MonitorsViewSet, basename='monitors')
 router.register(r'softwares', SoftwaresViewSet, basename='softwares')
 router.register(r'networkequipments', networkequipments.NetworkequipmentsViewSet, basename='networkequipments')
@@ -43,9 +43,9 @@ router.register(r'passivedcequipmenttypes', passivedcequipments.Passivedcequipme
 router.register(r'unmanageds', UnmanagedsViewSet, basename='unmanageds')
 router.register(r'cables', cables.CablesViewSet, basename='cables')
 router.register(r'devicesimcards', DevicesimcardsViewSet, basename='devicesimcards')
-router.register(r'computermodels', ComputermodelsViewSet, basename='computermodels')
-router.register(r'computersitems', ComputersItemsViewSet, basename='computersitems')
-router.register(r'computertypes', ComputertypesViewSet, basename='computertypes')
+router.register(r'computermodels', computers.ComputermodelsViewSet, basename='computermodels')
+router.register(r'computersitems', computers.ComputersItemsViewSet, basename='computersitems')
+router.register(r'computertypes', computers.ComputertypesViewSet, basename='computertypes')
 router.register(r'monitormodels', monitors.MonitormodelsViewSet, basename='monitormodels')
 router.register(r'monitortypes', monitors.MonitortypesViewSet, basename='monitortypes')
 router.register(r'softwarecategories', SoftwarecategoriesViewSet, basename='softwarecategories')
@@ -149,7 +149,7 @@ router.register(r'users', users.UsersViewSet, basename='users')
 router.register(r'operatingsystems', OperatingsystemsViewSet, basename='operatingsystems')
 
 # tables
-router.register(r'getComputers', GetComputersViewSet, basename='getComputers')
+router.register(r'getComputers', computers.GetComputersViewSet, basename='getComputers')
 router.register(r'getMonitors', monitors.GetMonitorsViewSet, basename='getMonitors')
 router.register(r'getDevicesimcards', GetDevicesimcardsViewSet, basename='getDevicesimcards')
 router.register(r'getPeripherals', GetPeripheralsViewSet, basename='getPeripherals')
