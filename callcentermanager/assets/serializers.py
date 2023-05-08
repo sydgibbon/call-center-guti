@@ -604,13 +604,6 @@ class DcroomsSerializer(serializers.ModelSerializer):
         model = Dcrooms
         fields = '__all__'
 
-
-class LocationsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Locations
-        fields = '__all__'
-
-
 class StatesSerializer(serializers.ModelSerializer):
     class Meta:
         model = States
