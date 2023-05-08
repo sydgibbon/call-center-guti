@@ -55,17 +55,7 @@ class LoginSerializer(serializers.Serializer):
         return attrs
 
 #Model serializers
-
-
-
-
-class GroupsSerializer(serializers.ModelSerializer): 
-    #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
-    class Meta: #Clase meta para configurar el serializer
-        model = Groups #Especificar el nombre del Model
-        fields = '__all__' #Para todos los atributos del model
-
-        
+#         
 class UsersSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
@@ -644,10 +634,6 @@ class ComputersSerializer(serializers.ModelSerializer):
         model = Computers  # Especificar el nombre del Model
         fields = '__all__'  # Para todos los atributos del model
 
-
-
-
-
 class SoftwaresSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
     locations = LocationsSerializer(required=False)
@@ -698,7 +684,6 @@ class PrintersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Printers
         fields = '__all__'
-
 
 class CartridgeitemsSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)

@@ -1,7 +1,8 @@
 
-from rest_framework import serializers  # import de serializers
+from rest_framework import serializers
+from assets.groups.serializers import GroupsSerializer  # import de serializers
 from assets.models import Enclosuremodels, Enclosures, ItemsEnclosures
-from assets.serializers import EntitiesSerializer, GroupsSerializer, LocationsSerializer, ManufacturersSerializer, StatesSerializer, UsersSerializer
+from assets.serializers import EntitiesSerializer, LocationsSerializer, ManufacturersSerializer, StatesSerializer, UsersSerializer
 
 class GetEnclosuremodelsSelectSerializer(serializers.ModelSerializer):
     class Meta:

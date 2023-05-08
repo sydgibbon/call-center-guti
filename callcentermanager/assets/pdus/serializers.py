@@ -1,7 +1,8 @@
 
-from rest_framework import serializers  # import de serializers
+from rest_framework import serializers
+from assets.groups.serializers import GroupsSerializer  # import de serializers
 from assets.models import Pdus, PdusPlugs, PdusRacks, Pdutypes, Pdumodels
-from assets.serializers import EntitiesSerializer, LocationsSerializer, ManufacturersSerializer, StatesSerializer, UsersSerializer, GroupsSerializer
+from assets.serializers import EntitiesSerializer, LocationsSerializer, ManufacturersSerializer, StatesSerializer, UsersSerializer
 
 class GetPdutypesSelectSerializer(serializers.ModelSerializer):
     class Meta:

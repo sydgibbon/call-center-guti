@@ -1,8 +1,9 @@
 
 from rest_framework import serializers
-from assets.autoupdatesystems.serializers import AutoupdatesystemsSerializer  # import de serializers
+from assets.autoupdatesystems.serializers import AutoupdatesystemsSerializer
+from assets.groups.serializers import GroupsSerializer  # import de serializers
 from assets.models import Locations, Manufacturers, Monitormodels, Monitors, Monitortypes, States
-from assets.serializers import EntitiesSerializer, GroupsSerializer, LocationsSerializer, ManufacturersSerializer, StatesSerializer, UsersSerializer
+from assets.serializers import EntitiesSerializer, LocationsSerializer, ManufacturersSerializer, StatesSerializer, UsersSerializer
 class GetMonitortypesSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Monitortypes

@@ -1,8 +1,9 @@
 
 from rest_framework import serializers
-from assets.autoupdatesystems.serializers import AutoupdatesystemsSerializer  # import de serializers
+from assets.autoupdatesystems.serializers import AutoupdatesystemsSerializer
+from assets.groups.serializers import GroupsSerializer  # import de serializers
 from assets.models import Devicefirmwares, ItemsDevicefirmwares, Locations, Manufacturers, Networkequipments, Networkequipmenttypes, Networkequipmentmodels, States
-from assets.serializers import EntitiesSerializer, GroupsSerializer, LocationsSerializer, ManufacturersSerializer, NetworksSerializer, SnmpcredentialsSerializer, StatesSerializer, UsersSerializer
+from assets.serializers import EntitiesSerializer, LocationsSerializer, ManufacturersSerializer, NetworksSerializer, SnmpcredentialsSerializer, StatesSerializer, UsersSerializer
 
 class GetNetworkequipmentsSelectSerializer(serializers.ModelSerializer):
     class Meta:
