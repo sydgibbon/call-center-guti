@@ -67,22 +67,6 @@ class CartridgesViewSet(viewsets.ModelViewSet):
             queryset = Cartridges.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
-class PhonesViewSet(viewsets.ModelViewSet):
-    queryset = Phones.objects.all()
-    serializer_class = PhonesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Phones.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 class RacksViewSet(viewsets.ModelViewSet):
     queryset = Racks.objects.all()
@@ -276,54 +260,6 @@ class CartridgeitemtypesViewSet(viewsets.ModelViewSet):
             queryset = Cartridgeitemtypes.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-class PhonemodelsViewSet(viewsets.ModelViewSet):
-    queryset = Phonemodels.objects.all()
-    serializer_class = PhonemodelsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Phonemodels.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class PhonepowersuppliesViewSet(viewsets.ModelViewSet):
-    queryset = Phonepowersupplies.objects.all()
-    serializer_class = PhonepowersuppliesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Phonepowersupplies.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class PhonetypesViewSet(viewsets.ModelViewSet):
-    queryset = Phonetypes.objects.all()
-    serializer_class = PhonetypesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Phonetypes.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 class ItemsRacksViewSet(viewsets.ModelViewSet):
     queryset = ItemsRacks.objects.all()
@@ -1424,11 +1360,6 @@ class GetPrintersViewSet(viewsets.ModelViewSet):
 class GetSoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()
     serializer_class = GetSoftwaresSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-class GetPhonesViewSet(viewsets.ModelViewSet):
-    queryset = Phones.objects.all()
-    serializer_class = GetPhonesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
 class GetRacksViewSet(viewsets.ModelViewSet):
