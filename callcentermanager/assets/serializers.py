@@ -593,12 +593,6 @@ class SnmpcredentialsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ManufacturersSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Manufacturers
-        fields = '__all__'
-
-
 class DcroomsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dcrooms

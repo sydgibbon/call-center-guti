@@ -6,3 +6,8 @@ class GetManufacturersSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Manufacturers
         fields = ['id', 'name']
+
+class ManufacturersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Manufacturers
+        fields = '__all__'
