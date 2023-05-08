@@ -337,13 +337,6 @@ class ItemsRacksSerializer(serializers.ModelSerializer):
 
 # Este también tiene problemitas (no se le puede agregar con add)
 
-
-class PdusPlugsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PdusPlugs
-        fields = '__all__'
-
-
 class DevicesimcardtypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Devicesimcardtypes
@@ -505,24 +498,6 @@ class DevicemotherboardmodelsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 # ---------------------------
 
-class PdusSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pdus
-        fields = '__all__'
-
-
-class PdutypesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pdutypes
-        fields = '__all__'
-
-
-class PdumodelsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pdumodels
-        fields = '__all__'
-
-
 class UnmanagedsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Unmanageds
@@ -604,11 +579,6 @@ class PhonepowersuppliesSerializer(serializers.ModelSerializer):
         model = Phonepowersupplies
         fields = '__all__'
 
-
-class PdusRacksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PdusRacks
-        fields = '__all__'
 
 class PeripheraltypesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -785,24 +755,6 @@ class RacksSerializer(serializers.ModelSerializer):
     class Meta:
         model = Racks
         fields = '__all__'
-
-class PdusSerializer(serializers.ModelSerializer):
-    entities = EntitiesSerializer(required=False)
-    locations = LocationsSerializer(required=False)
-    pdumodels = PdumodelsSerializer(required=False)
-    pdutypes = PdutypesSerializer(required=False)
-    manufacturers = ManufacturersSerializer(required=False)
-    users_tech = UsersSerializer(required=False)
-    groups_tech = GroupsSerializer(required=False)
-    states = StatesSerializer(required=False)
-
-    class Meta:
-        model = Pdus
-        fields = '__all__'
-
-
-
-
 
 class UnmanagedsSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
@@ -994,10 +946,6 @@ class GetPrintersSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'printertypes', 'printermodels', 
                   'date_mod']
 
-class GetPdusSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pdus
-        fields = ['id', 'name']
 
 class GetSoftwaresSerializer(serializers.ModelSerializer):
     manufacturers = serializers.SerializerMethodField()

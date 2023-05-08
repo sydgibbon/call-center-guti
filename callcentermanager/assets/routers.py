@@ -18,7 +18,7 @@ from assets.passivedcequipments import views as passivedcequipments
 from assets.phones import views as phones
 from assets.racks import views as racks
 from assets.enclosures import views as enclosures
-from assets.pdu import views as pdu
+from assets.pdus import views as pdus
 from assets.computers import views as computers
 from assets.monitors import views as monitors
 from assets.softwares import views as softwares
@@ -34,9 +34,9 @@ router.register(r'consumables', consumableitems.ConsumablesViewSet, basename='co
 router.register(r'phones', PhonesViewSet, basename='phones')
 router.register(r'racks', RacksViewSet, basename='racks')
 router.register(r'enclosures', enclosures.EnclosuresViewSet, basename='enclosures')
-router.register(r'pdus', PdusViewSet, basename='pdus')
-router.register(r'pdutypes', PdusViewSet, basename='pdutypes')
-router.register(r'pdumodels', PdusViewSet, basename='pdumodels')
+router.register(r'pdus', pdus.PdusViewSet, basename='pdus')
+router.register(r'pdutypes', pdus.PdusViewSet, basename='pdutypes')
+router.register(r'pdumodels', pdus.PdusViewSet, basename='pdumodels')
 router.register(r'passivedcequipments', passivedcequipments.PassivedcequipmentsViewSet, basename='passivedcequipments')
 router.register(r'passivedcequipmentmodels', passivedcequipments.PassivedcequipmentmodelsViewSet, basename='passivedcequipmentmodels')
 router.register(r'passivedcequipmenttypes', passivedcequipments.PassivedcequipmenttypesViewSet, basename='passivedcequipmenttypes')
@@ -66,8 +66,8 @@ router.register(r'phonepowersupplies', PhonepowersuppliesViewSet, basename='phon
 router.register(r'phonetypes', PhonetypesViewSet, basename='phonetypes')
 router.register(r'itemsracks', ItemsRacksViewSet, basename='itemsracks')
 router.register(r'itemsenclosures', enclosures.ItemsEnclosuresViewSet, basename='itemsenclosures')
-router.register(r'pdusplugs', PdusPlugsViewSet, basename='pdusplugs')
-router.register(r'pdusracks', PdusRacksViewSet, basename='pdusracks')
+router.register(r'pdusplugs', pdus.PdusPlugsViewSet, basename='pdusplugs')
+router.register(r'pdusracks', pdus.PdusRacksViewSet, basename='pdusracks')
 router.register(r'cablestrands', cables.CablestrandsViewSet, basename='cablestrands')
 router.register(r'cabletypes', cables.CabletypesViewSet, basename='cabletypes')
 router.register(r'devicesimcardtypes', DevicesimcardtypesViewSet, basename='devicesimcardtypes')
@@ -155,7 +155,7 @@ router.register(r'getDevicesimcards', GetDevicesimcardsViewSet, basename='getDev
 router.register(r'getPeripherals', GetPeripheralsViewSet, basename='getPeripherals')
 router.register(r'getPrinters', GetPrintersViewSet, basename='getPrinters')
 router.register(r'getEnclosures', enclosures.GetEnclosuresViewSet, basename='getEnclosures')
-router.register(r'getPdus', GetPdusViewSet, basename='getPdus')
+router.register(r'getPdus', pdus.GetPdusViewSet, basename='getPdus')
 router.register(r'getSoftwares', GetSoftwaresViewSet, basename='getSoftwares')
 router.register(r'getNetworkequipments', networkequipments.GetNetworkequipmentsViewSet, basename='getNetworkequipments')
 router.register(r'getPhones', GetPhonesViewSet, basename='getPhones')
@@ -205,8 +205,8 @@ router.register(r'getRacktypesSelect', racks.GetRacktypesSelectViewSet, basename
 router.register(r'getRackmodelsSelect', racks.GetRackmodelsSelectViewSet, basename='getRackmodels')
 router.register(r'getDcroomsSelect', racks.GetDcroomsSelectViewSet, basename='getDcrooms')
 router.register(r'getEnclosuremoldesSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
-router.register(r'getPdutypesSelect', pdu.GetPdutypesSelectViewSet, basename='getPdutypes')
-router.register(r'getPdumodelsSelect', pdu.GetPdumodelsSelectViewSet, basename='getPdumodels')
+router.register(r'getPdutypesSelect', pdus.GetPdutypesSelectViewSet, basename='getPdutypes')
+router.register(r'getPdumodelsSelect', pdus.GetPdumodelsSelectViewSet, basename='getPdumodels')
 router.register(r'getEnclosuremodelsSelect', enclosures.GetEnclosuremodelsSelectViewSet, basename='getEnclosuremodels')
 router.register(r'getComputersSelect', computers.GetComputersSelectViewSet, basename='getComputersSelect')
 router.register(r'getComputertypesSelect', computers.GetComputertypesSelectViewSet, basename='getComputertypesSelect')
