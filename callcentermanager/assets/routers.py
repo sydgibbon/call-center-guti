@@ -145,7 +145,7 @@ router.register(r'manufacturers', manufacturers.ManufacturersViewSet, basename='
 router.register(r'dcrooms', DcroomsViewSet, basename='dcrooms')
 router.register(r'locations', locations.LocationsViewSet, basename='locations')
 router.register(r'states', states.StatesViewSet, basename='states')
-router.register(r'users', UsersViewSet, basename='users')
+router.register(r'users', users.UsersViewSet, basename='users')
 router.register(r'operatingsystems', OperatingsystemsViewSet, basename='operatingsystems')
 
 # tables

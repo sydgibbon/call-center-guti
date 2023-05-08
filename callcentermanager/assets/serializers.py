@@ -56,11 +56,6 @@ class LoginSerializer(serializers.Serializer):
 
 #Model serializers
 #         
-class UsersSerializer(serializers.ModelSerializer): 
-    #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
-    class Meta: #Clase meta para configurar el serializer
-        model = Users #Especificar el nombre del Model
-        fields = ['id', 'name']
 
 class DevicemotherboardsSerializer(serializers.ModelSerializer):
     # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
