@@ -598,12 +598,6 @@ class DcroomsSerializer(serializers.ModelSerializer):
         model = Dcrooms
         fields = '__all__'
 
-class StatesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = States
-        fields = '__all__'
-
-
 class ComputersSerializer(serializers.ModelSerializer):
     computertypes = ComputertypesSerializer(required=False)
     computermodels = ComputermodelsSerializer(required=False)
