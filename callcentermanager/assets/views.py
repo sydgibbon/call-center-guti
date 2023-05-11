@@ -34,25 +34,6 @@ class SoftwaresViewSet(viewsets.ModelViewSet):
         # Desde aca empezo fran
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
-
-
-
-class PrintersViewSet(viewsets.ModelViewSet):
-    queryset = Printers.objects.all()
-    serializer_class = PrintersSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Printers.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 class CartridgesViewSet(viewsets.ModelViewSet):
     queryset = Cartridges.objects.all()
     serializer_class = CartridgesSerializer
@@ -165,54 +146,6 @@ class SoftwareversionsViewSet(viewsets.ModelViewSet):
             queryset = Softwareversions.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-class PrintermodelsViewSet(viewsets.ModelViewSet):
-    queryset = Printermodels.objects.all()
-    serializer_class = PrintermodelsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Printermodels.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class PrintertypesViewSet(viewsets.ModelViewSet):
-    queryset = Printertypes.objects.all()
-    serializer_class = PrintertypesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Printertypes.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class PrintersCartridgeinfosViewSet(viewsets.ModelViewSet):
-    queryset = PrintersCartridgeinfos.objects.all()
-    serializer_class = PrintersCartridgeinfosSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = PrintersCartridgeinfos.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 class CartridgeitemsViewSet(viewsets.ModelViewSet):
     queryset = Cartridgeitems.objects.all()
@@ -1350,11 +1283,6 @@ class OperatingsystemsViewSet(viewsets.ModelViewSet):
 class GetDevicesimcardsViewSet(viewsets.ModelViewSet):
     queryset = Devicesimcards.objects.all()
     serializer_class = GetDevicesimcardsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-class GetPrintersViewSet(viewsets.ModelViewSet):
-    queryset = Printers.objects.all()
-    serializer_class = GetPrintersSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 
 class GetSoftwaresViewSet(viewsets.ModelViewSet):
