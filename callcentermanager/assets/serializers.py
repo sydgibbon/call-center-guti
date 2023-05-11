@@ -487,7 +487,6 @@ class UnmanagedsSerializer(serializers.ModelSerializer):
         model = Unmanageds
         fields = '__all__'
 
-
 class DevicesimcardtypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Devicesimcardtypes
@@ -498,21 +497,9 @@ class SoftwarecategoriesSerializer(serializers.ModelSerializer):
         model = Softwarecategories
         fields = '__all__'
 
-
 class SoftwarelicensesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwarelicenses
-        fields = '__all__'
-
-class CartridgeitemsPrintermodelsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CartridgeitemsPrintermodels
-        fields = '__all__'
-
-
-class CartridgeitemtypesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cartridgeitemtypes
         fields = '__all__'
 
 class EntitiesSerializer(serializers.ModelSerializer):
@@ -543,30 +530,6 @@ class SoftwaresSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Softwares
-        fields = '__all__'
-
-
-
-class CartridgeitemsSerializer(serializers.ModelSerializer):
-    entities = EntitiesSerializer(required=False)
-    locations = LocationsSerializer(required=False)
-    cartridgeitemtypes = CartridgeitemtypesSerializer(required=False)
-    manufacturers = ManufacturersSerializer(required=False)
-    users_tech = UsersSerializer(required=False)
-    groups_tech = GroupsSerializer(required=False)
-
-    class Meta:
-        model = Cartridgeitems
-        fields = '__all__'
-
-
-class CartridgesSerializer(serializers.ModelSerializer):
-    entities = EntitiesSerializer(required=False)
-    cartridgeitems = CartridgeitemsSerializer(required=False)
-    printers = PrintersSerializer(required=False)
-
-    class Meta:
-        model = Cartridges
         fields = '__all__'
 
 class RacksSerializer(serializers.ModelSerializer):
@@ -674,33 +637,3 @@ class GetRacksSerializer(serializers.ModelSerializer):
     class Meta:
         model = Racks
         fields = ['id', 'name']
-
-
-
-class GetCartridgeItemsSerializer(serializers.ModelSerializer):
-    manufacturers = serializers.SerializerMethodField()
-    locations = serializers.SerializerMethodField()
-    cartridgeitemtypes = serializers.SerializerMethodField()
-
-    def get_manufacturers(self, obj):
-        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
-        if (manufacturers.count() > 0):
-            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
-        return None
-                
-    def get_locations(self, obj):
-        locations = Locations.objects.filter(id=obj.locations_id)
-        if (locations.count() > 0):
-            return Locations.objects.filter(id=obj.locations_id)[0].name
-        return None
-    
-    def get_cartridgeitemtypes(self, obj):
-        cartridgeitemtypes = Cartridgeitemtypes.objects.filter(id=obj.cartridgeitemtypes_id)
-        if (cartridgeitemtypes.count() > 0):
-            return Cartridgeitemtypes.objects.filter(id=obj.cartridgeitemtypes_id)[0].name
-        return None
-    class Meta:
-        model = Cartridgeitems
-        fields = ['id', 'name' , 'ref', 'manufacturers' , 'locations', 'cartridgeitemtypes']
-
-

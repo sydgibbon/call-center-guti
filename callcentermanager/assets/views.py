@@ -34,21 +34,6 @@ class SoftwaresViewSet(viewsets.ModelViewSet):
         # Desde aca empezo fran
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class CartridgesViewSet(viewsets.ModelViewSet):
-    queryset = Cartridges.objects.all()
-    serializer_class = CartridgesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Cartridges.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 class RacksViewSet(viewsets.ModelViewSet):
     queryset = Racks.objects.all()
     serializer_class = RacksSerializer
@@ -144,53 +129,6 @@ class SoftwareversionsViewSet(viewsets.ModelViewSet):
         ids = request.query_params.get('ids').split(',')
         if ids:
             queryset = Softwareversions.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-class CartridgeitemsViewSet(viewsets.ModelViewSet):
-    queryset = Cartridgeitems.objects.all()
-    serializer_class = CartridgeitemsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Cartridgeitems.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class CartridgeitemsPrintermodelsViewSet(viewsets.ModelViewSet):
-    queryset = CartridgeitemsPrintermodels.objects.all()
-    serializer_class = CartridgeitemsPrintermodelsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = CartridgeitemsPrintermodels.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class CartridgeitemtypesViewSet(viewsets.ModelViewSet):
-    queryset = Cartridgeitemtypes.objects.all()
-    serializer_class = CartridgeitemtypesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Cartridgeitemtypes.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -1294,11 +1232,3 @@ class GetRacksViewSet(viewsets.ModelViewSet):
     queryset = Racks.objects.all()
     serializer_class = GetRacksSerializer
     permission_classes = (IsAuthenticated, AllowAny)
-
-
-class GetCartridgeItemsViewSet(viewsets.ModelViewSet):
-    queryset = Cartridgeitems.objects.all()
-    serializer_class = GetCartridgeItemsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-
