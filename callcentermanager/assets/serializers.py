@@ -7,13 +7,11 @@ from assets.manufacturers.serializers import ManufacturersSerializer  # import d
 from assets.models import *
 from django.contrib.auth import authenticate
 from assets.networks.serializers import NetworksSerializer
-from assets.printers.serializers import PrintersSerializer
 from assets.states.serializers import StatesSerializer
 from assets.users.serializers import UsersSerializer
 from assistance import models as assistanceModels, serializers as assistanceSerializers
 
 #Login Auth
-
 
 class OperatingsystemsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -284,14 +282,6 @@ class ItemsDevicesensorsSerializer(serializers.ModelSerializer):
         model = ItemsDevicesensors  # Especificar el nombre del Model
         fields = '__all__'  # Para todos los atributos del model
 
-
-class ItemsDevicesimcardsSerializer(serializers.ModelSerializer):
-    # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
-    class Meta:  # Clase meta para configurar el serializer
-        model = ItemsDevicesimcards  # Especificar el nombre del Model
-        fields = '__all__'  # Para todos los atributos del model
-
-
 class ItemsDevicesoundcardsSerializer(serializers.ModelSerializer):
     # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta:  # Clase meta para configurar el serializer
@@ -302,10 +292,6 @@ class ItemsDevicesoundcardsSerializer(serializers.ModelSerializer):
 # Este tiene problemitas (no se le puede agregar con add)
 # Este también tiene problemitas (no se le puede agregar con add)
 
-class DevicesimcardtypesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Devicesimcardtypes
-        fields = '__all__'
 
 class DevicebatteriesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -467,10 +453,6 @@ class UnmanagedsSerializer(serializers.ModelSerializer):
         model = Unmanageds
         fields = '__all__'
 
-class DevicesimcardtypesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Devicesimcardtypes
-        fields = '__all__'
 
 class SoftwarecategoriesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -522,15 +504,6 @@ class UnmanagedsSerializer(serializers.ModelSerializer):
         model = Unmanageds
         fields = '__all__'
 
-class DevicesimcardsSerializer(serializers.ModelSerializer):
-    entities = EntitiesSerializer(required=False)
-    manufacturers = ManufacturersSerializer(required=False)
-    devicesimcardtypes = DevicesimcardtypesSerializer(required=False)
-
-    class Meta:
-        model = Devicesimcards
-        fields = '__all__'
-
 class SoftwareversionsSerializer(serializers.ModelSerializer):
 
     entities = EntitiesSerializer(required=False)
@@ -541,14 +514,7 @@ class SoftwareversionsSerializer(serializers.ModelSerializer):
         model = Softwareversions
         fields = '__all__'
 
-
-# tables      
-class GetDevicesimcardsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Devicesimcards
-        fields = ['id']
-
-
+# tables
 class GetSoftwaresSerializer(serializers.ModelSerializer):
     manufacturers = serializers.SerializerMethodField()
     softwareversions = serializers.SerializerMethodField()

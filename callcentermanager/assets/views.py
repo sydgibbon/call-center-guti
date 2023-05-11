@@ -48,27 +48,7 @@ class UnmanagedsViewSet(viewsets.ModelViewSet):
             queryset = Unmanageds.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-
-
-
-class DevicesimcardsViewSet(viewsets.ModelViewSet):
-    queryset = Devicesimcards.objects.all()
-    serializer_class = DevicesimcardsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Devicesimcards.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
+    
 class SoftwarecategoriesViewSet(viewsets.ModelViewSet):
     queryset = Softwarecategories.objects.all()
     serializer_class = SoftwarecategoriesSerializer
@@ -113,21 +93,6 @@ class SoftwareversionsViewSet(viewsets.ModelViewSet):
         ids = request.query_params.get('ids').split(',')
         if ids:
             queryset = Softwareversions.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-class DevicesimcardtypesViewSet(viewsets.ModelViewSet):
-    queryset = Devicesimcardtypes.objects.all()
-    serializer_class = DevicesimcardtypesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Devicesimcardtypes.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -1061,23 +1026,6 @@ class ItemsDevicesensorsViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
-class ItemsDevicesimcardsViewSet(viewsets.ModelViewSet):
-    queryset = ItemsDevicesimcards.objects.all()
-    serializer_class = ItemsDevicesimcardsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = ItemsDevicesimcards.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
 class ItemsDevicesoundcardsViewSet(viewsets.ModelViewSet):
     queryset = ItemsDevicesoundcards.objects.all()
     serializer_class = ItemsDevicesoundcardsSerializer
@@ -1140,10 +1088,6 @@ class OperatingsystemsViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 # tables
-class GetDevicesimcardsViewSet(viewsets.ModelViewSet):
-    queryset = Devicesimcards.objects.all()
-    serializer_class = GetDevicesimcardsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
 
 class GetSoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()
