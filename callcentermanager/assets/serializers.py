@@ -448,29 +448,8 @@ class DevicemotherboardmodelsSerializer(serializers.ModelSerializer):
         model = Devicemotherboardmodels
         fields = '__all__'
 # ---------------------------
-class UnmanagedsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Unmanageds
-        fields = '__all__'
-
 class EntitiesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Entities
-        fields = '__all__'
-
-class UnmanagedsSerializer(serializers.ModelSerializer):
-    entities = EntitiesSerializer(required=False)
-    locations = LocationsSerializer(required=False)
-    networks = NetworksSerializer(required=False)
-    manufacturers = ManufacturersSerializer(required=False)
-    users_tech = UsersSerializer(required=False)
-    groups_tech = GroupsSerializer(required=False)
-    users = UsersSerializer(required=False)
-    groups = GroupsSerializer(required=False)
-    autoupdatesystems = AutoupdatesystemsSerializer(required=False)
-    states = StatesSerializer(required=False)
-
-    class Meta:
-        model = Unmanageds
         fields = '__all__'
 
