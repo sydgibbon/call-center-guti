@@ -34,22 +34,6 @@ class SoftwaresViewSet(viewsets.ModelViewSet):
         # Desde aca empezo fran
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class RacksViewSet(viewsets.ModelViewSet):
-    queryset = Racks.objects.all()
-    serializer_class = RacksSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Racks.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
 class UnmanagedsViewSet(viewsets.ModelViewSet):
     queryset = Unmanageds.objects.all()
     serializer_class = UnmanagedsSerializer
@@ -129,21 +113,6 @@ class SoftwareversionsViewSet(viewsets.ModelViewSet):
         ids = request.query_params.get('ids').split(',')
         if ids:
             queryset = Softwareversions.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-class ItemsRacksViewSet(viewsets.ModelViewSet):
-    queryset = ItemsRacks.objects.all()
-    serializer_class = ItemsRacksSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = ItemsRacks.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -1124,36 +1093,6 @@ class ItemsDevicesoundcardsViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class RackmodelsViewSet(viewsets.ModelViewSet):
-    queryset = Rackmodels.objects.all()
-    serializer_class = RackmodelsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Rackmodels.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-class RacktypesViewSet(viewsets.ModelViewSet):
-    queryset = Racktypes.objects.all()
-    serializer_class = RacktypesSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Racktypes.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 class EntitiesViewSet(viewsets.ModelViewSet):
     queryset = Entities.objects.all()
@@ -1185,23 +1124,6 @@ class SnmpcredentialsViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
         
-                
-class DcroomsViewSet(viewsets.ModelViewSet):
-    queryset = Dcrooms.objects.all()
-    serializer_class = DcroomsSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        ids = request.query_params.get('ids').split(',')
-        if ids:
-            queryset = Dcrooms.objects.filter(id__in=ids)
-            queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-        
-        
 class OperatingsystemsViewSet(viewsets.ModelViewSet):
     queryset = Operatingsystems.objects.all()
     serializer_class = OperatingsystemsSerializer
@@ -1226,9 +1148,4 @@ class GetDevicesimcardsViewSet(viewsets.ModelViewSet):
 class GetSoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()
     serializer_class = GetSoftwaresSerializer
-    permission_classes = (IsAuthenticated, AllowAny)
-
-class GetRacksViewSet(viewsets.ModelViewSet):
-    queryset = Racks.objects.all()
-    serializer_class = GetRacksSerializer
     permission_classes = (IsAuthenticated, AllowAny)

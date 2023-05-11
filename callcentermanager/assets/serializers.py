@@ -299,26 +299,7 @@ class ItemsDevicesoundcardsSerializer(serializers.ModelSerializer):
         fields = '__all__'  # Para todos los atributos del model
 
 # Nata (PhoneTypes hasta DeviceMotherboardModels)
-
 # Este tiene problemitas (no se le puede agregar con add)
-class RackmodelsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rackmodels
-        fields = '__all__'
-
-
-class RacktypesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Racktypes
-        fields = '__all__'
-
-
-class ItemsRacksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ItemsRacks
-        fields = '__all__'
-
-
 # Este también tiene problemitas (no se le puede agregar con add)
 
 class DevicesimcardtypesSerializer(serializers.ModelSerializer):
@@ -481,7 +462,6 @@ class DevicemotherboardmodelsSerializer(serializers.ModelSerializer):
         model = Devicemotherboardmodels
         fields = '__all__'
 # ---------------------------
-
 class UnmanagedsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Unmanageds
@@ -512,12 +492,6 @@ class SnmpcredentialsSerializer(serializers.ModelSerializer):
         model = Snmpcredentials
         fields = '__all__'
 
-
-class DcroomsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Dcrooms
-        fields = '__all__'
-
 class SoftwaresSerializer(serializers.ModelSerializer):
     entities = EntitiesSerializer(required=False)
     locations = LocationsSerializer(required=False)
@@ -530,21 +504,6 @@ class SoftwaresSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Softwares
-        fields = '__all__'
-
-class RacksSerializer(serializers.ModelSerializer):
-    entities = EntitiesSerializer(required=False)
-    locations = LocationsSerializer(required=False)
-    racktypes = RacktypesSerializer(required=False)
-    rackmodels = RackmodelsSerializer(required=False)
-    manufacturers = ManufacturersSerializer(required=False)
-    users_tech = UsersSerializer(required=False)
-    groups_tech = GroupsSerializer(required=False)
-    states = StatesSerializer(required=False)
-    dcrooms = DcroomsSerializer(required=False)
-
-    class Meta:
-        model = Racks
         fields = '__all__'
 
 class UnmanagedsSerializer(serializers.ModelSerializer):
@@ -571,7 +530,6 @@ class DevicesimcardsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Devicesimcards
         fields = '__all__'
-
 
 class SoftwareversionsSerializer(serializers.ModelSerializer):
 
@@ -632,8 +590,3 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwares
         fields = ['id', 'name', 'manufacturers', 'softwareversions', 'operatingsystems', 'installations', 'softwarelicenses']
-
-class GetRacksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Racks
-        fields = ['id', 'name']
