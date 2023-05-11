@@ -22,6 +22,7 @@ from assets.pdus import views as pdus
 from assets.computers import views as computers
 from assets.monitors import views as monitors
 from assets.softwares import views as softwares
+from assets.cartridges import views as cartridges
 
 router=DefaultRouter()
 router.register(r'computers', computers.ComputersViewSet, basename='computers')
@@ -214,3 +215,4 @@ router.register(r'getComputermodelsSelect', computers.GetComputermodelsSelectVie
 router.register(r'getMonitortypesSelect', monitors.GetMonitortypesSelectViewSet, basename='getMonitortypesSelect')
 router.register(r'getMonitormodelsSelect', monitors.GetMonitormodelsSelectViewSet, basename='getMonitormodelsSelect')
 router.register(r'getSoftwarecategoriesSelect', softwares.GetSoftwarecategoriesSelectViewSet, basename='getSoftwarecategoriesSelect')
+router.register(r'getCartridgeitemtypesSelect', cartridges.GetCartridgeitemtypesSelectViewSet, basename='getCartridgeitemtypesSelect')
