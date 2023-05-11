@@ -13,7 +13,7 @@ from assets.networkequipments import views as networkequipments
 from assets.cables import views as cables
 from assets.simcards import views as simcards
 from assets.printers import views as printers
-from assets.consumableitems import views as consumableitems
+from assets.consumables import views as consumableitems
 from assets.passivedcequipments import views as passivedcequipments
 from assets.phones import views as phones
 from assets.racks import views as racks

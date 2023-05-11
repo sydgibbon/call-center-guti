@@ -670,8 +670,6 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
         model = Softwares
         fields = ['id', 'name', 'manufacturers', 'softwareversions', 'operatingsystems', 'installations', 'softwarelicenses']
 
-    
-
 class GetRacksSerializer(serializers.ModelSerializer):
     class Meta:
         model = Racks
