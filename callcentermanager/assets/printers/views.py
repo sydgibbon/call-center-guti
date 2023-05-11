@@ -32,6 +32,7 @@ class GetPrintersViewSet(viewsets.ModelViewSet):
     queryset = Printers.objects.all()
     serializer_class = GetPrintersSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
 
 class PrintersViewSet(viewsets.ModelViewSet):
     queryset = Printers.objects.all()

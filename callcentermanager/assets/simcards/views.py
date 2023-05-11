@@ -69,3 +69,4 @@ class GetDevicesimcardsViewSet(viewsets.ModelViewSet):
     queryset = Devicesimcards.objects.all()
     serializer_class = GetDevicesimcardsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']

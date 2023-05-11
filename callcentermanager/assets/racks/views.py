@@ -107,3 +107,4 @@ class GetRacksViewSet(viewsets.ModelViewSet):
     queryset = Racks.objects.all()
     serializer_class = GetRacksSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
