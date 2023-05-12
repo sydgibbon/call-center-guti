@@ -230,4 +230,6 @@ router.register(r'getEnclosuresCount', enclosures.GetEnclosuresCountViewSet, bas
 router.register(r'getPhonesCount', phones.GetPhonesCountViewSet, basename='getPhonesCount')
 
 # Dashboard Graphs
-router.register(r'getCountByStatus', computers.CountByStatusViewSet, basename='getCountByStatus')
+router.register(r'getCountByManufacturer', computers.CountByManufacturerViewSet, basename='getCountByManufacturer')
+router.register(r'getCountByState', computers.CountByStateViewSet, basename='getCountByState')
+router.register(r'getCountByComputertype', computers.CountByComputertypeViewSet, basename='getCountByComputertype')

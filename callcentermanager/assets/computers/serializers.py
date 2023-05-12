@@ -27,7 +27,17 @@ class GetComputersCountSerializer(serializers.ModelSerializer):
         model = Computers
         fields = ['computersCount']
 
-class CountByStatusSerializer(serializers.Serializer):
+class CountByManufacturerSerializer(serializers.Serializer):
 
     manufacturers_id = serializers.CharField()
+    count = serializers.IntegerField()
+
+class CountByStateSerializer(serializers.Serializer):
+
+    states_id = serializers.CharField()
+    count = serializers.IntegerField()
+
+class CountByComputertypeSerializer(serializers.Serializer):
+
+    computertypes_id = serializers.CharField()
     count = serializers.IntegerField()
