@@ -216,3 +216,6 @@ router.register(r'getMonitortypesSelect', monitors.GetMonitortypesSelectViewSet,
 router.register(r'getMonitormodelsSelect', monitors.GetMonitormodelsSelectViewSet, basename='getMonitormodelsSelect')
 router.register(r'getSoftwarecategoriesSelect', softwares.GetSoftwarecategoriesSelectViewSet, basename='getSoftwarecategoriesSelect')
 router.register(r'getCartridgeitemtypesSelect', cartridges.GetCartridgeitemtypesSelectViewSet, basename='getCartridgeitemtypesSelect')
+
+# Dashboard
+router.register(r'GetComputersCount', computers.GetComputersCountViewSet, basename='GetComputersCount')

@@ -16,3 +16,14 @@ class GetComputermodelsSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Computermodels
         fields = ['id', 'name']
+
+class GetComputersCountSerializer(serializers.ModelSerializer):
+    computersCount = serializers.SerializerMethodField()
+    
+    def get_computersCount(self,obj):
+        return Computers.objects.count()
+    
+    class Meta:
+        model = Computers
+        fields = ['computersCount']
+
