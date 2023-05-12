@@ -1,8 +1,9 @@
-from assets.computers.serializers import GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer
+from assets.computers.serializers import GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer, CountByStatusSerializer
 from assets.models import Computers, Computertypes, Computermodels
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from django.db.models import Count
 
 class GetComputersSelectViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
@@ -40,3 +41,12 @@ class GetComputersCountViewSet(viewsets.ViewSet):
 
         return Response(computersCount.data)
 
+class CountByStatusViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+
+    def list(self, request):
+        queryset = Computers.objects.values('manufacturers_id').annotate(count=Count('id'))
+        serializer = CountByStatusSerializer(queryset, many=True)
+        return Response(serializer.data)

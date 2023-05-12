@@ -217,7 +217,7 @@ router.register(r'getMonitormodelsSelect', monitors.GetMonitormodelsSelectViewSe
 router.register(r'getSoftwarecategoriesSelect', softwares.GetSoftwarecategoriesSelectViewSet, basename='getSoftwarecategoriesSelect')
 router.register(r'getCartridgeitemtypesSelect', cartridges.GetCartridgeitemtypesSelectViewSet, basename='getCartridgeitemtypesSelect')
 
-# Dashboard
+# Dashboard Count
 router.register(r'getComputersCount', computers.GetComputersCountViewSet, basename='getComputersCount')
 router.register(r'getMonitorsCount', monitors.GetMonitorsCountViewSet, basename='getMonitorsCount')
 router.register(r'getSoftwaresCount', softwares.GetSoftwaresCountViewSet, basename='getSoftwaresCount')
@@ -228,3 +228,6 @@ router.register(r'getRacksCount', racks.GetRacksCountViewSet, basename='getRacks
 router.register(r'getPdusCount', pdu.GetPdusCountViewSet, basename='getPdusCount')
 router.register(r'getEnclosuresCount', enclosures.GetEnclosuresCountViewSet, basename='getEnclosuresCount')
 router.register(r'getPhonesCount', phones.GetPhonesCountViewSet, basename='getPhonesCount')
+
+# Dashboard Graphs
+router.register(r'getCountByStatus', computers.CountByStatusViewSet, basename='getCountByStatus')
