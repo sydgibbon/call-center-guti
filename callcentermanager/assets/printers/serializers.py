@@ -14,3 +14,13 @@ class GetPrintertypesSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Printertypes
         fields = ['id', 'name']
+
+class GetPrintersCountSerializer(serializers.ModelSerializer):
+    printersCount = serializers.SerializerMethodField()
+    
+    def get_printersCount(self,obj):
+        return Printers.objects.count()
+    
+    class Meta:
+        model = Printers
+        fields = ['printersCount']

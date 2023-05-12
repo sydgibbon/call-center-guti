@@ -218,4 +218,13 @@ router.register(r'getSoftwarecategoriesSelect', softwares.GetSoftwarecategoriesS
 router.register(r'getCartridgeitemtypesSelect', cartridges.GetCartridgeitemtypesSelectViewSet, basename='getCartridgeitemtypesSelect')
 
 # Dashboard
-router.register(r'GetComputersCount', computers.GetComputersCountViewSet, basename='GetComputersCount')
+router.register(r'getComputersCount', computers.GetComputersCountViewSet, basename='getComputersCount')
+router.register(r'getMonitorsCount', monitors.GetMonitorsCountViewSet, basename='getMonitorsCount')
+router.register(r'getSoftwaresCount', softwares.GetSoftwaresCountViewSet, basename='getSoftwaresCount')
+router.register(r'getSoftwarelicensesCount', softwares.GetSoftwarelicensesCountViewSet, basename='getSoftwarelicensesCount')
+router.register(r'getPeripheralsCount', peripherals.GetPeripheralsCountViewSet, basename='getPeripheralsCount')
+router.register(r'getPrintersCount', printers.GetPrintersCountViewSet, basename='getPrintersCount')
+router.register(r'getRacksCount', racks.GetRacksCountViewSet, basename='getRacksCount')
+router.register(r'getPdusCount', pdu.GetPdusCountViewSet, basename='getPdusCount')
+router.register(r'getEnclosuresCount', enclosures.GetEnclosuresCountViewSet, basename='getEnclosuresCount')
+router.register(r'getPhonesCount', phones.GetPhonesCountViewSet, basename='getPhonesCount')

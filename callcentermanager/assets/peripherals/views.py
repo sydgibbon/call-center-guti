@@ -1,4 +1,4 @@
-from assets.peripherals.serializers import GetPeripheralsSelectSerializer, GetPeripheraltypesSelectSerializer, GetPeripheralmodelsSelectSerializer
+from assets.peripherals.serializers import GetPeripheralsSelectSerializer, GetPeripheraltypesSelectSerializer, GetPeripheralmodelsSelectSerializer, GetPeripheralsCountSerializer
 from assets.models import Peripherals, Peripheraltypes, Peripheralmodels
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -30,3 +30,12 @@ class GetPeripheralmodelsSelectViewSet(viewsets.ViewSet):
         peripheralmodels = GetPeripheralmodelsSelectSerializer(Peripheralmodels.objects.all(), many=True)
 
         return Response(peripheralmodels.data)
+
+class GetPeripheralsCountViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        peripheralsCount = GetPeripheralsCountSerializer(Peripherals.objects.count())
+
+        return Response(peripheralsCount.data)

@@ -21,3 +21,13 @@ class GetPhonepowersuppliesSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Phonepowersupplies
         fields = ['id', 'name']
+
+class GetPhonesCountSerializer(serializers.ModelSerializer):
+    phonesCount = serializers.SerializerMethodField()
+    
+    def get_phonesCount(self,obj):
+        return Phones.objects.count()
+    
+    class Meta:
+        model = Phones
+        fields = ['phonesCount']

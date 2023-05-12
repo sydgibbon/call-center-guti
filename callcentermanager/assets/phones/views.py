@@ -1,4 +1,4 @@
-from assets.phones.serializers import GetPhonesSelectSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer
+from assets.phones.serializers import GetPhonesSelectSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, GetPhonesCountSerializer
 from assets.models import Phones, Phonetypes, Phonemodels, Phonepowersupplies
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -36,3 +36,12 @@ class GetPhonepowersuppliesSelectViewSet(viewsets.ViewSet):
     def list(self, request, format=None):
         phonepowersupplies = GetPhonepowersuppliesSelectSerializer(Phonepowersupplies.objects.all(), many=True) 
         return Response(phonepowersupplies.data)
+    
+class GetPhonesCountViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        phonesCount = GetPhonesCountSerializer(Phones.objects.count())
+
+        return Response(phonesCount.data)

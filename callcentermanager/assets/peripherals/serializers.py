@@ -14,3 +14,13 @@ class GetPeripheralmodelsSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Peripheralmodels
         fields = ['id', 'name']
+
+class GetPeripheralsCountSerializer(serializers.ModelSerializer):
+    peripheralsCount = serializers.SerializerMethodField()
+    
+    def get_peripheralsCount(self,obj):
+        return Peripherals.objects.count()
+    
+    class Meta:
+        model = Peripherals
+        fields = ['peripheralsCount']
