@@ -1,4 +1,4 @@
-from assets.computers.serializers import GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer, CountByManufacturerSerializer, CountByStateSerializer, CountByComputertypeSerializer
+from assets.computers.serializers import GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer, ComputersByStatesSerializer, ComputersByManufacturersSerializer, ComputersByComputertypesSerializer
 from assets.models import Computers, Computertypes, Computermodels
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -41,30 +41,30 @@ class GetComputersCountViewSet(viewsets.ViewSet):
 
         return Response(computersCount.data)
 
-class CountByManufacturerViewSet(viewsets.ViewSet):
+class ComputersByManufacturersViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request):
         queryset = Computers.objects.values('manufacturers_id__name').annotate(count=Count('id'))
-        serializer = CountByManufacturerSerializer(queryset, many=True)
+        serializer = ComputersByManufacturersSerializer(queryset, many=True)
         return Response(serializer.data)
     
-class CountByStateViewSet(viewsets.ViewSet):
+class ComputersByStatesViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request):
         queryset = Computers.objects.values('states_id__name').annotate(count=Count('id'))
-        serializer = CountByStateSerializer(queryset, many=True)
+        serializer = ComputersByStatesSerializer(queryset, many=True)
         return Response(serializer.data)
 
 
-class CountByComputertypeViewSet(viewsets.ViewSet):
+class ComputersByComputertypesViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request):
         queryset = Computers.objects.values('computertypes_id__name').annotate(count=Count('id'))
-        serializer = CountByComputertypeSerializer(queryset, many=True)
+        serializer = ComputersByComputertypesSerializer(queryset, many=True)
         return Response(serializer.data)

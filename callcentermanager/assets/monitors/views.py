@@ -1,8 +1,9 @@
-from assets.monitors.serializers import GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, GetMonitorsCountSerializer
+from assets.monitors.serializers import GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, GetMonitorsCountSerializer, MonitorsByManufacturersSerializer
 from assets.models import Monitortypes, Monitormodels, Monitors
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from django.db.models import Count
 
 class GetMonitortypesSelectViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
@@ -30,3 +31,12 @@ class GetMonitorsCountViewSet(viewsets.ViewSet):
         monitorsCount = GetMonitorsCountSerializer(Monitors.objects.count())
 
         return Response(monitorsCount.data)
+
+class MonitorsByManufacturersViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        queryset = Monitors.objects.values('manufacturers_id__name').annotate(count=Count('id'))
+        serializer = MonitorsByManufacturersSerializer(queryset, many=True)
+        return Response(serializer.data)

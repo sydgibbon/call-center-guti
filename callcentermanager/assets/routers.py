@@ -222,7 +222,7 @@ router.register(r'getComputersCount', computers.GetComputersCountViewSet, basena
 router.register(r'getMonitorsCount', monitors.GetMonitorsCountViewSet, basename='getMonitorsCount')
 router.register(r'getSoftwaresCount', softwares.GetSoftwaresCountViewSet, basename='getSoftwaresCount')
 router.register(r'getSoftwarelicensesCount', softwares.GetSoftwarelicensesCountViewSet, basename='getSoftwarelicensesCount')
-router.register(r'getPeripheralsCount', peripherals.GetPeripheralsCountViewSet, basename='getPeripheralsCount')
+router.register(r'getNetworkequipmentsCount', networks.GetNetworkequipmentsCountViewSet, basename='getNetworkequipmentsCount')
 router.register(r'getPrintersCount', printers.GetPrintersCountViewSet, basename='getPrintersCount')
 router.register(r'getRacksCount', racks.GetRacksCountViewSet, basename='getRacksCount')
 router.register(r'getPdusCount', pdu.GetPdusCountViewSet, basename='getPdusCount')
@@ -230,6 +230,8 @@ router.register(r'getEnclosuresCount', enclosures.GetEnclosuresCountViewSet, bas
 router.register(r'getPhonesCount', phones.GetPhonesCountViewSet, basename='getPhonesCount')
 
 # Dashboard Graphs
-router.register(r'getCountByManufacturer', computers.CountByManufacturerViewSet, basename='getCountByManufacturer')
-router.register(r'getCountByState', computers.CountByStateViewSet, basename='getCountByState')
-router.register(r'getCountByComputertype', computers.CountByComputertypeViewSet, basename='getCountByComputertype')
+router.register(r'getComputersByStates', computers.ComputersByStatesViewSet, basename='getComputersByStates')
+router.register(r'getComputersByManufacturers', computers.ComputersByManufacturersViewSet, basename='getComputersByManufacturers')
+router.register(r'getComputersByComputertypes', computers.ComputersByComputertypesViewSet, basename='getComputersByComputertypes')
+router.register(r'getNetworkequipmentsByManufacturers', networks.NetworkequipmentsByManufacturersViewSet, basename='getNetworkequipmentsByManufacturers')
+router.register(r'getMonitorsByManufacturers', monitors.MonitorsByManufacturersViewSet, basename='getMonitorsByManufacturers')
