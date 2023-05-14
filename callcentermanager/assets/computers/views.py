@@ -1,8 +1,9 @@
-from assets.computers.serializers import GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer
+from assets.computers.serializers import GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer, GetComputersCountByStatesSerializer, GetComputersCountByManufacturersSerializer, GetComputersCountByComputertypesSerializer
 from assets.models import Computers, Computertypes, Computermodels
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from django.db.models import Count
 
 class GetComputersSelectViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
@@ -30,3 +31,40 @@ class GetComputermodelsSelectViewSet(viewsets.ViewSet):
         computermodels = GetComputermodelsSelectSerializer(Computermodels.objects.all(), many=True)
 
         return Response(computermodels.data)
+    
+class GetComputersCountViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        computersCount = GetComputersCountSerializer(Computers.objects.count())
+
+        return Response(computersCount.data)
+
+class GetComputersCountByManufacturersViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        queryset = Computers.objects.values('manufacturers_id__name').annotate(count=Count('id'))
+        serializer = GetComputersCountByManufacturersSerializer(queryset, many=True)
+        return Response(serializer.data)
+    
+class GetComputersCountByStatesViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        queryset = Computers.objects.values('states_id__name').annotate(count=Count('id'))
+        serializer = GetComputersCountByStatesSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class GetComputersCountByComputertypesViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        queryset = Computers.objects.values('computertypes_id__name').annotate(count=Count('id'))
+        serializer = GetComputersCountByComputertypesSerializer(queryset, many=True)
+        return Response(serializer.data)

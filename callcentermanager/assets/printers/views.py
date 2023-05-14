@@ -1,4 +1,4 @@
-from assets.printers.serializers import GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintertypesSelectSerializer
+from assets.printers.serializers import GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintertypesSelectSerializer, GetPrintersCountSerializer
 from assets.models import Printers, Printermodels, Printertypes
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -27,3 +27,12 @@ class GetPrintertypesSelectViewSet(viewsets.ViewSet):
     def list(self, request, format=None):
         printertypes = GetPrintertypesSelectSerializer(Printertypes.objects.all(), many=True) 
         return Response(printertypes.data)
+
+class GetPrintersCountViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        printersCount = GetPrintersCountSerializer(Printers.objects.count())
+
+        return Response(printersCount.data)

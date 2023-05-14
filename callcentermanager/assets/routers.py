@@ -216,3 +216,22 @@ router.register(r'getMonitortypesSelect', monitors.GetMonitortypesSelectViewSet,
 router.register(r'getMonitormodelsSelect', monitors.GetMonitormodelsSelectViewSet, basename='getMonitormodelsSelect')
 router.register(r'getSoftwarecategoriesSelect', softwares.GetSoftwarecategoriesSelectViewSet, basename='getSoftwarecategoriesSelect')
 router.register(r'getCartridgeitemtypesSelect', cartridges.GetCartridgeitemtypesSelectViewSet, basename='getCartridgeitemtypesSelect')
+
+# Dashboard Count
+router.register(r'getComputersCount', computers.GetComputersCountViewSet, basename='getComputersCount')
+router.register(r'getMonitorsCount', monitors.GetMonitorsCountViewSet, basename='getMonitorsCount')
+router.register(r'getSoftwaresCount', softwares.GetSoftwaresCountViewSet, basename='getSoftwaresCount')
+router.register(r'getSoftwarelicensesCount', softwares.GetSoftwarelicensesCountViewSet, basename='getSoftwarelicensesCount')
+router.register(r'getNetworkequipmentsCount', networks.GetNetworkequipmentsCountViewSet, basename='getNetworkequipmentsCount')
+router.register(r'getPrintersCount', printers.GetPrintersCountViewSet, basename='getPrintersCount')
+router.register(r'getRacksCount', racks.GetRacksCountViewSet, basename='getRacksCount')
+router.register(r'getPdusCount', pdu.GetPdusCountViewSet, basename='getPdusCount')
+router.register(r'getEnclosuresCount', enclosures.GetEnclosuresCountViewSet, basename='getEnclosuresCount')
+router.register(r'getPhonesCount', phones.GetPhonesCountViewSet, basename='getPhonesCount')
+
+# Dashboard Graphs
+router.register(r'getComputersByStates', computers.GetComputersCountByStatesViewSet, basename='getComputersByStates')
+router.register(r'getComputersByManufacturers', computers.GetComputersCountByManufacturersViewSet, basename='getComputersByManufacturers')
+router.register(r'getComputersByComputertypes', computers.GetComputersCountByComputertypesViewSet, basename='getComputersByComputertypes')
+router.register(r'getNetworkequipmentsByManufacturers', networks.GetNetworkequipmentsCountByManufacturersViewSet, basename='getNetworkequipmentsByManufacturers')
+router.register(r'getMonitorsByManufacturers', monitors.GetMonitorsCountByManufacturersViewSet, basename='getMonitorsByManufacturers')
