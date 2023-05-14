@@ -228,7 +228,7 @@ router.register(r'getSoftwarelicensesCount', softwares.GetSoftwarelicensesCountV
 router.register(r'getNetworkequipmentsCount', networks.GetNetworkequipmentsCountViewSet, basename='getNetworkequipmentsCount')
 router.register(r'getPrintersCount', printers.GetPrintersCountViewSet, basename='getPrintersCount')
 router.register(r'getRacksCount', racks.GetRacksCountViewSet, basename='getRacksCount')
-router.register(r'getPdusCount', pdu.GetPdusCountViewSet, basename='getPdusCount')
+router.register(r'getPdusCount', pdus.GetPdusCountViewSet, basename='getPdusCount')
 router.register(r'getEnclosuresCount', enclosures.GetEnclosuresCountViewSet, basename='getEnclosuresCount')
 router.register(r'getPhonesCount', phones.GetPhonesCountViewSet, basename='getPhonesCount')
 
