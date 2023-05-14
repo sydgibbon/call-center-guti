@@ -4,7 +4,7 @@ from assets.groups.serializers import GroupsSerializer
 from assets.locations.serializers import LocationsSerializer
 from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 from assets.models import Pdus, PdusPlugs, PdusRacks, Pdutypes, Pdumodels
-from assets.serializers import EntitiesSerializer
+from assets.generals.serializers import EntitiesSerializer
 from assets.states.serializers import StatesSerializer
 from assets.users.serializers import UsersSerializer
 

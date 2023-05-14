@@ -5,7 +5,7 @@ from assets.groups.serializers import GroupsSerializer
 from assets.locations.serializers import LocationsSerializer
 from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 from assets.models import Devicefirmwares, ItemsDevicefirmwares, Locations, Manufacturers, Networkequipments, Networkequipmenttypes, Networkequipmentmodels, States
-from assets.serializers import EntitiesSerializer, NetworksSerializer
+from assets.generals.serializers import EntitiesSerializer, NetworksSerializer
 from assets.snmpcredentials.serializers import SnmpcredentialsSerializer
 from assets.states.serializers import StatesSerializer
 from assets.users.serializers import UsersSerializer

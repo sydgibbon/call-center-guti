@@ -2,7 +2,7 @@
 from rest_framework import serializers
 from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 from assets.models import Devicesimcards, Devicesimcardtypes, ItemsDevicesimcards, Lines
-from assets.serializers import EntitiesSerializer
+from assets.generals.serializers import EntitiesSerializer
 
 class GetDevicesimcardsSelectSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='designation')

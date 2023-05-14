@@ -1,5 +1,5 @@
 from rest_framework import viewsets, views, permissions, status  # import de ViewSets
-from assets.serializers import *  # import de todos los serializers,
+from assets.generals.serializers import *  # import de todos los serializers,
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from django.contrib.auth import login

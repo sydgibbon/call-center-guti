@@ -3,7 +3,7 @@ from assets.groups.serializers import GroupsSerializer
 from assets.locations.serializers import LocationsSerializer
 from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 from assets.models import Consumableitems, Consumableitemtypes, Consumables, Locations, Manufacturers
-from assets.serializers import EntitiesSerializer
+from assets.generals.serializers import EntitiesSerializer
 from assets.users.serializers import UsersSerializer
 
 class GetConsumableitemtypesSelectSerializer(serializers.ModelSerializer):

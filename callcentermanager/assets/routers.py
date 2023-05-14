@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
 
-from assets import unmanageds
-from .views import *
+
+from assets.generals.views import *
 from assets.locations import views as locations
 from assets.states import views as states
 from assets.manufacturers import views as manufacturers
@@ -25,6 +25,7 @@ from assets.computers import views as computers
 from assets.monitors import views as monitors
 from assets.softwares import views as softwares
 from assets.cartridges import views as cartridges
+from assets.unmanageds import views as unmanageds
 
 router=DefaultRouter()
 router.register(r'computers', computers.ComputersViewSet, basename='computers')
@@ -43,7 +44,7 @@ router.register(r'pdumodels', pdus.PdusViewSet, basename='pdumodels')
 router.register(r'passivedcequipments', passivedcequipments.PassivedcequipmentsViewSet, basename='passivedcequipments')
 router.register(r'passivedcequipmentmodels', passivedcequipments.PassivedcequipmentmodelsViewSet, basename='passivedcequipmentmodels')
 router.register(r'passivedcequipmenttypes', passivedcequipments.PassivedcequipmenttypesViewSet, basename='passivedcequipmenttypes')
-router.register(r'unmanageds', unmanageds.UnmanagedsViewSet, basename='unmanageds')
+router.register(r'unmanageds', unmanageds.UnmanagedsViewSet , basename='unmanageds')
 router.register(r'cables', cables.CablesViewSet, basename='cables')
 router.register(r'devicesimcards', simcards.DevicesimcardsViewSet, basename='devicesimcards')
 router.register(r'computermodels', computers.ComputermodelsViewSet, basename='computermodels')
@@ -149,7 +150,7 @@ router.register(r'dcrooms', racks.DcroomsViewSet, basename='dcrooms')
 router.register(r'locations', locations.LocationsViewSet, basename='locations')
 router.register(r'states', states.StatesViewSet, basename='states')
 router.register(r'users', users.UsersViewSet, basename='users')
-router.register(r'operatingsystems', OperatingsystemsViewSet, basename='operatingsystems')
+router.register(r'operatingsystems', computers.OperatingsystemsViewSet, basename='operatingsystems')
 
 # tables
 router.register(r'getComputers', computers.GetComputersViewSet, basename='getComputers')

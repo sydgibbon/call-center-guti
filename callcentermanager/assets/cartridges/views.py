@@ -78,3 +78,4 @@ class GetCartridgeItemsViewSet(viewsets.ModelViewSet):
     queryset = Cartridgeitems.objects.all()
     serializer_class = GetCartridgeItemsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']

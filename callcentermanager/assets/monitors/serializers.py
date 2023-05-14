@@ -5,7 +5,7 @@ from assets.groups.serializers import GroupsSerializer
 from assets.locations.serializers import LocationsSerializer
 from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 from assets.models import Locations, Manufacturers, Monitormodels, Monitors, Monitortypes, States
-from assets.serializers import EntitiesSerializer
+from assets.generals.serializers import EntitiesSerializer
 from assets.states.serializers import StatesSerializer
 from assets.users.serializers import UsersSerializer
 class GetMonitortypesSelectSerializer(serializers.ModelSerializer):
