@@ -12,12 +12,6 @@ from assets.users.serializers import UsersSerializer
 from assistance import models as assistanceModels, serializers as assistanceSerializers
 
 #Login Auth
-
-class OperatingsystemsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Operatingsystems
-        fields = '__all__'
-
 class LoginSerializer(serializers.Serializer):
     """
     This serializer defines two fields for authentication:

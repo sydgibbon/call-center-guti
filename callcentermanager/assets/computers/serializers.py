@@ -40,6 +40,11 @@ class ComputersItemsSerializer(serializers.ModelSerializer):
         model = ComputersItems
         fields = '__all__'
 
+class OperatingsystemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Operatingsystems
+        fields = '__all__'
+
 class ComputersSerializer(serializers.ModelSerializer):
     computertypes = ComputertypesSerializer(required=False)
     computermodels = ComputermodelsSerializer(required=False)
