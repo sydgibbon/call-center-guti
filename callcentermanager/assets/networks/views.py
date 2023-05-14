@@ -1,4 +1,4 @@
-from assets.networks.serializers import GetNetworksSelectSerializer, GetNetworkequipmentsCountSerializer, GetNetworkequipmentsCountByManufacturersSerializer
+from assets.networks.serializers import GetNetworksSelectSerializer, GetNetworkequipmentsCountSerializer,GetNetworkequipmentsCountByManufacturersSerializer
 from assets.models import Networks, Networkequipments
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
