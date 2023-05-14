@@ -20,3 +20,7 @@ class GetNetworkequipmentsCountSerializer(serializers.ModelSerializer):
 class GetNetworkequipmentsCountByManufacturersSerializer(serializers.Serializer):
     manufacturers = serializers.CharField(source='manufacturers_id__name')
     count = serializers.IntegerField()
+class NetworksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Networks
+        fields = '__all__'

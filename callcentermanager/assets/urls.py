@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import *
+
+from assets.generals.views import LoginView
 from . import routers
 from assets.computers import views as ComputerViews
 
