@@ -21,6 +21,6 @@ class GetMonitorsCountSerializer(serializers.ModelSerializer):
         model = Monitors
         fields = ['monitorsCount']
 
-class MonitorsByManufacturersSerializer(serializers.Serializer):
+class GetMonitorsCountByManufacturersSerializer(serializers.Serializer):
     manufacturers = serializers.CharField(source='manufacturers_id__name')
     count = serializers.IntegerField()

@@ -1,4 +1,4 @@
-from assets.monitors.serializers import GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, GetMonitorsCountSerializer, MonitorsByManufacturersSerializer
+from assets.monitors.serializers import GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, GetMonitorsCountSerializer, GetMonitorsCountByManufacturersSerializer
 from assets.models import Monitortypes, Monitormodels, Monitors
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -32,11 +32,11 @@ class GetMonitorsCountViewSet(viewsets.ViewSet):
 
         return Response(monitorsCount.data)
 
-class MonitorsByManufacturersViewSet(viewsets.ViewSet):
+class GetMonitorsCountByManufacturersViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request):
         queryset = Monitors.objects.values('manufacturers_id__name').annotate(count=Count('id'))
-        serializer = MonitorsByManufacturersSerializer(queryset, many=True)
+        serializer = GetMonitorsCountByManufacturersSerializer(queryset, many=True)
         return Response(serializer.data)

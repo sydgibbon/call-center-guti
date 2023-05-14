@@ -230,8 +230,8 @@ router.register(r'getEnclosuresCount', enclosures.GetEnclosuresCountViewSet, bas
 router.register(r'getPhonesCount', phones.GetPhonesCountViewSet, basename='getPhonesCount')
 
 # Dashboard Graphs
-router.register(r'getComputersByStates', computers.ComputersByStatesViewSet, basename='getComputersByStates')
-router.register(r'getComputersByManufacturers', computers.ComputersByManufacturersViewSet, basename='getComputersByManufacturers')
-router.register(r'getComputersByComputertypes', computers.ComputersByComputertypesViewSet, basename='getComputersByComputertypes')
-router.register(r'getNetworkequipmentsByManufacturers', networks.NetworkequipmentsByManufacturersViewSet, basename='getNetworkequipmentsByManufacturers')
-router.register(r'getMonitorsByManufacturers', monitors.MonitorsByManufacturersViewSet, basename='getMonitorsByManufacturers')
+router.register(r'getComputersByStates', computers.GetComputersCountByStatesViewSet, basename='getComputersByStates')
+router.register(r'getComputersByManufacturers', computers.GetComputersCountByManufacturersViewSet, basename='getComputersByManufacturers')
+router.register(r'getComputersByComputertypes', computers.GetComputersCountByComputertypesViewSet, basename='getComputersByComputertypes')
+router.register(r'getNetworkequipmentsByManufacturers', networks.GetNetworkequipmentsCountByManufacturersViewSet, basename='getNetworkequipmentsByManufacturers')
+router.register(r'getMonitorsByManufacturers', monitors.GetMonitorsCountByManufacturersViewSet, basename='getMonitorsByManufacturers')

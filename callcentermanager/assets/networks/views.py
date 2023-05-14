@@ -1,4 +1,4 @@
-from assets.networks.serializers import GetNetworksSelectSerializer, GetNetworkequipmentsCountSerializer, NetworkequipmentsByManufacturersSerializer
+from assets.networks.serializers import GetNetworksSelectSerializer, GetNetworkequipmentsCountSerializer, GetNetworkequipmentsCountByManufacturersSerializer
 from assets.models import Networks, Networkequipments
 from rest_framework import viewsets  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -23,11 +23,11 @@ class GetNetworkequipmentsCountViewSet(viewsets.ViewSet):
 
         return Response(networkequipmentsCount.data)
 
-class NetworkequipmentsByManufacturersViewSet(viewsets.ViewSet):
+class GetNetworkequipmentsCountByManufacturersViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request):
         queryset = Networkequipments.objects.values('manufacturers_id__name').annotate(count=Count('id'))
-        serializer = NetworkequipmentsByManufacturersSerializer(queryset, many=True)
+        serializer = GetNetworkequipmentsCountByManufacturersSerializer(queryset, many=True)
         return Response(serializer.data)

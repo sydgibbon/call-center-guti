@@ -27,16 +27,16 @@ class GetComputersCountSerializer(serializers.ModelSerializer):
         model = Computers
         fields = ['computersCount']
 
-class ComputersByManufacturersSerializer(serializers.Serializer):
+class GetComputersCountByManufacturersSerializer(serializers.Serializer):
     manufacturers = serializers.CharField(source='manufacturers_id__name')
     count = serializers.IntegerField()
 
-class ComputersByStatesSerializer(serializers.Serializer):
+class GetComputersCountByStatesSerializer(serializers.Serializer):
 
     states = serializers.CharField(source='states_id__name')
     count = serializers.IntegerField()
 
-class ComputersByComputertypesSerializer(serializers.Serializer):
+class GetComputersCountByComputertypesSerializer(serializers.Serializer):
 
     computertypes = serializers.CharField(source='computertypes_id__name')
     count = serializers.IntegerField()
