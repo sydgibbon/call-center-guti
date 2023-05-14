@@ -46,7 +46,7 @@ class CountByManufacturerViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request):
-        queryset = Computers.objects.values('manufacturers_id').annotate(count=Count('id'))
+        queryset = Computers.objects.values('manufacturers_id__name').annotate(count=Count('id'))
         serializer = CountByManufacturerSerializer(queryset, many=True)
         return Response(serializer.data)
     
@@ -55,15 +55,16 @@ class CountByStateViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request):
-        queryset = Computers.objects.values('states_id').annotate(count=Count('id'))
+        queryset = Computers.objects.values('states_id__name').annotate(count=Count('id'))
         serializer = CountByStateSerializer(queryset, many=True)
         return Response(serializer.data)
+
 
 class CountByComputertypeViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request):
-        queryset = Computers.objects.values('computertypes_id').annotate(count=Count('id'))
+        queryset = Computers.objects.values('computertypes_id__name').annotate(count=Count('id'))
         serializer = CountByComputertypeSerializer(queryset, many=True)
         return Response(serializer.data)
