@@ -4,7 +4,7 @@ from assets.locations.serializers import LocationsSerializer
 from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 from assets.models import Cartridgeitems, CartridgeitemsPrintermodels, Cartridgeitemtypes, Cartridges, Locations, Manufacturers
 from assets.printers.serializers import PrintersSerializer
-from assets.generals.serializers import EntitiesSerializer
+from assets.generics.serializers import EntitiesSerializer
 from assets.users.serializers import UsersSerializer
 
 class GetCartridgeitemtypesSelectSerializer(serializers.ModelSerializer):

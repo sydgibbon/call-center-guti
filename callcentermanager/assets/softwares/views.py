@@ -36,6 +36,7 @@ class GetSoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()
     serializer_class = GetSoftwaresSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
     
 class SoftwaresViewSet(viewsets.ModelViewSet):
     queryset = Softwares.objects.all()

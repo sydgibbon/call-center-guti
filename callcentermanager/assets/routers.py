@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
 
 
-from assets.generals.views import *
+from assets.generics.views import *
 from assets.locations import views as locations
 from assets.states import views as states
 from assets.manufacturers import views as manufacturers

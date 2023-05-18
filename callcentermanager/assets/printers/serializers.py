@@ -5,7 +5,7 @@ from assets.locations.serializers import LocationsSerializer
 from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 from assets.models import Locations, Manufacturers, Printers, Printermodels, PrintersCartridgeinfos, Printertypes, States
 from assets.networks.serializers import NetworksSerializer
-from assets.generals.serializers import EntitiesSerializer
+from assets.generics.serializers import EntitiesSerializer
 from assets.snmpcredentials.serializers import SnmpcredentialsSerializer
 from assets.states.serializers import StatesSerializer
 from assets.users.serializers import UsersSerializer

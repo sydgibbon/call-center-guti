@@ -6,7 +6,7 @@ from assets.groups.serializers import GroupsSerializer
 from assets.locations.serializers import LocationsSerializer
 from assets.manufacturers.serializers import ManufacturersSerializer  # import de serializers
 from assets.models import Enclosuremodels, Enclosures, ItemsEnclosures
-from assets.generals.serializers import EntitiesSerializer
+from assets.generics.serializers import EntitiesSerializer
 from assets.states.serializers import StatesSerializer
 from assets.users.serializers import UsersSerializer
 
