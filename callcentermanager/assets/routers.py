@@ -191,7 +191,7 @@ router.register(r'getPeripheralmodelsSelect', peripherals.GetPeripheralmodelsSel
 router.register(r'getCabletypesSelect', cables.GetCabletypesSelectViewSet, basename='getCabletypesSelect')
 router.register(r'getCablestrandsSelect', cables.GetCablestrandsSelectViewSet, basename='getCablestrandsSelect')
 router.register(r'getSocketsSelect', cables.GetSocketsSelectViewSet, basename='getSocketsSelect')
-router.register(r'getSocketmodelsSelect', cables.GetSocketmodelsSelectViewSet, basename='getCablestrandsSelect')
+router.register(r'getSocketmodelsSelect', cables.GetSocketmodelsSelectViewSet, basename='getSocketmodelsSelect')
 router.register(r'getPrintersSelect', printers.GetPrintersSelectViewSet, basename='getPrintersSelect')
 router.register(r'getPrintermodelsSelect', printers.GetPrintermodelsSelectViewSet, basename='getPrintermodelsSelect')
 router.register(r'getPrintertypesSelect', printers.GetPrintertypesSelectViewSet, basename='getPrintertypesSelect')
