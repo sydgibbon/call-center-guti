@@ -1,27 +1,26 @@
 from rest_framework import serializers
-from assistance.models import *
-        
-class LogsSerializer(serializers.ModelSerializer): 
+from assistance.models import Changes, ChangesTickets, ChangesUsers, Recurrentchanges
+
+class ChangesTicketsSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
-        model = Logs #Especificar el nombre del Model
+        model = ChangesTickets #Especificar el nombre del Model
+        fields = '__all__' #Para todos los atributos del model
+
+class ChangesUsersSerializer(serializers.ModelSerializer): 
+    #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
+    class Meta: #Clase meta para configurar el serializer
+        model = ChangesUsers #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model
         
-class ProblemsSerializer(serializers.ModelSerializer): 
+class ChangesSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
-        model = Problems #Especificar el nombre del Model
+        model = Changes #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model
-        
-class ProblemsUsersSerializer(serializers.ModelSerializer): 
+
+class RecurrentchangesSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
-        model = ProblemsUsers #Especificar el nombre del Model
-        fields = '__all__' #Para todos los atributos del model 
-        
-class PlanningrecallsSerializer(serializers.ModelSerializer): 
-    #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
-    class Meta: #Clase meta para configurar el serializer
-        model = Planningrecalls #Especificar el nombre del Model
-        fields = '__all__' #Para todos los atributos del model 
- 
+        model = Recurrentchanges #Especificar el nombre del Model
+        fields = '__all__' #Para todos los atributos del model
