@@ -1,27 +1,27 @@
+from assistance.models import Crontasklogs, Crontasks, ProjecttasksTickets, Tickettasks
 from rest_framework import serializers
-from assistance.models import *
-        
-class LogsSerializer(serializers.ModelSerializer): 
+
+
+class ProjecttasksTicketsSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
-        model = Logs #Especificar el nombre del Model
+        model = ProjecttasksTickets #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model
-        
-class ProblemsSerializer(serializers.ModelSerializer): 
+
+class TickettasksSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
-        model = Problems #Especificar el nombre del Model
+        model = Tickettasks #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model
-        
-class ProblemsUsersSerializer(serializers.ModelSerializer): 
+
+class CrontasklogsSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
-        model = ProblemsUsers #Especificar el nombre del Model
+        model = Crontasklogs #Especificar el nombre del Model
         fields = '__all__' #Para todos los atributos del model 
         
-class PlanningrecallsSerializer(serializers.ModelSerializer): 
+class CrontasksSerializer(serializers.ModelSerializer): 
     #clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
     class Meta: #Clase meta para configurar el serializer
-        model = Planningrecalls #Especificar el nombre del Model
-        fields = '__all__' #Para todos los atributos del model 
- 
+        model = Crontasks #Especificar el nombre del Model
+        fields = '__all__' #Para todos los atributos del model

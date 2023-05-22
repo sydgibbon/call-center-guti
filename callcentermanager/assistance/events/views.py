@@ -1,58 +1,57 @@
-from django.shortcuts import render
-from rest_framework import viewsets, status  # import de ViewSets
+from rest_framework import viewsets, status
+from assistance.events.serializers import EventsSerializer, PlanningeventcategoriesSerializer, PlanningexternaleventsSerializer, PlanningexternaleventtemplatesSerializer  # import de ViewSets
 from assistance.serializers import *  # import de todos los serializers,
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
-# Create your views here.
-class LogsViewSet(viewsets.ModelViewSet):
-    queryset = Logs.objects.all()
-    serializer_class = LogsSerializer
+class EventsViewSet(viewsets.ModelViewSet):
+    queryset = Events.objects.all()
+    serializer_class = EventsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
     def delete(self, request, *args, **kwargs):
         ids = request.query_params.get('ids').split(',')
         if ids:
-            queryset = Logs.objects.filter(id__in=ids)
+            queryset = Events.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class ProblemsViewSet(viewsets.ModelViewSet):
-    queryset = Problems.objects.all()
-    serializer_class = ProblemsSerializer
+class PlanningexternaleventsViewSet(viewsets.ModelViewSet):
+    queryset = Planningexternalevents.objects.all()
+    serializer_class = PlanningexternaleventsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
     def delete(self, request, *args, **kwargs):
         ids = request.query_params.get('ids').split(',')
         if ids:
-            queryset = Problems.objects.filter(id__in=ids)
+            queryset = Planningexternalevents.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class ProblemsUsersViewSet(viewsets.ModelViewSet):
-    queryset = ProblemsUsers.objects.all()
-    serializer_class = ProblemsUsersSerializer
+class PlanningexternaleventtemplatesViewSet(viewsets.ModelViewSet):
+    queryset = Planningexternaleventtemplates.objects.all()
+    serializer_class = PlanningexternaleventtemplatesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
     def delete(self, request, *args, **kwargs):
         ids = request.query_params.get('ids').split(',')
         if ids:
-            queryset = ProblemsUsers.objects.filter(id__in=ids)
+            queryset = Planningexternaleventtemplates.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class PlanningrecallsViewSet(viewsets.ModelViewSet):
-    queryset = Planningrecalls.objects.all()
-    serializer_class = PlanningrecallsSerializer
+class PlanningeventcategoriesViewSet(viewsets.ModelViewSet):
+    queryset = Planningeventcategories.objects.all()
+    serializer_class = PlanningeventcategoriesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
     def delete(self, request, *args, **kwargs):
         ids = request.query_params.get('ids').split(',')
         if ids:
-            queryset = Planningrecalls.objects.filter(id__in=ids)
+            queryset = Planningeventcategories.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

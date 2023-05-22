@@ -1,6 +1,11 @@
 from email.mime import base
 from rest_framework.routers import DefaultRouter
+from assistance.events.views import EventsViewSet, PlanningeventcategoriesViewSet, PlanningexternaleventsViewSet, PlanningexternaleventtemplatesViewSet 
+from assistance.changes.views import ChangesTicketsViewSet, ChangesUsersViewSet, ChangesViewSet, RecurrentchangesViewSet
+from assistance.tasks.views import CrontasklogsViewSet, CrontasksViewSet, ProjecttasksTicketsViewSet, TickettasksViewSet
+from assistance.tickets.views import GroupsTicketsViewSet, ItemsTicketsViewSet, OlalevelsTicketsViewSet, ProblemsTicketsViewSet, SlalevelsTicketsViewSet, SuppliersTicketsViewSet, TicketcostsViewSet, TicketrecurrentsViewSet, TicketsContractsViewSet, TicketsTicketsViewSet, TicketsUsersViewSet, TicketsViewSet, TicketsatisfactionsViewSet, TickettemplatehiddenfieldsViewSet, TickettemplatemandatoryfieldsViewSet, TickettemplatepredefinedfieldsViewSet, TickettemplatesViewSet, TicketvalidationsViewSet
 from .views import *
+
 
 router=DefaultRouter()
 router.register(r'changestickets', ChangesTicketsViewSet, basename='changestickets')
