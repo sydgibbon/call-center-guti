@@ -1,7 +1,7 @@
 
 from rest_framework import serializers  # import de serializers
 from assets.models import Cables, Cabletypes, Cablestrands, Sockets, Socketmodels, States, Users
-from assets.generals.serializers import EntitiesSerializer
+from assets.generics.serializers import EntitiesSerializer
 from assets.states.serializers import StatesSerializer
 from assets.users.serializers import UsersSerializer
 

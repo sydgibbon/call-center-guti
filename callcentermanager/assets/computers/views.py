@@ -75,6 +75,7 @@ class GetComputersViewSet(viewsets.ModelViewSet):
     queryset = Computers.objects.all()
     serializer_class = GetComputersSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
     
 class ComputersViewSet(viewsets.ModelViewSet):
     queryset = Computers.objects.all()

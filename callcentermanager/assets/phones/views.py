@@ -49,6 +49,7 @@ class GetPhonesViewSet(viewsets.ModelViewSet):
     queryset = Phones.objects.all()
     serializer_class = GetPhonesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
 
 class PhonesViewSet(viewsets.ModelViewSet):
     queryset = Phones.objects.all()

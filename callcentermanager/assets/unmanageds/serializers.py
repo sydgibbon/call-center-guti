@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from assets.autoupdatesystems.serializers import AutoupdatesystemsSerializer
-from assets.generals.serializers import EntitiesSerializer
+from assets.generics.serializers import EntitiesSerializer
 from assets.groups.serializers import GroupsSerializer
 from assets.locations.serializers import LocationsSerializer
 from assets.manufacturers.serializers import ManufacturersSerializer
