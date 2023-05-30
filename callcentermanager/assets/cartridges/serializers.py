@@ -68,3 +68,8 @@ class CartridgesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cartridges
         fields = '__all__'
+
+class GetCartridgeitemsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cartridgeitems
+        fields = ['id', 'name']

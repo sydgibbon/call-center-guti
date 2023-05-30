@@ -1,4 +1,4 @@
-from assets.printers.serializers import GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintertypesSelectSerializer, GetPrintersCountSerializer
+from assets.printers.serializers import GetPrintersListSerializer, GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintertypesSelectSerializer, GetPrintersCountSerializer
 from assets.models import Printers, Printermodels, Printertypes
 from rest_framework import viewsets  # import de ViewSets
 from assets.printers.serializers import GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintersSerializer, GetPrintertypesSelectSerializer, PrintermodelsSerializer, PrintersCartridgeinfosSerializer, PrintersSerializer, PrintertypesSerializer
@@ -104,3 +104,12 @@ class PrintersCartridgeinfosViewSet(viewsets.ModelViewSet):
             queryset = PrintersCartridgeinfos.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class GetPrintersListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        printers = GetPrintersListSerializer(Printers.objects.all(), many=True)
+
+        return Response(printers.data)

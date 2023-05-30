@@ -59,5 +59,7 @@ class GetConsumableitemsSerializer(serializers.ModelSerializer):
         model = Consumableitems
         fields = ['id', 'name' , 'ref', 'manufacturers', 'locations', 'consumableitemtypes']
 
-
-
+class GetConsumableitemsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Consumableitems
+        fields = ['id', 'name']

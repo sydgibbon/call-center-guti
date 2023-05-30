@@ -144,3 +144,8 @@ class GetComputersSerializer(serializers.ModelSerializer):
         model = Computers
         fields = ['id', 'name', 'states', 'manufacturers', 'serial', 'computertypes', 'computermodels',
                   'operatingsystems', 'locations', 'date_mod', 'processors']
+
+class GetComputersListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Computers
+        fields = ['id', 'name']

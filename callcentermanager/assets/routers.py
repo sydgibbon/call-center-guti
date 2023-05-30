@@ -238,3 +238,12 @@ router.register(r'getComputersByManufacturers', computers.GetComputersCountByMan
 router.register(r'getComputersByComputertypes', computers.GetComputersCountByComputertypesViewSet, basename='getComputersByComputertypes')
 router.register(r'getNetworkequipmentsByManufacturers', networks.GetNetworkequipmentsCountByManufacturersViewSet, basename='getNetworkequipmentsByManufacturers')
 router.register(r'getMonitorsByManufacturers', monitors.GetMonitorsCountByManufacturersViewSet, basename='getMonitorsByManufacturers')
+
+# Asset Lists
+router.register(r'getComputersList', computers.GetComputersListViewSet, basename='getComputersList')
+router.register(r'getMonitorsList', monitors.GetMonitorsListViewSet, basename='getMonitorsList')
+router.register(r'getSoftwaresList', softwares.GetSoftwaresListViewSet, basename='getSoftwaresList')
+router.register(r'getNetworkequipmentsList', networkequipments.GetNetworkequipmentsListViewSet, basename='getNetworkequipmentsList')
+router.register(r'getPrintersList', printers.GetPrintersListViewSet, basename='getPrintersList')
+router.register(r'getCartridgeitemsList', cartridges.GetCartridgeitemsListViewSet, basename='getCartridgeitemsList')
+router.register(r'getConsumableitemsList', consumableitems.GetConsumableitemsListViewSet, basename='getConsumableitemsList')

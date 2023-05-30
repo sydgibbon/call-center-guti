@@ -102,3 +102,8 @@ class GetMonitorsSerializer(serializers.ModelSerializer):
         model = Monitors
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'monitortypes', 'monitormodels', 
                   'date_mod', 'contact']
+
+class GetMonitorsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Monitors
+        fields = ['id', 'name']

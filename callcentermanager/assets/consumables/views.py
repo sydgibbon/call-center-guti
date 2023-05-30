@@ -1,4 +1,4 @@
-from assets.consumables.serializers import ConsumableitemsSerializer, ConsumableitemtypesSerializer, ConsumablesSerializer, GetConsumableitemsSerializer, GetConsumableitemtypesSelectSerializer
+from assets.consumables.serializers import ConsumableitemsSerializer, ConsumableitemtypesSerializer, ConsumablesSerializer, GetConsumableitemsSerializer, GetConsumableitemtypesSelectSerializer, GetConsumableitemsListSerializer
 from assets.models import Consumableitems, Consumableitemtypes, Consumables
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -62,3 +62,12 @@ class GetConsumableitemsViewSet(viewsets.ModelViewSet):
     serializer_class = GetConsumableitemsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
+
+class GetConsumableitemsListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        consumableitems = GetConsumableitemsListSerializer(Consumableitems.objects.all(), many=True)
+
+        return Response(consumableitems.data)
