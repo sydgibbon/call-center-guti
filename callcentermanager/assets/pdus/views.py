@@ -1,4 +1,4 @@
-from assets.pdus.serializers import GetPdusSerializer, GetPdutypesSelectSerializer, GetPdumodelsSelectSerializer, PdumodelsSerializer, PdusPlugsSerializer, PdusRacksSerializer, PdusSerializer, PdutypesSerializer
+from assets.pdus.serializers import GetPdusListSerializer, GetPdusSerializer, GetPdutypesSelectSerializer, GetPdumodelsSelectSerializer, PdumodelsSerializer, PdusPlugsSerializer, PdusRacksSerializer, PdusSerializer, PdutypesSerializer
 from assets.models import Pdus, PdusPlugs, PdusRacks, Pdutypes, Pdumodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -130,3 +130,12 @@ class PdusRacksViewSet(viewsets.ModelViewSet):
             queryset = PdusRacks.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class GetPdusListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        pdus = GetPdusListSerializer(Pdus.objects.all(), many=True)
+
+        return Response(pdus.data)

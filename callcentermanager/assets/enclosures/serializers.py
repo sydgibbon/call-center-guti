@@ -53,3 +53,8 @@ class GetEnclosuresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enclosures
         fields = ['id', 'name']
+
+class GetEnclosuresListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Enclosures
+        fields = ['id', 'name']

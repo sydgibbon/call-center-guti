@@ -1,4 +1,4 @@
-from assets.phones.serializers import GetPhonesSelectSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, GetPhonesCountSerializer
+from assets.phones.serializers import GetPhonesListSerializer, GetPhonesSelectSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, GetPhonesCountSerializer
 from assets.phones.serializers import GetPhonesSelectSerializer, GetPhonesSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, PhonemodelsSerializer, PhonepowersuppliesSerializer, PhonesSerializer, PhonetypesSerializer
 from assets.models import Phones, Phonetypes, Phonemodels, Phonepowersupplies
 from rest_framework import viewsets, status  # import de ViewSets
@@ -110,3 +110,12 @@ class PhonetypesViewSet(viewsets.ModelViewSet):
             queryset = Phonetypes.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class GetPhonesListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        phones = GetPhonesListSerializer(Phones.objects.all(), many=True)
+
+        return Response(phones.data)

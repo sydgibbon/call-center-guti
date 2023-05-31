@@ -1,4 +1,4 @@
-from assets.passivedcequipments.serializers import GetPassivedcequipmentsSelectSerializer, GetPassivedcequipmentsSerializer, GetPassivedcequipmenttypesSelectSerializer, GetPassivedcequipmentmodelsSelectSerializer, PassivedcequipmentmodelsSerializer, PassivedcequipmentsSerializer, PassivedcequipmenttypesSerializer
+from assets.passivedcequipments.serializers import GetPassivedcequipmentsListSerializer, GetPassivedcequipmentsSelectSerializer, GetPassivedcequipmentsSerializer, GetPassivedcequipmenttypesSelectSerializer, GetPassivedcequipmentmodelsSelectSerializer, PassivedcequipmentmodelsSerializer, PassivedcequipmentsSerializer, PassivedcequipmenttypesSerializer
 from assets.models import Passivedcequipments, Passivedcequipmenttypes, Passivedcequipmentmodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -78,3 +78,12 @@ class PassivedcequipmentmodelsViewSet(viewsets.ModelViewSet):
             queryset = Passivedcequipmentmodels.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class GetPassivedcequipmentsListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        passivedcequipments = GetPassivedcequipmentsListSerializer(Passivedcequipments.objects.all(), many=True)
+
+        return Response(passivedcequipments.data)

@@ -31,3 +31,8 @@ class UnmanagedsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Unmanageds
         fields = '__all__'
+
+class GetUnmanagedsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Unmanageds
+        fields = ['id', 'name']
