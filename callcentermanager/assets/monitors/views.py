@@ -1,4 +1,4 @@
-from assets.monitors.serializers import GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, GetMonitorsCountSerializer, GetMonitorsCountByManufacturersSerializer
+from assets.monitors.serializers import GetMonitorsListSerializer, GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, GetMonitorsCountSerializer, GetMonitorsCountByManufacturersSerializer
 from assets.models import Monitortypes, Monitormodels, Monitors
 from rest_framework import viewsets  # import de ViewSets
 from assets.monitors.serializers import GetMonitorsSerializer, GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, MonitormodelsSerializer, MonitorsSerializer, MonitortypesSerializer
@@ -94,3 +94,11 @@ class MonitortypesViewSet(viewsets.ModelViewSet):
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
+class GetMonitorsListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        monitors = GetMonitorsListSerializer(Monitors.objects.all(), many=True)
+
+        return Response(monitors.data)

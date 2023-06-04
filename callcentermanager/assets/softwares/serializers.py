@@ -111,3 +111,8 @@ class GetSoftwaresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwares
         fields = ['id', 'name', 'manufacturers', 'softwareversions', 'operatingsystems', 'installations', 'softwarelicenses']
+
+class GetSoftwaresListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Softwares
+        fields = ['id', 'name']

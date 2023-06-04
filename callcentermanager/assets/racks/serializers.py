@@ -73,3 +73,8 @@ class RacksSerializer(serializers.ModelSerializer):
     class Meta:
         model = Racks
         fields = '__all__'
+
+class GetRacksListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Racks
+        fields = ['id', 'name']

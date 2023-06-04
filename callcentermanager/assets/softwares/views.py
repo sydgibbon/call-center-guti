@@ -1,4 +1,4 @@
-from assets.softwares.serializers import GetSoftwarecategoriesSelectSerializer, GetSoftwaresCountSerializer, GetSoftwarelicensesCountSerializer
+from assets.softwares.serializers import GetSoftwarecategoriesSelectSerializer, GetSoftwaresCountSerializer, GetSoftwarelicensesCountSerializer, GetSoftwaresListSerializer
 from assets.models import Softwarecategories, Softwares, Softwarelicenses
 from rest_framework import viewsets  # import de ViewSets
 from assets.softwares.serializers import GetSoftwarecategoriesSelectSerializer, GetSoftwaresSerializer, SoftwarecategoriesSerializer, SoftwarelicensesSerializer, SoftwaresSerializer, SoftwareversionsSerializer
@@ -100,3 +100,12 @@ class SoftwareversionsViewSet(viewsets.ModelViewSet):
             queryset = Softwareversions.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class GetSoftwaresListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        softwares = GetSoftwaresListSerializer(Softwares.objects.all(), many=True)
+
+        return Response(softwares.data)

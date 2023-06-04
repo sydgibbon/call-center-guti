@@ -1,4 +1,4 @@
-from assets.networkequipments.serializers import GetNetworkequipmentsSelectSerializer, GetNetworkequipmentsSerializer, GetNetworkequipmenttypesSelectSerializer, GetNetworkequipmentmodelsSelectSerializer, NetworkequipmentmodelsSerializer, NetworkequipmentsSerializer, NetworkequipmenttypesSerializer
+from assets.networkequipments.serializers import GetNetworkequipmentsListSerializer, GetNetworkequipmentsSelectSerializer, GetNetworkequipmentsSerializer, GetNetworkequipmenttypesSelectSerializer, GetNetworkequipmentmodelsSelectSerializer, NetworkequipmentmodelsSerializer, NetworkequipmentsSerializer, NetworkequipmenttypesSerializer
 from assets.models import Networkequipments, Networkequipmenttypes, Networkequipmentmodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -78,3 +78,13 @@ class NetworkequipmenttypesViewSet(viewsets.ModelViewSet):
             queryset = Networkequipmenttypes.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    
+class GetNetworkequipmentsListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        networkequipments = GetNetworkequipmentsListSerializer(Networkequipments.objects.all(), many=True)
+
+        return Response(networkequipments.data)

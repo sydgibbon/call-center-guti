@@ -102,3 +102,8 @@ class GetNetworkequipmentsSerializer(serializers.ModelSerializer):
         model = Networkequipments
         fields = ['id', 'name', 'states', 'manufacturers', 'locations', 'networkequipmenttypes', 'networkequipmentmodels',
                   'devicefirmwares', 'date_mod']
+
+class GetNetworkequipmentsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Networkequipments
+        fields = ['id', 'name']

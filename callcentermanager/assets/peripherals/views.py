@@ -1,4 +1,4 @@
-from assets.peripherals.serializers import GetPeripheralsSelectSerializer, GetPeripheraltypesSelectSerializer, GetPeripheralmodelsSelectSerializer, PeripheralmodelsSerializer, PeripheralsSerializer, GetPeripheralsSerializer, PeripheraltypesSerializer
+from assets.peripherals.serializers import GetPeripheralsListSerializer, GetPeripheralsSelectSerializer, GetPeripheraltypesSelectSerializer, GetPeripheralmodelsSelectSerializer, PeripheralmodelsSerializer, PeripheralsSerializer, GetPeripheralsSerializer, PeripheraltypesSerializer
 from assets.models import Peripherals, Peripheraltypes, Peripheralmodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -83,3 +83,12 @@ class PeripheraltypesViewSet(viewsets.ModelViewSet):
             queryset = Peripheraltypes.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class GetPeripheralsListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        peripherals = GetPeripheralsListSerializer(Peripherals.objects.all(), many=True)
+
+        return Response(peripherals.data)

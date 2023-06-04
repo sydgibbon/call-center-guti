@@ -1,4 +1,4 @@
-from assets.racks.serializers import GetRacktypesSelectSerializer, GetRackmodelsSelectSerializer, GetDcroomsSelectSerializer, GetRacksCountSerializer
+from assets.racks.serializers import GetRacksListSerializer, GetRacktypesSelectSerializer, GetRackmodelsSelectSerializer, GetDcroomsSelectSerializer, GetRacksCountSerializer
 from assets.models import Racktypes, Rackmodels, Dcrooms, Racks
 from rest_framework import viewsets  # import de ViewSets
 from assets.racks.serializers import DcroomsSerializer, GetRacksSerializer, GetRacktypesSelectSerializer, GetRackmodelsSelectSerializer, GetDcroomsSelectSerializer, ItemsRacksSerializer, RackmodelsSerializer, RacksSerializer, RacktypesSerializer
@@ -119,3 +119,12 @@ class GetRacksViewSet(viewsets.ModelViewSet):
     serializer_class = GetRacksSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
+
+class GetRacksListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        racks = GetRacksListSerializer(Racks.objects.all(), many=True)
+
+        return Response(racks.data)

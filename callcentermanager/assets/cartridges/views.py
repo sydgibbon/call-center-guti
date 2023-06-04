@@ -1,4 +1,4 @@
-from assets.cartridges.serializers import CartridgeitemsPrintermodelsSerializer, CartridgeitemsSerializer, CartridgeitemtypesSerializer, CartridgesSerializer, GetCartridgeItemsSerializer, GetCartridgeitemtypesSelectSerializer
+from assets.cartridges.serializers import CartridgeitemsPrintermodelsSerializer, CartridgeitemsSerializer, CartridgeitemtypesSerializer, CartridgesSerializer, GetCartridgeItemsSerializer, GetCartridgeitemsListSerializer, GetCartridgeitemtypesSelectSerializer
 from assets.models import Cartridgeitems, CartridgeitemsPrintermodels, Cartridgeitemtypes, Cartridges
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -79,3 +79,12 @@ class GetCartridgeItemsViewSet(viewsets.ModelViewSet):
     serializer_class = GetCartridgeItemsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
+
+class GetCartridgeitemsListViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request, format=None):
+        cartridgeitems = GetCartridgeitemsListSerializer(Cartridgeitems.objects.all(), many=True)
+
+        return Response(cartridgeitems.data)
