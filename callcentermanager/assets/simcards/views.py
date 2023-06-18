@@ -1,4 +1,4 @@
-from assets.simcards.serializers import DevicesimcardsSerializer, DevicesimcardtypesSerializer, GetDevicesimcardsListSerializer, GetDevicesimcardsSelectSerializer, GetDevicesimcardsSerializer, GetLinesSelectSerializer, ItemsDevicesimcardsSerializer
+from assets.simcards.serializers import CreateDevicesimcardSerializer, DevicesimcardsSerializer, DevicesimcardtypesSerializer, GetDevicesimcardsListSerializer, GetDevicesimcardsSelectSerializer, GetDevicesimcardsSerializer, GetLinesSelectSerializer, ItemsDevicesimcardsSerializer
 from assets.models import Devicesimcards, Devicesimcardtypes, ItemsDevicesimcards, Lines
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -79,3 +79,15 @@ class GetDevicesimcardsListViewSet(viewsets.ViewSet):
         devicesimcards = GetDevicesimcardsListSerializer(Devicesimcards.objects.all(), many=True)
 
         return Response(devicesimcards.data)
+    
+class CreateDevicesimcardViewSet(viewsets.GenericViewSet):
+    queryset=Devicesimcards.objects.all()
+    serializer_class = CreateDevicesimcardSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

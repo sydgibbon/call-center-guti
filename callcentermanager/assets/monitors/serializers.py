@@ -107,3 +107,10 @@ class GetMonitorsListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Monitors
         fields = ['id', 'name']
+
+        
+class CreateMonitorSerializer(serializers.ModelSerializer):
+
+    class Meta:  # Clase meta para configurar el serializer
+        model = Monitors  # Especificar el nombre del Model
+        fields = '__all__'  # Para todos los atributos del model

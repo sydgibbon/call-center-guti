@@ -1,4 +1,4 @@
-from assets.cables.serializers import CablesSerializer, CablestrandsSerializer, CabletypesSerializer, GetCablesListSerializer, GetCablesSerializer, GetCabletypesSelectSerializer, GetCablestrandsSelectSerializer, GetSocketsSelectSerializer, GetSocketmodelsSelectSerializer
+from assets.cables.serializers import CablesSerializer, CablestrandsSerializer, CabletypesSerializer, CreateCableSerializer, GetCablesListSerializer, GetCablesSerializer, GetCabletypesSelectSerializer, GetCablestrandsSelectSerializer, GetSocketsSelectSerializer, GetSocketmodelsSelectSerializer
 from assets.models import Cables, Cabletypes, Cablestrands, Sockets, Socketmodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -95,3 +95,15 @@ class GetCablesListViewSet(viewsets.ViewSet):
         cables = GetCablesListSerializer(Cables.objects.all(), many=True)
 
         return Response(cables.data)
+    
+class CreateCableViewSet(viewsets.GenericViewSet):
+    queryset=Cables.objects.all()
+    serializer_class = CreateCableSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

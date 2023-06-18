@@ -1,4 +1,4 @@
-from assets.networkequipments.serializers import GetNetworkequipmentsListSerializer, GetNetworkequipmentsSelectSerializer, GetNetworkequipmentsSerializer, GetNetworkequipmenttypesSelectSerializer, GetNetworkequipmentmodelsSelectSerializer, NetworkequipmentmodelsSerializer, NetworkequipmentsSerializer, NetworkequipmenttypesSerializer
+from assets.networkequipments.serializers import CreateNetworkequipmentSerializer, GetNetworkequipmentsListSerializer, GetNetworkequipmentsSelectSerializer, GetNetworkequipmentsSerializer, GetNetworkequipmenttypesSelectSerializer, GetNetworkequipmentmodelsSelectSerializer, NetworkequipmentmodelsSerializer, NetworkequipmentsSerializer, NetworkequipmenttypesSerializer
 from assets.models import Networkequipments, Networkequipmenttypes, Networkequipmentmodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -88,3 +88,15 @@ class GetNetworkequipmentsListViewSet(viewsets.ViewSet):
         networkequipments = GetNetworkequipmentsListSerializer(Networkequipments.objects.all(), many=True)
 
         return Response(networkequipments.data)
+
+class CreateNetworkequipmentViewSet(viewsets.GenericViewSet):
+    queryset=Networkequipments.objects.all()
+    serializer_class = CreateNetworkequipmentSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -1,4 +1,4 @@
-from assets.monitors.serializers import GetMonitorsListSerializer, GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, GetMonitorsCountSerializer, GetMonitorsCountByManufacturersSerializer
+from assets.monitors.serializers import CreateMonitorSerializer, GetMonitorsListSerializer, GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, GetMonitorsCountSerializer, GetMonitorsCountByManufacturersSerializer
 from assets.models import Monitortypes, Monitormodels, Monitors
 from rest_framework import viewsets  # import de ViewSets
 from assets.monitors.serializers import GetMonitorsSerializer, GetMonitortypesSelectSerializer, GetMonitormodelsSelectSerializer, MonitormodelsSerializer, MonitorsSerializer, MonitortypesSerializer
@@ -102,3 +102,15 @@ class GetMonitorsListViewSet(viewsets.ViewSet):
         monitors = GetMonitorsListSerializer(Monitors.objects.all(), many=True)
 
         return Response(monitors.data)
+    
+class CreateMonitorViewSet(viewsets.GenericViewSet):
+    queryset=Monitors.objects.all()
+    serializer_class = CreateMonitorSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

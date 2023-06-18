@@ -50,3 +50,8 @@ class GetDevicesimcardsListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Devicesimcards
         fields = ['id', 'name']
+        
+class CreateDevicesimcardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devicesimcards
+        fields = '__all__'

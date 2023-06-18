@@ -1,4 +1,4 @@
-from assets.softwares.serializers import GetSoftwarecategoriesSelectSerializer, GetSoftwaresCountSerializer, GetSoftwarelicensesCountSerializer, GetSoftwaresListSerializer
+from assets.softwares.serializers import CreateSoftwareSerializer, GetSoftwarecategoriesSelectSerializer, GetSoftwaresCountSerializer, GetSoftwarelicensesCountSerializer, GetSoftwaresListSerializer
 from assets.models import Softwarecategories, Softwares, Softwarelicenses
 from rest_framework import viewsets  # import de ViewSets
 from assets.softwares.serializers import GetSoftwarecategoriesSelectSerializer, GetSoftwaresSerializer, SoftwarecategoriesSerializer, SoftwarelicensesSerializer, SoftwaresSerializer, SoftwareversionsSerializer
@@ -109,3 +109,15 @@ class GetSoftwaresListViewSet(viewsets.ViewSet):
         softwares = GetSoftwaresListSerializer(Softwares.objects.all(), many=True)
 
         return Response(softwares.data)
+
+class CreateSoftwareViewSet(viewsets.GenericViewSet):
+    queryset=Softwares.objects.all()
+    serializer_class = CreateSoftwareSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

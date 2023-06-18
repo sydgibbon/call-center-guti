@@ -56,3 +56,8 @@ class GetPassivedcequipmentsListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Passivedcequipments
         fields = ['id', 'name']
+
+class CreatePassivedcequipmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Passivedcequipments
+        fields = '__all__'

@@ -1,4 +1,4 @@
-from assets.cartridges.serializers import CartridgeitemsPrintermodelsSerializer, CartridgeitemsSerializer, CartridgeitemtypesSerializer, CartridgesSerializer, GetCartridgeItemsSerializer, GetCartridgeitemsListSerializer, GetCartridgeitemtypesSelectSerializer
+from assets.cartridges.serializers import CartridgeitemsPrintermodelsSerializer, CartridgeitemsSerializer, CartridgeitemtypesSerializer, CartridgesSerializer, CreateCartridgeitemSerializer, GetCartridgeItemsSerializer, GetCartridgeitemsListSerializer, GetCartridgeitemtypesSelectSerializer
 from assets.models import Cartridgeitems, CartridgeitemsPrintermodels, Cartridgeitemtypes, Cartridges
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -88,3 +88,16 @@ class GetCartridgeitemsListViewSet(viewsets.ViewSet):
         cartridgeitems = GetCartridgeitemsListSerializer(Cartridgeitems.objects.all(), many=True)
 
         return Response(cartridgeitems.data)
+    
+    
+class CreateCartridgeitemViewSet(viewsets.GenericViewSet):
+    queryset=Cartridgeitems.objects.all()
+    serializer_class = CreateCartridgeitemSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

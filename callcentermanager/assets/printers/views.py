@@ -1,4 +1,4 @@
-from assets.printers.serializers import GetPrintersListSerializer, GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintertypesSelectSerializer, GetPrintersCountSerializer
+from assets.printers.serializers import CreatePrinterSerializer, GetPrintersListSerializer, GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintertypesSelectSerializer, GetPrintersCountSerializer
 from assets.models import Printers, Printermodels, Printertypes
 from rest_framework import viewsets  # import de ViewSets
 from assets.printers.serializers import GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintersSerializer, GetPrintertypesSelectSerializer, PrintermodelsSerializer, PrintersCartridgeinfosSerializer, PrintersSerializer, PrintertypesSerializer
@@ -113,3 +113,15 @@ class GetPrintersListViewSet(viewsets.ViewSet):
         printers = GetPrintersListSerializer(Printers.objects.all(), many=True)
 
         return Response(printers.data)
+
+class CreatePrinterViewSet(viewsets.GenericViewSet):
+    queryset=Printers.objects.all()
+    serializer_class = CreatePrinterSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

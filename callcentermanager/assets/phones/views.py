@@ -1,4 +1,4 @@
-from assets.phones.serializers import GetPhonesListSerializer, GetPhonesSelectSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, GetPhonesCountSerializer
+from assets.phones.serializers import CreatePhoneSerializer, GetPhonesListSerializer, GetPhonesSelectSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, GetPhonesCountSerializer
 from assets.phones.serializers import GetPhonesSelectSerializer, GetPhonesSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, PhonemodelsSerializer, PhonepowersuppliesSerializer, PhonesSerializer, PhonetypesSerializer
 from assets.models import Phones, Phonetypes, Phonemodels, Phonepowersupplies
 from rest_framework import viewsets, status  # import de ViewSets
@@ -119,3 +119,15 @@ class GetPhonesListViewSet(viewsets.ViewSet):
         phones = GetPhonesListSerializer(Phones.objects.all(), many=True)
 
         return Response(phones.data)
+    
+class CreatePhoneViewSet(viewsets.GenericViewSet):
+    queryset=Phones.objects.all()
+    serializer_class = CreatePhoneSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -116,3 +116,8 @@ class GetSoftwaresListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwares
         fields = ['id', 'name']
+
+class CreateSoftwareSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Softwares
+        fields = '__all__'

@@ -1,4 +1,4 @@
-from assets.enclosures.serializers import GetEnclosuremodelsSelectSerializer, GetEnclosuresCountSerializer, GetEnclosuresListSerializer
+from assets.enclosures.serializers import CreateEnclosureSerializer, GetEnclosuremodelsSelectSerializer, GetEnclosuresCountSerializer, GetEnclosuresListSerializer
 from assets.models import Enclosuremodels, Enclosures
 from rest_framework import viewsets  # import de ViewSets
 from assets.enclosures.serializers import EnclosuremodelsSerializer, EnclosuresSerializer, GetEnclosuremodelsSelectSerializer, GetEnclosuresSerializer, ItemsEnclosuresSerializer
@@ -83,3 +83,15 @@ class GetEnclosuresListViewSet(viewsets.ViewSet):
         enclosures = GetEnclosuresListSerializer(Enclosures.objects.all(), many=True)
 
         return Response(enclosures.data)
+    
+class CreateEnclosureViewSet(viewsets.GenericViewSet):
+    queryset=Enclosures.objects.all()
+    serializer_class = CreateEnclosureSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

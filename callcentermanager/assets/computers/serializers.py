@@ -77,8 +77,6 @@ class ComputersSerializer(serializers.ModelSerializer):
     autoupdatesystems = AutoupdatesystemsSerializer(required=False)
     users = UsersSerializer(required=False)
     groups = GroupsSerializer(required=False)
-    users_tech = UsersSerializer(required=False)
-    groups_tech = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
     # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
@@ -87,6 +85,11 @@ class ComputersSerializer(serializers.ModelSerializer):
         model = Computers  # Especificar el nombre del Model
         fields = '__all__'  # Para todos los atributos del model
 
+class CreateComputerSerializer(serializers.ModelSerializer):
+
+    class Meta:  # Clase meta para configurar el serializer
+        model = Computers  # Especificar el nombre del Model
+        fields = '__all__'  # Para todos los atributos del model
 
 class GetComputersSerializer(serializers.ModelSerializer):
     states = serializers.SerializerMethodField()

@@ -107,3 +107,9 @@ class GetNetworkequipmentsListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Networkequipments
         fields = ['id', 'name']
+
+class CreateNetworkequipmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Networkequipments
+        fields = '__all__'
+

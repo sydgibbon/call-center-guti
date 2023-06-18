@@ -1,4 +1,4 @@
-from assets.pdus.serializers import GetPdusListSerializer, GetPdusSerializer, GetPdutypesSelectSerializer, GetPdumodelsSelectSerializer, PdumodelsSerializer, PdusPlugsSerializer, PdusRacksSerializer, PdusSerializer, PdutypesSerializer
+from assets.pdus.serializers import CreatePduSerializer, GetPdusListSerializer, GetPdusSerializer, GetPdutypesSelectSerializer, GetPdumodelsSelectSerializer, PdumodelsSerializer, PdusPlugsSerializer, PdusRacksSerializer, PdusSerializer, PdutypesSerializer
 from assets.models import Pdus, PdusPlugs, PdusRacks, Pdutypes, Pdumodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -139,3 +139,15 @@ class GetPdusListViewSet(viewsets.ViewSet):
         pdus = GetPdusListSerializer(Pdus.objects.all(), many=True)
 
         return Response(pdus.data)
+
+class CreatePduViewSet(viewsets.GenericViewSet):
+    queryset=Pdus.objects.all()
+    serializer_class = CreatePduSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

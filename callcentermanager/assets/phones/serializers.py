@@ -117,3 +117,8 @@ class GetPhonesListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Phones
         fields = ['id', 'name']
+        
+class CreatePhoneSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Phones
+        fields = '__all__'

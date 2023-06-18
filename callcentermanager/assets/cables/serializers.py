@@ -75,3 +75,8 @@ class GetCablesListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cables
         fields = ['id', 'name']
+        
+class CreateCableSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cables
+        fields = '__all__'

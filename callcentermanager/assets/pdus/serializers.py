@@ -88,3 +88,8 @@ class GetPdusListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdus
         fields = ['id', 'name']
+
+class CreatePduSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pdus
+        fields = '__all__'

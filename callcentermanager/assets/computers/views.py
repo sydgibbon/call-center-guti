@@ -1,4 +1,5 @@
-from assets.computers.serializers import GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer, GetComputersCountByStatesSerializer, GetComputersCountByManufacturersSerializer, GetComputersCountByComputertypesSerializer, GetComputersListSerializer
+from asyncio import mixins
+from assets.computers.serializers import CreateComputerSerializer, GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer, GetComputersCountByStatesSerializer, GetComputersCountByManufacturersSerializer, GetComputersCountByComputertypesSerializer, GetComputersListSerializer
 from assets.models import Computers, Computertypes, Computermodels
 from rest_framework import viewsets  # import de ViewSets
 from assets.computers.serializers import ComputermodelsSerializer, ComputersItemsSerializer, ComputersSerializer, ComputertypesSerializer, GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersSerializer, OperatingsystemsSerializer
@@ -81,6 +82,7 @@ class ComputersViewSet(viewsets.ModelViewSet):
     queryset = Computers.objects.all()
     serializer_class = ComputersSerializer
     permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get','delete']
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
@@ -91,6 +93,18 @@ class ComputersViewSet(viewsets.ModelViewSet):
             queryset = Computers.objects.filter(id__in=ids)
             queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class CreateComputerViewSet(viewsets.GenericViewSet):
+    queryset=Computers.objects.all()
+    serializer_class = CreateComputerSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 class ComputermodelsViewSet(viewsets.ModelViewSet):
     queryset = Computermodels.objects.all()
