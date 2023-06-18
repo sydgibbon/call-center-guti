@@ -77,6 +77,8 @@ class ComputersSerializer(serializers.ModelSerializer):
     autoupdatesystems = AutoupdatesystemsSerializer(required=False)
     users = UsersSerializer(required=False)
     groups = GroupsSerializer(required=False)
+    users_tech = UsersSerializer(required=False)
+    groups_tech = GroupsSerializer(required=False)
     states = StatesSerializer(required=False)
     manufacturers = ManufacturersSerializer(required=False)
     # clase serializer con forma [NombreDeModel]Serializer(serializers.ModelSerializer)
