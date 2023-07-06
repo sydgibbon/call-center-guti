@@ -4,3 +4,4 @@ PyMySQL==1.0.2
 pyyaml
 uritemplate
 django-cors-headers
+djangorestframework-simplejwt
