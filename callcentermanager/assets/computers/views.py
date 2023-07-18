@@ -1,7 +1,6 @@
 from asyncio import mixins
-from assets.computers.serializers import CreateComputerSerializer, GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer, GetComputersCountByStatesSerializer, GetComputersCountByManufacturersSerializer, GetComputersCountByComputertypesSerializer, GetComputersListSerializer
+from assets.computers.serializers import CreateComputerSerializer, GetComputersByIdSerializer, GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer, GetComputersCountByStatesSerializer, GetComputersCountByManufacturersSerializer, GetComputersCountByComputertypesSerializer, GetComputersListSerializer
 from assets.models import Computers, Computertypes, Computermodels
-from rest_framework import viewsets  # import de ViewSets
 from assets.computers.serializers import ComputermodelsSerializer, ComputersItemsSerializer, ComputersSerializer, ComputertypesSerializer, GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersSerializer, OperatingsystemsSerializer
 from assets.models import Computers, ComputersItems, Computertypes, Computermodels, Operatingsystems, States
 from rest_framework import viewsets, status  # import de ViewSets
@@ -174,3 +173,17 @@ class GetComputersListViewSet(viewsets.ViewSet):
         computers = GetComputersListSerializer(Computers.objects.all(), many=True)
 
         return Response(computers.data)
+
+class GetComputersByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+
+    def retrieve(self, request, pk=None):
+        try:
+            computer = Computers.objects.get(id=pk)
+        except Computers.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetComputersByIdSerializer(computer)
+        return Response(serializer.data)

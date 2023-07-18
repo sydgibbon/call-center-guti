@@ -154,3 +154,73 @@ class GetComputersListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Computers
         fields = ['id', 'name']
+
+class GetComputersByIdSerializer(serializers.ModelSerializer):
+    states = serializers.SerializerMethodField()
+    manufacturers = serializers.SerializerMethodField()
+    computertypes = serializers.SerializerMethodField()
+    computermodels = serializers.SerializerMethodField()
+    operatingsystems = serializers.SerializerMethodField()
+    locations = serializers.SerializerMethodField()
+    date_mod = serializers.DateTimeField(format="%Y-%m-%d %H:%M")
+    processors = serializers.SerializerMethodField()
+
+    def get_states(self, obj):
+        states = States.objects.filter(id=obj.manufacturers_id)
+        if (states.count() > 0):
+            return States.objects.filter(id=obj.states_id)[0].name
+        return None
+
+    def get_manufacturers(self, obj):
+        manufacturers = Manufacturers.objects.filter(id=obj.manufacturers_id)
+        if (manufacturers.count() > 0):
+            return Manufacturers.objects.filter(id=obj.manufacturers_id)[0].name
+        return None
+
+    def get_computertypes(self, obj):
+        computers = Computers.objects.filter(id=obj.computertypes_id)
+        if (computers.count() > 0):
+            return Computertypes.objects.filter(id=obj.computertypes_id)[0].name
+        return None
+    
+    def get_computermodels(self, obj):
+        computermodels = Computermodels.objects.filter(id=obj.computermodels_id)
+        if (computermodels.count() > 0):
+            return Computermodels.objects.filter(id=obj.computermodels_id)[0].name
+        return None
+    
+    def get_operatingsystems(self, obj):
+        items_operatingsystems = ItemsOperatingsystems.objects.filter(items_id=obj.id, itemtype='Computer')
+        if (items_operatingsystems.count() > 0):
+            return Operatingsystems.objects.filter(id=items_operatingsystems[0].operatingsystems_id)[0].name
+        return None
+            
+    
+    def get_locations(self, obj):
+        locations = Locations.objects.filter(id=obj.locations_id)
+        if (locations.count() > 0):
+            return Locations.objects.filter(id=obj.locations_id)[0].name
+        return None
+    
+    def get_processors(self, obj):
+        items_deviceprocessors = ItemsDeviceprocessors.objects.filter(items_id=obj.id, itemtype='Computer')
+        print(items_deviceprocessors)
+        if (items_deviceprocessors.count() > 0):
+            return items_deviceprocessors.count()
+        return None
+    
+    class Meta:
+        model = Computers
+        fields = ['id', 'name', 'states', 'manufacturers', 'serial', 'computertypes', 'computermodels',
+                  'operatingsystems', 'locations', 'date_mod', 'processors']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Computers.objects.get(id=item_id)
+                self.instance = instance
+            except Computers.DoesNotExist:
+                pass
