@@ -178,10 +178,21 @@ class GetComputersByIdViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
         try:
             computer = Computers.objects.get(id=pk)
+        except Computers.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetComputersByIdSerializer(computer)
+        return Response(serializer.data)
+
+    def get_computer_by_id(self, request, computer_id=None):
+        try:
+            computer = Computers.objects.get(id=computer_id)
         except Computers.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 

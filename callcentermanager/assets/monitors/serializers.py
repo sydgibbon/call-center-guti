@@ -114,3 +114,20 @@ class CreateMonitorSerializer(serializers.ModelSerializer):
     class Meta:  # Clase meta para configurar el serializer
         model = Monitors  # Especificar el nombre del Model
         fields = '__all__'  # Para todos los atributos del model
+
+class GetMonitorsByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Monitors
+        fields = ['id', 'name', 'states', 'locations', 'monitortypes', 'manufacturers', 'users_tech', 'groups_tech', 'groups', 'monitormodels', 'contact_num', 'serial', 'contact', 'otherserial', 'users', 'is_global', 'uuid', 'comment', 'size', 'autoupdatesystems', 'have_micro', 'have_speaker', 'have_subd', 'have_bnc', 'have_dvi', 'have_pivot', 'have_hdmi', 'have_displayport']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Monitors.objects.get(id=item_id)
+                self.instance = instance
+            except Monitors.DoesNotExist:
+                pass

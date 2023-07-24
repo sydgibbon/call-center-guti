@@ -113,3 +113,19 @@ class CreateNetworkequipmentSerializer(serializers.ModelSerializer):
         model = Networkequipments
         fields = '__all__'
 
+class GetNetworkequipmentsByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Networkequipments
+        fields = ['id', 'name', 'states', 'locations', 'networkequipmenttypes', 'users_tech', 'manufacturers', 'groups_tech', 'networkequipmentmodels', 'contact_num', 'serial', 'contact', 'otherserial', 'sysdescr', 'snmpcredentials', 'users', 'networks', 'groups', 'uuid', 'comment', 'ram', 'autoupdatesystems']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Networkequipments.objects.get(id=item_id)
+                self.instance = instance
+            except Networkequipments.DoesNotExist:
+                pass

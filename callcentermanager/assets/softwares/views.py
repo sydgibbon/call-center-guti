@@ -1,7 +1,7 @@
 from assets.softwares.serializers import CreateSoftwareSerializer, GetSoftwarecategoriesSelectSerializer, GetSoftwaresCountSerializer, GetSoftwarelicensesCountSerializer, GetSoftwaresListSerializer
 from assets.models import Softwarecategories, Softwares, Softwarelicenses
 from rest_framework import viewsets  # import de ViewSets
-from assets.softwares.serializers import GetSoftwarecategoriesSelectSerializer, GetSoftwaresSerializer, SoftwarecategoriesSerializer, SoftwarelicensesSerializer, SoftwaresSerializer, SoftwareversionsSerializer
+from assets.softwares.serializers import GetSoftwarecategoriesSelectSerializer, GetSoftwaresSerializer, SoftwarecategoriesSerializer, SoftwarelicensesSerializer, SoftwaresSerializer, SoftwareversionsSerializer, GetSoftwaresByIdSerializer
 from assets.models import Softwarecategories, Softwarelicenses, Softwares, Softwareversions
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -121,3 +121,28 @@ class CreateSoftwareViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class GetSoftwaresByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            software = Softwares.objects.get(id=pk)
+        except Softwares.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetSoftwaresByIdSerializer(software)
+        return Response(serializer.data)
+
+    def get_software_by_id(self, request, software_id=None):
+        try:
+            software = Softwares.objects.get(id=software_id)
+        except Softwares.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetSoftwaresByIdSerializer(software)
+        return Response(serializer.data)

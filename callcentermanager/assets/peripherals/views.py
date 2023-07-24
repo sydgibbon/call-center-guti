@@ -1,4 +1,4 @@
-from assets.peripherals.serializers import CreatePeripheralSerializer, GetPeripheralsListSerializer, GetPeripheralsSelectSerializer, GetPeripheraltypesSelectSerializer, GetPeripheralmodelsSelectSerializer, PeripheralmodelsSerializer, PeripheralsSerializer, GetPeripheralsSerializer, PeripheraltypesSerializer
+from assets.peripherals.serializers import CreatePeripheralSerializer, GetPeripheralsListSerializer, GetPeripheralsSelectSerializer, GetPeripheraltypesSelectSerializer, GetPeripheralmodelsSelectSerializer, PeripheralmodelsSerializer, PeripheralsSerializer, GetPeripheralsSerializer, PeripheraltypesSerializer, GetPeripheralsByIdSerializer
 from assets.models import Peripherals, Peripheraltypes, Peripheralmodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -104,3 +104,28 @@ class CreatePeripheralViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+class GetPeripheralsByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            peripheral = Peripherals.objects.get(id=pk)
+        except Peripherals.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetPeripheralsByIdSerializer(peripheral)
+        return Response(serializer.data)
+
+    def get_peripheral_by_id(self, request, peripheral_id=None):
+        try:
+            peripheral = Peripherals.objects.get(id=peripheral_id)
+        except Peripherals.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetPeripheralsByIdSerializer(peripheral)
+        return Response(serializer.data)

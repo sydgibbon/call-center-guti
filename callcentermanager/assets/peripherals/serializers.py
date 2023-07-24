@@ -102,3 +102,20 @@ class CreatePeripheralSerializer(serializers.ModelSerializer):
     class Meta:
         model = Peripherals
         fields = '__all__'
+
+class GetPeripheralsByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Peripherals
+        fields = ['id', 'name', 'states', 'locations', 'peripheraltypes', 'users_tech', 'manufacturers', 'groups_tech', 'peripheralmodels', 'contact_num', 'serial', 'contact', 'otherserial', 'users', 'is_global', 'groups', 'uuid', 'comment', 'brand', 'autoupdatesystems']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Peripherals.objects.get(id=item_id)
+                self.instance = instance
+            except Peripherals.DoesNotExist:
+                pass

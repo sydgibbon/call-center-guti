@@ -121,3 +121,20 @@ class CreateSoftwareSerializer(serializers.ModelSerializer):
     class Meta:
         model = Softwares
         fields = '__all__'
+
+class GetSoftwaresByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Softwares
+        fields = ['id', 'name', 'is_helpdesk_visible', 'locations', 'manufacturers', 'users_tech', 'groups_tech', 'groups', 'users', 'comment','is_update', 'softwares', 'pictures', 'softwarecategories']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Softwares.objects.get(id=item_id)
+                self.instance = instance
+            except Softwares.DoesNotExist:
+                pass

@@ -1,7 +1,7 @@
 from assets.printers.serializers import CreatePrinterSerializer, GetPrintersListSerializer, GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintertypesSelectSerializer, GetPrintersCountSerializer
 from assets.models import Printers, Printermodels, Printertypes
 from rest_framework import viewsets  # import de ViewSets
-from assets.printers.serializers import GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintersSerializer, GetPrintertypesSelectSerializer, PrintermodelsSerializer, PrintersCartridgeinfosSerializer, PrintersSerializer, PrintertypesSerializer
+from assets.printers.serializers import GetPrintersSelectSerializer, GetPrintermodelsSelectSerializer, GetPrintersSerializer, GetPrintertypesSelectSerializer, PrintermodelsSerializer, PrintersCartridgeinfosSerializer, PrintersSerializer, PrintertypesSerializer, GetPrintersByIdSerializer
 from assets.models import Printers, Printermodels, PrintersCartridgeinfos, Printertypes
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -125,3 +125,28 @@ class CreatePrinterViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+class GetPrintersByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            printer = Printers.objects.get(id=pk)
+        except Printers.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetPrintersByIdSerializer(printer)
+        return Response(serializer.data)
+
+    def get_printer_by_id(self, request, printer_id=None):
+        try:
+            printer = Printers.objects.get(id=printer_id)
+        except Printers.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetPrintersByIdSerializer(printer)
+        return Response(serializer.data)

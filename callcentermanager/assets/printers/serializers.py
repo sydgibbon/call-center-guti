@@ -120,3 +120,20 @@ class CreatePrinterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Printers
         fields = '__all__'
+
+class GetPrintersByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Printers
+        fields = ['id', 'name', 'states', 'locations', 'printertypes', 'users_tech', 'manufacturers', 'groups_tech', 'printermodels', 'contact_num', 'serial', 'contact', 'otherserial', 'sysdescr', 'snmpcredentials', 'users', 'is_global', 'networks', 'groups', 'uuid', 'comment', 'autoupdatesystems', 'memory_size', 'init_pages_counter', 'last_pages_counter', 'have_serial', 'have_parallel', 'have_usb', 'have_ethernet', 'have_wifi']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Printers.objects.get(id=item_id)
+                self.instance = instance
+            except Printers.DoesNotExist:
+                pass

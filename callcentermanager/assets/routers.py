@@ -1,6 +1,5 @@
 from rest_framework.routers import DefaultRouter
 
-
 from assets.generics.views import *
 from assets.locations import views as locations
 from assets.states import views as states
@@ -276,3 +275,7 @@ router.register(r'createPeripheral', peripherals.CreatePeripheralViewSet, basena
 # Assets by id
 router.register(r'getComputersById', computers.GetComputersByIdViewSet, basename='getComputersById')
 router.register(r'getMonitorsById', monitors.GetMonitorsByIdViewSet, basename='getMonitorsById')
+router.register(r'getSoftwaresById', softwares.GetSoftwaresByIdViewSet, basename='getSoftwaresById')
+router.register(r'getNetworkequipmentsById', networkequipments.GetNetworkequipmentsByIdViewSet, basename='getNetworkequipmentsById')
+router.register(r'getPeripheralsById', peripherals.GetPeripheralsByIdViewSet, basename='getPeripheralsById')
+router.register(r'getPrintersById', printers.GetPrintersByIdViewSet, basename='getPrintersById')
