@@ -1,5 +1,5 @@
 from assets.phones.serializers import CreatePhoneSerializer, GetPhonesListSerializer, GetPhonesSelectSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, GetPhonesCountSerializer
-from assets.phones.serializers import GetPhonesSelectSerializer, GetPhonesSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, PhonemodelsSerializer, PhonepowersuppliesSerializer, PhonesSerializer, PhonetypesSerializer
+from assets.phones.serializers import GetPhonesSelectSerializer, GetPhonesSerializer, GetPhonetypesSelectSerializer, GetPhonemodelsSelectSerializer, GetPhonepowersuppliesSelectSerializer, PhonemodelsSerializer, PhonepowersuppliesSerializer, PhonesSerializer, PhonetypesSerializer, GetPhonesByIdSerializer
 from assets.models import Phones, Phonetypes, Phonemodels, Phonepowersupplies
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -131,3 +131,28 @@ class CreatePhoneViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class GetPhonesByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            phone = Phones.objects.get(id=pk)
+        except Phones.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetPhonesByIdSerializer(phone)
+        return Response(serializer.data)
+
+    def get_phone_by_id(self, request, phone_id=None):
+        try:
+            phone = Phones.objects.get(id=phone_id)
+        except Phones.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetPhonesByIdSerializer(phone)
+        return Response(serializer.data)

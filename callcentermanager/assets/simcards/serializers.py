@@ -55,3 +55,20 @@ class CreateDevicesimcardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Devicesimcards
         fields = '__all__'
+
+class GetItemsDevicesimcardsByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = ItemsDevicesimcards
+        fields = ['id', 'items_id', 'itemtype', 'devicesimcards', 'pin', 'pin2', 'puk', 'puk2', 'lines', 'msin', 'serial', 'otherserial', 'locations', 'states', 'users', 'groups', 'comment']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = ItemsDevicesimcards.objects.get(id=item_id)
+                self.instance = instance
+            except ItemsDevicesimcards.DoesNotExist:
+                pass

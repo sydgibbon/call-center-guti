@@ -122,3 +122,20 @@ class CreatePhoneSerializer(serializers.ModelSerializer):
     class Meta:
         model = Phones
         fields = '__all__'
+
+class GetPhonesByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Phones
+        fields = ['id', 'name', 'states', 'locations', 'phonetypes', 'users_tech', 'manufacturers', 'groups_tech', 'phonemodels', 'contact_num', 'serial', 'contact', 'otherserial', 'users', 'is_global', 'groups', 'uuid', 'comment', 'brand', 'autoupdatesystems', 'number_line', 'phonepowersupplies', 'have_headset', 'have_hp']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Phones.objects.get(id=item_id)
+                self.instance = instance
+            except Phones.DoesNotExist:
+                pass

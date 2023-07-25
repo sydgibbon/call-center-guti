@@ -78,3 +78,20 @@ class CreateCartridgeitemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cartridgeitems
         fields = '__all__'
+
+class GetCartridgeitemsByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Cartridgeitems
+        fields = ['id', 'name', 'locations', 'cartridgeitemtypes', 'ref', 'users_tech', 'manufacturers', 'groups_tech', 'comment', 'alarm_threshold', 'pictures', 'stock_target']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Cartridgeitems.objects.get(id=item_id)
+                self.instance = instance
+            except Cartridgeitems.DoesNotExist:
+                pass

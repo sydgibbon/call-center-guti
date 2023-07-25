@@ -61,3 +61,20 @@ class CreatePassivedcequipmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Passivedcequipments
         fields = '__all__'
+
+class GetPassivedcequipmentsByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Passivedcequipments
+        fields = ['id', 'name', 'states', 'locations', 'passivedcequipmenttypes', 'users_tech', 'manufacturers', 'groups_tech', 'passivedcequipmentmodels', 'serial', 'otherserial', 'comment']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Passivedcequipments.objects.get(id=item_id)
+                self.instance = instance
+            except Passivedcequipments.DoesNotExist:
+                pass

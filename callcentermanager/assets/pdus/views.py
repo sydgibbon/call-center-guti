@@ -1,4 +1,4 @@
-from assets.pdus.serializers import CreatePduSerializer, GetPdusListSerializer, GetPdusSerializer, GetPdutypesSelectSerializer, GetPdumodelsSelectSerializer, PdumodelsSerializer, PdusPlugsSerializer, PdusRacksSerializer, PdusSerializer, PdutypesSerializer
+from assets.pdus.serializers import CreatePduSerializer, GetPdusListSerializer, GetPdusSerializer, GetPdutypesSelectSerializer, GetPdumodelsSelectSerializer, PdumodelsSerializer, PdusPlugsSerializer, PdusRacksSerializer, PdusSerializer, PdutypesSerializer, GetPdusByIdSerializer
 from assets.models import Pdus, PdusPlugs, PdusRacks, Pdutypes, Pdumodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -151,3 +151,28 @@ class CreatePduViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class GetPdusByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            pdu = Pdus.objects.get(id=pk)
+        except Pdus.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetPdusByIdSerializer(pdu)
+        return Response(serializer.data)
+
+    def get_pdu_by_id(self, request, pdu_id=None):
+        try:
+            pdu = Pdus.objects.get(id=pdu_id)
+        except Pdus.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetPdusByIdSerializer(pdu)
+        return Response(serializer.data)

@@ -1,4 +1,4 @@
-from assets.racks.serializers import CreateRackSerializer, GetRacksListSerializer, GetRacktypesSelectSerializer, GetRackmodelsSelectSerializer, GetDcroomsSelectSerializer, GetRacksCountSerializer
+from assets.racks.serializers import CreateRackSerializer, GetRacksListSerializer, GetRacktypesSelectSerializer, GetRackmodelsSelectSerializer, GetDcroomsSelectSerializer, GetRacksCountSerializer, GetRacksByIdSerializer
 from assets.models import Racktypes, Rackmodels, Dcrooms, Racks
 from rest_framework import viewsets  # import de ViewSets
 from assets.racks.serializers import DcroomsSerializer, GetRacksSerializer, GetRacktypesSelectSerializer, GetRackmodelsSelectSerializer, GetDcroomsSelectSerializer, ItemsRacksSerializer, RackmodelsSerializer, RacksSerializer, RacktypesSerializer
@@ -140,3 +140,28 @@ class CreateRackViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class GetRacksByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            rack = Racks.objects.get(id=pk)
+        except Racks.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetRacksByIdSerializer(rack)
+        return Response(serializer.data)
+
+    def get_rack_by_id(self, request, rack_id=None):
+        try:
+            rack = Racks.objects.get(id=rack_id)
+        except Racks.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetRacksByIdSerializer(rack)
+        return Response(serializer.data)

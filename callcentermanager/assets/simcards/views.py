@@ -1,4 +1,4 @@
-from assets.simcards.serializers import CreateDevicesimcardSerializer, DevicesimcardsSerializer, DevicesimcardtypesSerializer, GetDevicesimcardsListSerializer, GetDevicesimcardsSelectSerializer, GetDevicesimcardsSerializer, GetLinesSelectSerializer, ItemsDevicesimcardsSerializer
+from assets.simcards.serializers import CreateDevicesimcardSerializer, DevicesimcardsSerializer, DevicesimcardtypesSerializer, GetDevicesimcardsListSerializer, GetDevicesimcardsSelectSerializer, GetDevicesimcardsSerializer, GetLinesSelectSerializer, ItemsDevicesimcardsSerializer, GetItemsDevicesimcardsByIdSerializer
 from assets.models import Devicesimcards, Devicesimcardtypes, ItemsDevicesimcards, Lines
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -91,3 +91,28 @@ class CreateDevicesimcardViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class GetItemsDevicesimcardsByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            itemsDevicesimcard = ItemsDevicesimcards.objects.get(id=pk)
+        except ItemsDevicesimcards.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetItemsDevicesimcardsByIdSerializer(itemsDevicesimcard)
+        return Response(serializer.data)
+
+    def get_itemsDevicesimcard_by_id(self, request, itemsDevicesimcard_id=None):
+        try:
+            itemsDevicesimcard = ItemsDevicesimcards.objects.get(id=itemsDevicesimcard_id)
+        except ItemsDevicesimcards.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetItemsDevicesimcardsByIdSerializer(itemsDevicesimcard)
+        return Response(serializer.data)
