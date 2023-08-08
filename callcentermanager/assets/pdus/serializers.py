@@ -93,3 +93,20 @@ class CreatePduSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pdus
         fields = '__all__'
+
+class GetPdusByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Pdus
+        fields = ['id', 'name', 'states', 'locations', 'pdutypes', 'users_tech', 'manufacturers', 'groups_tech', 'pdumodels', 'serial', 'otherserial', 'comment']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Pdus.objects.get(id=item_id)
+                self.instance = instance
+            except Pdus.DoesNotExist:
+                pass

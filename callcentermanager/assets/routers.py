@@ -1,6 +1,5 @@
 from rest_framework.routers import DefaultRouter
 
-
 from assets.generics.views import *
 from assets.locations import views as locations
 from assets.states import views as states
@@ -272,3 +271,20 @@ router.register(r'createPassivedcequipment', passivedcequipments.CreatePassivedc
 router.register(r'createCable', cables.CreateCableViewSet, basename='createCable')
 router.register(r'createDevicesimcard', simcards.CreateDevicesimcardViewSet, basename='createDevicesimcard')
 router.register(r'createPeripheral', peripherals.CreatePeripheralViewSet, basename='createPeripheral')
+
+# Assets by id
+router.register(r'getComputersById', computers.GetComputersByIdViewSet, basename='getComputersById')
+router.register(r'getMonitorsById', monitors.GetMonitorsByIdViewSet, basename='getMonitorsById')
+router.register(r'getSoftwaresById', softwares.GetSoftwaresByIdViewSet, basename='getSoftwaresById')
+router.register(r'getNetworkequipmentsById', networkequipments.GetNetworkequipmentsByIdViewSet, basename='getNetworkequipmentsById')
+router.register(r'getPeripheralsById', peripherals.GetPeripheralsByIdViewSet, basename='getPeripheralsById')
+router.register(r'getPrintersById', printers.GetPrintersByIdViewSet, basename='getPrintersById')
+router.register(r'getCartridgeitemsById', cartridges.GetCartridgeitemsByIdViewSet, basename='getCartridgeitemsById')
+router.register(r'getConsumableitemsById', consumableitems.GetConsumableitemsByIdViewSet, basename='getConsumableitemsById')
+router.register(r'getPhonesById', phones.GetPhonesByIdViewSet, basename='getPhonesById')
+router.register(r'getRacksById', racks.GetRacksByIdViewSet, basename='getRacksById')
+router.register(r'getEnclosuresById', enclosures.GetEnclosuresByIdViewSet, basename='getEnclosuresById')
+router.register(r'getPdusById', pdus.GetPdusByIdViewSet, basename='getPdusById')
+router.register(r'getPassivedcequipmentsById', passivedcequipments.GetPassivedcequipmentsByIdViewSet, basename='getPassivedcequipmentsById')
+router.register(r'getItemsDevicesimcardsById', simcards.GetItemsDevicesimcardsByIdViewSet, basename='getItemsDevicesimcardsById')
+router.register(r'getCablesById', cables.GetCablesByIdViewSet, basename='getCablesById')

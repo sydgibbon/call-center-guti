@@ -63,3 +63,20 @@ class CreateEnclosureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enclosures
         fields = '__all__'
+
+class GetEnclosuresByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Enclosures
+        fields = ['id', 'name', 'states', 'locations', 'users_tech', 'manufacturers', 'groups_tech', 'enclosuremodels', 'serial', 'otherserial', 'comment', 'power_supplies']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Enclosures.objects.get(id=item_id)
+                self.instance = instance
+            except Enclosures.DoesNotExist:
+                pass

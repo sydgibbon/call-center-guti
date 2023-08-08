@@ -1,4 +1,4 @@
-from assets.consumables.serializers import ConsumableitemsSerializer, ConsumableitemtypesSerializer, ConsumablesSerializer, GetConsumableitemsSerializer, GetConsumableitemtypesSelectSerializer, GetConsumableitemsListSerializer
+from assets.consumables.serializers import ConsumableitemsSerializer, ConsumableitemtypesSerializer, ConsumablesSerializer, GetConsumableitemsSerializer, GetConsumableitemtypesSelectSerializer, GetConsumableitemsListSerializer, GetConsumableitemsByIdSerializer
 from assets.models import Consumableitems, Consumableitemtypes, Consumables
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -71,3 +71,19 @@ class GetConsumableitemsListViewSet(viewsets.ViewSet):
         consumableitems = GetConsumableitemsListSerializer(Consumableitems.objects.all(), many=True)
 
         return Response(consumableitems.data)
+
+class GetConsumableitemsByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            consumableitem = Consumableitems.objects.get(id=pk)
+        except Consumableitems.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetConsumableitemsByIdSerializer(consumableitem)
+        return Response(serializer.data)

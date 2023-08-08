@@ -80,3 +80,20 @@ class CreateCableSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cables
         fields = '__all__'
+
+class GetCablesByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Cables
+        fields = ['id', 'name', 'states', 'cabletypes', 'users_tech', 'otherserial', 'comment', 'cablestrands', 'color', 'itemtype_endpoint_a', 'items_endpoint_a', 'items_endpoint_a', 'sockets_endpoint_a', 'itemtype_endpoint_b', 'items_endpoint_b', 'items_endpoint_b', 'sockets_endpoint_b']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Cables.objects.get(id=item_id)
+                self.instance = instance
+            except Cables.DoesNotExist:
+                pass

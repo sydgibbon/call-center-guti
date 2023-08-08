@@ -2786,6 +2786,7 @@ class ItemsDevicesimcards(models.Model):
     puk = models.CharField(max_length=255)
     puk2 = models.CharField(max_length=255)
     msin = models.CharField(max_length=255)
+    comment = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = True

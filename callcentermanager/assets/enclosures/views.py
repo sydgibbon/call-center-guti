@@ -1,4 +1,4 @@
-from assets.enclosures.serializers import CreateEnclosureSerializer, GetEnclosuremodelsSelectSerializer, GetEnclosuresCountSerializer, GetEnclosuresListSerializer
+from assets.enclosures.serializers import CreateEnclosureSerializer, GetEnclosuremodelsSelectSerializer, GetEnclosuresCountSerializer, GetEnclosuresListSerializer, GetEnclosuresByIdSerializer
 from assets.models import Enclosuremodels, Enclosures
 from rest_framework import viewsets  # import de ViewSets
 from assets.enclosures.serializers import EnclosuremodelsSerializer, EnclosuresSerializer, GetEnclosuremodelsSelectSerializer, GetEnclosuresSerializer, ItemsEnclosuresSerializer
@@ -95,3 +95,19 @@ class CreateEnclosureViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class GetEnclosuresByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            enclosure = Enclosures.objects.get(id=pk)
+        except Enclosures.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetEnclosuresByIdSerializer(enclosure)
+        return Response(serializer.data)

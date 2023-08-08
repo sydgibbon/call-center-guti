@@ -154,3 +154,20 @@ class GetComputersListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Computers
         fields = ['id', 'name']
+
+class GetComputersByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Computers
+        fields = ['id', 'name', 'states', 'locations', 'computertypes', 'manufacturers', 'users_tech', 'groups_tech', 'groups', 'computermodels', 'contact_num', 'serial', 'contact', 'otherserial', 'users', 'networks', 'uuid', 'comment', 'autoupdatesystems']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Computers.objects.get(id=item_id)
+                self.instance = instance
+            except Computers.DoesNotExist:
+                pass

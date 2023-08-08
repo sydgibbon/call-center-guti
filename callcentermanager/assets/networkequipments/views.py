@@ -1,4 +1,4 @@
-from assets.networkequipments.serializers import CreateNetworkequipmentSerializer, GetNetworkequipmentsListSerializer, GetNetworkequipmentsSelectSerializer, GetNetworkequipmentsSerializer, GetNetworkequipmenttypesSelectSerializer, GetNetworkequipmentmodelsSelectSerializer, NetworkequipmentmodelsSerializer, NetworkequipmentsSerializer, NetworkequipmenttypesSerializer
+from assets.networkequipments.serializers import CreateNetworkequipmentSerializer, GetNetworkequipmentsListSerializer, GetNetworkequipmentsSelectSerializer, GetNetworkequipmentsSerializer, GetNetworkequipmenttypesSelectSerializer, GetNetworkequipmentmodelsSelectSerializer, NetworkequipmentmodelsSerializer, NetworkequipmentsSerializer, NetworkequipmenttypesSerializer, GetNetworkequipmentsByIdSerializer
 from assets.models import Networkequipments, Networkequipmenttypes, Networkequipmentmodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -100,3 +100,19 @@ class CreateNetworkequipmentViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+class GetNetworkequipmentsByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            networkequipment = Networkequipments.objects.get(id=pk)
+        except Networkequipments.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetNetworkequipmentsByIdSerializer(networkequipment)
+        return Response(serializer.data)

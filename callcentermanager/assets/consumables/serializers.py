@@ -63,3 +63,20 @@ class GetConsumableitemsListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Consumableitems
         fields = ['id', 'name']
+
+class GetConsumableitemsByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Consumableitems
+        fields = ['id', 'name', 'locations', 'consumableitemtypes', 'ref', 'users_tech', 'manufacturers', 'groups_tech', 'otherserial', 'comment', 'alarm_threshold', 'pictures', 'stock_target']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Consumableitems.objects.get(id=item_id)
+                self.instance = instance
+            except Consumableitems.DoesNotExist:
+                pass

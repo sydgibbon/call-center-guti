@@ -1,4 +1,4 @@
-from assets.passivedcequipments.serializers import CreatePassivedcequipmentSerializer, GetPassivedcequipmentsListSerializer, GetPassivedcequipmentsSelectSerializer, GetPassivedcequipmentsSerializer, GetPassivedcequipmenttypesSelectSerializer, GetPassivedcequipmentmodelsSelectSerializer, PassivedcequipmentmodelsSerializer, PassivedcequipmentsSerializer, PassivedcequipmenttypesSerializer
+from assets.passivedcequipments.serializers import CreatePassivedcequipmentSerializer, GetPassivedcequipmentsListSerializer, GetPassivedcequipmentsSelectSerializer, GetPassivedcequipmentsSerializer, GetPassivedcequipmenttypesSelectSerializer, GetPassivedcequipmentmodelsSelectSerializer, PassivedcequipmentmodelsSerializer, PassivedcequipmentsSerializer, PassivedcequipmenttypesSerializer, GetPassivedcequipmentsByIdSerializer
 from assets.models import Passivedcequipments, Passivedcequipmenttypes, Passivedcequipmentmodels
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -99,3 +99,19 @@ class CreatePassivedcequipmentViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class GetPassivedcequipmentsByIdViewSet(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['get']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        try:
+            passivedcequipment = Passivedcequipments.objects.get(id=pk)
+        except Passivedcequipments.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = GetPassivedcequipmentsByIdSerializer(passivedcequipment)
+        return Response(serializer.data)

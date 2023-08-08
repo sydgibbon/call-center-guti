@@ -83,3 +83,20 @@ class CreateRackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Racks
         fields = '__all__'
+
+class GetRacksByIdSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Racks
+        fields = ['id', 'name', 'states', 'dcrooms', 'locations', 'racktypes', 'users_tech', 'manufacturers', 'groups_tech', 'rackmodels', 'serial', 'otherserial', 'comment', 'position', 'room_orientation', 'number_units', 'width', 'height', 'depth', 'max_power', 'mesured_power', 'max_weight', 'bgcolor']
+
+    def __init__(self, *args, **kwargs):
+        item_id = kwargs.pop('item_id', None)
+        super().__init__(*args, **kwargs)
+
+        if item_id is not None:
+            try:
+                instance = Racks.objects.get(id=item_id)
+                self.instance = instance
+            except Racks.DoesNotExist:
+                pass
