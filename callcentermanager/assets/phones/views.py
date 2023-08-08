@@ -147,12 +147,3 @@ class GetPhonesByIdViewSet(viewsets.ViewSet):
 
         serializer = GetPhonesByIdSerializer(phone)
         return Response(serializer.data)
-
-    def get_phone_by_id(self, request, phone_id=None):
-        try:
-            phone = Phones.objects.get(id=phone_id)
-        except Phones.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetPhonesByIdSerializer(phone)
-        return Response(serializer.data)

@@ -156,12 +156,3 @@ class GetRacksByIdViewSet(viewsets.ViewSet):
 
         serializer = GetRacksByIdSerializer(rack)
         return Response(serializer.data)
-
-    def get_rack_by_id(self, request, rack_id=None):
-        try:
-            rack = Racks.objects.get(id=rack_id)
-        except Racks.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetRacksByIdSerializer(rack)
-        return Response(serializer.data)

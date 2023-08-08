@@ -115,12 +115,3 @@ class GetPassivedcequipmentsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetPassivedcequipmentsByIdSerializer(passivedcequipment)
         return Response(serializer.data)
-
-    def get_passivedcequipment_by_id(self, request, passivedcequipment_id=None):
-        try:
-            passivedcequipment = Passivedcequipments.objects.get(id=passivedcequipment_id)
-        except Passivedcequipments.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetPassivedcequipmentsByIdSerializer(passivedcequipment)
-        return Response(serializer.data)

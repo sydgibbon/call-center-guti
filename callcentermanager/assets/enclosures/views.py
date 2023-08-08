@@ -111,12 +111,3 @@ class GetEnclosuresByIdViewSet(viewsets.ViewSet):
 
         serializer = GetEnclosuresByIdSerializer(enclosure)
         return Response(serializer.data)
-
-    def get_enclosure_by_id(self, request, enclosure_id=None):
-        try:
-            enclosure = Enclosures.objects.get(id=enclosure_id)
-        except Enclosures.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetEnclosuresByIdSerializer(enclosure)
-        return Response(serializer.data)

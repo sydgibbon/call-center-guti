@@ -87,12 +87,3 @@ class GetConsumableitemsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetConsumableitemsByIdSerializer(consumableitem)
         return Response(serializer.data)
-
-    def get_consumableitem_by_id(self, request, consumableitem_id=None):
-        try:
-            consumableitem = Consumableitems.objects.get(id=consumableitem_id)
-        except Consumableitems.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetConsumableitemsByIdSerializer(consumableitem)
-        return Response(serializer.data)

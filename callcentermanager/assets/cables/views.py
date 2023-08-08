@@ -123,12 +123,3 @@ class GetCablesByIdViewSet(viewsets.ViewSet):
 
         serializer = GetCablesByIdSerializer(cable)
         return Response(serializer.data)
-
-    def get_cable_by_id(self, request, cable_id=None):
-        try:
-            cable = Cables.objects.get(id=cable_id)
-        except Cables.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetCablesByIdSerializer(cable)
-        return Response(serializer.data)

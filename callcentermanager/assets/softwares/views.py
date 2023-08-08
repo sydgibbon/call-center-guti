@@ -137,12 +137,3 @@ class GetSoftwaresByIdViewSet(viewsets.ViewSet):
 
         serializer = GetSoftwaresByIdSerializer(software)
         return Response(serializer.data)
-
-    def get_software_by_id(self, request, software_id=None):
-        try:
-            software = Softwares.objects.get(id=software_id)
-        except Softwares.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetSoftwaresByIdSerializer(software)
-        return Response(serializer.data)

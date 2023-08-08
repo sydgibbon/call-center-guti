@@ -107,12 +107,3 @@ class GetItemsDevicesimcardsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetItemsDevicesimcardsByIdSerializer(itemsDevicesimcard)
         return Response(serializer.data)
-
-    def get_itemsDevicesimcard_by_id(self, request, itemsDevicesimcard_id=None):
-        try:
-            itemsDevicesimcard = ItemsDevicesimcards.objects.get(id=itemsDevicesimcard_id)
-        except ItemsDevicesimcards.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetItemsDevicesimcardsByIdSerializer(itemsDevicesimcard)
-        return Response(serializer.data)

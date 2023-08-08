@@ -116,12 +116,3 @@ class GetNetworkequipmentsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetNetworkequipmentsByIdSerializer(networkequipment)
         return Response(serializer.data)
-
-    def get_networkequipment_by_id(self, request, networkequipment_id=None):
-        try:
-            networkequipment = Networkequipments.objects.get(id=networkequipment_id)
-        except Networkequipments.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetNetworkequipmentsByIdSerializer(networkequipment)
-        return Response(serializer.data)

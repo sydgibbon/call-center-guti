@@ -189,12 +189,3 @@ class GetComputersByIdViewSet(viewsets.ViewSet):
 
         serializer = GetComputersByIdSerializer(computer)
         return Response(serializer.data)
-
-    def get_computer_by_id(self, request, computer_id=None):
-        try:
-            computer = Computers.objects.get(id=computer_id)
-        except Computers.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetComputersByIdSerializer(computer)
-        return Response(serializer.data)

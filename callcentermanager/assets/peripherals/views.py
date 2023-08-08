@@ -120,12 +120,3 @@ class GetPeripheralsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetPeripheralsByIdSerializer(peripheral)
         return Response(serializer.data)
-
-    def get_peripheral_by_id(self, request, peripheral_id=None):
-        try:
-            peripheral = Peripherals.objects.get(id=peripheral_id)
-        except Peripherals.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetPeripheralsByIdSerializer(peripheral)
-        return Response(serializer.data)

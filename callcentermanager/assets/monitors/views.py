@@ -130,12 +130,3 @@ class GetMonitorsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetMonitorsByIdSerializer(monitor)
         return Response(serializer.data)
-
-    def get_monitor_by_id(self, request, monitor_id=None):
-        try:
-            monitor = Monitors.objects.get(id=monitor_id)
-        except Monitors.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetMonitorsByIdSerializer(monitor)
-        return Response(serializer.data)

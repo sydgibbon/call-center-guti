@@ -141,12 +141,3 @@ class GetPrintersByIdViewSet(viewsets.ViewSet):
 
         serializer = GetPrintersByIdSerializer(printer)
         return Response(serializer.data)
-
-    def get_printer_by_id(self, request, printer_id=None):
-        try:
-            printer = Printers.objects.get(id=printer_id)
-        except Printers.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetPrintersByIdSerializer(printer)
-        return Response(serializer.data)

@@ -117,12 +117,3 @@ class GetCartridgeitemsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetCartridgeitemsByIdSerializer(cartridgeitem)
         return Response(serializer.data)
-
-    def get_cartridgeitem_by_id(self, request, cartridgeitem_id=None):
-        try:
-            cartridgeitem = Cartridgeitems.objects.get(id=cartridgeitem_id)
-        except Cartridgeitems.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = GetCartridgeitemsByIdSerializer(cartridgeitem)
-        return Response(serializer.data)
