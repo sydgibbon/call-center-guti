@@ -271,6 +271,7 @@ router.register(r'createPassivedcequipment', passivedcequipments.CreatePassivedc
 router.register(r'createCable', cables.CreateCableViewSet, basename='createCable')
 router.register(r'createDevicesimcard', simcards.CreateDevicesimcardViewSet, basename='createDevicesimcard')
 router.register(r'createPeripheral', peripherals.CreatePeripheralViewSet, basename='createPeripheral')
+router.register(r'createConsumable', consumableitems.CreateConsumableViewSet, basename='createConsumable')
 
 # Assets by id
 router.register(r'getComputersById', computers.GetComputersByIdViewSet, basename='getComputersById')
