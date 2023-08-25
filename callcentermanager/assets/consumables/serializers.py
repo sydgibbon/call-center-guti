@@ -81,8 +81,8 @@ class GetConsumableitemsByIdSerializer(serializers.ModelSerializer):
             except Consumableitems.DoesNotExist:
                 pass
 
-class CreateConsumableSerializer(serializers.ModelSerializer):
+class CreateConsumableItemsSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Consumables
+        model = Consumableitems
         fields = '__all__'
