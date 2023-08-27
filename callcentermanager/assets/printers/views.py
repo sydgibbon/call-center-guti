@@ -141,3 +141,12 @@ class GetPrintersByIdViewSet(viewsets.ViewSet):
 
         serializer = GetPrintersByIdSerializer(printer)
         return Response(serializer.data)
+
+class UpdatePrinterByIdViewSet(viewsets.ModelViewSet):
+    queryset = Printers.objects.all()
+    serializer_class = CreatePrinterSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

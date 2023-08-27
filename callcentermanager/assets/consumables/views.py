@@ -87,3 +87,12 @@ class GetConsumableitemsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetConsumableitemsByIdSerializer(consumableitem)
         return Response(serializer.data)
+    
+# class UpdateConsumableByIdViewSet(viewsets.ModelViewSet): FALTA EL METODO DE CREATE CONSUMABLE
+#     queryset = Consumables.objects.all()
+#     serializer_class = CreateConsumableSerializer
+#     permission_classes = (IsAuthenticated, AllowAny)
+#     http_method_names = ['put']
+
+#     def list(self, request):
+#         return Response(status=status.HTTP_400_BAD_REQUEST)

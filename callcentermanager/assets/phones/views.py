@@ -147,3 +147,12 @@ class GetPhonesByIdViewSet(viewsets.ViewSet):
 
         serializer = GetPhonesByIdSerializer(phone)
         return Response(serializer.data)
+    
+class UpdatePhoneByIdViewSet(viewsets.ModelViewSet):
+    queryset = Phones.objects.all()
+    serializer_class = CreatePhoneSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

@@ -291,4 +291,17 @@ router.register(r'getCablesById', cables.GetCablesByIdViewSet, basename='getCabl
 
 # Update Assets by id
 
-router.register(r'updateComputersById', computers.UpdateComputerByIdViewSet, basename='updateComputerById')
+router.register(r'updateComputerById', computers.UpdateComputerByIdViewSet, basename='updateComputerById')
+router.register(r'updateCableById', cables.UpdateCableByIdViewSet, basename='updateCableById')
+router.register(r'updateEnclosureById', enclosures.UpdateEnclosureByIdViewSet, basename='updateEnclosureById')
+router.register(r'updateMonitorById', monitors.UpdateMonitorByIdViewSet, basename='updateMonitorById')
+router.register(r'updateNetworkequipmentById', networkequipments.UpdateNetworkequipmentByIdViewSet, basename='updateNetworkequipmentById')
+router.register(r'updatePrinterById', printers.UpdatePrinterByIdViewSet, basename='updatePrinterById')
+router.register(r'updatePhoneById', phones.UpdatePhoneByIdViewSet, basename='updatePhoneById')
+router.register(r'updatePeripheralById', peripherals.UpdatePeripheralByIdViewSet, basename='updatePeripheralById')
+router.register(r'updateSoftwareById', softwares.UpdateSoftwareByIdViewSet, basename='updateSoftwareById')
+router.register(r'updateDevicesimcardById', simcards.UpdateDevicesimcardByIdViewSet, basename='updateDevicesimcardById')
+router.register(r'updateRackById', racks.UpdateRackByIdViewSet, basename='updateRackById')
+router.register(r'updatePduById', pdus.UpdatePduByIdViewSet, basename='updatePduById')
+router.register(r'updateCartridgeitemById', cartridges.UpdateCartridgeitemByIdViewSet, basename='updateCartridgeitemById')
+router.register(r'updatePassivedcequipmentById', passivedcequipments.UpdatePassivedcequipmentByIdViewSet, basename='updatePassivedcequipmentById')

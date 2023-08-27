@@ -116,3 +116,12 @@ class GetNetworkequipmentsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetNetworkequipmentsByIdSerializer(networkequipment)
         return Response(serializer.data)
+    
+class UpdateNetworkequipmentByIdViewSet(viewsets.ModelViewSet):
+    queryset = Networkequipments.objects.all()
+    serializer_class = CreateNetworkequipmentSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

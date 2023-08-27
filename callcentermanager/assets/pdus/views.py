@@ -167,3 +167,12 @@ class GetPdusByIdViewSet(viewsets.ViewSet):
 
         serializer = GetPdusByIdSerializer(pdu)
         return Response(serializer.data)
+    
+class UpdatePduByIdViewSet(viewsets.ModelViewSet):
+    queryset = Pdus.objects.all()
+    serializer_class = CreatePduSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

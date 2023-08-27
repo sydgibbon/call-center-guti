@@ -123,3 +123,12 @@ class GetCablesByIdViewSet(viewsets.ViewSet):
 
         serializer = GetCablesByIdSerializer(cable)
         return Response(serializer.data)
+
+class UpdateCableByIdViewSet(viewsets.ModelViewSet):
+    queryset = Cables.objects.all()
+    serializer_class = CreateCableSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

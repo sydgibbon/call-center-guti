@@ -156,3 +156,12 @@ class GetRacksByIdViewSet(viewsets.ViewSet):
 
         serializer = GetRacksByIdSerializer(rack)
         return Response(serializer.data)
+
+class UpdateRackByIdViewSet(viewsets.ModelViewSet):
+    queryset = Racks.objects.all()
+    serializer_class = CreateRackSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

@@ -111,3 +111,12 @@ class GetEnclosuresByIdViewSet(viewsets.ViewSet):
 
         serializer = GetEnclosuresByIdSerializer(enclosure)
         return Response(serializer.data)
+    
+class UpdateEnclosureByIdViewSet(viewsets.ModelViewSet):
+    queryset = Enclosures.objects.all()
+    serializer_class = CreateEnclosureSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

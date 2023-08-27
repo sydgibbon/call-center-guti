@@ -115,3 +115,12 @@ class GetPassivedcequipmentsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetPassivedcequipmentsByIdSerializer(passivedcequipment)
         return Response(serializer.data)
+
+class UpdatePassivedcequipmentByIdViewSet(viewsets.ModelViewSet):
+    queryset = Passivedcequipments.objects.all()
+    serializer_class = CreatePassivedcequipmentSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

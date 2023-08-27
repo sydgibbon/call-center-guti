@@ -107,3 +107,12 @@ class GetItemsDevicesimcardsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetItemsDevicesimcardsByIdSerializer(itemsDevicesimcard)
         return Response(serializer.data)
+    
+class UpdateDevicesimcardByIdViewSet(viewsets.ModelViewSet):
+    queryset = ItemsDevicesimcards.objects.all()
+    serializer_class = CreateDevicesimcardSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

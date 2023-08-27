@@ -117,3 +117,12 @@ class GetCartridgeitemsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetCartridgeitemsByIdSerializer(cartridgeitem)
         return Response(serializer.data)
+    
+class UpdateCartridgeitemByIdViewSet(viewsets.ModelViewSet):
+    queryset = Cartridgeitems.objects.all()
+    serializer_class = CreateCartridgeitemSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

@@ -130,3 +130,12 @@ class GetMonitorsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetMonitorsByIdSerializer(monitor)
         return Response(serializer.data)
+
+class UpdateMonitorByIdViewSet(viewsets.ModelViewSet):
+    queryset = Monitors.objects.all()
+    serializer_class = CreateMonitorSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

@@ -137,3 +137,12 @@ class GetSoftwaresByIdViewSet(viewsets.ViewSet):
 
         serializer = GetSoftwaresByIdSerializer(software)
         return Response(serializer.data)
+    
+class UpdateSoftwareByIdViewSet(viewsets.ModelViewSet):
+    queryset = Softwares.objects.all()
+    serializer_class = CreateSoftwareSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)

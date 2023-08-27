@@ -120,3 +120,12 @@ class GetPeripheralsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetPeripheralsByIdSerializer(peripheral)
         return Response(serializer.data)
+    
+class UpdatePeripheralByIdViewSet(viewsets.ModelViewSet):
+    queryset = Peripherals.objects.all()
+    serializer_class = CreatePeripheralSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
+
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
