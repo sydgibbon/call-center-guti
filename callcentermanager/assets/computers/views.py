@@ -190,18 +190,11 @@ class GetComputersByIdViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     
-class UpdateComputerByIdViewSet(viewsets.ViewSet):
+class UpdateComputerByIdViewSet(viewsets.ModelViewSet):
     queryset = Computers.objects.all()
-    serializer_class = ComputersSerializer
-    permission_classes = (IsAuthenticated)
+    serializer_class = CreateComputerSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['put']
 
-    def update(self, request, *args, **kwargs):
-        instance = self.get_object()
-        instance.id = request.data.get("id")
-        instance.save()
-
-        serializer = self.get_serializer(instance)
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-
-        return Response(serializer.data)
+    def list(self, request):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
