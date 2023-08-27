@@ -24,8 +24,8 @@ class Apiclients(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     is_active = models.IntegerField()
     ipv4_range_start = models.BigIntegerField(blank=True, null=True)
     ipv4_range_end = models.BigIntegerField(blank=True, null=True)
@@ -63,8 +63,8 @@ class Appliances(models.Model):
     users_id_tech = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     groups_id_tech = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     states_id = models.PositiveIntegerField()
     externalidentifier = models.CharField(unique=True, max_length=255, blank=True, null=True)
     serial = models.CharField(max_length=255, blank=True, null=True)
@@ -128,8 +128,8 @@ class Authmails(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     connect_string = models.CharField(max_length=255, blank=True, null=True)
     host = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     comment = models.TextField(blank=True, null=True)
     is_active = models.IntegerField()
 
@@ -144,8 +144,8 @@ class Blacklistedmailcontents(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -157,8 +157,8 @@ class Blacklists(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     value = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -176,8 +176,8 @@ class Budgets(models.Model):
     value = models.DecimalField(max_digits=20, decimal_places=4)
     is_template = models.IntegerField()
     template_name = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     locations_id = models.PositiveIntegerField()
     budgettypes_id = models.PositiveIntegerField()
 
@@ -189,8 +189,8 @@ class Budgets(models.Model):
 class Budgettypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -202,8 +202,8 @@ class Businesscriticities(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     businesscriticities_id = models.PositiveIntegerField()
     completename = models.TextField(blank=True, null=True)
     level = models.IntegerField()
@@ -269,8 +269,8 @@ class Certificates(models.Model):
     command = models.TextField(blank=True, null=True)
     certificate_request = models.TextField(blank=True, null=True)
     certificate_item = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -281,8 +281,8 @@ class CertificatesItems(models.Model):
     certificates_id = models.PositiveIntegerField()
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -295,8 +295,8 @@ class Certificatetypes(models.Model):
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -386,8 +386,8 @@ class Changetasks(models.Model):
     groups_id_tech = models.PositiveIntegerField()
     content = models.TextField(blank=True, null=True)
     actiontime = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     tasktemplates_id = models.PositiveIntegerField()
     timeline_position = models.IntegerField()
     is_private = models.IntegerField()
@@ -469,8 +469,8 @@ class Clusters(models.Model):
     comment = models.TextField(blank=True, null=True)
     clustertypes_id = models.PositiveIntegerField()
     autoupdatesystems_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -482,8 +482,8 @@ class Clustertypes(models.Model):
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -501,8 +501,8 @@ class Computerantiviruses(models.Model):
     is_uptodate = models.IntegerField()
     is_dynamic = models.IntegerField()
     date_expiration = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -523,8 +523,8 @@ class Computervirtualmachines(models.Model):
     is_deleted = models.IntegerField()
     is_dynamic = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -565,8 +565,8 @@ class Contacts(models.Model):
     town = models.CharField(max_length=255, blank=True, null=True)
     state = models.CharField(max_length=255, blank=True, null=True)
     country = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
@@ -587,8 +587,8 @@ class ContactsSuppliers(models.Model):
 class Contacttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -639,8 +639,8 @@ class Contracts(models.Model):
     template_name = models.CharField(max_length=255, blank=True, null=True)
     is_template = models.IntegerField()
     states_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -671,8 +671,8 @@ class ContractsSuppliers(models.Model):
 class Contracttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -731,8 +731,8 @@ class DashboardsRights(models.Model):
 class Databaseinstancecategories(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -762,8 +762,8 @@ class Databaseinstances(models.Model):
     is_helpdesk_visible = models.IntegerField()
     is_dynamic = models.IntegerField()
     autoupdatesystems_id = models.PositiveIntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     date_lastboot = models.DateTimeField(blank=True, null=True)
     date_lastbackup = models.DateTimeField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -776,8 +776,8 @@ class Databaseinstances(models.Model):
 class Databaseinstancetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -794,8 +794,8 @@ class Databases(models.Model):
     is_active = models.IntegerField()
     is_deleted = models.IntegerField()
     is_dynamic = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     date_update = models.DateTimeField(blank=True, null=True)
     date_lastbackup = models.DateTimeField(blank=True, null=True)
 
@@ -823,8 +823,8 @@ class Documentcategories(models.Model):
     level = models.IntegerField()
     ancestors_cache = models.TextField(blank=True, null=True)
     sons_cache = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -840,7 +840,7 @@ class Documents(models.Model):
     filepath = models.CharField(max_length=255, blank=True, null=True)
     documentcategories_id = models.PositiveIntegerField()
     mime = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     comment = models.TextField(blank=True, null=True)
     is_deleted = models.IntegerField()
     link = models.CharField(max_length=255, blank=True, null=True)
@@ -849,7 +849,7 @@ class Documents(models.Model):
     sha1sum = models.CharField(max_length=40, blank=True, null=True)
     is_blacklisted = models.IntegerField()
     tag = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -862,10 +862,10 @@ class DocumentsItems(models.Model):
     itemtype = models.CharField(max_length=100)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     users_id = models.PositiveIntegerField(blank=True, null=True)
     timeline_position = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
@@ -880,9 +880,9 @@ class Documenttypes(models.Model):
     icon = models.CharField(max_length=255, blank=True, null=True)
     mime = models.CharField(max_length=255, blank=True, null=True)
     is_uploadable = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -902,8 +902,8 @@ class Domainrecords(models.Model):
     groups_id_tech = models.PositiveIntegerField()
     is_deleted = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -976,8 +976,8 @@ class Fieldblacklists(models.Model):
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -994,8 +994,8 @@ class Fieldunicities(models.Model):
     action_refuse = models.IntegerField()
     action_notify = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1005,8 +1005,8 @@ class Fieldunicities(models.Model):
 class Filesystems(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1021,8 +1021,8 @@ class Holidays(models.Model):
     begin_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
     is_perpetual = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1106,8 +1106,8 @@ class Infocoms(models.Model):
     delivery_date = models.DateField(blank=True, null=True)
     inventory_date = models.DateField(blank=True, null=True)
     warranty_date = models.DateField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     decommission_date = models.DateTimeField(blank=True, null=True)
     businesscriticities_id = models.PositiveIntegerField()
 
@@ -1177,8 +1177,8 @@ class Ipnetworks(models.Model):
     gateway_2 = models.PositiveIntegerField()
     gateway_3 = models.PositiveIntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1222,8 +1222,8 @@ class ItemsDisks(models.Model):
     encryption_tool = models.CharField(max_length=255, blank=True, null=True)
     encryption_algorithm = models.CharField(max_length=255, blank=True, null=True)
     encryption_type = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1235,8 +1235,8 @@ class ItemsKanbans(models.Model):
     items_id = models.PositiveIntegerField(blank=True, null=True)
     users_id = models.PositiveIntegerField()
     state = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1307,8 +1307,8 @@ class Itilcategories(models.Model):
     is_request = models.IntegerField()
     is_problem = models.IntegerField()
     is_change = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1324,8 +1324,8 @@ class Itilfollowups(models.Model):
     content = models.TextField(blank=True, null=True)
     is_private = models.IntegerField()
     requesttypes_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     timeline_position = models.IntegerField()
     sourceitems_id = models.PositiveIntegerField()
     sourceof_items_id = models.PositiveIntegerField()
@@ -1336,8 +1336,8 @@ class Itilfollowups(models.Model):
 
 
 class Itilfollowuptemplates(models.Model):
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -1368,8 +1368,8 @@ class Itilsolutions(models.Model):
     solutiontypes_id = models.PositiveIntegerField()
     solutiontype_name = models.CharField(max_length=255, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     date_approval = models.DateTimeField(blank=True, null=True)
     users_id = models.PositiveIntegerField()
     user_name = models.CharField(max_length=255, blank=True, null=True)
@@ -1394,8 +1394,8 @@ class Knowbaseitemcategories(models.Model):
     level = models.IntegerField()
     sons_cache = models.TextField(blank=True, null=True)
     ancestors_cache = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1409,8 +1409,8 @@ class Knowbaseitems(models.Model):
     is_faq = models.IntegerField()
     users_id = models.PositiveIntegerField()
     view = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     begin_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
 
@@ -1425,8 +1425,8 @@ class KnowbaseitemsComments(models.Model):
     language = models.CharField(max_length=10, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     parent_comment_id = models.PositiveIntegerField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1437,8 +1437,8 @@ class KnowbaseitemsItems(models.Model):
     knowbaseitems_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=100)
     items_id = models.PositiveIntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1497,8 +1497,8 @@ class Knowbaseitemtranslations(models.Model):
     name = models.TextField(blank=True, null=True)
     answer = models.TextField(blank=True, null=True)
     users_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1512,8 +1512,8 @@ class Links(models.Model):
     link = models.CharField(max_length=255, blank=True, null=True)
     data = models.TextField(blank=True, null=True)
     open_window = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1534,8 +1534,8 @@ class Lockedfields(models.Model):
     items_id = models.PositiveIntegerField()
     field = models.CharField(max_length=50)
     value = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     is_global = models.IntegerField()
 
     class Meta:
@@ -1550,14 +1550,14 @@ class Mailcollectors(models.Model):
     login = models.CharField(max_length=255, blank=True, null=True)
     filesize_max = models.IntegerField()
     is_active = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     comment = models.TextField(blank=True, null=True)
     passwd = models.CharField(max_length=255, blank=True, null=True)
     accepted = models.CharField(max_length=255, blank=True, null=True)
     refused = models.CharField(max_length=255, blank=True, null=True)
     errors = models.IntegerField()
     use_mail_date = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     requester_field = models.IntegerField()
     add_cc_to_observer = models.IntegerField()
     collect_only_unread = models.IntegerField()
@@ -1575,8 +1575,8 @@ class Manuallinks(models.Model):
     comment = models.TextField(blank=True, null=True)
     items_id = models.PositiveIntegerField()
     itemtype = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1584,8 +1584,8 @@ class Manuallinks(models.Model):
 class Notepads(models.Model):
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     users_id = models.PositiveIntegerField()
     users_id_lastupdater = models.PositiveIntegerField()
     content = models.TextField(blank=True, null=True)
@@ -1603,8 +1603,8 @@ class Notifications(models.Model):
     comment = models.TextField(blank=True, null=True)
     is_recursive = models.IntegerField()
     is_active = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     allow_response = models.IntegerField()
 
     class Meta:
@@ -1636,10 +1636,10 @@ class Notificationtargets(models.Model):
 class Notificationtemplates(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     itemtype = models.CharField(max_length=100)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     comment = models.TextField(blank=True, null=True)
     css = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1734,10 +1734,10 @@ class Olas(models.Model):
     number_time = models.IntegerField()
     use_ticket_calendar = models.IntegerField()
     calendars_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     definition_time = models.CharField(max_length=255, blank=True, null=True)
     end_of_working_day = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     slms_id = models.PositiveIntegerField()
 
     class Meta:
@@ -1748,8 +1748,8 @@ class Olas(models.Model):
 class Operatingsystemarchitectures(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1759,8 +1759,8 @@ class Operatingsystemarchitectures(models.Model):
 class Operatingsystemeditions(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1770,8 +1770,8 @@ class Operatingsystemeditions(models.Model):
 class Operatingsystemkernels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1782,8 +1782,8 @@ class Operatingsystemkernelversions(models.Model):
     operatingsystemkernels_id = models.PositiveIntegerField()
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1796,8 +1796,8 @@ class Operatingsystemkernelversions(models.Model):
 class Operatingsystemservicepacks(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1807,8 +1807,8 @@ class Operatingsystemservicepacks(models.Model):
 class Operatingsystemversions(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1821,8 +1821,8 @@ class Pcivendors(models.Model):
     deviceid = models.CharField(max_length=4, blank=True, null=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -1892,8 +1892,8 @@ class Printerlogs(models.Model):
     color_copies = models.IntegerField()
     scanned = models.IntegerField()
     date = models.DateField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     faxed = models.IntegerField()
 
     class Meta:
@@ -1953,8 +1953,8 @@ class Problemtasks(models.Model):
     content = models.TextField(blank=True, null=True)
     actiontime = models.IntegerField()
     state = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     tasktemplates_id = models.PositiveIntegerField()
     timeline_position = models.IntegerField()
     is_private = models.IntegerField()
@@ -2023,7 +2023,7 @@ class Profiles(models.Model):
     helpdesk_hardware = models.IntegerField()
     helpdesk_item_type = models.TextField(blank=True, null=True)
     ticket_status = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     comment = models.TextField(blank=True, null=True)
     problem_status = models.TextField(blank=True, null=True)
     create_ticket_on_login = models.IntegerField()
@@ -2032,7 +2032,7 @@ class Profiles(models.Model):
     problemtemplates_id = models.PositiveIntegerField()
     change_status = models.TextField(blank=True, null=True)
     managed_domainrecordtypes = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2102,7 +2102,7 @@ class Projects(models.Model):
     projectstates_id = models.PositiveIntegerField()
     projecttypes_id = models.PositiveIntegerField()
     date = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     users_id = models.PositiveIntegerField()
     groups_id = models.PositiveIntegerField()
     plan_start_date = models.DateTimeField(blank=True, null=True)
@@ -2115,7 +2115,7 @@ class Projects(models.Model):
     content = models.TextField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     is_deleted = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     projecttemplates_id = models.PositiveIntegerField()
     is_template = models.IntegerField()
     template_name = models.CharField(max_length=255, blank=True, null=True)
@@ -2130,8 +2130,8 @@ class Projectstates(models.Model):
     comment = models.TextField(blank=True, null=True)
     color = models.CharField(max_length=255, blank=True, null=True)
     is_finished = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2161,8 +2161,8 @@ class Projecttasks(models.Model):
     is_recursive = models.IntegerField()
     projects_id = models.PositiveIntegerField()
     projecttasks_id = models.PositiveIntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     plan_start_date = models.DateTimeField(blank=True, null=True)
     plan_end_date = models.DateTimeField(blank=True, null=True)
     real_start_date = models.DateTimeField(blank=True, null=True)
@@ -2218,8 +2218,8 @@ class Projecttasktemplates(models.Model):
     percent_done = models.IntegerField()
     is_milestone = models.IntegerField()
     comments = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2229,8 +2229,8 @@ class Projecttasktemplates(models.Model):
 class Projecttasktypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2251,8 +2251,8 @@ class Projectteams(models.Model):
 class Projecttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2304,8 +2304,8 @@ class Refusedequipments(models.Model):
     uuid = models.CharField(max_length=255, blank=True, null=True)
     agents_id = models.PositiveIntegerField()
     autoupdatesystems_id = models.PositiveIntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2332,11 +2332,11 @@ class Reminders(models.Model):
     begin = models.DateTimeField(blank=True, null=True)
     end = models.DateTimeField(blank=True, null=True)
     is_planned = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.IntegerField()
     begin_view_date = models.DateTimeField(blank=True, null=True)
     end_view_date = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2358,8 +2358,8 @@ class Remindertranslations(models.Model):
     name = models.TextField(blank=True, null=True)
     text = models.TextField(blank=True, null=True)
     users_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2376,8 +2376,8 @@ class Requesttypes(models.Model):
     is_ticketheader = models.IntegerField()
     is_itilfollowup = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2420,8 +2420,8 @@ class Rssfeeds(models.Model):
     max_items = models.IntegerField()
     have_error = models.IntegerField()
     is_active = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2476,8 +2476,8 @@ class Rulerightparameters(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     value = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2493,11 +2493,11 @@ class Rules(models.Model):
     match = models.CharField(max_length=10, blank=True, null=True)
     is_active = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     is_recursive = models.IntegerField()
     uuid = models.CharField(max_length=255, blank=True, null=True)
     condition = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2529,8 +2529,8 @@ class SavedsearchesAlerts(models.Model):
     is_active = models.IntegerField()
     operator = models.IntegerField()
     value = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     frequency = models.IntegerField()
 
     class Meta:
@@ -2599,10 +2599,10 @@ class Slas(models.Model):
     number_time = models.IntegerField()
     use_ticket_calendar = models.IntegerField()
     calendars_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
     definition_time = models.CharField(max_length=255, blank=True, null=True)
     end_of_working_day = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     slms_id = models.PositiveIntegerField()
 
     class Meta:
@@ -2617,8 +2617,8 @@ class Slms(models.Model):
     comment = models.TextField(blank=True, null=True)
     use_ticket_calendar = models.IntegerField()
     calendars_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2638,8 +2638,8 @@ class Solutiontemplates(models.Model):
     content = models.TextField(blank=True, null=True)
     solutiontypes_id = models.PositiveIntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2651,8 +2651,8 @@ class Solutiontypes(models.Model):
     comment = models.TextField(blank=True, null=True)
     entities_id = models.PositiveIntegerField()
     is_recursive = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2662,8 +2662,8 @@ class Solutiontypes(models.Model):
 class Ssovariables(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2686,8 +2686,8 @@ class Suppliers(models.Model):
     is_deleted = models.IntegerField()
     fax = models.CharField(max_length=255, blank=True, null=True)
     email = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     is_active = models.IntegerField()
     pictures = models.TextField(blank=True, null=True)
 
@@ -2702,8 +2702,8 @@ class Suppliers(models.Model):
 class Suppliertypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2722,8 +2722,8 @@ class Taskcategories(models.Model):
     sons_cache = models.TextField(blank=True, null=True)
     is_active = models.IntegerField()
     is_helpdeskvisible = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     knowbaseitemcategories_id = models.PositiveIntegerField()
 
     class Meta:
@@ -2739,8 +2739,8 @@ class Tasktemplates(models.Model):
     taskcategories_id = models.PositiveIntegerField()
     actiontime = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.IntegerField()
     is_private = models.IntegerField()
     users_id_tech = models.PositiveIntegerField()
@@ -2782,8 +2782,8 @@ class Transfers(models.Model):
     clean_cartridgeitem = models.IntegerField()
     keep_cartridge = models.IntegerField()
     keep_consumable = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
     comment = models.TextField(blank=True, null=True)
     keep_disk = models.IntegerField()
     keep_certificate = models.IntegerField()
@@ -2802,8 +2802,8 @@ class Usbvendors(models.Model):
     deviceid = models.CharField(max_length=4, blank=True, null=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2814,8 +2814,8 @@ class Usbvendors(models.Model):
 class Usercategories(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2839,8 +2839,8 @@ class Useremails(models.Model):
 class Usertitles(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2850,8 +2850,8 @@ class Usertitles(models.Model):
 class Virtualmachinestates(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2861,8 +2861,8 @@ class Virtualmachinestates(models.Model):
 class Virtualmachinesystems(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2872,8 +2872,8 @@ class Virtualmachinesystems(models.Model):
 class Virtualmachinetypes(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2886,8 +2886,8 @@ class Vobjects(models.Model):
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items_id = models.PositiveIntegerField()
     data = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
@@ -2902,8 +2902,8 @@ class Wifinetworks(models.Model):
     essid = models.CharField(max_length=255, blank=True, null=True)
     mode = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(auto_now_add=True, blank=True)
+    date_creation = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         managed = True
