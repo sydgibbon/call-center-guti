@@ -288,3 +288,7 @@ router.register(r'getPdusById', pdus.GetPdusByIdViewSet, basename='getPdusById')
 router.register(r'getPassivedcequipmentsById', passivedcequipments.GetPassivedcequipmentsByIdViewSet, basename='getPassivedcequipmentsById')
 router.register(r'getItemsDevicesimcardsById', simcards.GetItemsDevicesimcardsByIdViewSet, basename='getItemsDevicesimcardsById')
 router.register(r'getCablesById', cables.GetCablesByIdViewSet, basename='getCablesById')
+
+# Update Assets by id
+
+router.register(r'updateComputersById', computers.UpdateComputerByIdViewSet, basename='updateComputerById')

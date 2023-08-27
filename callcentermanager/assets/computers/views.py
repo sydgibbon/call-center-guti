@@ -1,9 +1,8 @@
-from asyncio import mixins
 from assets.computers.serializers import CreateComputerSerializer, GetComputersByIdSerializer, GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersCountSerializer, GetComputersCountByStatesSerializer, GetComputersCountByManufacturersSerializer, GetComputersCountByComputertypesSerializer, GetComputersListSerializer
 from assets.models import Computers, Computertypes, Computermodels
 from assets.computers.serializers import ComputermodelsSerializer, ComputersItemsSerializer, ComputersSerializer, ComputertypesSerializer, GetComputersSelectSerializer, GetComputertypesSelectSerializer, GetComputermodelsSelectSerializer, GetComputersSerializer, OperatingsystemsSerializer
 from assets.models import Computers, ComputersItems, Computertypes, Computermodels, Operatingsystems, States
-from rest_framework import viewsets, status  # import de ViewSets
+from rest_framework import viewsets, status, generics  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from django.db.models import Count
@@ -188,4 +187,21 @@ class GetComputersByIdViewSet(viewsets.ViewSet):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serializer = GetComputersByIdSerializer(computer)
+        return Response(serializer.data)
+
+    
+class UpdateComputerByIdViewSet(viewsets.ViewSet):
+    queryset = Computers.objects.all()
+    serializer_class = ComputersSerializer
+    permission_classes = (IsAuthenticated)
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.id = request.data.get("id")
+        instance.save()
+
+        serializer = self.get_serializer(instance)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+
         return Response(serializer.data)
