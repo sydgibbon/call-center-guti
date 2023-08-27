@@ -1,4 +1,8 @@
+from datetime import datetime
 from django.db import models
+from datetime import timezone
+import django
+
 
 class ChangesTickets(models.Model):
     changes_id = models.PositiveIntegerField(blank=True, null=True)
@@ -130,7 +134,7 @@ class Tickets(models.Model):
     date = models.DateTimeField(blank=True, null=True)
     closedate = models.DateTimeField(blank=True, null=True)
     solvedate = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     users_id_lastupdater = models.PositiveIntegerField(blank=True, null=True)
     status = models.IntegerField()
     users_id_recipient = models.PositiveIntegerField(blank=True, null=True)
@@ -164,7 +168,7 @@ class Tickets(models.Model):
     is_deleted = models.IntegerField()
     locations_id = models.PositiveIntegerField(blank=True, null=True)
     validation_percent = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -234,8 +238,8 @@ class Tickettasks(models.Model):
     state = models.IntegerField()
     users_id_tech = models.PositiveIntegerField(blank=True, null=True)
     groups_id_tech = models.PositiveIntegerField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     tasktemplates_id = models.PositiveIntegerField(blank=True, null=True)
     timeline_position = models.IntegerField()
     sourceitems_id = models.PositiveIntegerField(blank=True, null=True)
@@ -314,7 +318,7 @@ class Logs(models.Model):
     itemtype_link = models.CharField(max_length=100)
     linked_action = models.IntegerField()
     user_name = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     id_search_option = models.IntegerField()
     old_value = models.CharField(max_length=255, blank=True, null=True)
     new_value = models.CharField(max_length=255, blank=True, null=True)
@@ -375,8 +379,8 @@ class Domains(models.Model):
     is_template = models.IntegerField()
     template_name = models.CharField(max_length=255, blank=True, null=True)
     is_active = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -388,9 +392,9 @@ class Calendars(models.Model):
     entities_id = models.PositiveIntegerField(blank=True, null=True)
     is_recursive = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     cache_duration = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -437,7 +441,7 @@ class Changes(models.Model):
     is_deleted = models.IntegerField()
     status = models.IntegerField()
     content = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     date = models.DateTimeField(blank=True, null=True)
     solvedate = models.DateTimeField(blank=True, null=True)
     closedate = models.DateTimeField(blank=True, null=True)
@@ -460,7 +464,7 @@ class Changes(models.Model):
     waiting_duration = models.IntegerField()
     close_delay_stat = models.IntegerField()
     solve_delay_stat = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -533,7 +537,7 @@ class Problems(models.Model):
     is_deleted = models.IntegerField()
     status = models.IntegerField()
     content = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     date = models.DateTimeField(blank=True, null=True)
     solvedate = models.DateTimeField(blank=True, null=True)
     closedate = models.DateTimeField(blank=True, null=True)
@@ -552,7 +556,7 @@ class Problems(models.Model):
     waiting_duration = models.IntegerField()
     close_delay_stat = models.IntegerField()
     solve_delay_stat = models.IntegerField()
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -590,8 +594,8 @@ class Planningexternalevents(models.Model):
     state = models.IntegerField()
     planningeventcategories_id = models.PositiveIntegerField(blank=True, null=True)
     background = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -609,8 +613,8 @@ class Planningexternaleventtemplates(models.Model):
     state = models.IntegerField()
     planningeventcategories_id = models.PositiveIntegerField(blank=True, null=True)
     background = models.IntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -634,8 +638,8 @@ class Planningeventcategories(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     color = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -670,8 +674,8 @@ class Crontasks(models.Model):
     lastrun = models.DateTimeField(blank=True, null=True)
     lastcode = models.IntegerField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True

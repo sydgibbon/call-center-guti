@@ -1,7 +1,8 @@
+from datetime import datetime
+import django
 from django.db import models
 from assistance import models as assistanceModels
 from django.contrib.auth.models import AbstractUser, Group
-
 
 class Autoupdatesystems(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -15,8 +16,8 @@ class Autoupdatesystems(models.Model):
 class Manufacturers(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -26,8 +27,8 @@ class Manufacturers(models.Model):
 class Operatingsystems(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -37,8 +38,8 @@ class Operatingsystems(models.Model):
 class Networks(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -91,7 +92,7 @@ class Authldaps(models.Model):
     language_field = models.CharField(max_length=255, blank=True, null=True)
     entity_field = models.CharField(max_length=255, blank=True, null=True)
     entity_condition = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     comment = models.TextField(blank=True, null=True)
     is_default = models.IntegerField(default=0)
     is_active = models.IntegerField(default=1)
@@ -107,7 +108,7 @@ class Authldaps(models.Model):
     ldap_maxlimit = models.IntegerField(default=0)
     can_support_pagesize = models.IntegerField(default=0)
     picture_field = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     inventory_domain = models.CharField(max_length=255, blank=True, null=True)
     tls_certfile = models.TextField(blank=True, null=True)
     tls_keyfile = models.TextField(blank=True, null=True)
@@ -209,8 +210,8 @@ class Entities(models.Model):
     delay_send_emails = models.IntegerField(default=0)
     is_notif_enable_default = models.IntegerField(default=0)
     inquest_duration = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     autofill_decommission_date = models.CharField(max_length=255)
     suppliers_as_private = models.IntegerField(default=0)
     anonymize_support_agents = models.IntegerField(default=0)
@@ -253,8 +254,8 @@ class Locations(models.Model):
     latitude = models.CharField(max_length=255, blank=True, null=True)
     longitude = models.CharField(max_length=255, blank=True, null=True)
     altitude = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -270,7 +271,7 @@ class Groups(Group):
     ldap_field = models.CharField(max_length=255, blank=True, null=True)
     ldap_value = models.TextField(blank=True, null=True)
     ldap_group_dn = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     groups_id = models.PositiveIntegerField(blank=True, null=True)
     completename = models.TextField(blank=True, null=True)
     level = models.IntegerField(blank=True, null=True)
@@ -284,7 +285,7 @@ class Groups(Group):
     is_itemgroup = models.IntegerField(blank=True, null=True)
     is_usergroup = models.IntegerField(blank=True, null=True)
     is_manager = models.IntegerField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -310,7 +311,7 @@ class Users(AbstractUser):
     auths_id = models.PositiveIntegerField(blank=True, null=True)
     authtype = models.IntegerField(blank=True, null=True)
     last_login = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     date_sync = models.DateTimeField(blank=True, null=True)
     is_deleted = models.IntegerField(blank=True, null=True)
     profiles_id = models.PositiveIntegerField(blank=True, null=True)
@@ -383,7 +384,7 @@ class Users(AbstractUser):
     set_default_requester = models.IntegerField(blank=True, null=True)
     lock_autolock_mode = models.IntegerField(blank=True, null=True)
     lock_directunlock_notification = models.IntegerField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     highcontrast_css = models.IntegerField(blank=True, null=True)
     plannings = models.TextField(blank=True, null=True)
     sync_field = models.CharField(max_length=255, blank=True, null=True)
@@ -438,8 +439,8 @@ class States(models.Model):
     is_visible_appliance = models.IntegerField(default=0)
     is_visible_databaseinstance = models.IntegerField(default=0)
     is_visible_cable = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -480,7 +481,7 @@ class Softwares(models.Model):
     is_deleted = models.IntegerField(default=0)
     is_template = models.IntegerField(default=0)
     template_name = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     users = models.ForeignKey(
         Users, on_delete=models.CASCADE, blank=True, null=True, default=None)
     groups = models.ForeignKey(
@@ -491,7 +492,7 @@ class Softwares(models.Model):
     softwarecategories = models.ForeignKey(
         Softwarecategories, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_valid = models.IntegerField(default=0)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
@@ -512,8 +513,8 @@ class Networkequipmentmodels(models.Model):
     picture_front = models.TextField(blank=True, null=True)
     picture_rear = models.TextField(blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -523,8 +524,8 @@ class Networkequipmentmodels(models.Model):
 class Networkequipmenttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -545,7 +546,7 @@ class Networkequipments(models.Model):
         Users, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='networkequipments_users_tech')
     groups_tech = models.ForeignKey(
         Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='networkequipments_groups_tech')
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     comment = models.TextField(blank=True, null=True)
     locations = models.ForeignKey(
         Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
@@ -570,7 +571,7 @@ class Networkequipments(models.Model):
         max_digits=20, decimal_places=4, blank=True, null=True)
     is_dynamic = models.IntegerField(default=0)
     uuid = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     autoupdatesystems = models.ForeignKey(
         Autoupdatesystems, on_delete=models.CASCADE, blank=True, null=True, default=None)
     sysdescr = models.TextField(blank=True, null=True)
@@ -589,8 +590,8 @@ class Printermodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     picture_front = models.TextField(blank=True, null=True)
     picture_rear = models.TextField(blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
@@ -603,8 +604,8 @@ class Printermodels(models.Model):
 class Printertypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -616,7 +617,7 @@ class Printers(models.Model):
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_recursive = models.IntegerField(default=0)
     name = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
@@ -658,7 +659,7 @@ class Printers(models.Model):
         max_digits=20, decimal_places=4, blank=True, null=True)
     is_dynamic = models.IntegerField(default=0)
     uuid = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     sysdescr = models.TextField(blank=True, null=True)
     last_inventory_update = models.DateTimeField(blank=True, null=True)
     snmpcredentials = models.ForeignKey(
@@ -674,8 +675,8 @@ class Printers(models.Model):
 class Cartridgeitemtypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -700,8 +701,8 @@ class Cartridgeitems(models.Model):
     comment = models.TextField(blank=True, null=True)
     alarm_threshold = models.IntegerField(default=0)
     stock_target = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
@@ -720,8 +721,8 @@ class Cartridges(models.Model):
     date_use = models.DateField(blank=True, null=True)
     date_out = models.DateField(blank=True, null=True)
     pages = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -732,8 +733,8 @@ class Rackmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
@@ -747,8 +748,8 @@ class Racktypes(models.Model):
     is_recursive = models.IntegerField(default=0)
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -758,8 +759,8 @@ class Racktypes(models.Model):
 class Consumableitemtypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -786,8 +787,8 @@ class Consumableitems(models.Model):
     comment = models.TextField(blank=True, null=True)
     alarm_threshold = models.IntegerField(default=0)
     stock_target = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
 
@@ -806,8 +807,8 @@ class Consumables(models.Model):
     itemtype = models.CharField(max_length=100, blank=True, null=True)
     items = models.ForeignKey(
         Cartridgeitems, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -822,8 +823,8 @@ class Datacenters(models.Model):
     locations = models.ForeignKey(
         Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     pictures = models.TextField(blank=True, null=True)
 
     class Meta:
@@ -844,8 +845,8 @@ class Dcrooms(models.Model):
     datacenters = models.ForeignKey(
         Datacenters, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -889,8 +890,8 @@ class Racks(models.Model):
     max_power = models.IntegerField(default=0)
     mesured_power = models.IntegerField(default=0)
     max_weight = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -910,8 +911,8 @@ class Enclosuremodels(models.Model):
     picture_front = models.TextField(blank=True, null=True)
     picture_rear = models.TextField(blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -943,8 +944,8 @@ class Enclosures(models.Model):
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -957,8 +958,8 @@ class Pdutypes(models.Model):
     is_recursive = models.IntegerField(default=0)
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -979,8 +980,8 @@ class Pdumodels(models.Model):
     picture_rear = models.TextField(blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
     is_rackable = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1010,8 +1011,8 @@ class Pdus(models.Model):
     is_deleted = models.IntegerField(default=0)
     pdutypes = models.ForeignKey(
         Pdutypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1027,7 +1028,7 @@ class Unmanageds(models.Model):
     otherserial = models.CharField(max_length=255, blank=True, null=True)
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     comment = models.TextField(blank=True, null=True)
     locations = models.ForeignKey(
         Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
@@ -1043,7 +1044,7 @@ class Unmanageds(models.Model):
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_dynamic = models.IntegerField(default=0)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     autoupdatesystems = models.ForeignKey(
         Autoupdatesystems, on_delete=models.CASCADE, blank=True, null=True, default=None)
     sysdescr = models.TextField(blank=True, null=True)
@@ -1066,8 +1067,8 @@ class Unmanageds(models.Model):
 class Socketmodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1088,8 +1089,8 @@ class Networkports(models.Model):
     comment = models.TextField(blank=True, null=True)
     is_deleted = models.IntegerField(default=0)
     is_dynamic = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     ifmtu = models.IntegerField(default=0)
     ifspeed = models.BigIntegerField(blank=True, null=True)
     ifinternalstatus = models.CharField(max_length=255, blank=True, null=True)
@@ -1124,8 +1125,8 @@ class Sockets(models.Model):
     networkports = models.ForeignKey(
         Networkports, on_delete=models.CASCADE, blank=True, null=True, default=None)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1135,8 +1136,8 @@ class Sockets(models.Model):
 class Cablestrands(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1146,8 +1147,8 @@ class Cablestrands(models.Model):
 class Cabletypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1184,8 +1185,8 @@ class Cables(models.Model):
     cabletypes = models.ForeignKey(
         Cabletypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1195,8 +1196,8 @@ class Cables(models.Model):
 class Devicesimcardtypes(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1215,8 +1216,8 @@ class Devicesimcards(models.Model):
     voltage = models.IntegerField(blank=True, null=True)
     devicesimcardtypes = models.ForeignKey(
         Devicesimcardtypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     allow_voip = models.IntegerField(default=0)
 
     class Meta:
@@ -1237,8 +1238,8 @@ class Computermodels(models.Model):
     picture_front = models.TextField(blank=True, null=True)
     picture_rear = models.TextField(blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1248,8 +1249,8 @@ class Computermodels(models.Model):
 class Computertypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1269,8 +1270,8 @@ class Monitormodels(models.Model):
     picture_front = models.TextField(blank=True, null=True)
     picture_rear = models.TextField(blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1280,8 +1281,8 @@ class Monitormodels(models.Model):
 class Monitortypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1291,8 +1292,8 @@ class Monitortypes(models.Model):
 class Softwarelicensetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     softwarelicensetypes = models.PositiveIntegerField(blank=True, null=True)
     level = models.IntegerField(default=0)
     ancestors_cache = models.TextField(blank=True, null=True)
@@ -1319,8 +1320,8 @@ class Softwareversions(models.Model):
     comment = models.TextField(blank=True, null=True)
     operatingsystems = models.ForeignKey(
         Operatingsystems, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1348,9 +1349,9 @@ class Softwarelicenses(models.Model):
         Softwareversions, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='softwarelicenses_softwareversions_use')
     expire = models.DateField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     is_valid = models.IntegerField(default=0)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     locations = models.ForeignKey(
         Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
     users_tech = models.ForeignKey(
@@ -1384,8 +1385,8 @@ class PrintersCartridgeinfos(models.Model):
         Printers, on_delete=models.CASCADE, blank=True, null=True, default=None)
     property = models.CharField(max_length=255)
     value = models.CharField(max_length=255)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1408,8 +1409,8 @@ class Phonemodels(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     product_number = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     picture_front = models.TextField(blank=True, null=True)
     picture_rear = models.TextField(blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
@@ -1422,8 +1423,8 @@ class Phonemodels(models.Model):
 class Phonepowersupplies(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1433,8 +1434,8 @@ class Phonepowersupplies(models.Model):
 class Phonetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1445,7 +1446,7 @@ class Phones(models.Model):
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     name = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
@@ -1485,7 +1486,7 @@ class Phones(models.Model):
     autoupdatesystems = models.ForeignKey(
         Autoupdatesystems, on_delete=models.CASCADE, blank=True, null=True, default=None)
     uuid = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     is_recursive = models.IntegerField(default=0)
     last_inventory_update = models.DateTimeField(blank=True, null=True)
 
@@ -1527,8 +1528,8 @@ class ItemsEnclosures(models.Model):
 class Plugs(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1541,8 +1542,8 @@ class PdusPlugs(models.Model):
     pdus = models.ForeignKey(
         Pdus, on_delete=models.CASCADE, blank=True, null=True, default=None)
     number_plugs = models.IntegerField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1557,8 +1558,8 @@ class PdusRacks(models.Model):
     side = models.IntegerField(blank=True, null=True)
     position = models.IntegerField(default=0)
     bgcolor = models.CharField(max_length=7, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1568,8 +1569,8 @@ class PdusRacks(models.Model):
 class Devicebatterytypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1601,8 +1602,8 @@ class Devicebatteries(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicebatterymodels = models.ForeignKey(
         Devicebatterymodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1636,8 +1637,8 @@ class Devicecameras(models.Model):
     devicecameramodels = models.ForeignKey(
         Devicecameramodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
     support = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1657,8 +1658,8 @@ class Devicecasemodels(models.Model):
 class Devicecasetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1678,8 +1679,8 @@ class Devicecases(models.Model):  # Hasta aqui - Guty
     is_recursive = models.IntegerField(default=0)
     devicecasemodels = models.ForeignKey(
         Devicecasemodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1699,8 +1700,8 @@ class Devicecontrolmodels(models.Model):  # hasta aca FRANNNNN
 class Interfacetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1721,8 +1722,8 @@ class Devicecontrols(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicecontrolmodels = models.ForeignKey(
         Devicecontrolmodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1754,8 +1755,8 @@ class Devicedrives(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicedrivemodels = models.ForeignKey(
         Devicedrivemodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1775,8 +1776,8 @@ class Devicefirmwaremodels(models.Model):
 class Devicefirmwaretypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1798,8 +1799,8 @@ class Devicefirmwares(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicefirmwaremodels = models.ForeignKey(
         Devicefirmwaremodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1842,8 +1843,8 @@ class Devicegenerics(models.Model):
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     devicegenericmodels = models.ForeignKey(
         Devicegenericmodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1875,8 +1876,8 @@ class Devicegraphiccards(models.Model):
     devicegraphiccardmodels = models.ForeignKey(
         Devicegraphiccardmodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
     chipset = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1909,8 +1910,8 @@ class Deviceharddrives(models.Model):
     is_recursive = models.IntegerField(default=0)
     deviceharddrivemodels = models.ForeignKey(
         Deviceharddrivemodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1930,8 +1931,8 @@ class Devicememorymodels(models.Model):
 class Devicememorytypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1953,8 +1954,8 @@ class Devicememories(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicememorymodels = models.ForeignKey(
         Devicememorymodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1974,8 +1975,8 @@ class Peripheralmodels(models.Model):
     picture_front = models.TextField(blank=True, null=True)
     picture_rear = models.TextField(blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1985,8 +1986,8 @@ class Peripheralmodels(models.Model):
 class Peripheraltypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -1997,7 +1998,7 @@ class Peripherals(models.Model):
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     name = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
@@ -2032,7 +2033,7 @@ class Peripherals(models.Model):
     autoupdatesystems = models.ForeignKey(
         Autoupdatesystems, on_delete=models.CASCADE, blank=True, null=True, default=None)
     uuid = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     is_recursive = models.IntegerField(default=0)
 
     class Meta:
@@ -2062,8 +2063,8 @@ class Devicemotherboards(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicemotherboardmodels = models.ForeignKey(
         Devicemotherboardmodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2093,8 +2094,8 @@ class Devicenetworkcards(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicenetworkcardmodels = models.ForeignKey(
         Devicenetworkcardmodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2124,8 +2125,8 @@ class Devicepcis(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicepcimodels = models.ForeignKey(
         Devicepcimodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2165,8 +2166,8 @@ class Devicepowersupplies(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicepowersupplymodels = models.ForeignKey(
         Devicepowersupplymodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2188,8 +2189,8 @@ class Deviceprocessors(models.Model):
     is_recursive = models.IntegerField(default=0)
     deviceprocessormodels = models.ForeignKey(
         Deviceprocessormodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2232,8 +2233,8 @@ class Devicesensors(models.Model):
         Locations, on_delete=models.CASCADE, blank=True, null=True, default=None)
     states = models.ForeignKey(
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2262,8 +2263,8 @@ class Devicesoundcards(models.Model):
     is_recursive = models.IntegerField(default=0)
     devicesoundcardmodels = models.ForeignKey(
         Devicesoundcardmodels, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2312,9 +2313,9 @@ class ItemsDevicecameras(models.Model):
 
 class Imageformats(models.Model):
     name = models.CharField(unique=True, max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_recursive = models.IntegerField(default=0)
@@ -2327,9 +2328,9 @@ class Imageformats(models.Model):
 class Imageresolutions(models.Model):
     name = models.CharField(unique=True, max_length=255, blank=True, null=True)
     is_video = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     comment = models.TextField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_recursive = models.IntegerField(default=0)
@@ -2705,8 +2706,8 @@ class ItemsDevicesensors(models.Model):
 class Linetypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2721,8 +2722,8 @@ class Lineoperators(models.Model):
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_recursive = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2750,8 +2751,8 @@ class Lines(models.Model):
         States, on_delete=models.CASCADE, blank=True, null=True, default=None)
     linetypes = models.ForeignKey(
         Linetypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
@@ -2831,8 +2832,8 @@ class Passivedcequipmentmodels(models.Model):
     picture_front = models.TextField(blank=True, null=True)
     picture_rear = models.TextField(blank=True, null=True)
     pictures = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2842,8 +2843,8 @@ class Passivedcequipmentmodels(models.Model):
 class Passivedcequipmenttypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2875,8 +2876,8 @@ class Passivedcequipments(models.Model):
     manufacturers = models.ForeignKey(
         Manufacturers, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2923,8 +2924,8 @@ class Fqdns(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     fqdn = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2944,8 +2945,8 @@ class Networknames(models.Model):
         Networks, on_delete=models.CASCADE, blank=True, null=True, default=None)
     is_deleted = models.IntegerField(default=0)
     is_dynamic = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2980,8 +2981,8 @@ class Networkportaggregates(models.Model):
     networkports = models.ForeignKey(
         Networkports, on_delete=models.CASCADE, blank=True, null=True, default=None)
     networkports_list = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -2992,8 +2993,8 @@ class Networkportaliases(models.Model):
     networkports = models.ForeignKey(
         Networkports, on_delete=models.CASCADE, blank=True, null=True, default=None)
     networkports_alias = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3016,8 +3017,8 @@ class Networkportconnectionlogs(models.Model):
 class Networkportdialups(models.Model):
     networkports = models.ForeignKey(
         Networkports, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3031,8 +3032,8 @@ class Networkportethernets(models.Model):
         ItemsDevicenetworkcards, on_delete=models.CASCADE, blank=True, null=True, default=None)
     type = models.CharField(max_length=10, blank=True, null=True)
     speed = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3042,8 +3043,8 @@ class Networkportethernets(models.Model):
 class Networkportfiberchanneltypes(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3059,8 +3060,8 @@ class Networkportfiberchannels(models.Model):
         Networkportfiberchanneltypes, on_delete=models.CASCADE, blank=True, null=True, default=None)
     wwn = models.CharField(max_length=16, blank=True, null=True)
     speed = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3070,8 +3071,8 @@ class Networkportfiberchannels(models.Model):
 class Networkportlocals(models.Model):
     networkports = models.ForeignKey(
         Networkports, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3086,8 +3087,8 @@ class Networkportmetrics(models.Model):
     ifouterrors = models.BigIntegerField(blank=True, null=True)
     networkports = models.ForeignKey(
         Networkports, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3114,8 +3115,8 @@ class Vlans(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     tag = models.IntegerField(default=0)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3145,8 +3146,8 @@ class Networkporttypes(models.Model):
     is_importable = models.IntegerField(default=0)
     instantiation_type = models.CharField(
         max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3163,8 +3164,8 @@ class Networkportwifis(models.Model):
     networkportwifis = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='networkportwifis_networkportwifis')
     version = models.CharField(max_length=20, blank=True, null=True)
     mode = models.CharField(max_length=20, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
 
     class Meta:
         managed = True
@@ -3184,7 +3185,7 @@ class Computers(models.Model):
     groups_tech = models.ForeignKey(
         Groups, on_delete=models.CASCADE, blank=True, null=True, default=None, related_name='computers_groups_tech')
     comment = models.TextField(blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     autoupdatesystems = models.ForeignKey(
         Autoupdatesystems, on_delete=models.CASCADE, blank=True, null=True, default=None)
     locations = models.ForeignKey(
@@ -3210,7 +3211,7 @@ class Computers(models.Model):
     ticket_tco = models.DecimalField(
         max_digits=20, decimal_places=4, blank=True, null=True)
     uuid = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     is_recursive = models.IntegerField(default=0)
     last_inventory_update = models.DateTimeField(blank=True, null=True)
 
@@ -3223,7 +3224,7 @@ class Monitors(models.Model):
     entities = models.ForeignKey(
         Entities, on_delete=models.CASCADE, blank=True, null=True, default=None)
     name = models.CharField(max_length=255, blank=True, null=True)
-    date_mod = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     contact = models.CharField(max_length=255, blank=True, null=True)
     contact_num = models.CharField(max_length=255, blank=True, null=True)
     users_tech = models.ForeignKey(
@@ -3266,7 +3267,7 @@ class Monitors(models.Model):
     autoupdatesystems = models.ForeignKey(
         Autoupdatesystems, on_delete=models.CASCADE, blank=True, null=True, default=None)
     uuid = models.CharField(max_length=255, blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     is_recursive = models.IntegerField(default=0)
 
     class Meta:
@@ -3297,8 +3298,8 @@ class ItemsOperatingsystems(models.Model):
     license_number = models.CharField(max_length=255, blank=True, null=True)
     licenseid = models.CharField(max_length=255, blank=True, null=True)
     operatingsystemeditions_id = models.PositiveIntegerField()
-    date_mod = models.DateTimeField(blank=True, null=True)
-    date_creation = models.DateTimeField(blank=True, null=True)
+    date_mod = models.DateTimeField(blank=True, default=django.utils.timezone.now)
+    date_creation = models.DateTimeField(blank=True, default=django.utils.timezone.now)
     is_deleted = models.IntegerField()
     is_dynamic = models.IntegerField()
     entities_id = models.PositiveIntegerField()
