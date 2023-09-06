@@ -1,4 +1,4 @@
-from assets.consumables.serializers import ConsumableitemsSerializer, ConsumableitemtypesSerializer, ConsumablesSerializer, GetConsumableitemsSerializer, GetConsumableitemtypesSelectSerializer, GetConsumableitemsListSerializer, GetConsumableitemsByIdSerializer
+from assets.consumables.serializers import ConsumableitemsSerializer, ConsumableitemtypesSerializer, ConsumablesSerializer, GetConsumableitemsSerializer, GetConsumableitemtypesSelectSerializer, GetConsumableitemsListSerializer, GetConsumableitemsByIdSerializer, CreateConsumableItemsSerializer
 from assets.models import Consumableitems, Consumableitemtypes, Consumables
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -87,3 +87,15 @@ class GetConsumableitemsByIdViewSet(viewsets.ViewSet):
 
         serializer = GetConsumableitemsByIdSerializer(consumableitem)
         return Response(serializer.data)
+    
+class CreateConsumableItemsViewSet(viewsets.GenericViewSet):
+    queryset=Consumableitems.objects.all()
+    serializer_class = CreateConsumableItemsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['post']
+
+    def create(self,request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
