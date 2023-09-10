@@ -10,6 +10,7 @@ from django.db.models import Count
 
 
 class GetNetworksSelectViewSet(viewsets.ViewSet):
+    queryset = Networks.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -18,6 +19,7 @@ class GetNetworksSelectViewSet(viewsets.ViewSet):
         return Response(networks.data)
     
 class GetNetworkequipmentsCountViewSet(viewsets.ViewSet):
+    queryset = Networkequipments.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -27,6 +29,7 @@ class GetNetworkequipmentsCountViewSet(viewsets.ViewSet):
         return Response(networkequipmentsCount.data)
 
 class GetNetworkequipmentsCountByManufacturersViewSet(viewsets.ViewSet):
+    queryset = Networkequipments.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

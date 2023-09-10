@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetEnclosuremodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Enclosuremodels.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -16,6 +17,7 @@ class GetEnclosuremodelsSelectViewSet(viewsets.ViewSet):
         return Response(enclosuremodels.data)
 
 class GetEnclosuresCountViewSet(viewsets.ViewSet):
+    queryset = Enclosures.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -70,12 +72,13 @@ class EnclosuremodelsViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class GetEnclosuresViewSet(viewsets.ModelViewSet):
-    queryset = Enclosures.objects.all()
+    queryset = Enclosures.objects.filter(is_deleted=0)
     serializer_class = GetEnclosuresSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
 class GetEnclosuresListViewSet(viewsets.ViewSet):
+    queryset = Enclosures.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -97,6 +100,7 @@ class CreateEnclosureViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class GetEnclosuresByIdViewSet(viewsets.ViewSet):
+    queryset = Enclosures.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

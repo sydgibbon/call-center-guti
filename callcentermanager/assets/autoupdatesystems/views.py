@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetAutoupdatesystemsSelectViewSet(viewsets.ViewSet):
+    queryset = Autoupdatesystems.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -13,7 +14,7 @@ class GetAutoupdatesystemsSelectViewSet(viewsets.ViewSet):
         return Response(autoupdatesystems.data)
 
 class AutoupdatesystemsViewSet(viewsets.ModelViewSet):
-    queryset = Autoupdatesystems.objects.all()
+    queryset = Autoupdatesystems.objects.filter(is_deleted=0)
     serializer_class = AutoupdatesystemsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
 

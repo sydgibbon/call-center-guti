@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetCartridgeitemtypesSelectViewSet(viewsets.ViewSet):
+    queryset = Cartridgeitemtypes.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -75,12 +76,13 @@ class CartridgeitemtypesViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class GetCartridgeItemsViewSet(viewsets.ModelViewSet):
-    queryset = Cartridgeitems.objects.all()
+    queryset = Cartridgeitems.objects.filter(is_deleted=0)
     serializer_class = GetCartridgeItemsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
 class GetCartridgeitemsListViewSet(viewsets.ViewSet):
+    queryset = Cartridgeitems.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -103,6 +105,7 @@ class CreateCartridgeitemViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class GetCartridgeitemsByIdViewSet(viewsets.ViewSet):
+    queryset = Cartridgeitems.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

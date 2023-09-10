@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetDevicesimcardsSelectViewSet(viewsets.ViewSet):
+    queryset = Devicesimcards.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -13,6 +14,7 @@ class GetDevicesimcardsSelectViewSet(viewsets.ViewSet):
         return Response(devicesimcards.data)
       
 class GetLinesSelectViewSet(viewsets.ViewSet):
+    queryset = Lines.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -66,12 +68,13 @@ class ItemsDevicesimcardsViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class GetDevicesimcardsViewSet(viewsets.ModelViewSet):
-    queryset = Devicesimcards.objects.all()
+    queryset = Devicesimcards.objects.filter(is_deleted=0)
     serializer_class = GetDevicesimcardsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
 class GetDevicesimcardsListViewSet(viewsets.ViewSet):
+    queryset = Devicesimcards.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -93,6 +96,7 @@ class CreateDevicesimcardViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class GetItemsDevicesimcardsByIdViewSet(viewsets.ViewSet):
+    queryset = Devicesimcards.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

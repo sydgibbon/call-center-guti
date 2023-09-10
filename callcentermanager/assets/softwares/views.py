@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetSoftwarecategoriesSelectViewSet(viewsets.ViewSet):
+    queryset = Softwarecategories.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -16,6 +17,7 @@ class GetSoftwarecategoriesSelectViewSet(viewsets.ViewSet):
         return Response(softwarecategories.data)
     
 class GetSoftwaresCountViewSet(viewsets.ViewSet):
+    queryset = Softwares.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -25,6 +27,7 @@ class GetSoftwaresCountViewSet(viewsets.ViewSet):
         return Response(softwaresCount.data)
     
 class GetSoftwarelicensesCountViewSet(viewsets.ViewSet):
+    queryset = Softwarelicenses.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -33,7 +36,7 @@ class GetSoftwarelicensesCountViewSet(viewsets.ViewSet):
 
         return Response(softwarelicensesCount.data)
 class GetSoftwaresViewSet(viewsets.ModelViewSet):
-    queryset = Softwares.objects.all()
+    queryset = Softwares.objects.filter(is_deleted=0)
     serializer_class = GetSoftwaresSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
@@ -102,6 +105,7 @@ class SoftwareversionsViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GetSoftwaresListViewSet(viewsets.ViewSet):
+    queryset = Softwares.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -123,6 +127,7 @@ class CreateSoftwareViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class GetSoftwaresByIdViewSet(viewsets.ViewSet):
+    queryset = Softwares.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

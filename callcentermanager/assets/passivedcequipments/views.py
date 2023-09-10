@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetPassivedcequipmentsSelectViewSet(viewsets.ViewSet):
+    queryset = Passivedcequipments.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -13,6 +14,7 @@ class GetPassivedcequipmentsSelectViewSet(viewsets.ViewSet):
         return Response(passivedcequipments.data)
 
 class GetPassivedcequipmenttypesSelectViewSet(viewsets.ViewSet):
+    queryset = Passivedcequipmenttypes.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -21,6 +23,7 @@ class GetPassivedcequipmenttypesSelectViewSet(viewsets.ViewSet):
         return Response(passivedcequipmenttypes.data)
     
 class GetPassivedcequipmentmodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Passivedcequipmentmodels.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -80,6 +83,7 @@ class PassivedcequipmentmodelsViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GetPassivedcequipmentsListViewSet(viewsets.ViewSet):
+    queryset = Passivedcequipments.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -101,6 +105,7 @@ class CreatePassivedcequipmentViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class GetPassivedcequipmentsByIdViewSet(viewsets.ViewSet):
+    queryset = Passivedcequipments.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

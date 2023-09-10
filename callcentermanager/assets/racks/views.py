@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetRacktypesSelectViewSet(viewsets.ViewSet):
+    queryset = Racktypes.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -16,6 +17,7 @@ class GetRacktypesSelectViewSet(viewsets.ViewSet):
         return Response(racktypes.data)
     
 class GetRackmodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Rackmodels.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -24,6 +26,7 @@ class GetRackmodelsSelectViewSet(viewsets.ViewSet):
         return Response(rackmodels.data)
     
 class GetDcroomsSelectViewSet(viewsets.ViewSet):
+    queryset = Dcrooms.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -32,6 +35,7 @@ class GetDcroomsSelectViewSet(viewsets.ViewSet):
         return Response(dcrooms.data)
     
 class GetRacksCountViewSet(viewsets.ViewSet):
+    queryset = Racks.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -115,12 +119,13 @@ class DcroomsViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GetRacksViewSet(viewsets.ModelViewSet):
-    queryset = Racks.objects.all()
+    queryset = Racks.objects.filter(is_deleted=0)
     serializer_class = GetRacksSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
 class GetRacksListViewSet(viewsets.ViewSet):
+    queryset = Racks.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -142,6 +147,7 @@ class CreateRackViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class GetRacksByIdViewSet(viewsets.ViewSet):
+    queryset = Racks.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetPhonesSelectViewSet(viewsets.ViewSet):
+    queryset = Phones.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -14,6 +15,7 @@ class GetPhonesSelectViewSet(viewsets.ViewSet):
         return Response(phones.data) 
 
 class GetPhonetypesSelectViewSet(viewsets.ViewSet):
+    queryset = Phonetypes.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -22,6 +24,7 @@ class GetPhonetypesSelectViewSet(viewsets.ViewSet):
         return Response(phonetypes.data)
     
 class GetPhonemodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Phonemodels.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -30,6 +33,7 @@ class GetPhonemodelsSelectViewSet(viewsets.ViewSet):
         return Response(phonemodels.data)
     
 class GetPhonepowersuppliesSelectViewSet(viewsets.ViewSet):
+    queryset = Phonepowersupplies.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -38,6 +42,7 @@ class GetPhonepowersuppliesSelectViewSet(viewsets.ViewSet):
         return Response(phonepowersupplies.data)
     
 class GetPhonesCountViewSet(viewsets.ViewSet):
+    queryset = Phones.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -46,7 +51,7 @@ class GetPhonesCountViewSet(viewsets.ViewSet):
 
         return Response(phonesCount.data)
 class GetPhonesViewSet(viewsets.ModelViewSet):
-    queryset = Phones.objects.all()
+    queryset = Phones.objects.filter(is_deleted=0)
     serializer_class = GetPhonesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
@@ -112,6 +117,7 @@ class PhonetypesViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GetPhonesListViewSet(viewsets.ViewSet):
+    queryset = Phones.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -133,6 +139,7 @@ class CreatePhoneViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class GetPhonesByIdViewSet(viewsets.ViewSet):
+    queryset = Phones.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
