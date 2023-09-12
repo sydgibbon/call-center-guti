@@ -80,3 +80,9 @@ class GetConsumableitemsByIdSerializer(serializers.ModelSerializer):
                 self.instance = instance
             except Consumableitems.DoesNotExist:
                 pass
+
+class CreateConsumableItemsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Consumableitems
+        fields = '__all__'
