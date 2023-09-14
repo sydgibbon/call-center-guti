@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetRacktypesSelectViewSet(viewsets.ViewSet):
-    queryset = Racktypes.objects.filter(is_deleted=0)
+    queryset = Racktypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -17,7 +17,7 @@ class GetRacktypesSelectViewSet(viewsets.ViewSet):
         return Response(racktypes.data)
     
 class GetRackmodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Rackmodels.objects.filter(is_deleted=0)
+    queryset = Rackmodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetCabletypesSelectViewSet(viewsets.ViewSet):
-    queryset = Cabletypes.objects.filter(is_deleted=0)
+    queryset = Cabletypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -14,7 +14,7 @@ class GetCabletypesSelectViewSet(viewsets.ViewSet):
         return Response(cabletypes.data)
     
 class GetCablestrandsSelectViewSet(viewsets.ViewSet):
-    queryset = Cablestrands.objects.filter(is_deleted=0)
+    queryset = Cablestrands.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -23,7 +23,7 @@ class GetCablestrandsSelectViewSet(viewsets.ViewSet):
         return Response(cablestrands.data)
     
 class GetSocketsSelectViewSet(viewsets.ViewSet):
-    queryset = Sockets.objects.filter(is_deleted=0)
+    queryset = Sockets.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -32,7 +32,7 @@ class GetSocketsSelectViewSet(viewsets.ViewSet):
         return Response(sockets.data)
         
 class GetSocketmodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Socketmodels.objects.filter(is_deleted=0)
+    queryset = Socketmodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -56,7 +56,7 @@ class CablesViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class GetCablesViewSet(viewsets.ModelViewSet):
-    queryset = Cables.objects.filter(is_deleted=0)
+    queryset = Cables.objects.all()
     serializer_class = GetCablesSerializer
     http_method_names = ['get']
 
@@ -91,7 +91,7 @@ class CabletypesViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GetCablesListViewSet(viewsets.ViewSet):
-    queryset = Cables.objects.filter(is_deleted=0)
+    queryset = Cables.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -113,7 +113,7 @@ class CreateCableViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
         
 class GetCablesByIdViewSet(viewsets.ViewSet):
-    queryset = Cables.objects.filter(is_deleted=0)
+    queryset = Cables.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

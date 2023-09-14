@@ -14,7 +14,7 @@ class GetPassivedcequipmentsSelectViewSet(viewsets.ViewSet):
         return Response(passivedcequipments.data)
 
 class GetPassivedcequipmenttypesSelectViewSet(viewsets.ViewSet):
-    queryset = Passivedcequipmenttypes.objects.filter(is_deleted=0)
+    queryset = Passivedcequipmenttypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -23,7 +23,7 @@ class GetPassivedcequipmenttypesSelectViewSet(viewsets.ViewSet):
         return Response(passivedcequipmenttypes.data)
     
 class GetPassivedcequipmentmodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Passivedcequipmentmodels.objects.filter(is_deleted=0)
+    queryset = Passivedcequipmentmodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

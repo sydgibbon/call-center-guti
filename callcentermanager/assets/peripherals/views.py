@@ -15,7 +15,7 @@ class GetPeripheralsSelectViewSet(viewsets.ViewSet):
         return Response(peripherals.data)
 
 class GetPeripheraltypesSelectViewSet(viewsets.ViewSet):
-    queryset = Peripheraltypes.objects.filter(is_deleted=0)
+    queryset = Peripheraltypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -25,7 +25,7 @@ class GetPeripheraltypesSelectViewSet(viewsets.ViewSet):
         return Response(peripheraltypes.data)
     
 class GetPeripheralmodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Peripheralmodels.objects.filter(is_deleted=0)
+    queryset = Peripheralmodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

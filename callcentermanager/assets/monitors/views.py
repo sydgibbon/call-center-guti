@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from django.db.models import Count
 
 class GetMonitortypesSelectViewSet(viewsets.ViewSet):
-    queryset = Monitortypes.objects.filter(is_deleted=0)
+    queryset = Monitortypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -19,7 +19,7 @@ class GetMonitortypesSelectViewSet(viewsets.ViewSet):
         return Response(monitortypes.data)
     
 class GetMonitormodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Monitormodels.objects.filter(is_deleted=0)
+    queryset = Monitormodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

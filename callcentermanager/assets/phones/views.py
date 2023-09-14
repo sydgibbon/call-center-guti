@@ -15,7 +15,7 @@ class GetPhonesSelectViewSet(viewsets.ViewSet):
         return Response(phones.data) 
 
 class GetPhonetypesSelectViewSet(viewsets.ViewSet):
-    queryset = Phonetypes.objects.filter(is_deleted=0)
+    queryset = Phonetypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -24,7 +24,7 @@ class GetPhonetypesSelectViewSet(viewsets.ViewSet):
         return Response(phonetypes.data)
     
 class GetPhonemodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Phonemodels.objects.filter(is_deleted=0)
+    queryset = Phonemodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -33,7 +33,7 @@ class GetPhonemodelsSelectViewSet(viewsets.ViewSet):
         return Response(phonemodels.data)
     
 class GetPhonepowersuppliesSelectViewSet(viewsets.ViewSet):
-    queryset = Phonepowersupplies.objects.filter(is_deleted=0)
+    queryset = Phonepowersupplies.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

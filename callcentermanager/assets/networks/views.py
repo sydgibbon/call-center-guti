@@ -10,7 +10,7 @@ from django.db.models import Count
 
 
 class GetNetworksSelectViewSet(viewsets.ViewSet):
-    queryset = Networks.objects.filter(is_deleted=0)
+    queryset = Networks.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

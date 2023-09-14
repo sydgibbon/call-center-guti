@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetPdutypesSelectViewSet(viewsets.ViewSet):
-    queryset = Pdutypes.objects.filter(is_deleted=0)
+    queryset = Pdutypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -19,7 +19,7 @@ class GetPdutypesSelectViewSet(viewsets.ViewSet):
         return Response(pdutypes.data)
     
 class GetPdumodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Pdumodels.objects.filter(is_deleted=0)
+    queryset = Pdumodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -38,7 +38,7 @@ class GetPdusCountViewSet(viewsets.ViewSet):
         return Response(pdusCount.data)
 
 class GetPdutypesSelectViewSet(viewsets.ViewSet):
-    queryset = Pdutypes.objects.filter(is_deleted=0)
+    queryset = Pdutypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -47,7 +47,7 @@ class GetPdutypesSelectViewSet(viewsets.ViewSet):
         return Response(pdutypes.data)
     
 class GetPdumodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Pdumodels.objects.filter(is_deleted=0)
+    queryset = Pdumodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

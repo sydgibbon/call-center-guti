@@ -19,7 +19,7 @@ class GetComputersSelectViewSet(viewsets.ViewSet):
         return Response(computers.data)
     
 class GetComputertypesSelectViewSet(viewsets.ViewSet):
-    queryset = Computertypes.objects.filter(is_deleted=0)
+    queryset = Computertypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -29,7 +29,7 @@ class GetComputertypesSelectViewSet(viewsets.ViewSet):
         return Response(computertypes.data)
     
 class GetComputermodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Computermodels.objects.filter(is_deleted=0)
+    queryset = Computermodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

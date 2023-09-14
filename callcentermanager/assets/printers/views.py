@@ -17,7 +17,7 @@ class GetPrintersSelectViewSet(viewsets.ViewSet):
         return Response(printers.data)
 
 class GetPrintermodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Printermodels.objects.filter(is_deleted=0)
+    queryset = Printermodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -26,7 +26,7 @@ class GetPrintermodelsSelectViewSet(viewsets.ViewSet):
         return Response(printermodels.data)
 
 class GetPrintertypesSelectViewSet(viewsets.ViewSet):
-    queryset = Printertypes.objects.filter(is_deleted=0)
+    queryset = Printertypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

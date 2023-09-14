@@ -14,7 +14,7 @@ class GetNetworkequipmentsSelectViewSet(viewsets.ViewSet):
         return Response(networkequipments.data)
 
 class GetNetworkequipmenttypesSelectViewSet(viewsets.ViewSet):
-    queryset = Networkequipmenttypes.objects.filter(is_deleted=0)
+    queryset = Networkequipmenttypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -23,7 +23,7 @@ class GetNetworkequipmenttypesSelectViewSet(viewsets.ViewSet):
         return Response(networkequipmenttypes.data)
 
 class GetNetworkequipmentmodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Networkequipmentmodels.objects.filter(is_deleted=0)
+    queryset = Networkequipmentmodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

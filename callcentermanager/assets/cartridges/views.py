@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetCartridgeitemtypesSelectViewSet(viewsets.ViewSet):
-    queryset = Cartridgeitemtypes.objects.filter(is_deleted=0)
+    queryset = Cartridgeitemtypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

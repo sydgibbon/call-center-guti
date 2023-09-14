@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetEnclosuremodelsSelectViewSet(viewsets.ViewSet):
-    queryset = Enclosuremodels.objects.filter(is_deleted=0)
+    queryset = Enclosuremodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
