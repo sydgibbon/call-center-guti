@@ -11,7 +11,7 @@ class GetNetworkequipmentsCountSerializer(serializers.ModelSerializer):
     networkequipmentsCount = serializers.SerializerMethodField()
     
     def get_networkequipmentsCount(self,obj):
-        return Networkequipments.objects.count()
+        return obj.count()
     
     class Meta:
         model = Networkequipments

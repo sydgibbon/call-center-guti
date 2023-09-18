@@ -40,7 +40,7 @@ class GetPrintersCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        printersCount = GetPrintersCountSerializer(Printers.objects.count())
+        printersCount = GetPrintersCountSerializer(self.queryset)
 
         return Response(printersCount.data)
 class GetPrintersViewSet(viewsets.ModelViewSet):

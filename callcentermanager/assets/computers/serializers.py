@@ -29,7 +29,7 @@ class GetComputersCountSerializer(serializers.ModelSerializer):
     computersCount = serializers.SerializerMethodField()
     
     def get_computersCount(self,obj):
-        return Computers.objects.count()
+        return obj.count()
     
     class Meta:
         model = Computers

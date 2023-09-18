@@ -40,7 +40,7 @@ class GetRacksCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        racksCount = GetRacksCountSerializer(Racks.objects.count())
+        racksCount = GetRacksCountSerializer(self.queryset)
 
         return Response(racksCount.data)
 class RacksViewSet(viewsets.ModelViewSet):

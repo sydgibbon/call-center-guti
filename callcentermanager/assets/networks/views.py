@@ -24,7 +24,7 @@ class GetNetworkequipmentsCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        networkequipmentsCount = GetNetworkequipmentsCountSerializer(Networkequipments.objects.count())
+        networkequipmentsCount = GetNetworkequipmentsCountSerializer(self.queryset)
 
         return Response(networkequipmentsCount.data)
 

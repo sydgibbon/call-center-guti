@@ -28,7 +28,7 @@ class GetPrintersCountSerializer(serializers.ModelSerializer):
     printersCount = serializers.SerializerMethodField()
     
     def get_printersCount(self,obj):
-        return Printers.objects.count()
+        return obj.count()
     
     class Meta:
         model = Printers

@@ -22,7 +22,7 @@ class GetSoftwaresCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        softwaresCount = GetSoftwaresCountSerializer(Softwares.objects.count())
+        softwaresCount = GetSoftwaresCountSerializer(self.queryset)
 
         return Response(softwaresCount.data)
     
@@ -32,7 +32,7 @@ class GetSoftwarelicensesCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        softwarelicensesCount = GetSoftwarelicensesCountSerializer(Softwarelicenses.objects.count())
+        softwarelicensesCount = GetSoftwarelicensesCountSerializer(self.queryset)
 
         return Response(softwarelicensesCount.data)
 class GetSoftwaresViewSet(viewsets.ModelViewSet):

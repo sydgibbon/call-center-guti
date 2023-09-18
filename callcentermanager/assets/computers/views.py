@@ -44,7 +44,7 @@ class GetComputersCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        computersCount = GetComputersCountSerializer(Computers.objects.count())
+        computersCount = GetComputersCountSerializer(self.queryset)
 
         return Response(computersCount.data)
 

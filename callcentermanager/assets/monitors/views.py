@@ -34,7 +34,7 @@ class GetMonitorsCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        monitorsCount = GetMonitorsCountSerializer(Monitors.objects.count())
+        monitorsCount = GetMonitorsCountSerializer(self.queryset)
 
         return Response(monitorsCount.data)
 

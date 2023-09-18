@@ -22,7 +22,7 @@ class GetEnclosuresCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        enclosuresCount = GetEnclosuresCountSerializer(Enclosures.objects.count())
+        enclosuresCount = GetEnclosuresCountSerializer(self.queryset)
 
         return Response(enclosuresCount.data)
     

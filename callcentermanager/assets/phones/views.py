@@ -47,7 +47,7 @@ class GetPhonesCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        phonesCount = GetPhonesCountSerializer(Phones.objects.count())
+        phonesCount = GetPhonesCountSerializer(self.queryset)
 
         return Response(phonesCount.data)
 class GetPhonesViewSet(viewsets.ModelViewSet):

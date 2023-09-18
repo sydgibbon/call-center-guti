@@ -24,7 +24,7 @@ class GetMonitorsCountSerializer(serializers.ModelSerializer):
     monitorsCount = serializers.SerializerMethodField()
     
     def get_monitorsCount(self,obj):
-        return Monitors.objects.count()
+        return obj.count()
     
     class Meta:
         model = Monitors

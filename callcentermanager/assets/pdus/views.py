@@ -33,7 +33,7 @@ class GetPdusCountViewSet(viewsets.ViewSet):
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        pdusCount = GetPdusCountSerializer(Pdus.objects.count())
+        pdusCount = GetPdusCountSerializer(self.queryset)
 
         return Response(pdusCount.data)
 
