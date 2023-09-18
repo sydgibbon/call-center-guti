@@ -576,7 +576,7 @@ class Networkequipments(models.Model):
         Autoupdatesystems, on_delete=models.CASCADE, blank=True, null=True, default=None)
     sysdescr = models.TextField(blank=True, null=True)
     cpu = models.IntegerField(default=0)
-    uptime = models.CharField(max_length=255)
+    uptime = models.CharField(max_length=255, blank=True, null=True)
     last_inventory_update = models.DateTimeField(blank=True, null=True)
     snmpcredentials = models.ForeignKey(
         Snmpcredentials, on_delete=models.CASCADE, blank=True, null=True, default=None)
