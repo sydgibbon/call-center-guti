@@ -109,7 +109,7 @@ class GetItemsDevicesimcardsByIdViewSet(viewsets.ViewSet):
         return Response(serializer.data)
     
 class UpdateDevicesimcardByIdViewSet(viewsets.ModelViewSet):
-    queryset = ItemsDevicesimcards.objects.all()
+    queryset = Devicesimcards.objects.all()
     serializer_class = CreateDevicesimcardSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['put']
