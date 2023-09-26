@@ -165,3 +165,15 @@ class UpdateRackByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class DeleteRackByIdViewSet(viewsets.ModelViewSet):
+    queryset = Racks.objects.all()
+    serializer_class = RacksSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        rack = Racks.objects.get(id=pk)
+        rack.is_deleted = 1
+        rack.save()
+        return Response(status=status.HTTP_200_OK)

@@ -107,3 +107,9 @@ class CreateConsumableItemsViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+class DeleteConsumableitemByIdViewSet(viewsets.ModelViewSet):
+    queryset = Consumableitems.objects.all()
+    serializer_class = ConsumableitemsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']

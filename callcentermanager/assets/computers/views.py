@@ -198,3 +198,15 @@ class UpdateComputerByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+        
+class DeleteComputerByIdViewSet(viewsets.ModelViewSet):
+    queryset = Computers.objects.all()
+    serializer_class = ComputersSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        computer = Computers.objects.get(id=pk)
+        computer.is_deleted = 1
+        computer.save()
+        return Response(status=status.HTTP_200_OK)

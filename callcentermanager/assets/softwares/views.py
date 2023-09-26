@@ -146,3 +146,15 @@ class UpdateSoftwareByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class DeleteSoftwareByIdViewSet(viewsets.ModelViewSet):
+    queryset = Softwares.objects.all()
+    serializer_class = SoftwaresSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        software = Softwares.objects.get(id=pk)
+        software.is_deleted = 1
+        software.save()
+        return Response(status=status.HTTP_200_OK)

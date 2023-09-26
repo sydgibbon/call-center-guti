@@ -176,3 +176,16 @@ class UpdatePduByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+
+class DeletePduByIdViewSet(viewsets.ModelViewSet):
+    queryset = Pdus.objects.all()
+    serializer_class = PdusSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        pdu = Pdus.objects.get(id=pk)
+        pdu.is_deleted = 1
+        pdu.save()
+        return Response(status=status.HTTP_200_OK)

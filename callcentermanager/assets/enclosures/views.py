@@ -120,3 +120,16 @@ class UpdateEnclosureByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+
+class DeleteEnclosureByIdViewSet(viewsets.ModelViewSet):
+    queryset = Enclosures.objects.all()
+    serializer_class = EnclosuresSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        enclosure = Enclosures.objects.get(id=pk)
+        enclosure.is_deleted = 1
+        enclosure.save()
+        return Response(status=status.HTTP_200_OK)

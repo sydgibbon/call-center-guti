@@ -134,10 +134,7 @@ class DeleteCartridgeitemByIdViewSet(viewsets.ModelViewSet):
     http_method_names = ['delete']
 
     def destroy(self, request, pk=None):
-        print("pk " + pk)
         cartridgeitem = Cartridgeitems.objects.get(id=pk)
-        print(cartridgeitem)
         cartridgeitem.is_deleted = 1
         cartridgeitem.save()
-        print(cartridgeitem.is_deleted)
         return Response(status=status.HTTP_200_OK)

@@ -139,3 +139,16 @@ class UpdateMonitorByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+    
+class DeleteMonitorByIdViewSet(viewsets.ModelViewSet):
+    queryset = Monitors.objects.all()
+    serializer_class = MonitorsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        monitor = Monitors.objects.get(id=pk)
+        monitor.is_deleted = 1
+        monitor.save()
+        return Response(status=status.HTTP_200_OK)

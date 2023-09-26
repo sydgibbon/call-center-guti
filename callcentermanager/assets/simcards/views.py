@@ -116,3 +116,16 @@ class UpdateDevicesimcardByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class DeleteDevicesimcardByIdViewSet(viewsets.ModelViewSet):
+    queryset = Devicesimcards.objects.all()
+    serializer_class = DevicesimcardsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        devicesimcard = Devicesimcards.objects.get(id=pk)
+        devicesimcard.is_deleted = 1
+        devicesimcard.save()
+        return Response(status=status.HTTP_200_OK)

@@ -148,11 +148,14 @@ class GetPhonesByIdViewSet(viewsets.ViewSet):
         serializer = GetPhonesByIdSerializer(phone)
         return Response(serializer.data)
     
-class UpdatePhoneByIdViewSet(viewsets.ModelViewSet):
+class DeletePhoneByIdViewSet(viewsets.ModelViewSet):
     queryset = Phones.objects.all()
-    serializer_class = CreatePhoneSerializer
+    serializer_class = PhonesSerializer
     permission_classes = (IsAuthenticated, AllowAny)
-    http_method_names = ['put']
+    http_method_names = ['delete']
 
-    def list(self, request):
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+    def destroy(self, request, pk=None):
+        phone = Phones.objects.get(id=pk)
+        phone.is_deleted = 1
+        phone.save()
+        return Response(status=status.HTTP_200_OK)

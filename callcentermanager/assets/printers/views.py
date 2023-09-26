@@ -150,3 +150,16 @@ class UpdatePrinterByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class DeletePrinterByIdViewSet(viewsets.ModelViewSet):
+    queryset = Printers.objects.all()
+    serializer_class = PrintersSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        printer = Printers.objects.get(id=pk)
+        printer.is_deleted = 1
+        printer.save()
+        return Response(status=status.HTTP_200_OK)

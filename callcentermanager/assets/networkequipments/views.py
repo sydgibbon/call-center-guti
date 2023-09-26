@@ -125,3 +125,15 @@ class UpdateNetworkequipmentByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+class DeleteNetworkequipmentByIdViewSet(viewsets.ModelViewSet):
+    queryset = Networkequipments.objects.all()
+    serializer_class = NetworkequipmentsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        networkequipment = Networkequipments.objects.get(id=pk)
+        networkequipment.is_deleted = 1
+        networkequipment.save()
+        return Response(status=status.HTTP_200_OK)

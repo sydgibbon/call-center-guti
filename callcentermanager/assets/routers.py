@@ -308,5 +308,18 @@ router.register(r'updateCartridgeitemById', cartridges.UpdateCartridgeitemByIdVi
 router.register(r'updatePassivedcequipmentById', passivedcequipments.UpdatePassivedcequipmentByIdViewSet, basename='updatePassivedcequipmentById')
 
 # Mark Asset as deleted by id
+router.register(r'deleteComputerById', computers.DeleteComputerByIdViewSet, basename='deleteComputerById') #soft delete
+router.register(r'deleteMonitorById', monitors.DeleteMonitorByIdViewSet, basename='deleteMonitorById') #soft delete
+router.register(r'deleteSoftwareById', softwares.DeleteSoftwareByIdViewSet, basename='deleteSoftwareById') #soft delete
+router.register(r'deleteNetworkequipmentById', networkequipments.DeleteNetworkequipmentByIdViewSet, basename='deleteNetworkequipmentById') #soft delete
+router.register(r'deletePeripheralById', peripherals.DeletePeripheralByIdViewSet, basename='deletePeripheralById') #soft delete
+router.register(r'deletePrinterById', printers.DeletePrinterByIdViewSet, basename='deletePrinterById') #soft delete
+router.register(r'deleteCartridgeitemById', cartridges.DeleteCartridgeitemByIdViewSet, basename='deleteCartridgeitemById') #soft delete
+router.register(r'deleteConsumableitemById', consumableitems.DeleteConsumableitemByIdViewSet, basename='deleteConsumableitemById') #hard delete
+router.register(r'deletePhoneById', phones.DeletePhoneByIdViewSet, basename='deletePhoneById') #soft delete
+router.register(r'deleteRackById', racks.DeleteRackByIdViewSet, basename='deleteRackById') #soft delete
+router.register(r'deleteEnclosureById', enclosures.DeleteEnclosureByIdViewSet, basename='deleteEnclosureById') #soft delete
+router.register(r'deletePduById', pdus.DeletePduByIdViewSet, basename='deletePduById') #soft delete
+router.register(r'deletePassivedcequipmentById', passivedcequipments.DeletePassivedcequipmentByIdViewSet, basename='deletePassivedcequipmentById') #soft delete
 router.register(r'deleteCableById', cables.DeleteCableByIdViewSet, basename='deleteCableById') #hard delete
-router.register(r'deleteCartridgeitemById', cartridges.DeleteCartridgeitemByIdViewSet, basename='deleteCartridgeitemById') #hard delete
+router.register(r'deleteDevicesimcardById', simcards.DeleteDevicesimcardByIdViewSet, basename='deleteDevicesimcardById') #soft delete

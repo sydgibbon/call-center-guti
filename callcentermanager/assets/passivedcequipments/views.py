@@ -124,3 +124,16 @@ class UpdatePassivedcequipmentByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+
+class DeletePassivedcequipmentByIdViewSet(viewsets.ModelViewSet):
+    queryset = Passivedcequipments.objects.all()
+    serializer_class = PassivedcequipmentsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        passivedcequipment = Passivedcequipments.objects.get(id=pk)
+        passivedcequipment.is_deleted = 1
+        passivedcequipment.save()
+        return Response(status=status.HTTP_200_OK)

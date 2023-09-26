@@ -129,3 +129,15 @@ class UpdatePeripheralByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class DeletePeripheralByIdViewSet(viewsets.ModelViewSet):
+    queryset = Peripherals.objects.all()
+    serializer_class = PeripheralsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        peripheral = Peripherals.objects.get(id=pk)
+        peripheral.is_deleted = 1
+        peripheral.save()
+        return Response(status=status.HTTP_200_OK)
