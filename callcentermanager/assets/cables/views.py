@@ -1,6 +1,6 @@
 from assets.cables.serializers import CablesSerializer, CablestrandsSerializer, CabletypesSerializer, CreateCableSerializer, GetCablesListSerializer, GetCablesSerializer, GetCabletypesSelectSerializer, GetCablestrandsSelectSerializer, GetSocketsSelectSerializer, GetSocketmodelsSelectSerializer, GetCablesByIdSerializer
 from assets.models import Cables, Cabletypes, Cablestrands, Sockets, Socketmodels
-from rest_framework import viewsets, status  # import de ViewSets
+from rest_framework import viewsets, status, generics  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
@@ -132,3 +132,10 @@ class UpdateCableByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+    
+class DeleteCableByIdViewSet(viewsets.ModelViewSet):
+    queryset = Cables.objects.all()
+    serializer_class = CablesSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']

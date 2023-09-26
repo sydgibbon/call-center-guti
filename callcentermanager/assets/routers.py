@@ -306,3 +306,7 @@ router.register(r'updateRackById', racks.UpdateRackByIdViewSet, basename='update
 router.register(r'updatePduById', pdus.UpdatePduByIdViewSet, basename='updatePduById')
 router.register(r'updateCartridgeitemById', cartridges.UpdateCartridgeitemByIdViewSet, basename='updateCartridgeitemById')
 router.register(r'updatePassivedcequipmentById', passivedcequipments.UpdatePassivedcequipmentByIdViewSet, basename='updatePassivedcequipmentById')
+
+# Mark Asset as deleted by id
+router.register(r'deleteCableById', cables.DeleteCableByIdViewSet, basename='deleteCableById') #hard delete
+router.register(r'deleteCartridgeitemById', cartridges.DeleteCartridgeitemByIdViewSet, basename='deleteCartridgeitemById') #hard delete

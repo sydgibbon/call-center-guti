@@ -126,3 +126,18 @@ class UpdateCartridgeitemByIdViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+class DeleteCartridgeitemByIdViewSet(viewsets.ModelViewSet):
+    queryset = Cartridgeitems.objects.all()
+    serializer_class = CartridgeitemsSerializer
+    permission_classes = (IsAuthenticated, AllowAny)
+    http_method_names = ['delete']
+
+    def destroy(self, request, pk=None):
+        print("pk " + pk)
+        cartridgeitem = Cartridgeitems.objects.get(id=pk)
+        print(cartridgeitem)
+        cartridgeitem.is_deleted = 1
+        cartridgeitem.save()
+        print(cartridgeitem.is_deleted)
+        return Response(status=status.HTTP_200_OK)
