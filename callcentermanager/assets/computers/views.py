@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from django.db.models import Count
 
 class GetComputersSelectViewSet(viewsets.ViewSet):
+    queryset = Computers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -17,6 +18,7 @@ class GetComputersSelectViewSet(viewsets.ViewSet):
         return Response(computers.data)
     
 class GetComputertypesSelectViewSet(viewsets.ViewSet):
+    queryset = Computertypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -26,6 +28,7 @@ class GetComputertypesSelectViewSet(viewsets.ViewSet):
         return Response(computertypes.data)
     
 class GetComputermodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Computermodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -35,15 +38,17 @@ class GetComputermodelsSelectViewSet(viewsets.ViewSet):
         return Response(computermodels.data)
     
 class GetComputersCountViewSet(viewsets.ViewSet):
+    queryset = Computers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        computersCount = GetComputersCountSerializer(Computers.objects.count())
+        computersCount = GetComputersCountSerializer(self.queryset)
 
         return Response(computersCount.data)
 
 class GetComputersCountByManufacturersViewSet(viewsets.ViewSet):
+    queryset = Computers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -53,6 +58,7 @@ class GetComputersCountByManufacturersViewSet(viewsets.ViewSet):
         return Response(serializer.data)
     
 class GetComputersCountByStatesViewSet(viewsets.ViewSet):
+    queryset = Computers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -63,6 +69,7 @@ class GetComputersCountByStatesViewSet(viewsets.ViewSet):
 
 
 class GetComputersCountByComputertypesViewSet(viewsets.ViewSet):
+    queryset = Computers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -71,10 +78,15 @@ class GetComputersCountByComputertypesViewSet(viewsets.ViewSet):
         serializer = GetComputersCountByComputertypesSerializer(queryset, many=True)
         return Response(serializer.data)
 class GetComputersViewSet(viewsets.ModelViewSet):
-    queryset = Computers.objects.all()
+    queryset = Computers.objects.filter(is_deleted=0)
     serializer_class = GetComputersSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
+    
+    # def get_queryset(self):
+
+    #     queryset = Computers.objects.filter(is_deleted=0)
+    #     return queryset
     
 class ComputersViewSet(viewsets.ModelViewSet):
     queryset = Computers.objects.all()
@@ -165,6 +177,7 @@ class OperatingsystemsViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GetComputersListViewSet(viewsets.ViewSet):
+    queryset = Computers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -174,6 +187,7 @@ class GetComputersListViewSet(viewsets.ViewSet):
         return Response(computers.data)
 
 class GetComputersByIdViewSet(viewsets.ViewSet):
+    queryset = Computers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

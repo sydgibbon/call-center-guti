@@ -22,6 +22,7 @@ class UnmanagedsViewSet(viewsets.ModelViewSet):
         return response(status=status.HTTP_204_NO_CONTENT)
 
 class GetUnmanagedsListViewSet(viewsets.ViewSet):
+    queryset = Unmanageds.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetPrintersSelectViewSet(viewsets.ViewSet):
+    queryset = Printers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -16,6 +17,7 @@ class GetPrintersSelectViewSet(viewsets.ViewSet):
         return Response(printers.data)
 
 class GetPrintermodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Printermodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -24,6 +26,7 @@ class GetPrintermodelsSelectViewSet(viewsets.ViewSet):
         return Response(printermodels.data)
 
 class GetPrintertypesSelectViewSet(viewsets.ViewSet):
+    queryset = Printertypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -32,15 +35,16 @@ class GetPrintertypesSelectViewSet(viewsets.ViewSet):
         return Response(printertypes.data)
 
 class GetPrintersCountViewSet(viewsets.ViewSet):
+    queryset = Printers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        printersCount = GetPrintersCountSerializer(Printers.objects.count())
+        printersCount = GetPrintersCountSerializer(self.queryset)
 
         return Response(printersCount.data)
 class GetPrintersViewSet(viewsets.ModelViewSet):
-    queryset = Printers.objects.all()
+    queryset = Printers.objects.filter(is_deleted=0)
     serializer_class = GetPrintersSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
@@ -106,6 +110,7 @@ class PrintersCartridgeinfosViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GetPrintersListViewSet(viewsets.ViewSet):
+    queryset = Printers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -127,6 +132,7 @@ class CreatePrinterViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 class GetPrintersByIdViewSet(viewsets.ViewSet):
+    queryset = Printers.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

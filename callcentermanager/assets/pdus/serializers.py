@@ -24,7 +24,7 @@ class GetPdusCountSerializer(serializers.ModelSerializer):
     pdusCount = serializers.SerializerMethodField()
     
     def get_pdusCount(self,obj):
-        return Pdus.objects.count()
+        return obj.count()
     
     class Meta:
         model = Pdus

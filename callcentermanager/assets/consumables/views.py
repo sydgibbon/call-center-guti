@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetConsumableitemtypesSelectViewSet(viewsets.ViewSet):
+    queryset = Consumableitemtypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -58,12 +59,13 @@ class ConsumablesViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class GetConsumableitemsViewSet(viewsets.ModelViewSet):
-    queryset = Consumableitems.objects.all()
+    queryset = Consumableitems.objects.filter(is_deleted=0)
     serializer_class = GetConsumableitemsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
 class GetConsumableitemsListViewSet(viewsets.ViewSet):
+    queryset = Consumableitems.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -73,6 +75,7 @@ class GetConsumableitemsListViewSet(viewsets.ViewSet):
         return Response(consumableitems.data)
 
 class GetConsumableitemsByIdViewSet(viewsets.ViewSet):
+    queryset = Consumableitems.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

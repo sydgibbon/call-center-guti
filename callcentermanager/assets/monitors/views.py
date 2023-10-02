@@ -9,6 +9,7 @@ from rest_framework.response import Response
 from django.db.models import Count
 
 class GetMonitortypesSelectViewSet(viewsets.ViewSet):
+    queryset = Monitortypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -18,6 +19,7 @@ class GetMonitortypesSelectViewSet(viewsets.ViewSet):
         return Response(monitortypes.data)
     
 class GetMonitormodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Monitormodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -27,15 +29,17 @@ class GetMonitormodelsSelectViewSet(viewsets.ViewSet):
         return Response(monitormodels.data)
 
 class GetMonitorsCountViewSet(viewsets.ViewSet):
+    queryset = Monitors.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        monitorsCount = GetMonitorsCountSerializer(Monitors.objects.count())
+        monitorsCount = GetMonitorsCountSerializer(self.queryset)
 
         return Response(monitorsCount.data)
 
 class GetMonitorsCountByManufacturersViewSet(viewsets.ViewSet):
+    queryset = Monitors.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -44,7 +48,7 @@ class GetMonitorsCountByManufacturersViewSet(viewsets.ViewSet):
         serializer = GetMonitorsCountByManufacturersSerializer(queryset, many=True)
         return Response(serializer.data)
 class GetMonitorsViewSet(viewsets.ModelViewSet):
-    queryset = Monitors.objects.all()
+    queryset = Monitors.objects.filter(is_deleted=0)
     serializer_class = GetMonitorsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
@@ -95,6 +99,7 @@ class MonitortypesViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class GetMonitorsListViewSet(viewsets.ViewSet):
+    queryset = Monitors.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -116,6 +121,7 @@ class CreateMonitorViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class GetMonitorsByIdViewSet(viewsets.ViewSet):
+    queryset = Monitors.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
