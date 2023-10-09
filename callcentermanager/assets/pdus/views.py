@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetPdutypesSelectViewSet(viewsets.ViewSet):
+    queryset = Pdutypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -18,6 +19,7 @@ class GetPdutypesSelectViewSet(viewsets.ViewSet):
         return Response(pdutypes.data)
     
 class GetPdumodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Pdumodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -26,15 +28,17 @@ class GetPdumodelsSelectViewSet(viewsets.ViewSet):
         return Response(pdumodels.data)
 
 class GetPdusCountViewSet(viewsets.ViewSet):
+    queryset = Pdus.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
     def list(self, request, format=None):
-        pdusCount = GetPdusCountSerializer(Pdus.objects.count())
+        pdusCount = GetPdusCountSerializer(self.queryset)
 
         return Response(pdusCount.data)
 
 class GetPdutypesSelectViewSet(viewsets.ViewSet):
+    queryset = Pdutypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -43,6 +47,7 @@ class GetPdutypesSelectViewSet(viewsets.ViewSet):
         return Response(pdutypes.data)
     
 class GetPdumodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Pdumodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -51,7 +56,7 @@ class GetPdumodelsSelectViewSet(viewsets.ViewSet):
         return Response(pdumodels.data)
 
 class GetPdusViewSet(viewsets.ModelViewSet):
-    queryset = Pdus.objects.all()
+    queryset = Pdus.objects.filter(is_deleted=0)
     serializer_class = GetPdusSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
@@ -132,6 +137,7 @@ class PdusRacksViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GetPdusListViewSet(viewsets.ViewSet):
+    queryset = Pdus.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -153,6 +159,7 @@ class CreatePduViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class GetPdusByIdViewSet(viewsets.ViewSet):
+    queryset = Pdus.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

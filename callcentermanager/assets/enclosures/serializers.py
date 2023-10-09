@@ -19,7 +19,7 @@ class GetEnclosuresCountSerializer(serializers.ModelSerializer):
     enclosuresCount = serializers.SerializerMethodField()
     
     def get_enclosuresCount(self,obj):
-        return Enclosures.objects.count()
+        return obj.count()
     
     class Meta:
         model = Enclosures

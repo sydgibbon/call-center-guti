@@ -33,7 +33,7 @@ class GetPhonesCountSerializer(serializers.ModelSerializer):
     phonesCount = serializers.SerializerMethodField()
     
     def get_phonesCount(self,obj):
-        return Phones.objects.count()
+        return obj.count()
     
     class Meta:
         model = Phones

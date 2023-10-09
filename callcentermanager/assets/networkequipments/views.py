@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetNetworkequipmentsSelectViewSet(viewsets.ViewSet):
+    queryset = Networkequipments.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -13,6 +14,7 @@ class GetNetworkequipmentsSelectViewSet(viewsets.ViewSet):
         return Response(networkequipments.data)
 
 class GetNetworkequipmenttypesSelectViewSet(viewsets.ViewSet):
+    queryset = Networkequipmenttypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -21,6 +23,7 @@ class GetNetworkequipmenttypesSelectViewSet(viewsets.ViewSet):
         return Response(networkequipmenttypes.data)
 
 class GetNetworkequipmentmodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Networkequipmentmodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -29,7 +32,7 @@ class GetNetworkequipmentmodelsSelectViewSet(viewsets.ViewSet):
         return Response(networkequipmentmodels.data)
 
 class GetNetworkequipmentsViewSet(viewsets.ModelViewSet):
-    queryset = Networkequipments.objects.all()
+    queryset = Networkequipments.objects.filter(is_deleted=0)
     serializer_class = GetNetworkequipmentsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
@@ -81,6 +84,7 @@ class NetworkequipmenttypesViewSet(viewsets.ModelViewSet):
 
     
 class GetNetworkequipmentsListViewSet(viewsets.ViewSet):
+    queryset = Networkequipments.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -102,6 +106,7 @@ class CreateNetworkequipmentViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 class GetNetworkequipmentsByIdViewSet(viewsets.ViewSet):
+    queryset = Networkequipments.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

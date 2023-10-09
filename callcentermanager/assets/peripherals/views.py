@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetPeripheralsSelectViewSet(viewsets.ViewSet):
+    queryset = Peripherals.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -14,6 +15,7 @@ class GetPeripheralsSelectViewSet(viewsets.ViewSet):
         return Response(peripherals.data)
 
 class GetPeripheraltypesSelectViewSet(viewsets.ViewSet):
+    queryset = Peripheraltypes.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -23,6 +25,7 @@ class GetPeripheraltypesSelectViewSet(viewsets.ViewSet):
         return Response(peripheraltypes.data)
     
 class GetPeripheralmodelsSelectViewSet(viewsets.ViewSet):
+    queryset = Peripheralmodels.objects.all()
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -32,7 +35,7 @@ class GetPeripheralmodelsSelectViewSet(viewsets.ViewSet):
         return Response(peripheralmodels.data)
     
 class GetPeripheralsViewSet(viewsets.ModelViewSet):
-    queryset = Peripherals.objects.all()
+    queryset = Peripherals.objects.filter(is_deleted=0)
     serializer_class = GetPeripheralsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
@@ -85,6 +88,7 @@ class PeripheraltypesViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class GetPeripheralsListViewSet(viewsets.ViewSet):
+    queryset = Peripherals.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -106,6 +110,7 @@ class CreatePeripheralViewSet(viewsets.GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 class GetPeripheralsByIdViewSet(viewsets.ViewSet):
+    queryset = Peripherals.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

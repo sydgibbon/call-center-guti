@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 class GetUsersSelectViewSet(viewsets.ViewSet):
+    queryset = Users.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 
@@ -13,6 +14,7 @@ class GetUsersSelectViewSet(viewsets.ViewSet):
         return Response(users.data)
 
 class GetTechInChargeSelectViewSet(viewsets.ViewSet):
+    queryset = Users.objects.filter(is_deleted=0)
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['get']
 

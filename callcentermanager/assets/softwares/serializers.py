@@ -20,7 +20,7 @@ class GetSoftwaresCountSerializer(serializers.ModelSerializer):
     softwaresCount = serializers.SerializerMethodField()
     
     def get_softwaresCount(self,obj):
-        return Softwares.objects.count()
+        return obj.count()
     
     class Meta:
         model = Softwares
@@ -30,7 +30,7 @@ class GetSoftwarelicensesCountSerializer(serializers.ModelSerializer):
     softwarelicensesCount = serializers.SerializerMethodField()
     
     def get_softwarelicensesCount(self,obj):
-        return Softwarelicenses.objects.count()
+        return obj.count()
     
     class Meta:
         model = Softwarelicenses

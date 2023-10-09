@@ -29,7 +29,7 @@ class GetRacksCountSerializer(serializers.ModelSerializer):
     racksCount = serializers.SerializerMethodField()
     
     def get_racksCount(self,obj):
-        return Racks.objects.count()
+        return obj.count()
     
     class Meta:
         model = Racks
