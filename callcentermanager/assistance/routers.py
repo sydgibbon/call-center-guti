@@ -1,4 +1,3 @@
-from email.mime import base
 from rest_framework.routers import DefaultRouter
 from assistance.events.views import EventsViewSet, PlanningeventcategoriesViewSet, PlanningexternaleventsViewSet, PlanningexternaleventtemplatesViewSet 
 from assistance.changes.views import ChangesTicketsViewSet, ChangesUsersViewSet, ChangesViewSet, RecurrentchangesViewSet
