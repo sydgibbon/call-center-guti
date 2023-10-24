@@ -28,6 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/assets/', include(('assets.urls', 'assets'))),
     path('api/assistance/', include(('assistance.urls', 'assistance'))),
+    path('api/administration/', include(('administration.urls', 'administration'))),
     path('api_generate_token/', views.obtain_auth_token),
     path('login/', Login.as_view(), name = 'login' ),
     path('openapi', get_schema_view(
