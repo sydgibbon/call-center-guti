@@ -3,6 +3,8 @@ from assets.models import Devicesimcards, Devicesimcardtypes, ItemsDevicesimcard
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from rest_framework.decorators import action
+from assets.generics.serializers import DeleteMultipleSerializer
 
 class GetDevicesimcardsSelectViewSet(viewsets.ViewSet):
     queryset = Devicesimcards.objects.filter(is_deleted=0)
@@ -133,3 +135,24 @@ class DeleteDevicesimcardByIdViewSet(viewsets.ModelViewSet):
         devicesimcard.is_deleted = 1
         devicesimcard.save()
         return Response(status=status.HTTP_200_OK)
+    
+    @action(detail=False, methods=['delete'], serializer_class=DeleteMultipleSerializer)
+    def delete_multiple(self, request):
+        object_ids = request.data.get('object_ids', [])
+        serializer = DeleteMultipleSerializer(data=request.data)
+        if serializer.is_valid():
+
+            deleted_objects = []  # To store the deleted objects
+
+            for object_id in object_ids:
+                try:
+                    obj = Devicesimcards.objects.get(pk=object_id)
+                    obj.is_deleted = 1
+                    obj.save()
+                    deleted_objects.append(object_id)
+                except Devicesimcards.DoesNotExist:
+                    pass  # Handle the case when the object does not exist
+
+            return Response({'message': f'{len(deleted_objects)} objects deleted successfully'})
+        else:
+            return Response(serializer.errors, status=400)

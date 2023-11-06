@@ -7,6 +7,8 @@ from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from django.db.models import Count
+from assets.generics.serializers import DeleteMultipleSerializer
+from rest_framework.decorators import action
 
 class GetMonitortypesSelectViewSet(viewsets.ViewSet):
     queryset = Monitortypes.objects.all()
@@ -158,3 +160,23 @@ class DeleteMonitorByIdViewSet(viewsets.ModelViewSet):
         monitor.is_deleted = 1
         monitor.save()
         return Response(status=status.HTTP_200_OK)
+    @action(detail=False, methods=['delete'], serializer_class=DeleteMultipleSerializer)
+    def delete_multiple(self, request):
+        object_ids = request.data.get('object_ids', [])
+        serializer = DeleteMultipleSerializer(data=request.data)
+        if serializer.is_valid():
+
+            deleted_objects = []  # To store the deleted objects
+
+            for object_id in object_ids:
+                try:
+                    obj = Monitors.objects.get(pk=object_id)
+                    obj.is_deleted = 1
+                    obj.save()
+                    deleted_objects.append(object_id)
+                except Monitors.DoesNotExist:
+                    pass  # Handle the case when the object does not exist
+
+            return Response({'message': f'{len(deleted_objects)} objects deleted successfully'})
+        else:
+            return Response(serializer.errors, status=400)

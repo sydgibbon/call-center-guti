@@ -447,3 +447,6 @@ class EntitiesSerializer(serializers.ModelSerializer):
         model = Entities
         fields = '__all__'
 
+class DeleteMultipleSerializer(serializers.Serializer):
+     object_ids = serializers.ListField(child=serializers.IntegerField())
+

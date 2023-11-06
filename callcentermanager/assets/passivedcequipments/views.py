@@ -3,6 +3,8 @@ from assets.models import Passivedcequipments, Passivedcequipmenttypes, Passived
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from assets.generics.serializers import DeleteMultipleSerializer
+from rest_framework.decorators import action
 
 class GetPassivedcequipmentsSelectViewSet(viewsets.ViewSet):
     queryset = Passivedcequipments.objects.filter(is_deleted=0)
@@ -142,3 +144,24 @@ class DeletePassivedcequipmentByIdViewSet(viewsets.ModelViewSet):
         passivedcequipment.is_deleted = 1
         passivedcequipment.save()
         return Response(status=status.HTTP_200_OK)
+    
+    @action(detail=False, methods=['delete'], serializer_class=DeleteMultipleSerializer)
+    def delete_multiple(self, request):
+        object_ids = request.data.get('object_ids', [])
+        serializer = DeleteMultipleSerializer(data=request.data)
+        if serializer.is_valid():
+
+            deleted_objects = []  # To store the deleted objects
+
+            for object_id in object_ids:
+                try:
+                    obj = Passivedcequipments.objects.get(pk=object_id)
+                    obj.is_deleted = 1
+                    obj.save()
+                    deleted_objects.append(object_id)
+                except Passivedcequipments.DoesNotExist:
+                    pass  # Handle the case when the object does not exist
+
+            return Response({'message': f'{len(deleted_objects)} objects deleted successfully'})
+        else:
+            return Response(serializer.errors, status=400)

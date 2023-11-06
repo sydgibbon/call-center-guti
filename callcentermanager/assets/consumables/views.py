@@ -3,6 +3,8 @@ from assets.models import Consumableitems, Consumableitemtypes, Consumables
 from rest_framework import viewsets, status  # import de ViewSets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from assets.generics.serializers import DeleteMultipleSerializer
+from rest_framework.decorators import action
 
 class GetConsumableitemtypesSelectViewSet(viewsets.ViewSet):
     queryset = Consumableitemtypes.objects.all()
@@ -116,3 +118,22 @@ class DeleteConsumableitemByIdViewSet(viewsets.ModelViewSet):
     serializer_class = ConsumableitemsSerializer
     permission_classes = (IsAuthenticated, AllowAny)
     http_method_names = ['delete']
+    @action(detail=False, methods=['delete'], serializer_class=DeleteMultipleSerializer)
+    def delete_multiple(self, request):
+        object_ids = request.data.get('object_ids', [])
+        serializer = DeleteMultipleSerializer(data=request.data)
+        if serializer.is_valid():
+
+            deleted_objects = []  # To store the deleted objects
+
+            for object_id in object_ids:
+                try:
+                    obj = Consumableitems.objects.get(pk=object_id)
+                    obj.delete()
+                    deleted_objects.append(object_id)
+                except Consumableitems.DoesNotExist:
+                    pass  # Handle the case when the object does not exist
+
+            return Response({'message': f'{len(deleted_objects)} objects deleted successfully'})
+        else:
+            return Response(serializer.errors, status=400)
