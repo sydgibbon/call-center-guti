@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'assets',
     'assistance',
+    'administration',
 ]
 
 REST_FRAMEWORK = {
