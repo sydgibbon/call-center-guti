@@ -4,4 +4,4 @@ from assets.models import Groups
 class GetGroupsSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Groups
-        fields = ['completename', 'comment']
+        fields = ['id', 'completename', 'comment']
